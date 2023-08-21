@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
-import { Hotel,Room,Address,GeoPoint,Suggestion,ScoringFunction,ScoringProfile,Freshness,Magnitude,CorsOptions,IndexDefinition } from './Hotel';
 
 @Component({
   selector: 'app-root',

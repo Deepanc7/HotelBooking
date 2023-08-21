@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Hotel,Room,Address,GeoPoint,Suggestion,ScoringFunction,ScoringProfile,Freshness,Magnitude,CorsOptions,IndexDefinition } from '../Hotel';
 
 @Component({
   selector: 'app-hotel-details',
