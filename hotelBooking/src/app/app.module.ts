@@ -5,16 +5,46 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { HotelsComponent } from './hotels/hotels.component';
+import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { Routes, RouterModule } from '@angular/router';
+import { DataService } from './data.service';
+import { HttpClientModule } from '@angular/common/http';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatIconModule} from '@angular/material/icon';
+
+const routes: Routes = [
+  { path: 'hotels', component: HotelsComponent },
+  { path: 'hotel-details', component: HotelDetailsComponent },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
-    HotelsComponent
+    HotelsComponent,
+    HotelDetailsComponent
   ],
   imports: [
+    MatSlideToggleModule,
+    MatSidenavModule,
+    MatExpansionModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSelectModule,
+    MatListModule,
+    MatCardModule,
+    HttpClientModule,
+    MatSliderModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

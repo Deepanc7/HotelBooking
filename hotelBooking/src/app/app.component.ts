@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from './data.service';
+import { Hotel,Room,Address,GeoPoint,Suggestion,ScoringFunction,ScoringProfile,Freshness,Magnitude,CorsOptions,IndexDefinition } from './Hotel';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers:[DataService]
 })
-export class AppComponent {
-  title = 'hotelBooking';
+export class AppComponent{
+  jsonData: any; // Declare a property to store the fetched JSON data
+  HotelData:any[]=[];
+
+  constructor(private dataService: DataService) { }
+
+  ngOnInit(): void {
+    this.jsonData=this.dataService.getJsonData().value;
+    for(let i=0;i<this.jsonData.length;i++) {
+      this.HotelData.push(this.jsonData[i]);
+    }
+    localStorage.setItem('hotel_data', JSON.stringify(this.HotelData));
+  }
+  
+
 }
