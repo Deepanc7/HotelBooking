@@ -31,7 +31,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "hotelBooking/src/app/search-bar/search-bar.component.scss"
+              "src/app/search-bar/search-bar.component.scss"
             ],
             "scripts": []
           },
