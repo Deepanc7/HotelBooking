@@ -1,1 +1,51 @@
-<p>search-bar works!</p>
+<div class="main-div-For-searchBar mat-elevation-z2">
+    <div class="subDiv">
+      <ng-container *ngFor="let section of searchSectionItems">
+        <button class="btn-searchBar mat-elevation-z0">
+          <mat-icon>{{ section.icon }}</mat-icon>
+          <label class="search-component-label">{{ section.label }}</label>
+          <ng-container *ngIf="section.input">
+            <div>
+              <input *ngIf="section.input === 'date'; else textInput" [type]="section.input" [ngModel]="section.input === 'date' ? section.label === 'CHECKIN' ? checkInDate : checkOutDate : ''">
+              <ng-template #textInput>
+                <input [type]="section.input" value="">
+              </ng-template>
+            </div>
+          </ng-container>
+        </button>
+  
+        <div class="divider"></div>
+      </ng-container>
+  
+      <button #guestsButton class="btn-searchBar mat-elevation-z0" (click)="toggleGuestsPopup()">
+    <mat-icon>people</mat-icon>
+    <label class="search-component-label">GUEST & ROOMS</label>
+    <input type="text" [(ngModel)]="guestsAndRoomsValue" readonly>
+  </button>
+</div>
+
+    <div class="divider" style="width: 12px;"></div>
+  
+    <button class="searchButton mat-elevation-z2" (click)="searchHotels()">
+      <mat-icon matSuffix>search</mat-icon> Search
+    </button>
+  
+   
+  </div>
+
+  <!-- Floating Popup for Guests and rooms -->
+<div class="floating-popup" *ngIf="showGuestsPopup" [style.top.px]="popupTop" [style.left.px]="popupLeft">
+    <div class="popup-content">
+      <div *ngFor="let item of guestsItems" class="popup-item">
+        <label>{{ item.label }}:</label>
+        <div class="popup-item-buttons">
+          <button (click)="decrement(item)">-</button>
+          {{ item.count }}
+          <button (click)="increment(item)">+</button>
+        </div>
+      </div>
+      <button class="apply-button" (click)="applyGuests()">Apply</button>
+    </div>
+
+ 
+  
