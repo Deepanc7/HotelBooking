@@ -14,9 +14,14 @@ import { MaterialModelModule } from './material-model/material-model.module';
   declarations: [
     AppComponent,
     SearchBarComponent,
-    HotelsComponent
+    HotelsComponent,
+    HotelDetailsComponent
   ],
   imports: [
+    MatSlideToggleModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatExpansionModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

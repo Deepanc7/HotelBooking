@@ -1,0 +1,114 @@
+/* Apply styles to the sidenav container */
+sidenav-container {
+    height: 100vh;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  mat-select {
+    padding: 10px;
+  }
+  mat-label {
+    padding: 10px;
+  }
+  
+  mat-option {
+    padding: 8px 12px;
+    margin: 10px;
+  }
+  
+ mat-card {
+    max-width: 100%; 
+    margin: 20px;
+    background-color: #ffffff; 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+    height: 200px;
+  }
+  
+  mat-card-title,
+  mat-card-subtitle {
+    color: #333333; 
+  }
+
+  mat-card-content {
+    padding: 16px; 
+  }
+  mat-label {
+    padding: 10px;
+  }
+
+  mat-select {
+    padding: 10px;
+  }
+  
+mat-sidenav-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  mat-sidenav {
+    height : 650px;
+    position: fixed;
+    margin-top: auto;
+  }
+  
+  .hotel-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .hotel-card {
+    display: flex;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hotel-image {
+    flex: 0 0 20%;
+    max-height: 100%;
+    overflow: hidden;
+  }
+  
+  .hotel-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .hotel-details {
+    flex: 1;
+  }
+  
+  .hotel-name {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+  
+  .hotel-ratings {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .star-icon {
+    color: #f5a623;
+    font-size: 18px;
+  }
+  
+  .hotel-price {
+    font-size: 1.4rem;
+    vertical-align: bottom;
+    font-weight: bold;
+    text-align: right;
+    color: #2196f3;
+  }
+  
+
+  
