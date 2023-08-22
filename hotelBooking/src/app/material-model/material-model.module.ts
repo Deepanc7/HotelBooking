@@ -6,6 +6,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatExpansionModule} from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatButtonModule} from '@angular/material/button';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [],
@@ -17,6 +24,14 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule, 
     MatFormFieldModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatSliderModule,
+    MatListModule,
+    MatSidenavModule,
+   MatExpansionModule,
+   MatSelectModule
   ],
   exports:[
     MatIconModule,
@@ -24,7 +39,14 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCardModule,
     MatDatepickerModule,
     MatFormFieldModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatSliderModule,
+    MatListModule,
+    MatSidenavModule,
+   MatExpansionModule,
+   MatSelectModule
   ]
 })
 export class MaterialModelModule { }

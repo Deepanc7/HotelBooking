@@ -8,6 +8,8 @@ import { HotelsComponent } from './hotels/hotels.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MaterialModelModule } from './material-model/material-model.module';
+import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -18,15 +20,12 @@ import { MaterialModelModule } from './material-model/material-model.module';
     HotelDetailsComponent
   ],
   imports: [
-    MatSlideToggleModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatExpansionModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    MaterialModelModule
+    MaterialModelModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
