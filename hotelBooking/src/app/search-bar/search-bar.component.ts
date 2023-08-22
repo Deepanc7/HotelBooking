@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter,ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { SearchService } from './search.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,11 +8,12 @@ import { Component, Output, EventEmitter,ElementRef, Renderer2, ViewChild } from
 })
 export class SearchBarComponent {
 
-  constructor(private renderer: Renderer2){
+
+  @ViewChild('guestsButton') guestsButton!: ElementRef;
+
+  constructor(private renderer: Renderer2, private searchService: SearchService) {
 
   }
-  
-  @Output() searchEvent = new EventEmitter<{ location: string; checkIn: Date; checkOut: Date }>();
 
   location: string = '';
   checkInDate: Date = new Date();
@@ -25,10 +27,12 @@ export class SearchBarComponent {
   ];
 
   searchHotels() {
-    this.searchEvent.emit({
+    // Save search details
+    this.searchService.setSearchDetails({
       location: this.location,
       checkIn: this.checkInDate,
-      checkOut: this.checkOutDate
+      checkOut: this.checkOutDate,
+      guestsAndRooms: this.guestsAndRoomsValue
     });
   }
 
@@ -43,7 +47,6 @@ export class SearchBarComponent {
   popupTop = 0;
   popupLeft = 0;
 
-  @ViewChild('guestsButton') guestsButton!: ElementRef;
 
   toggleGuestsPopup() {
     this.showGuestsPopup = !this.showGuestsPopup;
@@ -54,23 +57,24 @@ export class SearchBarComponent {
 
 
   increment(item: any) {
-    item.count++;
-    if (item.label === 'Rooms') {
-      this.guestsItems[0].count = item.count;
-      this.guestsItems[1].count = item.count;
+    if (item.label !== 'Rooms') {
+      item.count++;
+      const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);
+      const roomsRequired = Math.ceil(totalGuests / 4);
+      this.guestsItems[2].count = roomsRequired;
     }
   }
 
   decrement(item: any) {
-    if (item.count > 1) {
+    if (item.label !== 'Rooms' && item.count > 1) {
       item.count--;
-      if (item.label === 'Rooms') {
-        this.guestsItems[0].count = item.count;
-        this.guestsItems[1].count = item.count;
-      }
+      const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);
+      const roomsRequired = Math.ceil(totalGuests / 4);
+
+      this.guestsItems[2].count = roomsRequired;
     }
   }
-  
+
   generateGuestsAndRoomsValue() {
     return this.guestsItems
       .map(item => `${item.count} ${item.label}${item.count !== 1 ? 's' : ''}`)
@@ -78,16 +82,28 @@ export class SearchBarComponent {
   }
 
   applyGuests() {
+    const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);
+    const roomsRequired = Math.ceil(totalGuests / 4);
+    this.guestsItems[2].count = roomsRequired;
+
+    if (this.checkOutDate < this.checkInDate) {
+      this.checkOutDate = this.checkInDate;
+    }
+
     this.guestsAndRoomsValue = this.generateGuestsAndRoomsValue();
     this.toggleGuestsPopup();
   }
-
   calculatePopupPosition() {
     if (this.guestsButton) {
       const buttonRect = this.guestsButton.nativeElement.getBoundingClientRect();
       this.popupTop = buttonRect.bottom + window.scrollY;
       this.popupLeft = buttonRect.left + window.scrollX;
     }
+  }
+
+  // function for check constraints on search button
+  isSearchButtonDisabled() {
+    return !this.location || !this.checkInDate || !this.checkOutDate || !this.guestsAndRoomsValue;
   }
 
 }

@@ -7,7 +7,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { HotelsComponent } from './hotels/hotels.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
+import { MaterialModelModule } from './material-model/material-model.module';
 
 
 @NgModule({
@@ -21,7 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatIconModule
+    MaterialModelModule
   ],
   providers: [],
   bootstrap: [AppComponent]
