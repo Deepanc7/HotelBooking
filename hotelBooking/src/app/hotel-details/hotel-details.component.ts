@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-hotel-details',
@@ -8,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HotelDetailsComponent {
   HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
+  HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "[]");
+  hotel = this.HotelData[this.HotelDetails];
 }
 
 

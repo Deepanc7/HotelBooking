@@ -14,11 +14,13 @@ import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import {MatCardModule} from '@angular/material/card';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatIconModule} from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatIconModule } from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatRadioModule} from '@angular/material/radio';
 
 const routes: Routes = [
   { path: 'hotels', component: HotelsComponent },
@@ -34,6 +36,7 @@ const routes: Routes = [
   ],
   imports: [
     MatSlideToggleModule,
+    MatButtonModule,
     MatSidenavModule,
     MatExpansionModule,
     BrowserModule,
@@ -45,6 +48,7 @@ const routes: Routes = [
     HttpClientModule,
     MatSliderModule,
     MatIconModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
