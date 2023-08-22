@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { SearchService } from '../search-bar/search.service';
 
 @Component({
   selector: 'app-hotels',
   templateUrl: './hotels.component.html',
   styleUrls: ['./hotels.component.scss'],
+  providers: [SearchService]
 })
 export class HotelsComponent implements OnInit {
 
@@ -14,30 +16,64 @@ export class HotelsComponent implements OnInit {
 
   LowestRoomPrice: number[]=[];
   PriceRange:string='';
+  Parking:string='';
+  Tags:string='';
 
+  tags: string[] = [
+    'View', 'Air conditioning', 'Concierge', '24-hour front desk service',
+    'Laundry service', 'Free wifi', 'Free parking', 'Restaurant', 'Bar',
+    'Pool', 'Coffee in lobby', 'Continental breakfast'
+  ];
+
+  selectedTags: string[] = [];
+  selectedRating: number = 0;
+  searchDetails: any;
+
+  addTag(tag: string) {
+    if (!this.selectedTags.includes(tag)) {
+      this.selectedTags.push(tag);
+    }
+  }
+
+  removeTag(tag: string) {
+    const index = this.selectedTags.indexOf(tag);
+    if (index !== -1) {
+      this.selectedTags.splice(index, 1);
+    }
+  }
   lowestRoomPrice() {
-    for(const hotel of this.HotelData) {
+    for(let i=0;i<this.HotelData.length;i++) {
     let lowestPrice = Number.MAX_SAFE_INTEGER;
 
-    for (const room of hotel.Rooms) {
+    for (const room of this.HotelData[i].Rooms) {
       if (room.BaseRate < lowestPrice) {
         lowestPrice = room.BaseRate;
       }
     }
     this.LowestRoomPrice.push(lowestPrice);
+
+    this.HotelData[i].lowestPrice=lowestPrice;
+    localStorage.setItem('hotel_data', JSON.stringify(this.HotelData));
     }
   }
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private searchService: SearchService) {
   }
 
   ngOnInit() {
     this.lowestRoomPrice();
+    this.searchDetails=this.searchService.getSearchDetails();
+    this.HotelData = this.HotelData.filter((hotel:any) => this.searchDetails.location_on.some((loc:any) => hotel.Address.includes(loc)));
+
   }
 
   getStars(rating: number): string[] {
     const stars = Math.round(rating);
     return Array(stars).fill('star');
+  }
+
+  search() {
+    let searchDetails=this.searchService.getSearchDetails();
   }
 
   sendDataToHotelDetails(Object: any) {
@@ -52,8 +88,44 @@ export class HotelsComponent implements OnInit {
   }
 
   applyFilters() {
+    this.HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
+    console.log(this.HotelData.length)
     if (this.PriceRange==="Range1") {
-      
+      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 0 && hotel.lowestPrice<=50);
+    }
+    if (this.PriceRange==="Range2") {
+      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 50 && hotel.lowestPrice<=100);
+    }
+    if (this.PriceRange==="Range3") {
+      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 100 && hotel.lowestPrice<=150);
+    }
+    if (this.PriceRange==="Range4") {
+      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 150 && hotel.lowestPrice<=200);
+    }
+    if (this.PriceRange==="Range5") {
+      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 200 && hotel.lowestPrice<=250);
+    }
+    if (this.PriceRange==="Range6") {
+      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 250 && hotel.lowestPrice<=300);
+    }
+    if (this.Parking==="true") {
+      this.HotelData = this.HotelData.filter((hotel: { ParkingIncluded: number; }) => hotel.ParkingIncluded==1);
+    }
+    if (this.Parking==="false") {
+      this.HotelData = this.HotelData.filter((hotel: { ParkingIncluded: number; }) => hotel.ParkingIncluded==0);
+    }
+    
+    if (this.selectedTags.length === 0) {
+      this.HotelData = this.HotelData;
+    } else {
+      this.HotelData = this.HotelData.filter((hotel:any) =>
+        this.selectedTags.some(tag => hotel.Tags.includes(tag)));
+    }
+
+    if (this.selectedRating === null) {
+      this.HotelData = this.HotelData;
+    } else {
+      this.HotelData = this.HotelData.filter((hotel:any) => hotel.Rating >= this.selectedRating);
     }
   }
 }

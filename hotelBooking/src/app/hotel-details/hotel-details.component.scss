@@ -1,0 +1,52 @@
+/* Add this CSS to your component's SCSS file */
+.hotel-details-container {
+    padding: 20px;
+  }
+  
+  .hotel-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    color: #34495e;
+  }
+  
+  .tags {
+    margin-top: 10px;
+  }
+  
+  .tags .mat-chip {
+    background-color: #f39c12;
+    color: #fff;
+    margin-right: 5px;
+  }
+  
+  .details p {
+    margin: 5px 0;
+  }
+  
+  .room-list {
+    margin-top: 20px;
+  }
+  
+  .room-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    color: #34495e;
+  }
+  
+  .room-card h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .room-card .tags .mat-chip {
+    background-color: #f39c12;
+    color: #fff;
+    margin-right: 5px;
+  }
+  

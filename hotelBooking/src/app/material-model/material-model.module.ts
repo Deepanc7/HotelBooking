@@ -13,6 +13,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatChipsModule} from '@angular/material/chips';
+
 
 @NgModule({
   declarations: [],
@@ -31,7 +35,9 @@ import {MatRadioModule} from '@angular/material/radio';
     MatListModule,
     MatSidenavModule,
    MatExpansionModule,
-   MatSelectModule
+   MatSelectModule,
+   MatMenuModule,
+   MatChipsModule,
   ],
   exports:[
     MatIconModule,
@@ -46,7 +52,10 @@ import {MatRadioModule} from '@angular/material/radio';
     MatListModule,
     MatSidenavModule,
    MatExpansionModule,
-   MatSelectModule
+   MatSelectModule,
+   MatMenuModule,
+   MatSnackBarModule,
+   MatChipsModule,
   ]
 })
 export class MaterialModelModule { }

@@ -1,21 +1,30 @@
-<div class="container">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{hotel.HotelName}}</mat-card-title>
-      <mat-card-subtitle>Category: {{hotel.Category}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Description: {{hotel.Description}}</p>
-      <p>Rating: {{hotel.Rating}}</p>
-      <p>Address: {{hotel.Address}}</p>
-      <p>Tags: {{hotel.Tags}}</p>
-      <h3>Rooms:</h3>
-      <div class="room" *ngFor="let room of hotel.Rooms">
-        <p><strong>Room type: {{room.Description}}</strong></p>
-        <p>Description: {{room.Description_fr}}</p>
-        <p>Base Rate: ${{room.BaseRate}}</p>
-        <p>Bed Options: {{room.BedOptions}}</p>
-      </div>
-    </mat-card-content>
+<div class="hotel-details-container">
+  <mat-card class="hotel-card">
+    <h2>{{ hotel.HotelName }}</h2>
+    <p>{{ hotel.Description }}</p>
+    <div class="tags">
+      <mat-chip *ngFor="let tag of hotel.Tags">{{ tag }}</mat-chip>
+    </div>
+    <div class="details">
+      <p>Category: {{ hotel.Category }}</p>
+      <p>Parking: {{ hotel.ParkingIncluded ? 'Included' : 'Not Included' }}</p>
+      <p>Rating: {{ hotel.Rating }}</p>
+      <p>Address: {{ hotel.Address.City }}, {{ hotel.Address.StateProvince }}, {{ hotel.Address.Country }}</p>
+    </div>
   </mat-card>
+
+  <div class="room-list">
+    <h3>Rooms</h3>
+    <mat-card class="room-card" *ngFor="let room of hotel.Rooms">
+      <h4>{{ room.Description }}</h4>
+      <p>Type: {{ room.Type }}</p>
+      <p>Base Rate: ${{ room.BaseRate }}</p>
+      <p>Bed Options: {{ room.BedOptions }}</p>
+      <p>Sleeps: {{ room.SleepsCount }}</p>
+      <p>Smoking Allowed: {{ room.SmokingAllowed ? 'Yes' : 'No' }}</p>
+      <div class="tags">
+        <mat-chip *ngFor="let tag of room.Tags">{{ tag }}</mat-chip>
+      </div>
+    </mat-card>
+  </div>
 </div>

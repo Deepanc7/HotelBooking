@@ -17,23 +17,21 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Property Type</mat-label>
-          <mat-select>
-            <mat-option value="apartment">Apartment</mat-option>
-            <mat-option value="house">House</mat-option>
-            <mat-option value="villa">Villa</mat-option>
+          <mat-label>Parking Included</mat-label>
+          <mat-select [(value)]="Parking">
+            <mat-option value="true">True</mat-option>
+            <mat-option value="false">False</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Food</mat-label>
-          <mat-select>
-            <mat-option value="included">Included</mat-option>
-            <mat-option value="not-included">Not Included</mat-option>
+          <mat-label>Tags</mat-label>
+          <mat-select [(ngModel)]="selectedTags" multiple>
+            <mat-option *ngFor="let tag of tags" [value]="tag">{{ tag }}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Rating</mat-label>
-          <mat-select>
+          <mat-select [(ngModel)]="selectedRating" (ngModelChange)="applyFilters()">
             <mat-option value="1">1 star</mat-option>
             <mat-option value="2">2 stars</mat-option>
             <mat-option value="3">3 stars</mat-option>
@@ -50,7 +48,7 @@
     <div class="hotel-list">
       <mat-card class="hotel-card" *ngFor="let hotel of HotelData;let i=index" (click)="sendDataToHotelDetails(hotel)">
         <div class="hotel-image">
-          <img src="" alt="Hotel Image">
+          <img src="/assets/image.jpg" alt="Hotel Image">
         </div>
         <div class="hotel-content">
           <div class="hotel-details">
@@ -59,10 +57,12 @@
               <ng-container>
                 <mat-icon *ngFor="let star of getStars(hotel.Rating)" class="star-icon">star</mat-icon>
               </ng-container>
+              <p *ngIf="hotel.ParkingIncluded===true">Parking:Yes</p>
+              <p *ngIf="hotel.ParkingIncluded===false">Parking:No</p>
             </div>
           </div>
           <div class="hotel-price">
-            Starts From: ${{LowestRoomPrice[i]}}
+            Starts From: ${{hotel.lowestPrice}}
           </div>
         </div>
       </mat-card>
