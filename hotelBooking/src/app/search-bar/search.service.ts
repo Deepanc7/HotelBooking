@@ -4,6 +4,7 @@ import { SearchDetails } from './search-details.interface';
 @Injectable({
   providedIn: 'root'
 })
+
 export class SearchService {
   private searchDetails: SearchDetails = {
     location: '',
@@ -16,8 +17,10 @@ export class SearchService {
     this.searchDetails = details;
     localStorage.setItem('searchDetails',JSON.stringify(this.searchDetails));
   }
+
   getSearchDetails(): SearchDetails {
     this.searchDetails =JSON.parse(localStorage.getItem('searchDetails') ||"[]");
     return this.searchDetails;
+  
   }
 }

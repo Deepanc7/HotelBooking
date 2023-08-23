@@ -1,235 +1,197 @@
+:host {
+  ::ng-deep .mat-mdc-form-field {
+    background-color: white;
+    border-radius: 10px;
 
+  }
 
-:host{ 
-  ::ng-deep .mat-mdc-form-field { 
-      background-color: white; 
-      border-radius: 10px;
-      
-  } 
-  ::ng-deep  .mat-mdc-form-field-has-icon-suffix  .mat-mdc-text-field-wrapper{
+  ::ng-deep .mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
     background-color: rgb(253, 253, 253);
     border-radius: 10px;
-   
+
   }
 
   ::ng-deep .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
-color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
   }
 
 
 }
 
- 
- mat-datepicker-toggle {
-  color: white !important;
- }
 
- mat-card{
+mat-datepicker-toggle {
+  color: rgb(8, 0, 0) !important;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.mat-date-range-input-inner {
+  color: rgb(8, 0, 0) !important;
+}
+
+
+mat-card {
   display: flex;
   align-items: center;
   border-radius: 10px;
   background-color: white;
   flex-direction: column;
-  width: 100%;
+  width: inherit;
   padding: 10px;
- // height: 40vh;
- }
+  box-shadow: 0px 1px 20px 5px black;
+}
 
 .divider {
-    width: 1px;
-    height: 40px; 
-    display: inline-block;
-    vertical-align: middle;
-    color: #171515;
-  }
-
-
-  .main-div-For-searchBar {
-    background-color: rgba(56, 56, 55, 0.771);
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
-    flex-direction: column;
-    
-  }
-  
-  
-  .btn-searchBar {
-    background-color:rgb(255, 255, 255);
-    color: rgb(177, 170, 170);
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .search-component-label {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .searchButton {
-    background-color: olivedrab;
-    color: rgb(177, 170, 170);
-    border: none;
-    padding: 15px 35px;
-    border-radius: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .enabled {
-    background-color: #31e000; 
-    color: white;
-  }
-  
-  .disabled {
-    background-color: #f2f2f2; 
-    color: #999999;
-    cursor: not-allowed;
-  }
-
-   
-  .searchButton.enabled {
-    background-color: #31e000; 
-    color: white;
-  }
-  
-  .searchButton.disabled {
-    background-color: #f2f2f2; 
-    color: #999999;
-    cursor: not-allowed;
-  }
-  
-  .searchButton:hover {
-    background-color: #2cb500; 
-  }
-  
-
-
-  .floating-popup {
-    padding: 10px 10px;
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .popup-content {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    z-index: 1000;
-  }
-  
-  .popup-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .popup-item-buttons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .apply-button {
-    display: block;
-    margin-top: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-   
-mat-date-range-input{
-  background-color:white;
+  width: 1px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  color: #171515;
 }
 
 
-  @media (min-width:970px) {
-    .main-div-For-searchBar {
-      flex-direction: row;
-      align-items: flex-start; 
-      justify-content: space-between; 
-    }
+.main-div-For-searchBar {
+  background-color: rgba(56, 56, 55, 0.771);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  flex-direction: column;
+  box-shadow: 0px 1px 20px 5px whitesmoke;
+}
 
-    mat-card{
-      align-items: center;
-      flex-direction: row;
-      justify-content: space-between;
-     }
 
-    .divider {
-      width: 12px;
-      height: auto;
-    }
-    
-    .btn-searchBar {
-      background-color: rgb(255, 255, 255);
-      color: rgb(177, 170, 170);
-      border: none;
-      padding: 10px 15px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      margin-right: 10px;
-      transition: background-color 0.3s, color 0.3s; 
-    }
-    
-    .btn-searchBar:hover {
-      background-color: #f0f0f0; 
-    }
-    
-    .search-component-label {
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    
-    .searchButton {
-      background-color: olivedrab;
-      color: rgb(177, 170, 170);
-      border: none;
-      padding: 15px 35px;
-      border-radius: 50px;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s; 
-    }
-    
-    .searchButton.enabled {
-      background-color: #31e000; 
-      color: white;
-    }
-    
-    .searchButton.disabled {
-      background-color: #f2f2f2; 
-      color: #999999;
-      cursor: not-allowed;
-    }
-    
-    .searchButton:hover {
-      background-color: #2cb500; 
-    }
 
-   
-  
+.btn-searchBar {
+  background-color: rgb(255, 255, 255);
+  color: rgb(177, 170, 170);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: flex;
+  width: 35vh;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.search-component-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.searchButton {
+  background-color: #29890a;;
+  color: rgb(177, 170, 170);
+  border: none;
+  padding: 20px 35px;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+
+.searchButton[disabled] {
+  cursor: not-allowed;
+}
+.searchButton.enabled {
+  background-color: #31e000;
+  color: white;
+}
+
+.searchButton.disabled {
+  background-color: #f2f2f2;
+  color: #999999;
+  cursor: not-allowed;
+}
+
+.searchButton:hover {
+  background-color: #2cb500;
+}
+
+
+
+.floating-popup {
+  padding: 10px 10px;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.popup-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  z-index: 1000;
+}
+
+.popup-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.popup-item-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.apply-button {
+  display: block;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+mat-form-field {
+  height: 12vh;
+  width: 35vh;
+}
+
+mat-date-range-input {
+  background-color: white;
+}
+
+
+@media (min-width:970px) {
+  .main-div-For-searchBar {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
   }
 
-  
+  mat-card {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .divider {
+    width: 12px;
+    height: auto;
+  }
 
 
+  .btn-searchBar:hover {
+    background-color: #f0f0f0;
+  }
+
+  .searchButton:hover {
+    background-color: #29890a;
+  }
+
+
+
+}
