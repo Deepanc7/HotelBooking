@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { SearchService } from '../search-bar/search.service';
+import { SearchDetails } from '../search-bar/search-details.interface';
 
 @Component({
   selector: 'app-hotels',
@@ -28,7 +29,7 @@ export class HotelsComponent implements OnInit {
 
   selectedTags: string[] = [];
   selectedRating: number = 0;
-  searchDetails: any;
+  searchDetails: SearchDetails;
 
   addTag(tag: string) {
     if (!this.selectedTags.includes(tag)) {
@@ -59,14 +60,14 @@ export class HotelsComponent implements OnInit {
   }
 
   constructor(private router: Router,private searchService: SearchService) {
+   this.searchDetails=searchService.getSearchDetails();
   }
 
   ngOnInit() {
     this.lowestRoomPrice();
     this.searchDetails=this.searchService.getSearchDetails();
-    let obj=this.searchService.getSearchDetails();
-    //this.hotels = this.HotelData.filter((hotel:any) => obj.location.some((loc:any) => hotel.Address.includes(loc)));
-    console.log(this.searchService.getSearchDetails())
+     this.applyFilters();
+    console.log(this.searchDetails);
   }
 
   getStars(rating: number): string[] {
@@ -85,45 +86,19 @@ export class HotelsComponent implements OnInit {
     this.router.navigateByUrl('/hotel-details');
   }
 
-  applyFilters() {
-    this.HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
-    console.log(this.HotelData.length)
-    if (this.PriceRange==="Range1") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 0 && hotel.lowestPrice<=50);
+  applyFilters() {let search: SearchDetails = this.searchService.getSearchDetails();
+    this.HotelData = this.HotelData.filter((hotel: any) => {
+      let loc = search.location.toLowerCase();
+      let country = hotel.Address.Country.toLowerCase();
+      let street = hotel.Address.StreetAddress.toLowerCase();
+      let city = hotel.Address.City.toLowerCase();
+      let state = hotel.Address.StateProvince;
+      let postalcode = hotel.Address.PostalCode;
+      if (country === loc || city == loc || street === loc || state === loc || postalcode === loc) {
+        return true;
+      }
+      else { return false; }
     }
-    if (this.PriceRange==="Range2") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 50 && hotel.lowestPrice<=100);
-    }
-    if (this.PriceRange==="Range3") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 100 && hotel.lowestPrice<=150);
-    }
-    if (this.PriceRange==="Range4") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 150 && hotel.lowestPrice<=200);
-    }
-    if (this.PriceRange==="Range5") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 200 && hotel.lowestPrice<=250);
-    }
-    if (this.PriceRange==="Range6") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 250 && hotel.lowestPrice<=300);
-    }
-    if (this.Parking==="true") {
-      this.HotelData = this.HotelData.filter((hotel: { ParkingIncluded: number; }) => hotel.ParkingIncluded==1);
-    }
-    if (this.Parking==="false") {
-      this.HotelData = this.HotelData.filter((hotel: { ParkingIncluded: number; }) => hotel.ParkingIncluded==0);
-    }
-    
-    if (this.selectedTags.length === 0) {
-      this.HotelData = this.HotelData;
-    } else {
-      this.HotelData = this.HotelData.filter((hotel:any) =>
-        this.selectedTags.some(tag => hotel.Tags.includes(tag)));
-    }
-
-    if (this.selectedRating === null) {
-      this.HotelData = this.HotelData;
-    } else {
-      this.HotelData = this.HotelData.filter((hotel:any) => hotel.Rating >= this.selectedRating);
-    }
+    );
   }
 }

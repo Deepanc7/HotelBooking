@@ -1,4 +1,4 @@
-<mat-card width="100%">
+<mat-card>
   <mat-card-header></mat-card-header>
   <mat-card-content>
     <div class="main-div-For-searchBar mat-elevation-z2">
@@ -13,7 +13,7 @@
 
 
       <mat-form-field appearance="fill">
-        <mat-label>CHECKIN/CHECKOUT</mat-label>
+        <mat-label >CHECKIN/CHECKOUT</mat-label>
         <mat-date-range-input [rangePicker]="picker">
           <input matStartDate [(ngModel)]="checkInDate" placeholder="Start date">
           <input matEndDate [(ngModel)]="checkOutDate" placeholder="End date">
@@ -34,7 +34,7 @@
 
       <div class="divider" style="width: 12px;"></div>
 
-      <button class="searchButton mat-elevation-z2"  (click)="searchHotels()">
+      <button class="searchButton mat-elevation-z2" [disabled]="isSearchButtonDisabled()" (click)="searchHotels()">
         <mat-icon matSuffix>search</mat-icon> Search
       </button>
 

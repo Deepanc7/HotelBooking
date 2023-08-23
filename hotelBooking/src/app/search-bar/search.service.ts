@@ -4,14 +4,23 @@ import { SearchDetails } from './search-details.interface';
 @Injectable({
   providedIn: 'root'
 })
+
 export class SearchService {
-  private searchDetails: SearchDetails | undefined;
+  private searchDetails: SearchDetails = {
+    location: '',
+    checkIn: new Date(),
+    checkOut: new Date(),
+    guestsAndRooms: ''
+  };
 
   setSearchDetails(details: SearchDetails) {
     this.searchDetails = details;
+    localStorage.setItem('searchDetails',JSON.stringify(this.searchDetails));
   }
 
-  getSearchDetails() {
+  getSearchDetails(): SearchDetails {
+    this.searchDetails =JSON.parse(localStorage.getItem('searchDetails') ||"[]");
     return this.searchDetails;
+  
   }
 }

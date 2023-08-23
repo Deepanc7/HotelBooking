@@ -1,6 +1,4 @@
 <app-search-bar></app-search-bar>
-<mat-sidenav-container class="sidenav-container">
-
   <mat-sidenav mode="side" class="sidenav" opened>
     <mat-nav-list>
       <mat-card>
@@ -46,7 +44,7 @@
     </mat-nav-list>
 
   </mat-sidenav>
-</mat-sidenav-container>
+
   <mat-card>
     <div class="hotel-list">
       <mat-card class="hotel-card" *ngFor="let hotel of hotels;let i=index" (click)="sendDataToHotelDetails(hotel)">

@@ -1,7 +1,7 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { SearchService } from './search.service';
 import { SearchDetails } from './search-details.interface';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -10,37 +10,13 @@ import {Router} from '@angular/router';
 })
 export class SearchBarComponent {
 
-
   @ViewChild('guestsButton') guestsButton!: ElementRef;
-
-  constructor(private router: Router,private renderer: Renderer2, private searchService: SearchService) {
-
-  }
-
   location: string = '';
   checkInDate: Date = new Date();
   checkOutDate: Date = new Date();
   guestsAndRoomsValue: string = '';
   showGuestsPopup = false;
-  guestAndRooms:string="";
-
-  searchSectionItems = [
-    { icon: 'location_on', label: 'WHERE', input: 'text' },
-    { icon: 'calendar_today', label: 'CHECKIN', input: 'Date' },
-    { icon: 'calendar_today', label: 'CHECKOUT', input: 'Date' },
-  ];
-
-  searchHotels() {
-    const details: SearchDetails = {
-      location: this.location,
-      checkIn: this.checkInDate,
-      checkOut: this.checkOutDate,
-      guestsAndRooms: this.guestsAndRoomsValue
-    };
-    console.log(details);
-    this.searchService.setSearchDetails(details);
-
-  }
+  guestAndRooms: string = "";
 
 
   guestsItems = [
@@ -49,10 +25,33 @@ export class SearchBarComponent {
     { label: 'Rooms', count: 1 }
   ];
 
-  // guestsAndRoomsValue = this.generateGuestsAndRoomsValue();
   popupTop = 0;
   popupLeft = 0;
 
+  searchSectionItems = [
+    { icon: 'location_on', label: 'WHERE', input: 'text' },
+    { icon: 'calendar_today', label: 'CHECKIN', input: 'Date' },
+    { icon: 'calendar_today', label: 'CHECKOUT', input: 'Date' },
+  ];
+
+
+  constructor(private router: Router, private renderer: Renderer2, private searchService: SearchService) {
+
+  }
+
+
+
+  searchHotels() {
+    const details: SearchDetails = {
+      location: this.location,
+      checkIn: this.checkInDate,
+      checkOut: this.checkOutDate,
+      guestsAndRooms: this.guestsAndRoomsValue
+    };
+    this.searchService.setSearchDetails(details);
+    this.router.navigateByUrl('/hotels');
+
+  }
 
   toggleGuestsPopup() {
     this.showGuestsPopup = !this.showGuestsPopup;
@@ -99,6 +98,7 @@ export class SearchBarComponent {
     this.guestsAndRoomsValue = this.generateGuestsAndRoomsValue();
     this.toggleGuestsPopup();
   }
+
   calculatePopupPosition() {
     if (this.guestsButton) {
       const buttonRect = this.guestsButton.nativeElement.getBoundingClientRect();
@@ -107,7 +107,6 @@ export class SearchBarComponent {
     }
   }
 
-  // function for check constraints on search button
   isSearchButtonDisabled() {
     return !this.location || !this.checkInDate || !this.checkOutDate || !this.guestsAndRoomsValue;
   }
