@@ -1,4 +1,4 @@
-/* Add this CSS to your styles.scss or component's CSS file */
+
 .sidenav-container {
   display: flex;
   height: 100vh;
@@ -6,7 +6,7 @@
 }
 
 .sidenav {
-  width:15%; /* Adjust the width as needed */
+  width:15%; 
   position: fixed;
   left: 0;
   top: 1;
@@ -19,7 +19,7 @@
 }
 
 .mat-card {
-  background-color: #34495e; /* Card background color */
+  background-color: #ffffff; /* Card background color */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
@@ -42,11 +42,16 @@
   padding: 0 20px;
   margin-top: 210px;
 }
+mat-card {
+  background-color: #fff;
+}
 
 .hotel-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
+  background-color: #fff;
+  width: 100%;
 }
 
 .hotel-card {
@@ -54,11 +59,12 @@
   overflow: hidden;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%;
 }
 
 .hotel-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 8px rgba(95, 95, 95, 0.2);
 }
 
 .hotel-image img {
