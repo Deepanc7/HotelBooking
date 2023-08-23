@@ -6,6 +6,7 @@
       "Description": "This classic hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Time's Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.",
       "Description_fr": "Cet hôtel classique est idéalement situé sur la principale artère commerciale de la ville en plein cœur de New York. A quelques minutes se trouve la place du temps et le centre historique de la ville, ainsi que d'autres lieux d'intérêt qui font de New York l'une des villes les plus attractives et cosmopolites de l'Amérique.",
       "Category": "Boutique",
+      "HotelImage":"https://th.bing.com/th/id/OIP.rsHiskmgtZWBfoTD1IS2pwHaEx?pid=ImgDet&rs=1",
       "Tags": [
         "view",
         "air conditioning",
@@ -37,6 +38,7 @@
           "BedOptions": "1 Queen Bed",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.Foq3zSmlJax9l-R34kemiwHaE8?w=232&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "vcr/dvd"
           ]
@@ -49,6 +51,7 @@
           "BedOptions": "1 King Bed",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.s63xxHeW6QsCvQV5NXuVXgHaFj?w=164&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "vcr/dvd",
             "jacuzzi tub"
@@ -62,6 +65,7 @@
       "Description": "Save up to 50% off traditional hotels. Free WiFi, great location near downtown, full kitchen, washer & dryer, 24\/7 support, bowling alley, fitness center and more.",
       "Description_fr": "Économisez jusqu'à 50% sur les hôtels traditionnels. WiFi gratuit, très bien situé près du centre-ville, cuisine complète, laveuse & sécheuse, support 24\/7, bowling, centre de fitness et plus encore.",
       "Category": "Extended-Stay",
+      "HotelImage":"https://th.bing.com/th/id/OIP.TGuVVMCaeK0gXoKjC-teEQHaDz?w=362&h=179&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "24-hour front desk service",
         "laundry service",
@@ -93,6 +97,7 @@
           "BedOptions": "1 King Bed",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.TvvFpepgiAtsBtckPCSQdgHaDf?w=343&h=165&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "coffee maker"
           ]
@@ -105,6 +110,7 @@
           "BedOptions": "1 Queen Bed",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.Vja0SDbD-Y-CiIaDV9knGQHaFk?w=235&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "coffee maker"
           ]
@@ -117,6 +123,7 @@
       "Description": "Your home away from home. Brand new fully equipped premium rooms, fast WiFi, full kitchen, washer & dryer, fitness center. Inner courtyard includes water features and outdoor seating. All units include fireplaces and small outdoor balconies. Pets accepted.",
       "Description_fr": "Votre maison loin de chez vous. Flambant neuf chambres Premium entièrement équipées, WiFi rapide, cuisine complète, laveuse & sécheuse, centre de fitness. La cour intérieure comprend des points d'eau et des sièges à l'extérieur. Toutes les unités comprennent des cheminées et de petits balcons extérieurs. Animaux acceptés.",
       "Category": "Extended-Stay",
+      "HotelImage":"https://th.bing.com/th/id/OIP.HzrsRzLHQqqS_XcVW50cVgHaE8?w=217&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "free wifi",
         "free parking",
@@ -148,6 +155,7 @@
           "BedOptions": "1 Queen Bed",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.Tx9PT6FNbZm318iK5ounCAHaE8?w=292&h=195&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "coffee maker",
             "tv",
@@ -162,6 +170,7 @@
           "BedOptions": "2 Queen Beds",
           "SleepsCount": 4,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.qdugQ2wyMkS_8PchdCDvgwHaE8?w=293&h=195&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "suite",
             "bathroom shower"
@@ -175,6 +184,7 @@
       "Description": "Plenty of great skiing, outdoor ice skating, sleigh rides, tubing and snow biking. Yoga, group exercise classes and outdoor hockey are available year-round, plus numerous options for shopping as well as great spa services. Newly-renovated with large rooms, free 24-hr airport shuttle & a new restaurant. Rooms\/suites offer mini-fridges & 49-inch HDTVs.",
       "Description_fr": "Beaucoup de superbes pistes de ski, de patinage sur glace en plein air, de promenades en traîneau, de tubes et de vélo de neige. Yoga, cours de groupe et hockey en plein air sont disponibles toute l'année, ainsi que de nombreuses options de shopping ainsi que d'excellents services de spa. Récemment rénové, avec de grandes chambres, une navette gratuite de 24 heures par aéroport et un nouveau restaurant. Les chambres\/suites offrent des mini-frigos et des TVHD de 49 pouces.",
       "Category": "Resort and Spa",
+      "HotelImage":"https://th.bing.com/th/id/OIP.-CfDyqVe50_gutgNO5cCcgHaEc?w=211&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "restaurant",
         "bar",
@@ -206,6 +216,7 @@
           "BedOptions": "1 King Bed",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.XnYBq4GTcXJI2zVoaq4kmgHaE8?w=274&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "coffee maker",
             "suite",
@@ -220,22 +231,10 @@
           "BedOptions": "1 Queen Bed",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.CiUB4LIy4-v4iC6-cfWoxQHaE8?w=273&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "jacuzzi tub",
             "coffee maker"
-          ]
-        },
-        {
-          "Description": "Standard Room, 2 Double Beds (Waterfront View)",
-          "Description_fr": "Chambre Standard, 2 lits doubles (vue sur le front de mer)",
-          "Type": "Standard Room",
-          "BaseRate": 110.99,
-          "BedOptions": "2 Double Beds",
-          "SleepsCount": 2,
-          "SmokingAllowed": true,
-          "Tags": [
-            "tv",
-            "tv"
           ]
         }
       ]
@@ -246,6 +245,7 @@
       "Description": "Unmatched Luxury. Visit our downtown hotel to indulge in luxury accommodations. Moments from the stadium, we feature the best in comfort",
       "Description_fr": "Un luxe inégalé. Visitez notre hôtel du centre-ville pour vous adonner à des hébergements luxueux. Moments du stade, nous vous présentons le meilleur dans le confort",
       "Category": "Luxury",
+      "HotelImage":"https://th.bing.com/th/id/OIP.lSOLpTNOEF6sdY3AemkBpAHaEK?w=321&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "bar",
         "concierge",
@@ -277,6 +277,7 @@
           "BedOptions": "1 King Bed",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.byBcfaEIfS4b8dbXQVLB_AHaE_?w=324&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "jacuzzi tub"
           ]
@@ -289,6 +290,7 @@
           "BedOptions": "2 Double Beds",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.ECJjpgPNaqEkHU0AW8hXEgHaFj?w=219&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "jacuzzi tub"
           ]
@@ -301,6 +303,7 @@
       "Description": "New experience in the Making. Be the first to experience the luxury of the Twin Vertex. Reserve one of our newly-renovated guest rooms today.",
       "Description_fr": "Nouvelle expérience dans la fabrication. Soyez les premiers à découvrir le luxe du Twin vertex. Réservez une de nos chambres récemment rénovées aujourd'hui.",
       "Category": "Luxury",
+      "HotelImage":"https://th.bing.com/th/id/OIP.qGdcLZ47059BFk5cOIOQ1wHaE7?w=226&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "bar",
         "restaurant",
@@ -332,6 +335,7 @@
           "BedOptions": "1 King Bed",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.WQM-FaRAYiksVwa5eW7lEgHaE8?w=269&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "suite",
             "tv"
@@ -345,6 +349,7 @@
           "BedOptions": "2 Queen Beds",
           "SleepsCount": 4,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.i7pyzKJng5EFdB_m0-UNxQHaDt?w=349&h=175&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "vcr/dvd",
             "coffee maker",
@@ -359,6 +364,7 @@
       "Description": "Book now and Save up to 30%. Central location. Steps from Empire State Building & Times Square, in Chelsea neighborhood. Brand new rooms. Impeccable service.",
       "Description_fr": "Réservez dès maintenant et économisez jusqu'à 30%. Emplacement central. A quelques pas de l'Empire State Building & Times Square, dans le quartier de Chelsea. Chambres flambant neuves. Service impeccable.",
       "Category": "Budget",
+      "HotelImage":"https://th.bing.com/th/id/OIP.-Hb6Tpb646vUfVUqULySmwHaE7?w=264&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "coffee in lobby",
         "free wifi",
@@ -390,6 +396,7 @@
           "BedOptions": "1 King Bed",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.mmQ5zTdV5LPZh0RbaIBkXwHaE4?w=254&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "tv",
             "vcr/dvd",
@@ -404,6 +411,7 @@
           "BedOptions": "2 Double Beds",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.TI0XQvLbnUymfctZIbnuyQHaFY?w=279&h=203&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "tv"
           ]
@@ -416,6 +424,7 @@
       "Description": "5* Luxury Hotel - Biggest Rooms in the city.  #1 Hotel in the area listed by Conde Nast Traveler. Free WiFi, Flexible check in\/out, Fitness Center & Nespresso in room.",
       "Description_fr": "5 * hôtel de luxe-plus grandes chambres de la ville.  #1 hôtel dans les environs énumérés par Conde Nast Traveler. WiFi gratuit, Check-in\/out flexible, centre de fitness et Nespresso dans la chambre.",
       "Category": "Resort and Spa",
+      "HotelImage":"https://th.bing.com/th/id/OIP.9T2QyTQAHfAqhRxnFCnykwHaFj?w=244&h=184&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "view",
         "pool",
@@ -449,6 +458,7 @@
           "BedOptions": "2 Queen Beds",
           "SleepsCount": 4,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.jn7pMXb_HMA5rgrUEYZWBAHaEK?w=328&h=184&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "suite"
           ]
@@ -461,6 +471,7 @@
           "BedOptions": "1 King Bed",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.8uJLs_MVzdK-aJAGQZDgWwHaE8?w=211&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "suite"
           ]
@@ -473,6 +484,7 @@
       "Description": "In vogue since 1888, the Antiquity Hotel takes you back to bygone era. From the crystal chandeliers that adorn the Green Room, to the arched ceilings of the Grand Hall, the elegance of old New York beckons. Elevate Your Experience. Upgrade to a premiere city skyline view for less, where old world charm combines with dramatic views of the city, local cathedral and midtown.",
       "Description_fr": "En vogue depuis 1888, l'Antiquity Hotel vous ramène à une époque révolue. Des lustres en cristal qui ornent la Green Room aux plafonds voûtés du Grand Hall, l'élégance du vieux New York embrasse tous les sens. Élevez votre expérience. Passez à une vue exceptionnelle sur les toits de la ville à moindre coût, où le charme du vieux monde se combine avec des vues spectaculaires sur la ville, la cathédrale locale et le centre.",
       "Category": "Boutique",
+      "HotelImage":"https://th.bing.com/th/id/OIP.l7GP5Fj6GTc0Z0cQfr1ssQHaE7?w=266&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "view",
         "concierge",
@@ -504,6 +516,7 @@
           "BedOptions": "2 Queen Beds",
           "SleepsCount": 4,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.YExY7V2afjOU9r209funawHaEm?w=290&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "tv",
             "suite"
@@ -517,6 +530,7 @@
           "BedOptions": "1 King Bed",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.VDUY_saQpwKiKcL_YCmjwQHaE7?w=274&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "jacuzzi tub"
           ]
@@ -529,6 +543,7 @@
       "Description": "New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
       "Description_fr": "Nouvel hôtel de luxe. Soyez le premier à rester. Vue sur la baie de chaque pièce, emplacement près de la jetée, piscine sur le toit, restaurant au bord de l'eau et plus.",
       "Category": "Luxury",
+      "HotelImage":"https://th.bing.com/th/id/OIP.sJoP5Msh5IPbMDCqnhIGuAHaE7?w=286&h=191&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "view",
         "pool",
@@ -560,6 +575,7 @@
           "BedOptions": "1 Queen Bed",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.AJMDpypFTxZ5hxPPShIR6QHaEv?w=254&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "bathroom shower",
             "suite",
@@ -574,6 +590,7 @@
           "BedOptions": "2 Queen Beds",
           "SleepsCount": 4,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.frZRwrqo5xvD5xr2vEUS6AHaEQ?w=284&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "suite"
           ]
@@ -586,6 +603,7 @@
       "Description": "Local, family-run hotel in bustling downtown Redmond. We are a pet-friendly establishment, near expansive Marymoor park, haven to pet owners, joggers, and sports enthusiasts. Close to the highway and just a short drive away from major cities.",
       "Description_fr": "Hôtel local à la gestion familiale dans le centre-ville animé de Redmond. Nous sommes un établissement acceptant les animaux de compagnie, à proximité du vaste parc Marymoor, paradis des propriétaires d'animaux, des joggeurs et des amateurs de sport. Près de l'autoroute et à quelques minutes en voiture des grandes villes.",
       "Category": "Budget",
+      "HotelImage":"https://th.bing.com/th/id/OIP.F9voJKw_J8MUTOpy-OW52gHaE8?w=281&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "coffee in lobby",
         "free wifi",
@@ -617,6 +635,7 @@
           "BedOptions": "1 Queen Bed",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.-FbMxa8HY8VDoeQNXekQ3wHaE7?w=291&h=193&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "suite",
             "coffee maker"
@@ -630,6 +649,7 @@
           "BedOptions": "2 Queen Beds",
           "SleepsCount": 4,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.qWRhpTxPBB2bdJD51iJqCQHaEK?w=333&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "coffee maker"
           ]
@@ -642,6 +662,7 @@
       "Description": "The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts. The hotel also regularly hosts events like wine tastings, beer dinners, and live music.",
       "Description_fr": "L'hôtel est situé sur une place du XIXe siècle, qui a été agrandie et rénovée selon les normes architecturales les plus élevées pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et des éléments historiques uniques coexistent avec le confort le plus moderne. L'hôtel accueille également régulièrement des événements tels que des dégustations de vins, des dîners de bière et de la musique live.",
       "Category": "Boutique",
+      "HotelImage":"https://th.bing.com/th/id/OIP.cD5sNxjH_ZtVgfjqnVT3cgHaEP?w=290&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "pool",
         "free wifi",
@@ -673,6 +694,7 @@
           "BedOptions": "2 Double Beds",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.bP0euX28WdRGpxEu7mZQoQHaEX?w=247&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "Room Tags"
           ]
@@ -685,6 +707,7 @@
           "BedOptions": "1 Queen Bed",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.HGEgDNyRZsl8OC4vHIsOGAHaEs?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "jacuzzi tub"
           ]
@@ -697,6 +720,7 @@
       "Description": "The Best Gaming Resort in the area. With elegant rooms & suites, pool, cabanas, spa, brewery & world-class gaming. This is the best place to play, stay & dine.",
       "Description_fr": "La meilleure station de jeux dans la région. Avec des chambres et suites élégantes, piscine, Cabanas, Spa, brasserie & Gaming de classe mondiale. C'est le meilleur endroit pour jouer, rester et dîner.",
       "Category": "Resort and Spa",
+      "HotelImage":"https://th.bing.com/th/id/OIP.E3_V0JnXPVBd-OmEaAHEaAHaEJ?w=320&h=159&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "continental breakfast",
         "bar",
@@ -728,6 +752,7 @@
           "BedOptions": "1 Queen Bed",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.MHvAeX_ugV5cx5yn0XECjQHaD3?w=342&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "coffee maker"
           ]
@@ -740,6 +765,7 @@
           "BedOptions": "2 Double Beds",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.avOKoazgzWiS5Ejr_PcmswHaFP?w=236&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "vcr/dvd",
             "suite",
@@ -754,6 +780,7 @@
       "Description": "1 Mile from the airport. Free WiFi, Outdoor Pool, Complimentary Airport Shuttle, 6 miles from Lake Lanier & 10 miles from downtown. Our business center includes printers, a copy machine, fax, and a work area.",
       "Description_fr": "1 mile de l'aéroport. WiFi gratuit, piscine extérieure, navette aéroport gratuite, à 10 km du lac Lanier et à 16 km du centre-ville. Notre centre d'affaires comprend des imprimantes, un photocopieur, un fax et un espace de travail.",
       "Category": "Suite",
+      "HotelImage":"https://th.bing.com/th/id/OIP.0LGHxcx2c0ZlIoAnHygGIgHaFj?w=225&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "pool",
         "continental breakfast",
@@ -785,6 +812,7 @@
           "BedOptions": "2 Queen Beds",
           "SleepsCount": 4,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.gOYJ0i1jBj0UEOYPDeWg-gHaE8?w=317&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "jacuzzi tub",
             "coffee maker",
@@ -799,6 +827,7 @@
           "BedOptions": "2 Queen Beds",
           "SleepsCount": 4,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.R0873VbrTGdXllfE156cVAHaE7?w=227&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "suite"
           ]

@@ -83,6 +83,7 @@ export class HotelsComponent implements OnInit {
     this.router.navigateByUrl('/hotel-details');
   }
   applyFilters() {
+    this.HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
     let search: SearchDetails = this.searchService.getSearchDetails();
     this.HotelData = this.HotelData.filter((hotel: any) => {
       let loc = search.location.toLowerCase();

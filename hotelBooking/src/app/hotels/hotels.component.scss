@@ -1,15 +1,16 @@
 .sidenav {
-  width: 13%;
+  width:13%; 
   position: fixed;
   left: 0;
   bottom: 0;
-  background-color: #FFFFFF;
+  background-color: #ffffff; 
   color: #fff;
   padding: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   overflow-y: auto;
   border-radius: 10px;
 }
+
 
 mat-form-field {
   width: 100%;

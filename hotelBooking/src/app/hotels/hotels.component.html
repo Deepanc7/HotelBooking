@@ -1,4 +1,5 @@
-<app-search-bar  class="main-search-bar"></app-search-bar>
+<app-search-bar></app-search-bar>
+
 <ng-container >
   <mat-sidenav mode="side" class="sidenav" opened>
     <mat-nav-list>
@@ -43,12 +44,18 @@
     </mat-nav-list>
   </mat-sidenav>
 </ng-container>
+
 <mat-card>
   <div class="hotel-list">
     <mat-card class="hotel-card" *ngFor="let hotel of HotelData;let i=index" (click)="sendDataToHotelDetails(hotel)">
       <div class="hotel-image">
-        <img src={{hotel.HotelImage}} alt="Hotel Image">
+        <img src="{{ hotel.HotelImage }}" alt="Hotel Image" *ngIf="hotel.HotelImage; else defaultImage">
       </div>
+      <ng-template #defaultImage>
+        <div class="hotel-image">
+          <img src="assets/image.jpg" alt="Default Hotel Image">
+        </div>
+      </ng-template>
       <div class="hotel-content">
         <div class="hotel-details">
           <h3 class="hotel-name">{{hotel.HotelName}}</h3>
