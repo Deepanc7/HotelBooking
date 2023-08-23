@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class SearchService {
   private searchDetails: any;
 
-  setSearchDetails(details: any) {
+  setSearchDetails(details: {location:string,checkIn:Date,checkOut:Date,guestAndRooms:string}) {
     this.searchDetails = details;
   }
 

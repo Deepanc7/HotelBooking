@@ -1,5 +1,6 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { SearchService } from './search.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -11,7 +12,7 @@ export class SearchBarComponent {
 
   @ViewChild('guestsButton') guestsButton!: ElementRef;
 
-  constructor(private renderer: Renderer2, private searchService: SearchService) {
+  constructor(private router: Router,private renderer: Renderer2, private searchService: SearchService) {
 
   }
 
@@ -19,6 +20,7 @@ export class SearchBarComponent {
   checkInDate: Date = new Date();
   checkOutDate: Date = new Date();
   showGuestsPopup = false;
+  guestAndRooms:string="";
 
   searchSectionItems = [
     { icon: 'location_on', label: 'WHERE', input: 'text' },
@@ -27,13 +29,13 @@ export class SearchBarComponent {
   ];
 
   searchHotels() {
-    // Save search details
     this.searchService.setSearchDetails({
-      location: this.location,
+      location:this.location,
       checkIn: this.checkInDate,
       checkOut: this.checkOutDate,
-      guestsAndRooms: this.guestsAndRoomsValue
-    });
+     guestAndRooms: this.guestAndRooms
+  });
+    this.router.navigateByUrl('/hotels');
   }
 
 

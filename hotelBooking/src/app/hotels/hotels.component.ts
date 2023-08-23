@@ -12,6 +12,7 @@ export class HotelsComponent implements OnInit {
 
   HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
   HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "[]");
+  hotels=this.HotelData;
   index:number=0;
 
   LowestRoomPrice: number[]=[];
@@ -63,17 +64,14 @@ export class HotelsComponent implements OnInit {
   ngOnInit() {
     this.lowestRoomPrice();
     this.searchDetails=this.searchService.getSearchDetails();
-    this.HotelData = this.HotelData.filter((hotel:any) => this.searchDetails.location_on.some((loc:any) => hotel.Address.includes(loc)));
-
+    let obj=this.searchService.getSearchDetails();
+    //this.hotels = this.HotelData.filter((hotel:any) => obj.location.some((loc:any) => hotel.Address.includes(loc)));
+    console.log(this.searchService.getSearchDetails())
   }
 
   getStars(rating: number): string[] {
     const stars = Math.round(rating);
     return Array(stars).fill('star');
-  }
-
-  search() {
-    let searchDetails=this.searchService.getSearchDetails();
   }
 
   sendDataToHotelDetails(Object: any) {

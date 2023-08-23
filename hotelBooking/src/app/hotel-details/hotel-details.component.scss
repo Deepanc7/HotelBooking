@@ -1,52 +1,91 @@
-/* Add this CSS to your component's SCSS file */
-.hotel-details-container {
-    padding: 20px;
-  }
-  
-  .hotel-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-    color: #34495e;
-  }
-  
-  .tags {
-    margin-top: 10px;
-  }
-  
-  .tags .mat-chip {
-    background-color: #f39c12;
-    color: #fff;
-    margin-right: 5px;
-  }
-  
-  .details p {
-    margin: 5px 0;
-  }
-  
-  .room-list {
-    margin-top: 20px;
-  }
-  
-  .room-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-    color: #34495e;
-  }
-  
-  .room-card h4 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .room-card .tags .mat-chip {
-    background-color: #f39c12;
-    color: #fff;
-    margin-right: 5px;
-  }
-  
+/* styles.scss */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.hotel-details-card {
+  display: flex;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 5px wheat;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.hotel-image img {
+  width: 380px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.hotel-details-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.hotel-name {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.hotel-rating {
+  color: #f39c12;
+  margin-bottom: 10px;
+}
+
+.hotel-description {
+  margin-bottom: 10px;
+}
+
+.hotel-tags {
+  margin-bottom: 10px;
+}
+
+.go-to-rooms-button {
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+.rooms-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.room-card {
+  flex: 1;
+  display: flex;
+  margin: 10px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px wheat;
+  border-radius: 10px;
+}
+
+.room-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.room-details {
+  flex: 1;
+}
+
+.room-type {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.room-description {
+  margin-bottom: 10px;
+}
+
+.room-price {
+  font-weight: bold;
+}

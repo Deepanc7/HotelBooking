@@ -1,4 +1,6 @@
+<app-search-bar></app-search-bar>
 <mat-sidenav-container class="sidenav-container">
+
   <mat-sidenav mode="side" class="sidenav" opened>
     <mat-nav-list>
       <mat-card>
@@ -44,9 +46,10 @@
     </mat-nav-list>
 
   </mat-sidenav>
-  <mat-sidenav-content>
+</mat-sidenav-container>
+  <mat-card>
     <div class="hotel-list">
-      <mat-card class="hotel-card" *ngFor="let hotel of HotelData;let i=index" (click)="sendDataToHotelDetails(hotel)">
+      <mat-card class="hotel-card" *ngFor="let hotel of hotels;let i=index" (click)="sendDataToHotelDetails(hotel)">
         <div class="hotel-image">
           <img src="/assets/image.jpg" alt="Hotel Image">
         </div>
@@ -57,8 +60,8 @@
               <ng-container>
                 <mat-icon *ngFor="let star of getStars(hotel.Rating)" class="star-icon">star</mat-icon>
               </ng-container>
-              <p *ngIf="hotel.ParkingIncluded===true">Parking:Yes</p>
-              <p *ngIf="hotel.ParkingIncluded===false">Parking:No</p>
+              <p *ngIf="hotel.ParkingIncluded">Parking: Yes</p>
+              <p *ngIf="!hotel.ParkingIncluded">Parking: No</p>
             </div>
           </div>
           <div class="hotel-price">
@@ -67,5 +70,4 @@
         </div>
       </mat-card>
     </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </mat-card>

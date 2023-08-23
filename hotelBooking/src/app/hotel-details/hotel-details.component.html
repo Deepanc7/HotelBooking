@@ -1,29 +1,33 @@
-<div class="hotel-details-container">
-  <mat-card class="hotel-card">
-    <h2>{{ hotel.HotelName }}</h2>
-    <p>{{ hotel.Description }}</p>
-    <div class="tags">
-      <mat-chip *ngFor="let tag of hotel.Tags">{{ tag }}</mat-chip>
+<!-- app.component.html -->
+<div class="container">
+  <app-search-bar></app-search-bar><br>
+  <mat-card class="hotel-details-card">
+    <div class="hotel-image">
+      <img src="/assets/image.jpg" alt="Hotel Image">
     </div>
-    <div class="details">
-      <p>Category: {{ hotel.Category }}</p>
-      <p>Parking: {{ hotel.ParkingIncluded ? 'Included' : 'Not Included' }}</p>
-      <p>Rating: {{ hotel.Rating }}</p>
-      <p>Address: {{ hotel.Address.City }}, {{ hotel.Address.StateProvince }}, {{ hotel.Address.Country }}</p>
+    <div class="hotel-details-content">
+      <h2 class="hotel-name">{{ hotelDetails.HotelName }}</h2>
+      <div class="hotel-rating">
+        <ng-container *ngFor="let star of getStars(hotelDetails.Rating)">
+          <mat-icon class="star-icon">star</mat-icon>
+        </ng-container>
+      </div>
+      <p class="hotel-description">{{ hotelDetails.Description }}</p>
+      <div class="hotel-tags">
+        <mat-chip *ngFor="let tag of hotelDetails.Tags">{{ tag }}</mat-chip>
+      </div>
     </div>
   </mat-card>
 
-  <div class="room-list">
-    <h3>Rooms</h3>
-    <mat-card class="room-card" *ngFor="let room of hotel.Rooms">
-      <h4>{{ room.Description }}</h4>
-      <p>Type: {{ room.Type }}</p>
-      <p>Base Rate: ${{ room.BaseRate }}</p>
-      <p>Bed Options: {{ room.BedOptions }}</p>
-      <p>Sleeps: {{ room.SleepsCount }}</p>
-      <p>Smoking Allowed: {{ room.SmokingAllowed ? 'Yes' : 'No' }}</p>
-      <div class="tags">
-        <mat-chip *ngFor="let tag of room.Tags">{{ tag }}</mat-chip>
+  <button mat-button class="go-to-rooms-button" (click)="scrollToRooms()">Go to Rooms</button>
+
+  <div class="rooms-list">
+    <mat-card class="room-card" *ngFor="let room of hotelDetails.Rooms">
+      <img src="/assets/image-room.jpg" alt="Room Image" class="room-image">
+      <div class="room-details">
+        <h3 class="room-type">{{ room.Type }}</h3>
+        <p class="room-description">{{ room.Description }}</p>
+        <div class="room-price">{{ room.BaseRate | currency }}</div>
       </div>
     </mat-card>
   </div>

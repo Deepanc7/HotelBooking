@@ -2,14 +2,14 @@
 .sidenav-container {
   display: flex;
   height: 100vh;
+  
 }
 
 .sidenav {
-  margin-top: 210px;
-  width: 300px; /* Adjust the width as needed */
+  width:15%; /* Adjust the width as needed */
   position: fixed;
   left: 0;
-  top: 0;
+  top: 1;
   bottom: 0;
   background-color: #2b3e50; /* Sidebar background color */
   color: #fff;
@@ -43,33 +43,32 @@
   margin-top: 210px;
 }
 
-/* Apply this style to the mat-card elements */
-.mat-card.hotel-card {
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(234, 231, 231, 0.1);
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+.hotel-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
 }
 
-.mat-card.hotel-card:hover {
+.hotel-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hotel-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .hotel-image img {
   width: 100%;
-  height: 200px; /* Adjust as needed */
+  height: 180px;
   object-fit: cover;
 }
 
 .hotel-content {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  justify-content: space-between;
+  padding: 10px 15px;
 }
 
 .hotel-details {
@@ -77,31 +76,23 @@
 }
 
 .hotel-name {
-  font-size: 1.25rem;
-  margin-bottom: 5px;
+  font-size: 18px;
+  margin: 0;
 }
 
 .hotel-ratings {
   display: flex;
   align-items: center;
-  font-size: 0.9rem;
-  color: #888;
+  margin-top: 5px;
 }
 
 .star-icon {
-  color: #f39c12;
-  font-size: 1rem;
-  margin-right: 2px;
+  color: #FFD700;
+  font-size: 16px;
 }
 
 .hotel-price {
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-/* Adjust these media queries as needed for responsiveness */
-@media (max-width: 767px) {
-  .container {
-    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
-  }
+  font-size: 16px;
+  color: #007BFF;
+  margin-top: 10px;
 }
