@@ -3,13 +3,8 @@
   <app-search-bar></app-search-bar><br>
   <mat-card class="hotel-details-card">
     <div class="hotel-image">
-      <img src="{{ hotelDetails.HotelImage }}" alt="Hotel Image" *ngIf="hotelDetails.HotelImage; else defaultImage">
+      <img src="{{ hotelDetails.HotelImage }}" alt="Hotel Image">
     </div>
-    <ng-template #defaultImage>
-      <div class="hotel-image">
-        <img src="assets/image.jpg" alt="Default Hotel Image">
-      </div>
-    </ng-template>
     <div class="hotel-details-content">
       <h2 class="hotel-name">{{ hotelDetails.HotelName }}</h2>
       <div class="hotel-rating">
@@ -29,13 +24,8 @@
   <div class="rooms-list">
     <mat-card class="room-card" *ngFor="let room of hotelDetails.Rooms">
       <div class="hotel-image">
-        <img src="{{ room.RoomImage }}" alt="Hotel Image" *ngIf="hotelDetails.RoomImage; else defaultImage">
+        <img src="{{ room.RoomImage }}" alt="Hotel Image">
       </div>
-      <ng-template #defaultImage>
-        <div class="hotel-image">
-          <img src="https://th.bing.com/th/id/OIP.pMbbR4yghEce8r2rV5aIRQHaE4?w=283&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Default Hotel Image">
-        </div>
-      </ng-template>
       <div class="room-details">
         <h3 class="room-type">{{ room.Type }}</h3>
         <p class="room-description">{{ room.Description }}</p>

@@ -7,8 +7,15 @@ import { Component } from '@angular/core';
 })
 export class HotelDetailsComponent {
   HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
-  HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "[]");
-  hotelDetails = this.HotelData[this.HotelDetails];
+  HotelDetails = JSON.parse(localStorage.getItem('hotel_details')||"");
+
+  searchHotelByName(hotelName:string) {
+    const foundHotel = this.HotelData.find((hotel: { HotelName: string; }) => String(hotel.HotelName) === hotelName);
+    console.log(this.HotelDetails);
+
+    return foundHotel || "Hotel not found";
+  }
+  hotelDetails=this.searchHotelByName(this.HotelDetails);
 
   getStars(rating: number): number[] {
     // Implement the logic to convert the rating into an array of stars
