@@ -1,6 +1,7 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { SearchService } from './search.service';
 import { SearchDetails } from './search-details.interface';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
