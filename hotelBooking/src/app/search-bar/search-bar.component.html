@@ -1,55 +1,60 @@
-<div class="main-div-For-searchBar mat-elevation-z2">
+<mat-card width="100%">
+  <mat-card-header></mat-card-header>
+  <mat-card-content>
+    <div class="main-div-For-searchBar mat-elevation-z2">
 
-  <button class="btn-searchBar mat-elevation-z0">
-    <mat-icon>location_on</mat-icon>
-    <label class="search-component-label">WHERE</label>
-    <input type="text">
-  </button>
+      <button class="btn-searchBar mat-elevation-z0">
+        <mat-icon>location_on</mat-icon>
+        <label class="search-component-label">WHERE</label>
+        <input type="text" [(ngModel)]="location">
+      </button>
 
-  <div class="divider"></div>
-  <mat-form-field class="btn-searchBar mat-elevation-z0">
-    <mat-label>How long</mat-label>
-    <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate placeholder="Start date">
-      <input matEndDate placeholder="End date">
-    </mat-date-range-input>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
-  </mat-form-field>
+      <div class="divider"></div>
 
 
-  <div class="divider"></div>
-
-  <button #guestsButton class="btn-searchBar mat-elevation-z0" (click)="toggleGuestsPopup()">
-    <mat-icon>people</mat-icon>
-    <label class="search-component-label">GUEST & ROOMS</label>
-    <input type="text" [(ngModel)]="guestsAndRoomsValue" readonly>
-  </button>
-
-
-  <div class="divider" style="width: 12px;"></div>
-
-  <button class="searchButton mat-elevation-z2" [disabled]="isSearchButtonDisabled()" [ngClass]="{
-    'search-button': true,
-    'enabled': !isSearchButtonDisabled(),
-    'disabled': isSearchButtonDisabled()
-  }" (click)="searchHotels()">
-    <mat-icon matSuffix>search</mat-icon> Search
-  </button>
+      <mat-form-field appearance="fill">
+        <mat-label>CHECKIN/CHECKOUT</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate [(ngModel)]="checkInDate" placeholder="Start date">
+          <input matEndDate [(ngModel)]="checkOutDate" placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
 
 
-</div>
+      <div class="divider"></div>
 
-<!-- Floating Popup for Guests and rooms -->
-<div class="floating-popup" *ngIf="showGuestsPopup" [style.top.px]="popupTop" [style.left.px]="popupLeft">
-  <div class="popup-content">
-    <div *ngFor="let item of guestsItems" class="popup-item">
-      <label>{{ item.label }}:</label>
-      <div class="popup-item-buttons">
-        <button (click)="decrement(item)">-</button>
-        {{ item.count }}
-        <button (click)="increment(item)">+</button>
+      <button #guestsButton class="btn-searchBar mat-elevation-z0" (click)="toggleGuestsPopup()">
+        <mat-icon>people</mat-icon>
+        <label class="search-component-label">GUEST & ROOMS</label>
+        <input type="text" [(ngModel)]="guestsAndRoomsValue" readonly>
+      </button>
+
+
+      <div class="divider" style="width: 12px;"></div>
+
+      <button class="searchButton mat-elevation-z2"  (click)="searchHotels()">
+        <mat-icon matSuffix>search</mat-icon> Search
+      </button>
+
+
+    </div>
+
+    <!-- Floating Popup for Guests and rooms -->
+    <div class="floating-popup" *ngIf="showGuestsPopup" [style.top.px]="popupTop" [style.left.px]="popupLeft">
+      <div class="popup-content">
+
+        <div *ngFor="let item of guestsItems" class="popup-item">
+          <label>{{ item.label }}:</label>
+          <div class="popup-item-buttons">
+            <button (click)="decrement(item)">-</button>
+            {{ item.count }}
+            <button (click)="increment(item)">+</button>
+          </div>
+        </div>
+        <button class="apply-button" (click)="applyGuests()">Apply</button>
       </div>
     </div>
-    <button class="apply-button" (click)="applyGuests()">Apply</button>
-  </div>
+  </mat-card-content>
+</mat-card>

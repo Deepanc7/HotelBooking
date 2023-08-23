@@ -1,5 +1,6 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { SearchService } from './search.service';
+import { SearchDetails } from './search-details.interface';
 
 @Component({
   selector: 'app-search-bar',
@@ -18,6 +19,7 @@ export class SearchBarComponent {
   location: string = '';
   checkInDate: Date = new Date();
   checkOutDate: Date = new Date();
+  guestsAndRoomsValue: string = '';
   showGuestsPopup = false;
 
   searchSectionItems = [
@@ -27,13 +29,15 @@ export class SearchBarComponent {
   ];
 
   searchHotels() {
-    // Save search details
-    this.searchService.setSearchDetails({
+    const details: SearchDetails = {
       location: this.location,
       checkIn: this.checkInDate,
       checkOut: this.checkOutDate,
       guestsAndRooms: this.guestsAndRoomsValue
-    });
+    };
+    console.log(details);
+    this.searchService.setSearchDetails(details);
+
   }
 
 
@@ -43,7 +47,7 @@ export class SearchBarComponent {
     { label: 'Rooms', count: 1 }
   ];
 
-  guestsAndRoomsValue = this.generateGuestsAndRoomsValue();
+  // guestsAndRoomsValue = this.generateGuestsAndRoomsValue();
   popupTop = 0;
   popupLeft = 0;
 
