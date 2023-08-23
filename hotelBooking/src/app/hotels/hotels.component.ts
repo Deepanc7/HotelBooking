@@ -2,19 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchService } from '../search-bar/search.service';
 import { SearchDetails } from '../search-bar/search-details.interface';
-
 @Component({
   selector: 'app-hotels',
   templateUrl: './hotels.component.html',
   styleUrls: ['./hotels.component.scss'],
   providers: [SearchService]
 })
-
 export class HotelsComponent implements OnInit {
-
   HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
   HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "[]");
-
   index: number = 0;;
   LowestRoomPrice: number[] = [];
   PriceRange: string = '';
@@ -23,18 +19,13 @@ export class HotelsComponent implements OnInit {
   selectedTags: string[] = [];
   selectedRating: number = 0;
   searchDetails: any;
-
   tags: string[] = [
     'View', 'Air conditioning', 'Concierge', '24-hour front desk service',
     'Laundry service', 'Free wifi', 'Free parking', 'Restaurant', 'Bar',
     'Pool', 'Coffee in lobby', 'Continental breakfast'
   ];
-
-
   constructor(private router: Router, private searchService: SearchService) {
-
   }
-
   ngOnInit() {
     this.lowestRoomPrice();
     let search: SearchDetails = this.searchService.getSearchDetails();
@@ -51,24 +42,18 @@ export class HotelsComponent implements OnInit {
       else { return false; }
     }
     );
-
   }
-
   addTag(tag: string) {
     if (!this.selectedTags.includes(tag)) {
       this.selectedTags.push(tag);
     }
   }
-
-
   removeTag(tag: string) {
     const index = this.selectedTags.indexOf(tag);
     if (index !== -1) {
       this.selectedTags.splice(index, 1);
     }
   }
-
-
   lowestRoomPrice() {
     for (let i = 0; i < this.HotelData.length; i++) {
       let lowestPrice = Number.MAX_SAFE_INTEGER;
@@ -82,12 +67,10 @@ export class HotelsComponent implements OnInit {
       localStorage.setItem('hotel_data', JSON.stringify(this.HotelData));
     }
   }
-
   getStars(rating: number): string[] {
     const stars = Math.round(rating);
     return Array(stars).fill('star');
   }
-
   sendDataToHotelDetails(Object: any) {
     for (let i = 0; i < this.HotelData.length; i++) {
       if (this.HotelData[i] === Object) {
@@ -97,7 +80,6 @@ export class HotelsComponent implements OnInit {
     localStorage.setItem('hotel_details', JSON.stringify(this.index));
     this.router.navigateByUrl('/hotel-details');
   }
-
   applyFilters() {
     let search: SearchDetails = this.searchService.getSearchDetails();
     this.HotelData = this.HotelData.filter((hotel: any) => {
@@ -113,7 +95,6 @@ export class HotelsComponent implements OnInit {
       else { return false; }
     }
     );
-
     if (this.PriceRange === "Range1") {
       this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 0 && hotel.lowestPrice <= 50);
     }
@@ -153,3 +134,8 @@ export class HotelsComponent implements OnInit {
     }
   }
 }
+
+
+
+
+
