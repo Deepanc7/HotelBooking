@@ -1,5 +1,40 @@
 
 
+:host{ 
+  ::ng-deep .mat-mdc-form-field { 
+      background-color: white; 
+      border-radius: 10px;
+      
+  } 
+  ::ng-deep  .mat-mdc-form-field-has-icon-suffix  .mat-mdc-text-field-wrapper{
+    background-color: rgb(253, 253, 253);
+    border-radius: 10px;
+   
+  }
+
+  ::ng-deep .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
+color: rgb(0, 0, 0);
+  }
+
+
+}
+
+ 
+ mat-datepicker-toggle {
+  color: white !important;
+ }
+
+ mat-card{
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background-color: wheat;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+ // height: 40vh;
+ }
+
 .divider {
     width: 1px;
     height: 40px; 
@@ -10,7 +45,7 @@
 
 
   .main-div-For-searchBar {
-    background-color: rgba(240, 167, 30, 0.771);
+    background-color: rgba(126, 100, 51, 0.771);
     padding: 10px;
     display: flex;
     align-items: center;
@@ -76,12 +111,67 @@
     background-color: #2cb500; 
   }
   
+
+
+  .floating-popup {
+    padding: 10px 10px;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .popup-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    z-index: 1000;
+  }
+  
+  .popup-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .popup-item-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .apply-button {
+    display: block;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+   
+mat-date-range-input{
+  background-color:white;
+}
+
+
   @media (min-width:970px) {
     .main-div-For-searchBar {
       flex-direction: row;
       align-items: flex-start; 
       justify-content: space-between; 
     }
+
+    mat-card{
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+     }
+
     .divider {
       width: 12px;
       height: auto;
@@ -135,47 +225,11 @@
     .searchButton:hover {
       background-color: #2cb500; 
     }
+
+   
+  
   }
 
   
 
-  .floating-popup {
-    padding: 10px 10px;
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .popup-content {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    z-index: 1000;
-  }
-  
-  .popup-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .popup-item-buttons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .apply-button {
-    display: block;
-    margin-top: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
+

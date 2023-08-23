@@ -1,6 +1,6 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { SearchService } from './search.service';
-import {Router} from '@angular/router';
+import { SearchDetails } from './search-details.interface';
 
 @Component({
   selector: 'app-search-bar',
@@ -19,6 +19,7 @@ export class SearchBarComponent {
   location: string = '';
   checkInDate: Date = new Date();
   checkOutDate: Date = new Date();
+  guestsAndRoomsValue: string = '';
   showGuestsPopup = false;
   guestAndRooms:string="";
 
@@ -29,13 +30,15 @@ export class SearchBarComponent {
   ];
 
   searchHotels() {
-    this.searchService.setSearchDetails({
-      location:this.location,
+    const details: SearchDetails = {
+      location: this.location,
       checkIn: this.checkInDate,
       checkOut: this.checkOutDate,
-     guestAndRooms: this.guestAndRooms
-  });
-    this.router.navigateByUrl('/hotels');
+      guestsAndRooms: this.guestsAndRoomsValue
+    };
+    console.log(details);
+    this.searchService.setSearchDetails(details);
+
   }
 
 
@@ -45,7 +48,7 @@ export class SearchBarComponent {
     { label: 'Rooms', count: 1 }
   ];
 
-  guestsAndRoomsValue = this.generateGuestsAndRoomsValue();
+  // guestsAndRoomsValue = this.generateGuestsAndRoomsValue();
   popupTop = 0;
   popupLeft = 0;
 

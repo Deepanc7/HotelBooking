@@ -13,10 +13,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button';
 import {MatRadioModule} from '@angular/material/radio';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatChipsModule} from '@angular/material/chips';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [],
@@ -53,9 +51,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatSidenavModule,
    MatExpansionModule,
    MatSelectModule,
-   MatMenuModule,
-   MatSnackBarModule,
-   MatChipsModule,
+   MatAutocompleteModule,
+   MatInputModule
   ]
 })
 export class MaterialModelModule { }
