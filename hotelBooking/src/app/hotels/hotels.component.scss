@@ -1,49 +1,29 @@
-
-.sidenav-container {
-  display: flex;
-  height: 100vh;
-  
-}
-
 .sidenav {
-  width:15%; 
+  width: 13%;
   position: fixed;
   left: 0;
-  top: 1;
   bottom: 0;
-  background-color: #2b3e50; /* Sidebar background color */
+  background-color: #FFFFFF;
   color: #fff;
   padding: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   overflow-y: auto;
-}
-
-.mat-card {
-  background-color: #ffffff; /* Card background color */
-  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.mat-form-field {
+mat-form-field {
   width: 100%;
   margin-bottom: 15px;
+  border-radius: 10px;
 }
 
-.mat-select {
+mat-select {
   color: #fff;
+  width: 100%;
 }
 
-/* Apply this style to the parent container (e.g., a <div> wrapping the <mat-sidenav-content>) */
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 0 20px;
-  margin-top: 210px;
-}
 mat-card {
-  background-color: #fff;
+  background-color: whitesmoke;
 }
 
 .hotel-list {
@@ -60,6 +40,7 @@ mat-card {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   width: 100%;
+  background-color: #fff;
 }
 
 .hotel-card:hover {

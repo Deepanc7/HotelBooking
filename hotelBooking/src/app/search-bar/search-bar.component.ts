@@ -59,6 +59,8 @@ export class SearchBarComponent {
       this.calculatePopupPosition();
     }
   }
+
+
   increment(item: any) {
     if (item.label !== 'Rooms') {
       item.count++;
@@ -67,26 +69,32 @@ export class SearchBarComponent {
       this.guestsItems[2].count = roomsRequired;
     }
   }
+
   decrement(item: any) {
     if (item.label !== 'Rooms' && item.count > 1) {
       item.count--;
       const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);
       const roomsRequired = Math.ceil(totalGuests / 4);
+
       this.guestsItems[2].count = roomsRequired;
     }
   }
+
   generateGuestsAndRoomsValue() {
     return this.guestsItems
       .map(item => `${item.count} ${item.label}${item.count !== 1 ? 's' : ''}`)
       .join(', ');
   }
+
   applyGuests() {
     const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);
     const roomsRequired = Math.ceil(totalGuests / 4);
     this.guestsItems[2].count = roomsRequired;
+
     if (this.checkOutDate < this.checkInDate) {
       this.checkOutDate = this.checkInDate;
     }
+
     this.guestsAndRoomsValue = this.generateGuestsAndRoomsValue();
     this.toggleGuestsPopup();
   }
@@ -102,9 +110,5 @@ export class SearchBarComponent {
   isSearchButtonDisabled() {
     return !this.location || !this.checkInDate || !this.checkOutDate || !this.guestsAndRoomsValue;
   }
+
 }
-
-
-
-
-
