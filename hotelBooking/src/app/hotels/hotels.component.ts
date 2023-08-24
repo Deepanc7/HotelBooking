@@ -20,7 +20,7 @@ export class HotelsComponent implements OnInit {
 
   HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
   HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "[]");
-  index: number = 0;;
+  details:string='';
   LowestRoomPrice: number[] = [];
   PriceRange: string = '';
   Parking: string = '';
@@ -86,10 +86,10 @@ export class HotelsComponent implements OnInit {
   sendDataToHotelDetails(Object: any) {
     for (let i = 0; i < this.HotelData.length; i++) {
       if (this.HotelData[i] === Object) {
-        this.index = i;
+        this.details = String(this.HotelData[i].HotelName);
       }
     }
-    localStorage.setItem('hotel_details', JSON.stringify(this.index));
+    localStorage.setItem('hotel_details', JSON.stringify(this.details));
     this.router.navigateByUrl('/hotel-details');
   }
   applyFilters() {

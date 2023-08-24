@@ -840,6 +840,7 @@
       "Description": "Full breakfast buffet for 2 for only $1. Excited to show off our room upgrades, faster high speed WiFi, updated corridors & meeting space. Come relax and enjoy your stay.",
       "Description_fr": "Petit déjeuner buffet complet pour 2 pour seulement $1. Excité de montrer nos mises à niveau de la chambre, plus rapide WiFi à haute vitesse, les couloirs et l'espace de réunion. Venez vous détendre et profiter de votre séjour.",
       "Category": "Budget",
+      "HotelImage":"https://th.bing.com/th/id/OIP.c35pjuMrDLI2Dx8q3nBNXAHaE8?w=288&h=192&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "laundry service",
         "free wifi",
@@ -871,6 +872,7 @@
           "BedOptions": "1 Queen Bed",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.r2jnlXyYsQ8g3jqrGSmLiAHaFI?w=245&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "coffee maker"
           ]
@@ -883,6 +885,7 @@
           "BedOptions": "2 Double Beds",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.jm7aXn_tP7rVFzCwdy-scQHaDW?w=352&h=191&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "bathroom shower",
             "bathroom shower",
@@ -897,6 +900,7 @@
       "Description": "Mix and mingle in the heart of the city. Shop and dine, mix and mingle in the heart of downtown, where fab lake views unite with a cheeky design.",
       "Description_fr": "Mélangez et mêlez-vous au cœur de la ville. Magasinez et dînez, mélangez et mêlez-vous au cœur du centre-ville, où les vues du lac FAB s'unissent avec un design effronté.",
       "Category": "Budget",
+      "HotelImage":"https://th.bing.com/th/id/OIP.RLyDj2wYtKr0k3JFjKKsSwHaE7?w=264&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "air conditioning",
         "laundry service",
@@ -928,6 +932,7 @@
           "BedOptions": "1 Queen Bed",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.Qbjb2yBkNgyD2BbGih6N3gHaE8?w=287&h=192&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "bathroom shower"
           ]
@@ -940,6 +945,7 @@
           "BedOptions": "1 Queen Bed",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.wDGKPhm-dVJGrzJyTl5sQwHaE8?w=208&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "coffee maker",
             "bathroom shower",
@@ -954,6 +960,7 @@
       "Description": "Chic hotel near the city. High-rise hotel in downtown, within walking distance to theaters, art galleries, restaurants and shops. Visit Seattle Art Museum by day, and then head over to Benaroya Hall to catch the evening's concert performance.",
       "Description_fr": "Hôtel chic près de la ville. Hôtel de grande hauteur au centre-ville, à distance de marche des théâtres, galeries d'art, restaurants et boutiques. Visitez le musée d'art de Seattle le jour, puis dirigez-vous vers le Benaroya Hall pour assister au concert de la soirée.",
       "Category": "Suite",
+      "HotelImage":"https://th.bing.com/th/id/OIP.Ka7jUQDd17w8jzdmiCWhLgHaE9?w=293&h=195&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "view",
         "pool",
@@ -985,6 +992,7 @@
           "BedOptions": "1 Queen Bed",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.cjk9_PrJ67-E_RwV9uSiBAHaE7?w=207&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "bathroom shower"
           ]
@@ -997,6 +1005,7 @@
           "BedOptions": "2 Double Beds",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.JjVFoEjfupXt0_t4dp0frAHaE5?w=270&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "tv"
           ]
@@ -1009,6 +1018,7 @@
       "Description": "Newly Redesigned Rooms & airport shuttle. Minutes from the airport, enjoy lakeside amenities, a resort-style pool & stylish new guestrooms with Internet TVs.",
       "Description_fr": "Chambres nouvellement redessinées & navette d'aéroport. Minutes de l'aéroport, profitez des équipements Lakeside, une piscine de style complexe et de nouvelles chambres élégantes avec des téléViseurs Internet.",
       "Category": "Suite",
+      "HotelImage":"https://th.bing.com/th/id/OIP.yEEy8sh23M6NxgJ5Pdd03AHaFg?w=218&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "24-hour front desk service",
         "continental breakfast",
@@ -1040,6 +1050,7 @@
           "BedOptions": "1 Queen Bed",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.G5hlIAcFWm7UdXk4MhPXeAHaE0?w=304&h=197&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "vcr/dvd",
             "bathroom shower"
@@ -1053,6 +1064,7 @@
           "BedOptions": "2 Queen Beds",
           "SleepsCount": 4,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.rL7rWw4AbdiAruMBEj3SKAEgDY?w=263&h=197&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "jacuzzi tub"
           ]
@@ -1065,6 +1077,7 @@
       "Description": "Extend Your Stay. Affordable home away from home, with amenities like free Wi-Fi, full kitchen, and convenient laundry service.",
       "Description_fr": "Prolongez votre séjour. Une maison abordable loin de chez vous, avec des équipements comme une connexion Wi-Fi gratuite, une cuisine complète et un service de blanchisserie pratique.",
       "Category": "Extended-Stay",
+      "HotelImage":"https://th.bing.com/th/id/OIP.EaFF8Exe4H880T3pk7ChpgHaE8?w=245&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "free parking",
         "free wifi",
@@ -1096,6 +1109,7 @@
           "BedOptions": "1 Queen Bed",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.id7mn-GU4TZAd-dMBcfVMgHaEH?w=322&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "Room Tags",
             "bathroom shower"
@@ -1109,6 +1123,7 @@
           "BedOptions": "2 Queen Beds",
           "SleepsCount": 4,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.qzkNu5TbG1GHrE8Ku4bdPQHaE8?w=226&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "vcr/dvd",
             "vcr/dvd"
@@ -1122,6 +1137,7 @@
       "Description": "Complimentary Airport Shuttle & WiFi. Book Now and save - Spacious All Suite Hotel, Indoor\/Outdoor Pool, Fitness Center, Florida Green certified, Starbucks Coffee, HDTV",
       "Description_fr": "Navette aéroport gratuite et WiFi. Réservez maintenant et économisez-spacieux All Suite Hotel, piscine couverte\/extérieure, centre de fitness, Florida Green Certified, Starbucks Coffee, HDTV",
       "Category": "Suite",
+      "HotelImage":"https://th.bing.com/th/id/OIP.4Yl-p9EAx-qu331m1HBJuwHaEg?w=354&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "pool",
         "coffee in lobby",
@@ -1153,6 +1169,7 @@
           "BedOptions": "1 King Bed",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.17ANJRsZ8Q8CnmxKsKUpTgHaE7?pid=ImgDet&rs=1",
           "Tags": [
             "suite"
           ]
@@ -1165,6 +1182,7 @@
           "BedOptions": "1 Queen Bed",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.c2rUDLAtxBmR2X6yeCTe1QHaE8?w=250&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "suite"
           ]
@@ -1177,6 +1195,7 @@
       "Description": "Eco-friendly from our gardens to table, with a rooftop serenity pool and outdoor seating to take in the sunset. Just steps away from the Convention Center. Located in the heart of downtown with modern rooms with stunning city views, 24-7 dining options, free WiFi and easy valet parking.",
       "Description_fr": "Respectueux de l'environnement des jardins à la table, avec piscine de sérénité sur le toit et terrasse pour admirer le coucher du soleil. Pas du Centre des Congrès. Situé au cœur du centre-ville avec des chambres modernes avec vue imprenable sur la ville, 24-7 restaurants, WiFi gratuit et parking avec voiturier facile.",
       "Category": "Luxury",
+      "HotelImage":"https://th.bing.com/th/id/OIP.C02-4oYQjuYrNOBNuc5MZgHaFL?w=258&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "restaurant",
         "view",
@@ -1208,6 +1227,7 @@
           "BedOptions": "1 King Bed",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.AGx1jR9B2Rr5ZdJ_6ATY6AHaE8?w=283&h=189&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "bathroom shower",
             "jacuzzi tub",
@@ -1222,6 +1242,7 @@
           "BedOptions": "1 King Bed",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.BRs1tVeVU9SpsBSuemrozgHaEj?w=278&h=189&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "jacuzzi tub"
           ]
@@ -1234,6 +1255,7 @@
       "Description": "Stay in the heart of downtown near the business district. Experience the warmth of our hotel. Enjoy free WiFi, local transportation and Milk & Cookies.",
       "Description_fr": "Séjournez au cœur du centre-ville près du quartier des affaires. Vivez la chaleur de notre hôtel. Profitez du WiFi gratuit, du transport local et du lait et des biscuits.",
       "Category": "Budget",
+      "HotelImage":"https://th.bing.com/th/id/OIP.x0NwAOejVXZZzS9OAWqUlAHaDe?w=318&h=164&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "free wifi",
         "coffee in lobby",
@@ -1265,6 +1287,7 @@
           "BedOptions": "1 King Bed",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.tMqH5IzHK4TPez97Gh-PLQHaEK?pid=ImgDet&rs=1",
           "Tags": [
             "Room Tags",
             "vcr/dvd"
@@ -1278,6 +1301,7 @@
           "BedOptions": "2 Double Beds",
           "SleepsCount": 2,
           "SmokingAllowed": false,
+          "RoomImage":"https://th.bing.com/th/id/OIP.hXfw1L2bVFJK1uOHNH5B0wHaE0?w=274&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "Room Tags",
             "tv"
@@ -1291,6 +1315,7 @@
       "Description": "The Triple L Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
       "Description_fr": "L'hôtel Triple L se distingue par son excellence gastronomique sous la direction de William Dough, qui conseille et supervise tous les services de restauration de l'hôtel.",
       "Category": "Suite",
+      "HotelImage":"https://th.bing.com/th/id/OIP.3ndet7YgXEV_yNrdC9DxSgHaFg?w=224&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       "Tags": [
         "restuarant",
         "bar",
@@ -1322,6 +1347,7 @@
           "BedOptions": "2 Queen Beds",
           "SleepsCount": 4,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.2-InpHSKnBlJ0OebPuEk4gHaE7?w=276&h=184&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "vcr/dvd",
             "vcr/dvd"
@@ -1335,6 +1361,7 @@
           "BedOptions": "2 Double Beds",
           "SleepsCount": 2,
           "SmokingAllowed": true,
+          "RoomImage":"https://th.bing.com/th/id/OIP.wKUqaoeMzSXR3ew0zfEseAHaE8?w=276&h=184&c=7&r=0&o=5&dpr=1.3&pid=1.7",
           "Tags": [
             "coffee maker"
           ]
