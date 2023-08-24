@@ -1,30 +1,9 @@
-mat-form-field {
-  width: 100%;
-  margin-bottom: 15px;
-  border-radius: 10px;
+.mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: auto;
 }
-
-mat-select {
-  color: #fff;
-  width: 100%;
-}
-
-
-@media (max-width: 768px) {
-  .sidenav {
-    width: 100%;
-    height: 100vh;
-    overflow-y: scroll;
-  }
-
-  mat-card {
-    margin: 20px;
-    padding:4%;
-    height: 1000px;
-  }
-}
-
-
 .hotel-list {
   display: grid;
   padding: 10px 10px 10px;
@@ -32,8 +11,9 @@ mat-select {
   gap: 10px;
   background-color: #fff;
   width: 100%;
+  min-height: 500px;
+  height: 100%;
 }
-
 .hotel-card {
   flex: 0 0 auto;
   scroll-snap-align: start;
@@ -44,101 +24,70 @@ mat-select {
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
+  padding: 8%;
   color: black;
   position: relative;
 }
-
 .hotel-card:hover {
   transform: scale(1.03);
   z-index: 1;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
 }
-
 .hotel-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
 }
-
 .hotel-details {
   padding: 15px;
 }
-
 .hotel-name {
   margin: 5px 0;
   font-size: 18px;
 }
-
 .hotel-ratings {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
 }
-
 .star-icon {
   color: #FFD700;
   font-size: 16px;
 }
-
 .hotel-price {
   font-size: 16px;
   color: #007BFF;
   margin-top: 10px;
 }
-
 .toolbar-item-spacer {
   flex: 1 1 auto;
 }
-
 .app-container {
   height: 90%;
   margin: 0;
 }
-
 .app-sidenav {
   width: 230px;
 }
-
 .app-sidenav-content {
   display: flex;
   height: 100%;
   align-items: center;
   justify-content: center;
 }
-
 .toolbar {
   width: 100%;
   height: 20%;
 }
-
-mat-toolbar {
-  height: 20%;
-  background-color: rgba(0, 0, 0, 0);
-}
-
-mat-sidenav-container{
-  background-color: rgba(0, 0, 0, 0);
-}
-mat-sidenav{
-  background-color: whitesmoke;
-
-}
-
-mat-card{
-  background-color: whitesmoke;
-}
 .sidenavDiv{
   padding: 10%;
 }
-
-
 .mat-mdc-card-title, .mat-mdc-card-subtitle {
   display: block;
   margin: 10px;
   color: black;
 }
-
 .mat-mdc-list-base {
   display: flow;
   padding: 5%;
@@ -146,5 +95,38 @@ mat-card{
 .mat-mdc-raised-button.mat-unthemed {
   --mdc-protected-button-container-color: green;
   --mdc-protected-button-label-text-color: #fff;
-  
+}
+mat-toolbar {
+  height: 20%;
+  background-color: rgba(0, 0, 0, 0);
+}
+mat-sidenav-container{
+  background-color: rgba(0, 0, 0, 0);
+  min-height: 100vh;
+}
+mat-sidenav{
+  background-color: whitesmoke;
+}
+mat-card{
+  background-color: whitesmoke;
+}
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+mat-select {
+  color: #fff;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .sidenav {
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+  .hotel-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 2fr));
+  }
 }

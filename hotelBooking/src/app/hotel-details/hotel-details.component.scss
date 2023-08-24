@@ -20,6 +20,7 @@
   object-fit: cover;
   border-radius: 10px;
   margin: 10px;
+  float: right;
 }
 
 .hotel-details-content {
@@ -100,6 +101,8 @@
   box-shadow: 0px 2px 5px wheat;
   border-radius: 10px;
   overflow: hidden;
+  background-color: white;
+  width: 300px;
 }
 
 .hotel-price-details {
@@ -146,6 +149,8 @@
   border-radius: 10px;
   overflow: hidden;
   align:left;
+  width: 300px; 
+  color: black;
 }
 
 .check-in-out {
@@ -157,6 +162,7 @@
 .check-out {
   text-align: center;
   margin: 0 20px;
+  color: black;
 }
 
 .time {
@@ -175,3 +181,15 @@ mat-label {
   font: bold;
 }
 
+
+.hotel-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+}

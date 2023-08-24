@@ -14,8 +14,8 @@ export class HotelDetailsComponent {
 
   GuestCount:number=0;
   RoomCount:number=0;
-  checkInDate:any;
-  checkOutDate:any;
+  checkInDate:string="12PM";
+  checkOutDate:string="12PM";
 
   searchDetails: SearchDetails = {
     location: '',
@@ -31,8 +31,8 @@ export class HotelDetailsComponent {
     let x = search.guestsAndRooms.split(" ");
     this.GuestCount=Number(x[0])+Number(x[2]);
     this.RoomCount=Number(x[4]);
-    this.checkInDate=search.checkIn;
-    this.checkOutDate=search.checkOut;
+    this.checkInDate=String(search.checkIn.getDate());
+    this.checkOutDate=String(search.checkOut.getDate());
   }
 
   searchHotelByName(hotelName:string) {

@@ -10,6 +10,35 @@ export class HomePageComponent implements OnInit {
   HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
   popularHotels = this.HotelData;
 
+  imageUrls: string[] = [
+    "https://th.bing.com/th/id/OIP.c0c9mDgaPoJzSwZXlmOhJwHaEo?w=315&h=197&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+    "https://th.bing.com/th/id/OIP.-a3357eTl7rWATZary_rWAHaE5?w=219&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+    "https://th.bing.com/th/id/OIP.nvlz1kigUbNjsh7lNUs6xwHaE7?pid=ImgDet&rs=1",
+    "https://th.bing.com/th/id/OIP.37sLYy1TbGBPi-pXmvKmBgHaEK?pid=ImgDet&rs=1",
+    "https://th.bing.com/th/id/OIP.T0epVTOKR56nL9dg-0GzRgHaE7?w=217&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+    "https://th.bing.com/th/id/OIP.WI3UM7DTL1YjXYG6F_ChHAHaE8?pid=ImgDet&rs=1",
+    "https://th.bing.com/th/id/OIP.AdN94ZO2Kj-F21D0epgudAHaE8?pid=ImgDet&rs=1",
+    "https://th.bing.com/th/id/OIP.xXVMudZvjhM3uwXUdCxgXgHaE8?pid=ImgDet&rs=1",
+    "https://th.bing.com/th/id/OIP.SvHZ9DpWpFmHtT8i3aIePgHaE7?pid=ImgDet&rs=1",
+    "https://th.bing.com/th/id/OIP.79_nFK2iuT5gMAraz0rBxgHaFj?pid=ImgDet&rs=1",
+    "https://th.bing.com/th/id/OIP.UnwY9GUGrATHzyvcSgc8fQHaFj?pid=ImgDet&rs=1",
+  ];
+
+  place:string[]=[
+    "Mountain View",
+    "Atlanta",
+    "Chicago",
+    "Bangalore",
+    "San Antonio",
+    "New York",
+    "Washington D.C.",
+    "Detroit",
+    "Seattle",
+    "Austin",
+    "Mysore"
+  ]
+
+
   currentIndex = 0;
   maxIndex: number;
   displayedHotels: any[] = [];
@@ -26,6 +55,15 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
     this.lowestRoomPrice();
     this.updateDisplayedHotels();
+    
+    for(let i=0;i<this.HotelData.length;i++){
+    console.log(this.HotelData[i].Address.City);
+    }
+  }
+
+  goToHotels(index:any) {
+    localStorage.setItem('hotels', JSON.stringify(this.place[index]));
+    this.router.navigateByUrl('/hotels');
   }
 
   getStars(rating: number): number[] {

@@ -20,6 +20,7 @@ export class HotelsComponent implements OnInit {
 
   HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
   HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "[]");
+  Hotels = JSON.parse(localStorage.getItem('hotels')||"");
   details: string = '';
   LowestRoomPrice: number[] = [];
   PriceRange: string = '';
@@ -38,6 +39,7 @@ export class HotelsComponent implements OnInit {
 
 
   ngOnInit() {
+    if (this.Hotels===''){
     let search: SearchDetails = this.searchService.getSearchDetails();
     this.filterHotelData(search);
     this.HotelData = this.HotelData.filter((hotel: any) => {
@@ -53,6 +55,22 @@ export class HotelsComponent implements OnInit {
       else { return false; }
     }
     );
+    }
+    else {
+    this.HotelData = this.HotelData.filter((hotel: any) => {
+      let loc = this.Hotels.toLowerCase();
+      let country = hotel.Address.Country.toLowerCase();
+      let street = hotel.Address.StreetAddress.toLowerCase();
+      let city = hotel.Address.City.toLowerCase();
+      let state = hotel.Address.StateProvince;
+      let postalcode = hotel.Address.PostalCode;
+      if (country === loc || city == loc || street === loc || state === loc || postalcode === loc) {
+        return true;
+      }
+      else { return false; }
+    }
+    );
+    }
   }
 
   addTag(tag: string) {
