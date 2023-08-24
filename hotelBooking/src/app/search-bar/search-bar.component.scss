@@ -38,7 +38,8 @@ mat-card {
   flex-direction: column;
   width: inherit;
   padding: 10px;
-  box-shadow: 0px 1px 20px 5px black;
+  height:50%;
+ box-shadow: 0px 1px 20px 5px wheat;
 }
 
 .divider {
@@ -52,7 +53,7 @@ mat-card {
 
 .main-div-For-searchBar {
   background-color: rgba(56, 56, 55, 0.771);
-  padding: 10px;
+  padding: 20px;
   display: flex;
   align-items: center;
   border-radius: 10px;

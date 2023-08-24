@@ -11,6 +11,13 @@ import { SearchDetails } from '../search-bar/search-details.interface';
 })
 
 export class HotelsComponent implements OnInit {
+  searchDetails = {
+    location: 'Your initial location',
+    checkIn: new Date(), // Your initial check-in date
+    checkOut: new Date(), // Your initial check-out date
+    guestsAndRooms: 'Your initial guests and rooms value'
+  };
+
   HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
   HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "[]");
   details:string='';
@@ -19,14 +26,16 @@ export class HotelsComponent implements OnInit {
   Tags: string = '';
   selectedTags: string[] = [];
   selectedRating: number = 0;
-  searchDetails: any;
   tags: string[] = [
     'View', 'Air conditioning', 'Concierge', '24-hour front desk service',
     'Laundry service', 'Free wifi', 'Free parking', 'Restaurant', 'Bar',
     'Pool', 'Coffee in lobby', 'Continental breakfast'
   ];
+  
   constructor(private router: Router, private searchService: SearchService) {
   }
+
+
   ngOnInit() {
     let search: SearchDetails = this.searchService.getSearchDetails();
     this.HotelData = this.HotelData.filter((hotel: any) => {
@@ -43,6 +52,7 @@ export class HotelsComponent implements OnInit {
     }
     );
   }
+  
   addTag(tag: string) {
     if (!this.selectedTags.includes(tag)) {
       this.selectedTags.push(tag);
