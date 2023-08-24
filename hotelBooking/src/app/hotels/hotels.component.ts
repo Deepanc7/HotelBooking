@@ -38,7 +38,6 @@ export class HotelsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.lowestRoomPrice();
     let search: SearchDetails = this.searchService.getSearchDetails();
     this.filterHotelData(search);
     this.HotelData = this.HotelData.filter((hotel: any) => {
@@ -65,19 +64,6 @@ export class HotelsComponent implements OnInit {
     const index = this.selectedTags.indexOf(tag);
     if (index !== -1) {
       this.selectedTags.splice(index, 1);
-    }
-  }
-  lowestRoomPrice() {
-    for (let i = 0; i < this.HotelData.length; i++) {
-      let lowestPrice = Number.MAX_SAFE_INTEGER;
-      for (const room of this.HotelData[i].Rooms) {
-        if (room.BaseRate < lowestPrice) {
-          lowestPrice = room.BaseRate;
-        }
-      }
-      this.LowestRoomPrice.push(lowestPrice);
-      this.HotelData[i].lowestPrice = lowestPrice;
-      localStorage.setItem('hotel_data', JSON.stringify(this.HotelData));
     }
   }
   getStars(rating: number): string[] {
