@@ -52,6 +52,7 @@ export class SearchBarComponent {
       };
       this.searchService.setSearchDetails(details);
       this.router.navigateByUrl('/hotels');
+      console.log(details.guestsAndRooms);
       this.searchTriggered.emit(details);
     
   }
