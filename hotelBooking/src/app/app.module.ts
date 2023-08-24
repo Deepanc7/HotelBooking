@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModelModule } from './material-model/material-model.module';
 import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     SearchBarComponent,
     HotelsComponent,
-    HotelDetailsComponent
+    HotelDetailsComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,

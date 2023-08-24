@@ -14,7 +14,6 @@ export class HotelsComponent implements OnInit {
   HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
   HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "[]");
   details:string='';
-  LowestRoomPrice: number[] = [];
   PriceRange: string = '';
   Parking: string = '';
   Tags: string = '';
@@ -29,7 +28,6 @@ export class HotelsComponent implements OnInit {
   constructor(private router: Router, private searchService: SearchService) {
   }
   ngOnInit() {
-    this.lowestRoomPrice();
     let search: SearchDetails = this.searchService.getSearchDetails();
     this.HotelData = this.HotelData.filter((hotel: any) => {
       let loc = search.location.toLowerCase();
@@ -54,19 +52,6 @@ export class HotelsComponent implements OnInit {
     const index = this.selectedTags.indexOf(tag);
     if (index !== -1) {
       this.selectedTags.splice(index, 1);
-    }
-  }
-  lowestRoomPrice() {
-    for (let i = 0; i < this.HotelData.length; i++) {
-      let lowestPrice = Number.MAX_SAFE_INTEGER;
-      for (const room of this.HotelData[i].Rooms) {
-        if (room.BaseRate < lowestPrice) {
-          lowestPrice = room.BaseRate;
-        }
-      }
-      this.LowestRoomPrice.push(lowestPrice);
-      this.HotelData[i].lowestPrice = lowestPrice;
-      localStorage.setItem('hotel_data', JSON.stringify(this.HotelData));
     }
   }
   getStars(rating: number): string[] {
