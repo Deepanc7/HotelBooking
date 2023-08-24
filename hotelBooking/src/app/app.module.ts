@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModelModule } from './material-model/material-model.module';
 import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DataService } from './data.service';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModelModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
