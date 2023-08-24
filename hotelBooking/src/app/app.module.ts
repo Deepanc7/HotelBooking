@@ -29,7 +29,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     MaterialModelModule,
     HttpClientModule
   ],
-  providers: [DataService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
