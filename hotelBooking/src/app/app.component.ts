@@ -9,7 +9,8 @@ import { DataService } from './data.service';
   providers: [DataService]
 })
 export class AppComponent {
-  jsonData: any; // Declare a property to store the fetched JSON data
+  [x: string]: any;
+  jsonData: any;
   HotelData: any[] = [];
 
   constructor(private dataService: DataService) { }
