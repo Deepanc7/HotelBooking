@@ -1,76 +1,81 @@
 <app-search-bar></app-search-bar>
-
-<ng-container >
+<mat-sidenav-container class="sidenav-container">
   <mat-sidenav mode="side" class="sidenav" opened>
-    <mat-nav-list>
-        <mat-card-title>
-          Filters
-        </mat-card-title>
-        <mat-form-field>
-          <mat-label>Price</mat-label>
-          <mat-select [(value)]="PriceRange">
-            <mat-option value="Range1">$0-$50</mat-option>
-            <mat-option value="Range2">$50-$100</mat-option>
-            <mat-option value="Range3">$100-$150</mat-option>
-            <mat-option value="Range4">$150-$200</mat-option>
-            <mat-option value="Range5">$200-$250</mat-option>
-            <mat-option value="Range6">$250-$300</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Parking Included</mat-label>
-          <mat-select [(value)]="Parking">
-            <mat-option value="true">True</mat-option>
-            <mat-option value="false">False</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Tags</mat-label>
-          <mat-select [(ngModel)]="selectedTags" multiple>
-            <mat-option *ngFor="let tag of tags" [value]="tag">{{ tag }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Rating</mat-label>
-          <mat-select [(ngModel)]="selectedRating" (ngModelChange)="applyFilters()">
-            <mat-option value="1">1 star</mat-option>
-            <mat-option value="2">2 stars</mat-option>
-            <mat-option value="3">3 stars</mat-option>
-            <mat-option value="4">4 stars</mat-option>
-            <mat-option value="5">5 stars</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <button mat-raised-button (click)="applyFilters()">Apply Filters</button>
-    </mat-nav-list>
+    <ng-container >
+      <mat-sidenav mode="side" class="sidenav" opened>
+        <mat-nav-list>
+            <mat-card-title>
+              Filters
+            </mat-card-title>
+            <mat-form-field>
+              <mat-label>Price</mat-label>
+              <mat-select [(value)]="PriceRange">
+                <mat-option value="Range1">$0-$50</mat-option>
+                <mat-option value="Range2">$50-$100</mat-option>
+                <mat-option value="Range3">$100-$150</mat-option>
+                <mat-option value="Range4">$150-$200</mat-option>
+                <mat-option value="Range5">$200-$250</mat-option>
+                <mat-option value="Range6">$250-$300</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Parking Included</mat-label>
+              <mat-select [(value)]="Parking">
+                <mat-option value="true">True</mat-option>
+                <mat-option value="false">False</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Tags</mat-label>
+              <mat-select [(ngModel)]="selectedTags" multiple>
+                <mat-option *ngFor="let tag of tags" [value]="tag">{{ tag }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Rating</mat-label>
+              <mat-select [(ngModel)]="selectedRating" (ngModelChange)="applyFilters()">
+                <mat-option value="1">1 star</mat-option>
+                <mat-option value="2">2 stars</mat-option>
+                <mat-option value="3">3 stars</mat-option>
+                <mat-option value="4">4 stars</mat-option>
+                <mat-option value="5">5 stars</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-raised-button (click)="applyFilters()">Apply Filters</button>
+        </mat-nav-list>
+      </mat-sidenav>
+    </ng-container>
   </mat-sidenav>
-</ng-container>
 
-<mat-card>
-  <div class="hotel-list">
-    <mat-card class="hotel-card" *ngFor="let hotel of HotelData;let i=index" (click)="sendDataToHotelDetails(hotel)">
-      <div class="hotel-image">
-        <img src="{{ hotel.HotelImage }}" alt="Hotel Image" *ngIf="hotel.HotelImage; else defaultImage">
-      </div>
-      <ng-template #defaultImage>
-        <div class="hotel-image">
-          <img src="assets/image.jpg" alt="Default Hotel Image">
-        </div>
-      </ng-template>
-      <div class="hotel-content">
-        <div class="hotel-details">
-          <h3 class="hotel-name">{{hotel.HotelName}}</h3>
-          <div class="hotel-ratings">
-            <ng-container>
-              <mat-icon *ngFor="let star of getStars(hotel.Rating)" class="star-icon">star</mat-icon>
-            </ng-container>
-            <p *ngIf="hotel.ParkingIncluded">Parking: Yes</p>
-            <p *ngIf="!hotel.ParkingIncluded">Parking: No</p>
+  <mat-sidenav-content>
+    <mat-card>
+      <div class="hotel-list">
+        <mat-card class="hotel-card" *ngFor="let hotel of HotelData;let i=index" (click)="sendDataToHotelDetails(hotel)">
+          <div class="hotel-image">
+            <img src="{{ hotel.HotelImage }}" alt="Hotel Image" *ngIf="hotel.HotelImage; else defaultImage">
           </div>
-        </div>
-        <div class="hotel-price">
-          Starts From: ${{hotel.lowestPrice}}
-        </div>
+          <ng-template #defaultImage>
+            <div class="hotel-image">
+              <img src="assets/image.jpg" alt="Default Hotel Image">
+            </div>
+          </ng-template>
+          <div class="hotel-content">
+            <div class="hotel-details">
+              <h3 class="hotel-name">{{hotel.HotelName}}</h3>
+              <div class="hotel-ratings">
+                <ng-container>
+                  <mat-icon *ngFor="let star of getStars(hotel.Rating)" class="star-icon">star</mat-icon>
+                </ng-container>
+                <p *ngIf="hotel.ParkingIncluded">Parking: Yes</p>
+                <p *ngIf="!hotel.ParkingIncluded">Parking: No</p>
+              </div>
+            </div>
+            <div class="hotel-price">
+              Starts From: ${{hotel.lowestPrice}}
+            </div>
+          </div>
+        </mat-card>
       </div>
     </mat-card>
-  </div>
-</mat-card>
+  </mat-sidenav-content>
+</mat-sidenav-container>
