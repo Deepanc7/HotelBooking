@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewChild } from '@angular/core';
 import { SearchService } from './search.service';
 import { SearchDetails } from './search-details.interface';
 import { Router } from '@angular/router';
@@ -12,10 +12,12 @@ import { Router } from '@angular/router';
 export class SearchBarComponent {
 
   @ViewChild('guestsButton') guestsButton!: ElementRef;
-  location: string = '';
-  checkInDate: Date = new Date();
-  checkOutDate: Date = new Date();
-  guestsAndRoomsValue: string = '';
+  @Input() location: string = '';
+  @Input() checkInDate: Date = new Date();
+  @Input() checkOutDate: Date = new Date();
+  @Input() guestsAndRoomsValue: string = '';
+
+  @Output() searchTriggered: EventEmitter<SearchDetails> = new EventEmitter<SearchDetails>();
   showGuestsPopup = false;
   guestAndRooms: string = "";
 
@@ -41,17 +43,17 @@ export class SearchBarComponent {
   }
 
 
-
   searchHotels() {
-    const details: SearchDetails = {
-      location: this.location,
-      checkIn: this.checkInDate,
-      checkOut: this.checkOutDate,
-      guestsAndRooms: this.guestsAndRoomsValue
-    };
-    this.searchService.setSearchDetails(details);
-    this.router.navigateByUrl('/hotels');
-
+      const details: SearchDetails = {
+        location: this.location,
+        checkIn: this.checkInDate,
+        checkOut: this.checkOutDate,
+        guestsAndRooms: this.guestsAndRoomsValue
+      };
+      this.searchService.setSearchDetails(details);
+      this.router.navigateByUrl('/hotels');
+      this.searchTriggered.emit(details);
+    
   }
 
   toggleGuestsPopup() {

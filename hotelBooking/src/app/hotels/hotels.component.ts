@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SearchService } from '../search-bar/search.service';
 import { SearchDetails } from '../search-bar/search-details.interface';
 
@@ -11,16 +11,16 @@ import { SearchDetails } from '../search-bar/search-details.interface';
 })
 
 export class HotelsComponent implements OnInit {
-  searchDetails = {
-    location: 'Your initial location',
-    checkIn: new Date(), // Your initial check-in date
-    checkOut: new Date(), // Your initial check-out date
-    guestsAndRooms: 'Your initial guests and rooms value'
+  searchDetails: SearchDetails = {
+    location: '',
+    checkIn: new Date(),
+    checkOut: new Date(),
+    guestsAndRooms: ''
   };
 
   HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
   HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "[]");
-  details:string='';
+  details: string = '';
   LowestRoomPrice: number[] = [];
   PriceRange: string = '';
   Parking: string = '';
@@ -32,14 +32,15 @@ export class HotelsComponent implements OnInit {
     'Laundry service', 'Free wifi', 'Free parking', 'Restaurant', 'Bar',
     'Pool', 'Coffee in lobby', 'Continental breakfast'
   ];
-  
-  constructor(private router: Router, private searchService: SearchService) {
+
+  constructor(private router: Router, private searchService: SearchService, private route: ActivatedRoute) {
   }
 
 
   ngOnInit() {
     this.lowestRoomPrice();
     let search: SearchDetails = this.searchService.getSearchDetails();
+    this.filterHotelData(search);
     this.HotelData = this.HotelData.filter((hotel: any) => {
       let loc = search.location.toLowerCase();
       let country = hotel.Address.Country.toLowerCase();
@@ -54,7 +55,7 @@ export class HotelsComponent implements OnInit {
     }
     );
   }
-  
+
   addTag(tag: string) {
     if (!this.selectedTags.includes(tag)) {
       this.selectedTags.push(tag);
@@ -143,9 +144,32 @@ export class HotelsComponent implements OnInit {
       this.HotelData = this.HotelData.filter((hotel: any) => hotel.Rating >= this.selectedRating);
     }
   }
+
+
+  searchHotels(details: SearchDetails) {
+    this.filterHotelData(details);
+  }
+
+  private filterHotelData(searchDetails: SearchDetails) {
+    this.HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
+  
+    this.HotelData = this.HotelData.filter((hotel: any) => {
+      let loc = searchDetails.location.toLowerCase();
+      let country = hotel.Address.Country.toLowerCase();
+      let street = hotel.Address.StreetAddress.toLowerCase();
+      let city = hotel.Address.City.toLowerCase();
+      let state = hotel.Address.StateProvince;
+      let postalcode = hotel.Address.PostalCode;
+      
+      if (country === loc || city == loc || street === loc || state === loc || postalcode === loc) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  
+    this.applyFilters();
+  }
 }
-
-
-
 
 

@@ -6,7 +6,7 @@
       <button class="btn-searchBar mat-elevation-z0">
         <mat-icon>location_on</mat-icon>
         <label class="search-component-label">WHERE</label>
-        <input type="text" [(ngModel)]="location" >
+        <input type="text" [(ngModel)]="location" [placeholder]="location ? location : 'Locaion'">
       </button>
 
       <div class="divider"></div>
@@ -15,8 +15,8 @@
       <mat-form-field appearance="fill">
         <mat-label >CHECKIN/CHECKOUT</mat-label>
         <mat-date-range-input [rangePicker]="picker">
-          <input matStartDate [(ngModel)]="checkInDate" placeholder="Start date">
-          <input matEndDate [(ngModel)]="checkOutDate" placeholder="End date">
+          <input matStartDate [(ngModel)]="checkInDate" [placeholder]="checkInDate ? checkInDate.toDateString() : 'Start date'">
+          <input matEndDate [(ngModel)]="checkOutDate" [placeholder]="checkOutDate ? checkOutDate.toDateString() : 'End date'">
         </mat-date-range-input>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
@@ -28,7 +28,7 @@
       <button #guestsButton class="btn-searchBar mat-elevation-z0" (click)="toggleGuestsPopup()">
         <mat-icon>people</mat-icon>
         <label class="search-component-label">GUEST & ROOMS</label>
-        <input type="text" [(ngModel)]="guestsAndRoomsValue" readonly>
+        <input type="text" [(ngModel)]="guestsAndRoomsValue" [placeholder]="guestsAndRoomsValue ? guestsAndRoomsValue : 'GUEST & ROOMS'" readonly>
       </button>
 
 
