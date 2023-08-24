@@ -22,12 +22,13 @@
     <mat-card class="hotel-price-card">
       <div class="hotel-price-details">
         <div class="hotel-price">
-          <p class="starting-price">{{ hotelDetails.StartingPrice | currency }}</p>
           <p class="price-info">Starting Price</p>
+          <p class="starting-price">{{ hotelDetails.lowestPrice | currency }}</p>
         </div>
+        <br>
         <div class="room-guest-details">
-          <p>{{ hotelDetails.GuestCount }} x Guests</p>
-          <p>{{ hotelDetails.RoomCount }} x Room</p>
+          <p>{{ GuestCount }} x Guests</p>
+          <p>{{ RoomCount }} x Room</p>
         </div>
       </div>
       <button mat-raised-button color="primary" class="go-to-rooms-button" (click)="scrollToRooms()">Go to Rooms</button>
@@ -36,11 +37,11 @@
     <mat-card class="date-time-card">
       <div class="check-in-out">
         <div class="check-in">
-          <p class="time">12 PM</p>
+          <p class="time">{{checkInDate}}</p>
           <p class="label">Check-in</p>
         </div>
         <div class="check-out">
-          <p class="time">12 PM</p>
+          <p class="time">{{checkOutDate}}</p>
           <p class="label">Check-out</p>
         </div>
       </div>
