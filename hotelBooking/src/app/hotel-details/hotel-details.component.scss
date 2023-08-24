@@ -1,4 +1,4 @@
-/* styles.scss */
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -89,3 +89,90 @@
 .room-price {
   font-weight: bold;
 }
+
+/* ... Existing styles ... */
+
+/* Hotel Pricing Card */
+.hotel-price-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0px 2px 5px wheat;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.hotel-price-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.starting-price {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.price-info {
+  font-size: 14px;
+  color: #888;
+}
+
+.room-guest-details {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.go-to-rooms-button {
+  color: #007bff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Check-in and Check-out Card */
+.date-time-card {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0px 2px 5px wheat;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.check-in-out {
+  display: flex;
+  align-items: center;
+}
+
+.check-in,
+.check-out {
+  text-align: center;
+  margin: 0 20px;
+}
+
+.time {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.label {
+  font-size: 14px;
+  color: #888;
+}
+
+mat-label {
+  font-size: 30px;
+  color: black;
+  font: bold;
+}
+
