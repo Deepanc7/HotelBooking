@@ -139,10 +139,7 @@ export class HotelsComponent implements OnInit {
       this.HotelData = this.HotelData.filter((hotel: any) =>
         this.selectedTags.some(tag => hotel.Tags.includes(tag)));
     }
-    if (this.selectedRating === null) {
-      this.HotelData = this.HotelData;
-    }
-    else {
+    if (this.selectedRating != null) {
       this.HotelData = this.HotelData.filter((hotel: any) => hotel.Rating >= this.selectedRating);
     }
   }

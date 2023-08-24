@@ -23,9 +23,22 @@ mat-select {
   width: 100%;
 }
 
-mat-card {
-  background-color: whitesmoke;
+
+/* Your existing CSS for .sidenav, mat-form-field, mat-select, and mat-card */
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+  .sidenav {
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+  
+  mat-card {
+    margin: 20px;
+  }
 }
+
 
 .hotel-list {
   display: grid;
