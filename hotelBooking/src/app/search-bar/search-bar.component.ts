@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
-  providers:[SearchService]
+  providers: [SearchService]
 })
 export class SearchBarComponent {
 
@@ -44,17 +44,17 @@ export class SearchBarComponent {
 
 
   searchHotels() {
-      const details: SearchDetails = {
-        location: this.location,
-        checkIn: this.checkInDate,
-        checkOut: this.checkOutDate,
-        guestsAndRooms: this.guestsAndRoomsValue
-      };
-      this.searchService.setSearchDetails(details);
-      this.router.navigateByUrl('/hotels');
-      console.log(details.guestsAndRooms);
-      this.searchTriggered.emit(details);
-    
+    const details: SearchDetails = {
+      location: this.location,
+      checkIn: this.checkInDate,
+      checkOut: this.checkOutDate,
+      guestsAndRooms: this.guestsAndRoomsValue
+    };
+    this.searchService.setSearchDetails(details);
+    this.router.navigateByUrl('/hotels');
+    console.log(details.guestsAndRooms);
+    this.searchTriggered.emit(details);
+
   }
 
   toggleGuestsPopup() {
@@ -106,7 +106,8 @@ export class SearchBarComponent {
   calculatePopupPosition() {
     if (this.guestsButton) {
       const buttonRect = this.guestsButton.nativeElement.getBoundingClientRect();
-      this.popupTop = buttonRect.bottom + window.scrollY;
+      const offset = 1; 
+      this.popupTop = buttonRect.bottom + window.scrollY + offset;
       this.popupLeft = buttonRect.left + window.scrollX;
     }
   }

@@ -6,7 +6,7 @@
       <button class="btn-searchBar mat-elevation-z0">
         <mat-icon>location_on</mat-icon>
         <label class="search-component-label">WHERE</label>
-        <input type="text" [(ngModel)]="location" [placeholder]="location ? location : 'Locaion'">
+        <input type="text" [(ngModel)]="location" [placeholder]="location ? location : 'City/Country/Hotel name'">
       </button>
 
       <div class="divider"></div>
@@ -38,23 +38,24 @@
         <mat-icon matSuffix>search</mat-icon> Search
       </button>
 
-
-    </div>
-
-    <!-- Floating Popup for Guests and rooms -->
+ <!-- Floating Popup for Guests and rooms -->
     <div class="floating-popup" *ngIf="showGuestsPopup" [style.top.px]="popupTop" [style.left.px]="popupLeft">
       <div class="popup-content">
 
         <div *ngFor="let item of guestsItems" class="popup-item">
           <label>{{ item.label }}:</label>
           <div class="popup-item-buttons">
-            <button (click)="decrement(item)">-</button>
+            <button class="w3-button w3-xlarge w3-circle w3-red w3-card-4" (click)="decrement(item)">-</button>
             {{ item.count }}
-            <button (click)="increment(item)">+</button>
+            <button class="w3-button w3-xlarge w3-circle w3-teal" (click)="increment(item)">+</button>
           </div>
         </div>
         <button class="apply-button" (click)="applyGuests()">Apply</button>
       </div>
     </div>
+    </div>
+
+   
   </mat-card-content>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </mat-card>

@@ -1,29 +1,10 @@
-mat-form-field {
-  width: 100%;
-  margin-bottom: 15px;
-  border-radius: 10px;
+
+.mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: auto; 
 }
-
-mat-select {
-  color: #fff;
-  width: 100%;
-}
-
-
-@media (max-width: 768px) {
-  .sidenav {
-    width: 100%;
-    height: 100vh;
-    overflow-y: scroll;
-  }
-
-  mat-card {
-    margin: 20px;
-    padding:4%;
-    height: 1000px;
-  }
-}
-
 
 .hotel-list {
   display: grid;
@@ -32,6 +13,8 @@ mat-select {
   gap: 10px;
   background-color: #fff;
   width: 100%;
+  min-height: 500px; 
+  height: 100%; 
 }
 
 .hotel-card {
@@ -44,8 +27,10 @@ mat-select {
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
+  padding: 8%;
   color: black;
   position: relative;
+  
 }
 
 .hotel-card:hover {
@@ -112,22 +97,7 @@ mat-select {
   height: 20%;
 }
 
-mat-toolbar {
-  height: 20%;
-  background-color: rgba(0, 0, 0, 0);
-}
 
-mat-sidenav-container{
-  background-color: rgba(0, 0, 0, 0);
-}
-mat-sidenav{
-  background-color: whitesmoke;
-
-}
-
-mat-card{
-  background-color: whitesmoke;
-}
 .sidenavDiv{
   padding: 10%;
 }
@@ -147,4 +117,49 @@ mat-card{
   --mdc-protected-button-container-color: green;
   --mdc-protected-button-label-text-color: #fff;
   
+}
+
+
+mat-toolbar {
+  height: 20%;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+mat-sidenav-container{
+  background-color: rgba(0, 0, 0, 0);
+  min-height: 100vh;
+}
+mat-sidenav{
+  background-color: whitesmoke;
+
+}
+
+mat-card{
+  background-color: whitesmoke;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+mat-select {
+  color: #fff;
+  width: 100%;
+}
+
+
+@media (max-width: 768px) {
+  .sidenav {
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+  
+  .hotel-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 2fr));
+  }
+
 }
