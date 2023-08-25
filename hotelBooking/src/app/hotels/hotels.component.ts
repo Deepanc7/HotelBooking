@@ -2,14 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchService } from '../search-bar/search.service';
 import { SearchDetails } from '../search-bar/search-details.interface';
-
 @Component({
   selector: 'app-hotels',
   templateUrl: './hotels.component.html',
   styleUrls: ['./hotels.component.scss'],
   providers: [SearchService]
 })
-
 export class HotelsComponent implements OnInit {
   searchDetails: SearchDetails = {
     location: '',
@@ -17,10 +15,8 @@ export class HotelsComponent implements OnInit {
     checkOut: new Date(),
     guestsAndRooms: ''
   };
-
   HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
   HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "[]");
-  Hotels = JSON.parse(localStorage.getItem('hotels')||"");
   details: string = '';
   LowestRoomPrice: number[] = [];
   PriceRange: string = '';
@@ -33,13 +29,9 @@ export class HotelsComponent implements OnInit {
     'Laundry service', 'Free wifi', 'Free parking', 'Restaurant', 'Bar',
     'Pool', 'Coffee in lobby', 'Continental breakfast'
   ];
-
   constructor(private router: Router, private searchService: SearchService, private route: ActivatedRoute) {
   }
-
-
   ngOnInit() {
-    if (this.Hotels===''){
     let search: SearchDetails = this.searchService.getSearchDetails();
     this.filterHotelData(search);
     this.HotelData = this.HotelData.filter((hotel: any) => {
@@ -55,24 +47,7 @@ export class HotelsComponent implements OnInit {
       else { return false; }
     }
     );
-    }
-    else {
-    this.HotelData = this.HotelData.filter((hotel: any) => {
-      let loc = this.Hotels.toLowerCase();
-      let country = hotel.Address.Country.toLowerCase();
-      let street = hotel.Address.StreetAddress.toLowerCase();
-      let city = hotel.Address.City.toLowerCase();
-      let state = hotel.Address.StateProvince;
-      let postalcode = hotel.Address.PostalCode;
-      if (country === loc || city == loc || street === loc || state === loc || postalcode === loc) {
-        return true;
-      }
-      else { return false; }
-    }
-    );
-    }
   }
-
   addTag(tag: string) {
     if (!this.selectedTags.includes(tag)) {
       this.selectedTags.push(tag);
@@ -148,15 +123,11 @@ export class HotelsComponent implements OnInit {
       this.HotelData = this.HotelData.filter((hotel: any) => hotel.Rating >= this.selectedRating);
     }
   }
-
-
   searchHotels(details: SearchDetails) {
     this.filterHotelData(details);
   }
-
   private filterHotelData(searchDetails: SearchDetails) {
     this.HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
-  
     this.HotelData = this.HotelData.filter((hotel: any) => {
       let loc = searchDetails.location.toLowerCase();
       let country = hotel.Address.Country.toLowerCase();
@@ -164,16 +135,12 @@ export class HotelsComponent implements OnInit {
       let city = hotel.Address.City.toLowerCase();
       let state = hotel.Address.StateProvince;
       let postalcode = hotel.Address.PostalCode;
-      
       if (country === loc || city == loc || street === loc || state === loc || postalcode === loc) {
         return true;
       } else {
         return false;
       }
     });
-  
     this.applyFilters();
   }
 }
-
-

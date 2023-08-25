@@ -1,14 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SearchService } from '../search-bar/search.service';
+import { SearchDetails } from '../search-bar/search-details.interface';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  styleUrls: ['./home-page.component.scss'],
+  providers: [SearchService]
 })
 export class HomePageComponent implements OnInit {
   HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
   popularHotels = this.HotelData;
+  checkInDate: Date = new Date();
+  checkOutDate: Date = new Date();
+  guestsAndRoomsValue: string = '';
 
   imageUrls: string[] = [
     "https://th.bing.com/th/id/OIP.c0c9mDgaPoJzSwZXlmOhJwHaEo?w=315&h=197&c=7&r=0&o=5&dpr=1.3&pid=1.7",
@@ -47,7 +53,7 @@ export class HomePageComponent implements OnInit {
   LowestRoomPrice: number[] = [];
   details:string='';
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private searchService: SearchService) {
     this.HotelData.sort((a:any, b:any) => b.Rating - a.Rating);
     this.maxIndex = this.popularHotels.length - 1;
   }
@@ -62,7 +68,13 @@ export class HomePageComponent implements OnInit {
   }
 
   goToHotels(index:any) {
-    localStorage.setItem('hotels', JSON.stringify(this.place[index]));
+    const details: SearchDetails = {
+      location: String(this.place[index]),
+      checkIn: this.checkInDate,
+      checkOut: this.checkOutDate,
+      guestsAndRooms: this.guestsAndRoomsValue
+    };
+    this.searchService.setSearchDetails(details);
     this.router.navigateByUrl('/hotels');
   }
 
