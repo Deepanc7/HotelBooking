@@ -38,7 +38,8 @@ mat-card {
   flex-direction: column;
   width: inherit;
   padding: 10px;
-  height:50%;
+  height: 50%;
+  box-shadow: 0px 1px 20px 5px wheat;
 }
 
 .divider {
@@ -81,7 +82,8 @@ mat-card {
 }
 
 .searchButton {
-  background-color: #29890a;;
+  background-color: #29890a;
+  ;
   color: rgb(177, 170, 170);
   border: none;
   padding: 20px 35px;
@@ -97,6 +99,7 @@ mat-card {
 .searchButton[disabled] {
   cursor: not-allowed;
 }
+
 .searchButton.enabled {
   background-color: #31e000;
   color: white;
@@ -121,15 +124,19 @@ mat-card {
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999;
+
 }
 
 .popup-content {
-  background-color: white;
+  background-color: rgb(189, 232, 235);
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 10px 2px 4px rgba(0, 0, 0, 0.2);
   width: 300px;
   z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .popup-item {
@@ -148,14 +155,17 @@ mat-card {
 
 .apply-button {
   display: block;
-  margin-top: 10px;
+  margin: 10px auto;
+  padding: 8px 16px;
+  border: none;
   background-color: #007bff;
   color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 10px;
   cursor: pointer;
 }
+
+
 
 mat-form-field {
   height: 12vh;
@@ -164,6 +174,11 @@ mat-form-field {
 
 mat-date-range-input {
   background-color: white;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
 }
 
 
@@ -195,6 +210,14 @@ mat-date-range-input {
     background-color: #29890a;
   }
 
+  .btn-searchBar {
+    margin-bottom: 10px;
+  }
 
+  .floating-popup {
+    width: 100%;
+    left: 0;
+    transform: none;
+  }
 
 }
