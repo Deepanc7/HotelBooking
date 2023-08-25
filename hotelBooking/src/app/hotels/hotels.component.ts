@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchService } from '../search-bar/search.service';
 import { SearchDetails } from '../search-bar/search-details.interface';
+
 @Component({
   selector: 'app-hotels',
   templateUrl: './hotels.component.html',
@@ -20,14 +21,29 @@ export class HotelsComponent implements OnInit {
   details: string = '';
   LowestRoomPrice: number[] = [];
   PriceRange: string = '';
-  Parking: string = '';
-  Tags: string = '';
+  Parking: boolean | undefined;
   selectedTags: string[] = [];
   selectedRating: number = 0;
+  selectedSortOption:string='';
   tags: string[] = [
     'View', 'Air conditioning', 'Concierge', '24-hour front desk service',
     'Laundry service', 'Free wifi', 'Free parking', 'Restaurant', 'Bar',
     'Pool', 'Coffee in lobby', 'Continental breakfast'
+  ];
+
+  filterOptions = [
+    { label: 'View', selected: false },
+    { label: 'Air conditioning', selected: false },
+    { label: 'Concierge', selected: false },
+    { label: '24-hour front desk service', selected: false },
+    { label: 'Laundry service', selected: false },
+    { label: 'Free wifi', selected: false },
+    { label: 'Free parking', selected: false },
+    { label: 'Restaurant', selected: false },
+    { label: 'Bar', selected: false },
+    { label: 'Pool', selected: false },
+    { label: 'Coffee in lobby', selected: false },
+    { label: 'Continental breakfast', selected: false },
   ];
   constructor(private router: Router, private searchService: SearchService, private route: ActivatedRoute) {
   }
@@ -48,17 +64,10 @@ export class HotelsComponent implements OnInit {
     }
     );
   }
-  addTag(tag: string) {
-    if (!this.selectedTags.includes(tag)) {
-      this.selectedTags.push(tag);
-    }
+  getSelectedOptions(): string[] {
+    return this.filterOptions.filter(option => option.selected).map(option => option.label);
   }
-  removeTag(tag: string) {
-    const index = this.selectedTags.indexOf(tag);
-    if (index !== -1) {
-      this.selectedTags.splice(index, 1);
-    }
-  }
+
   getStars(rating: number): string[] {
     const stars = Math.round(rating);
     return Array(stars).fill('star');
@@ -71,6 +80,22 @@ export class HotelsComponent implements OnInit {
     }
     localStorage.setItem('hotel_details', JSON.stringify(this.details));
     this.router.navigateByUrl('/hotel-details');
+  }
+  applySort() {
+    switch (this.selectedSortOption) {
+      case 'lowToHigh':
+        this.HotelData.sort((a: { lowestPrice: number; }, b: { lowestPrice: number; }) => a.lowestPrice - b.lowestPrice);
+        break;
+      case 'highToLow':
+        this.HotelData.sort((a: { lowestPrice: number; }, b: { lowestPrice: number; }) => b.lowestPrice - a.lowestPrice);
+        break;
+      case 'popularity':
+        this.HotelData.sort((a: { Rating: number; }, b: { Rating: number; }) => Number(b.Rating) - Number(a.Rating));
+        break;
+      default:
+        this.HotelData.sort((a: { lowestPrice: number; }, b: { lowestPrice: number; }) => a.lowestPrice - b.lowestPrice);
+        break;
+    }
   }
   applyFilters() {
     this.HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
@@ -106,16 +131,16 @@ export class HotelsComponent implements OnInit {
     if (this.PriceRange === "Range6") {
       this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 250 && hotel.lowestPrice <= 300);
     }
-    if (this.Parking === "true") {
+    if (this.Parking === true) {
       this.HotelData = this.HotelData.filter((hotel: { ParkingIncluded: number; }) => hotel.ParkingIncluded == 1);
     }
-    if (this.Parking === "false") {
+    if (this.Parking === false) {
       this.HotelData = this.HotelData.filter((hotel: { ParkingIncluded: number; }) => hotel.ParkingIncluded == 0);
     }
-    if (this.selectedTags.length === 0) {
-      this.HotelData = this.HotelData;
-    }
-    else {
+
+    this.selectedTags = this.filterOptions.filter(option => option.selected) .map(option => option.label); 
+    if (this.selectedTags.length!=0){
+      console.log(this.selectedTags);
       this.HotelData = this.HotelData.filter((hotel: any) =>
         this.selectedTags.some(tag => hotel.Tags.includes(tag)));
     }
@@ -143,4 +168,5 @@ export class HotelsComponent implements OnInit {
     });
     this.applyFilters();
   }
+
 }

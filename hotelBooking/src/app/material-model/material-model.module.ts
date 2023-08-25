@@ -18,12 +18,28 @@ import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule, 
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatSliderModule,
+    MatListModule,
+    MatSidenavModule,
+   MatExpansionModule,
+   MatSelectModule,
+   MatChipsModule,
   ],
   exports: [
     MatIconModule,
@@ -43,7 +59,10 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatInputModule,
     MatChipsModule,
     MatGridListModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+
+  MatCheckboxModule,
+   MatSlideToggleModule,
   ]
 })
 export class MaterialModelModule { }
