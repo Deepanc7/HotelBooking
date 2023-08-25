@@ -1,0 +1,89 @@
+.about-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .about-section h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .about-section p {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  .why-choose-us,
+  .how-it-works,
+  .for-hotel-owners,
+  .download-app {
+    margin-top: 40px;
+  }
+
+  .why-choose-us {
+    margin-top: 40px;
+  }
+  
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .feature-list li {
+    margin-bottom: 30px;
+  }
+  
+  .feature-list h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .feature-list p {
+    font-size: 18px;
+    color: #666;
+  }
+
+  .stay-connected {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    text-align: center;
+  }
+  
+  .stay-connected h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .stay-connected p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .stay-connected span {
+    font-weight: bold;
+    color: #007bff;
+  }
+
+  .stay-connected p:last-child {
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .about-section h1 {
+      font-size: 1.5rem;
+    }
+    
+    .about-section p,
+    .feature-list p,
+    .stay-connected p {
+      font-size: 0.9rem;
+    }
+  
+    .stay-connected p:last-child {
+      font-size: 1rem;
+    }
+  }

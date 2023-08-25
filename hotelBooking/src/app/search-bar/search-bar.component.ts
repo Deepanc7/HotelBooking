@@ -39,17 +39,10 @@ export class SearchBarComponent {
       guestsAndRooms: this.guestsAndRoomsValue
     };
     this.searchService.setSearchDetails(details);
-    const queryParams = {
-      location: this.location,
-      checkIn: this.checkInDate.toISOString(),
-      checkOut: this.checkOutDate.toISOString(),
-      guestsAndRooms: this.guestsAndRoomsValue
-    };
-    const navigationExtras = {
-      queryParams
-    };
-    this.router.navigate(['/hotels'], navigationExtras);
+    this.router.navigateByUrl('/hotels');
+    console.log(details.guestsAndRooms);
     this.searchTriggered.emit(details);
+
   }
   toggleGuestsPopup() {
     this.showGuestsPopup = !this.showGuestsPopup;
@@ -91,7 +84,8 @@ export class SearchBarComponent {
   calculatePopupPosition() {
     if (this.guestsButton) {
       const buttonRect = this.guestsButton.nativeElement.getBoundingClientRect();
-      this.popupTop = buttonRect.bottom + window.scrollY;
+      const offset = 1; 
+      this.popupTop = buttonRect.bottom + window.scrollY + offset;
       this.popupLeft = buttonRect.left + window.scrollX;
     }
   }
