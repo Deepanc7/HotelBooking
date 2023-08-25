@@ -1,16 +1,7 @@
-<mat-toolbar>
-  
-<div class="toolbar">
-    <app-search-bar (searchTriggered)="searchHotels($event)"
-    [location]="searchDetails.location"
-    [checkInDate]="searchDetails.checkIn"
-    [checkOutDate]="searchDetails.checkOut"
-    [guestsAndRoomsValue]="searchDetails.guestsAndRooms"
-    >
+    <app-search-bar (searchTriggered)="searchHotels($event)">
   
   </app-search-bar>
-  </div>
-</mat-toolbar>
+ 
 <br>
 
 <mat-sidenav-container class="app-container">
