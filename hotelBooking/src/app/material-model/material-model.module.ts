@@ -16,6 +16,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import {MatChipsModule} from '@angular/material/chips';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [],
@@ -36,6 +38,7 @@ import {MatChipsModule} from '@angular/material/chips';
    MatExpansionModule,
    MatSelectModule,
    MatChipsModule,
+   MatCheckboxModule,
   ],
   exports:[
     MatIconModule,
@@ -54,6 +57,8 @@ import {MatChipsModule} from '@angular/material/chips';
    MatAutocompleteModule,
    MatInputModule,
    MatChipsModule,
+   MatCheckboxModule,
+   MatSlideToggleModule,
   ]
 })
 export class MaterialModelModule { }

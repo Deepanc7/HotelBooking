@@ -69,6 +69,7 @@
 }
 .app-sidenav {
   width: 230px;
+  border-radius: 10px;
 }
 .app-sidenav-content {
   display: flex;
@@ -129,4 +130,94 @@ mat-select {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(310px, 2fr));
   }
+}
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+.custom-checkbox {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  user-select: none;
+  color: black;
+}
+
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+.custom-checkbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: #007d0a;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.custom-checkbox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.sortby {
+  width: 25%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sortbylabel {
+  color: black;
+}
+
+.sortbyselect {
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sortbyoption {
+  font-size: 14px;
+}
+
+.sortbyoption:hover {
+  color: rgb(85, 84, 84);
+}
+
+.sortbyButton{
+  display: flex;
+  justify-content: flex-start;
 }
