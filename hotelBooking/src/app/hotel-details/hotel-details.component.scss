@@ -45,8 +45,10 @@
 }
 
 .hotel-details-content {
+  display: flex;
   flex: 1;
   padding: 20px;
+  flex-direction: column;
 }
 
 .hotel-name {
@@ -168,7 +170,7 @@
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 2px 5px wheat;
   border-radius: 10px;
-  overflow: hidden;
+  overflow-x: auto;
   width: 300px;
   color: black;
 }
@@ -242,4 +244,9 @@ mat-label {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.hotelIamagenddetils{
+  display: flex;
+  justify-content: center;
 }
