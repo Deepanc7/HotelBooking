@@ -1,7 +1,7 @@
 .background {
   position: relative;
   width: 100vw;
-  overflow: hidden;
+  overflow: auto;
   background-color: white;
   color: white;
 }
@@ -47,9 +47,10 @@ span {
 }
 
 .footer {
+  position: relative;
   background-color: #fbfafa;
   color: black;
-  padding: 40px 0;
+  padding: 20px 0;
   display: flex;
   justify-content: space-around;
 }
