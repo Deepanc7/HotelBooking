@@ -1,158 +1,119 @@
-.container {
-    display: flex;
-    height: 100vh;
-  }
-  
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidenav-container {
+  flex: 1;
+  display: flex;
+  background-color: #f5f5f5;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  z-index: 0;
+  overflow: auto;
+}
+
+.sidenav {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.mat-card {
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.hotel-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.hotel-name {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.star-icon {
+  color: gold;
+  font-size: small;
+}
+
+.Address {
+  color: black;
+  font-size: 12px;
+}
+
+.booking-details {
+  padding: 10px;
+}
+
+.booking-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.divider {
+  margin: 10px 0;
+  width: 100%;
+}
+
+.total-label {
+  font-size: 18px;
+}
+
+.book-now-button {
+  margin-top: 15px;
+}
+
+/* Maintain old styling for input-group */
+.input-group {
+  display: flex;
+}
+
+.input-field-title,
+.input-field-name {
+  width: 200px;
+  padding: 10px;
+}
+
+.input-field-email,
+.input-field-phone {
+  flex: 1;
+  padding: 10px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
   .sidenav {
-    width: 320px;
-    background-color: #f2f2f2;
-    box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    width: 70%;
-    height: 100%;
+    max-width: 100%;
   }
   
-  .content {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  
-  .hotel-info,
-  .guest-details {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .hotel-info {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .hotel-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 8px;
-    object-fit: cover;
-  }
-  
-  .hotel-details {
-    flex: 1;
-  }
-  
-  .rating {
-    color: #f39c12;
-  }
-  
-  .container {
-    display: flex;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  
-  .main-card {
-    flex: 1;
-    margin: 20px;
-    display: flex;
+  .input-group {
     flex-direction: column;
-    background-color: #f7f7f7;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
   }
   
-  .mat-card-title {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-  }
-  
-  .mat-card-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    overflow-y: auto;
-  }
-  
-  .hotel-image {
+  .input-field-title,
+  .input-field-name,
+  .input-field-email,
+  .input-field-phone {
     width: 100%;
-    height: 300px;
-    overflow: hidden;
-    border-radius: 8px 8px 0 0;
-  }
-  
-  .hotel-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .hotel-details-content {
-    padding: 20px;
-  }
-  
-  .hotel-name {
-    font-size: 24px;
-    margin: 10px 0;
-  }
-  
-  .hotel-rating {
-    color: #f39c12;
     margin-bottom: 10px;
   }
-  
-  .hotel-description {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
-  .hotel-tags {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  
-  .hotel-tags mat-chip {
-    background-color: #f39c12;
-    color: white;
-  }
-  
-  .booking-details {
-    background-color: #fff;
-    border-top: 1px solid #ddd;
-    padding: 20px;
-    margin-top: auto;
-  }
-  
-  .booking-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .booking-label {
-    flex: 0 0 120px;
-    font-weight: bold;
-  }
-  
-  .booking-value {
-    flex: 1;
-  }
-  
-  
-  @media (max-width: 768px) {
-    .container {
-      flex-direction: column;
-    }
-  
-    .main-card {
-      margin: 10px;
-      border-radius: 8px;
-    }
-  }
-  
+}
