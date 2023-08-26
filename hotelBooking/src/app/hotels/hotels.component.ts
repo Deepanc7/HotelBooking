@@ -24,7 +24,7 @@ export class HotelsComponent implements OnInit {
   Parking: boolean | undefined;
   selectedTags: string[] = [];
   selectedRating: number = 0;
-  selectedSortOption:string='';
+  selectedSortOption: string = '';
   tags: string[] = [
     'View', 'Air conditioning', 'Concierge', '24-hour front desk service',
     'Laundry service', 'Free wifi', 'Free parking', 'Restaurant', 'Bar',
@@ -72,6 +72,7 @@ export class HotelsComponent implements OnInit {
     const stars = Math.round(rating);
     return Array(stars).fill('star');
   }
+  
   sendDataToHotelDetails(Object: any) {
     for (let i = 0; i < this.HotelData.length; i++) {
       if (this.HotelData[i] === Object) {
@@ -81,6 +82,7 @@ export class HotelsComponent implements OnInit {
     localStorage.setItem('hotel_details', JSON.stringify(this.details));
     this.router.navigateByUrl('/hotel-details');
   }
+
   applySort() {
     switch (this.selectedSortOption) {
       case 'lowToHigh':
@@ -138,8 +140,8 @@ export class HotelsComponent implements OnInit {
       this.HotelData = this.HotelData.filter((hotel: { ParkingIncluded: number; }) => hotel.ParkingIncluded == 0);
     }
 
-    this.selectedTags = this.filterOptions.filter(option => option.selected) .map(option => option.label); 
-    if (this.selectedTags.length!=0){
+    this.selectedTags = this.filterOptions.filter(option => option.selected).map(option => option.label);
+    if (this.selectedTags.length != 0) {
       console.log(this.selectedTags);
       this.HotelData = this.HotelData.filter((hotel: any) =>
         this.selectedTags.some(tag => hotel.Tags.includes(tag)));
@@ -148,9 +150,11 @@ export class HotelsComponent implements OnInit {
       this.HotelData = this.HotelData.filter((hotel: any) => hotel.Rating >= this.selectedRating);
     }
   }
+
   searchHotels(details: SearchDetails) {
     this.filterHotelData(details);
   }
+
   private filterHotelData(searchDetails: SearchDetails) {
     this.HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
     this.HotelData = this.HotelData.filter((hotel: any) => {
@@ -166,6 +170,7 @@ export class HotelsComponent implements OnInit {
         return false;
       }
     });
+
     this.applyFilters();
   }
 
