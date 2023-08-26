@@ -18,6 +18,7 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -26,11 +27,12 @@
 
 .hotel-details-card {
   display: flex;
-  margin-bottom: 20px;
-  box-shadow: 0px 2px 5px wheat;
+  margin-bottom: 200px;
+  box-shadow: 0px 2px 5px rgb(201, 134, 9);
   border-radius: 10px;
   overflow: hidden;
-  background-color: rgb(255, 255, 255);
+  color: #000000;
+  background-color: rgb(186, 127, 127);
 }
 
 .hotel-image img {
@@ -80,7 +82,7 @@
   display: flex;
   margin: 10px;
   padding: 20px;
-  background-color: #fff;
+  background-color: #ffffff;
   box-shadow: 0px 2px 5px wheat;
   border-radius: 10px;
 }
@@ -167,7 +169,7 @@
   box-shadow: 0px 2px 5px wheat;
   border-radius: 10px;
   overflow: hidden;
-  width: 300px; 
+  width: 300px;
   color: black;
 }
 
@@ -209,5 +211,35 @@ mat-label {
 .side-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
+  justify-content: space-between;
+}
+
+.hotel-details-card {
+  display: flex;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 5px wheat;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+}
+
+.hotel-image img {
+  width: 380px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.hotel-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+}
+
+.side-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

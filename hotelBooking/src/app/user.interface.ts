@@ -6,4 +6,4 @@ export interface User {
     gender: string;
     role: string;
     isactive: boolean;
-  }
+}

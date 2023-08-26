@@ -23,8 +23,8 @@ export class AppComponent {
     localStorage.setItem('hotel_data', JSON.stringify(this.HotelData));
     localStorage.setItem('hotel_details', JSON.stringify(null));
   }
-  
-  place:string[]=[
+
+  place: string[] = [
     "Mountain View",
     "Atlanta",
     "Chicago",

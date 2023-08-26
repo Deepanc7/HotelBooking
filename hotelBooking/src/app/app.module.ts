@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { HotelsComponent } from './hotels/hotels.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModelModule } from './material-model/material-model.module';
 import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 import { HttpClientModule } from '@angular/common/http';

@@ -23,12 +23,14 @@
   padding: 20px;
   background-color: #F5F5F5;
 }
+
 .popular-hotels-card {
   border-radius: 15px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   background-color: rgba(0, 0, 0, 0);
 }
+
 .title {
   background-color: rgba(0, 0, 0, 0);
   color: rgb(255, 255, 255);
@@ -38,6 +40,7 @@
   text-align: center;
   font-size: 25px;
 }
+
 .carousel-container {
   display: flex;
   align-items: center;
@@ -47,7 +50,12 @@
   overflow: hidden;
   position: relative;
   border-radius: 15px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
+
 .carousel-button {
   border: none;
   border-radius: 50%;
@@ -61,17 +69,26 @@
   transform: translateY(-50%);
   transition: background-color 0.2s;
   z-index: 9999;
+
+  @media (max-width: 768px) {
+    padding: 5px;
+    font-size: 24px;
+  }
 }
+
 .carousel-button:hover {
   background-color: rgba(0, 0, 0, 0.2);
   color: #222;
 }
+
 .left {
   left: 0;
 }
+
 .right {
   right: 0;
 }
+
 .carousel {
   display: flex;
   overflow-x: auto;
@@ -79,48 +96,61 @@
   padding: 10px;
   color: black;
 }
+
 .hotel-card {
   flex: 0 0 auto;
   scroll-snap-align: start;
   margin-right: 10px;
-  // width: 320px;
   background-color: #fff;
   border-radius: 15px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
   position: relative;
-margin-bottom: 20px;
+  margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 10px 0;
+  }
 }
+
 .hotel-card:hover {
   transform: scale(1.03);
   z-index: 1;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
 }
+
 .hotel-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
 }
+
 .hotel-details {
   padding: 15px;
 }
+
 .hotel-name {
   margin: 5px 0;
   font-size: 18px;
 }
+
 .hotel-ratings {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+
+  .star-icon {
+    color: #FF5A5F;
+  }
 }
-.star-icon {
-  color: #FF5A5F;
-}
+
 .hotel-price {
   font-size: 16px;
 }
+
 @media (max-width: 768px) {
   app-search-bar {
     width: 100%;
@@ -128,45 +158,66 @@ margin-bottom: 20px;
     overflow-y: scroll;
     background-color: rgba(0, 0, 0, 0);
   }
+
   .popular-hotels-card {
     border-radius: 15px;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     background-color: rgba(0, 0, 0, 0);
   }
+
   .hotel-booking-page {
     padding: 10px;
   }
+
   .carousel-container {
-    flex-direction: column;
-    align-items: stretch;
     border-radius: 15px;
+
+    .carousel-button {
+      padding: 5px;
+      font-size: 24px;
+    }
+
+    .carousel {
+      flex-direction: column;
+      overflow-x: hidden;
+      padding: 0;
+    }
+
+    .hotel-card {
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    .hotel-image {
+      height: 150px;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .hotel-details {
+      padding: 10px;
+    }
+
+    .hotel-name {
+      font-size: 16px;
+    }
+
+    .hotel-price {
+      font-size: 14px;
+    }
   }
-  .carousel-button {
-    padding: 5px;
+
+  .section-title {
     font-size: 24px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #ffffff;
   }
-  .carousel {
-    flex-direction: column;
-    overflow-x: hidden;
-    padding: 0;
-  }
-  .hotel-card {
-    width: 100%;
-    margin: 10px 0;
-  }
-  .hotel-image {
-    height: 150px;
-    border-radius: 10px 10px 0 0;
-  }
-  .hotel-details {
-    padding: 10px;
-  }
-  .hotel-name {
-    font-size: 16px;
-  }
-  .hotel-price {
-    font-size: 14px;
+
+  .section-content {
+    padding: 0 20px;
+    background-color: rgba(0, 0, 0, 0);
   }
 }
 
@@ -192,7 +243,7 @@ mat-card {
 .card-image {
   position: relative;
   width: 100%;
-  height: 200px; 
+  height: 200px;
   overflow: hidden;
 }
 
@@ -243,19 +294,20 @@ mat-card {
   text-align: center;
   z-index: 9999;
 }
+
 .section-title {
-  ::ng-deep{
-  font-size: 24px;
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  color: #ffffff;
+  ::ng-deep {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #ffffff;
   }
 }
 
 .section-content {
-  ::ng-deep{
-  padding: 0 20px; 
-  background-color: rgba(0, 0, 0, 0);
+  ::ng-deep {
+    padding: 0 20px;
+    background-color: rgba(0, 0, 0, 0);
   }
 }

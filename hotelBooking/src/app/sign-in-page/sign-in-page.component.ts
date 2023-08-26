@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../services/authentication.service';
+
 
 @Component({
   selector: 'app-sign-in-page',
@@ -9,10 +9,10 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./sign-in-page.component.scss']
 })
 export class SignInPageComponent {
-  constructor(private builder: FormBuilder, private router: Router, private service: AuthenticationService) { 
+  constructor(private builder: FormBuilder, private router: Router) {
   }
 
-  result:any;
+  result: any;
 
   loginForm = this.builder.group({
     id: this.builder.control('', Validators.required),
@@ -24,22 +24,22 @@ export class SignInPageComponent {
       const storedUserStr = localStorage.getItem(this.loginForm.value.id || '')
       if (storedUserStr !== null) {
         const storedUser = JSON.parse(storedUserStr);
-      
-      if (storedUser && storedUser.password === this.loginForm.value.password) {
-        if (storedUser.isactive) {
-          sessionStorage.setItem('id', storedUser.id);
-          sessionStorage.setItem('role', storedUser.role);
-          this.router.navigate(['/homePage']);
-          alert("Login Successful");
+
+        if (storedUser && storedUser.password === this.loginForm.value.password) {
+          if (storedUser.isactive) {
+            sessionStorage.setItem('id', storedUser.id);
+            sessionStorage.setItem('role', storedUser.role);
+            this.router.navigate(['/homePage']);
+            alert("Login Successful");
+          } else {
+            alert("Login Successful");
+          }
         } else {
-          alert("Login Successful");
+          alert("Invalid credentials");
         }
       } else {
-        alert("Invalid credentials");
+        alert("Enter valid details");
       }
-    } else {
-      alert("Enter valid details");
     }
   }
-}
 }

@@ -1,5 +1,7 @@
 <mat-card>
-  <mat-card-header></mat-card-header>
+  <mat-card-header>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  </mat-card-header>
   <mat-card-content>
     <div class="main-div-For-searchBar mat-elevation-z2">
 
@@ -13,10 +15,12 @@
 
 
       <mat-form-field appearance="fill">
-        <mat-label >CHECKIN/CHECKOUT</mat-label>
+        <mat-label>CHECKIN/CHECKOUT</mat-label>
         <mat-date-range-input [rangePicker]="picker">
-          <input matStartDate [(ngModel)]="checkInDate" [placeholder]="checkInDate ? checkInDate.toDateString() : 'Start date'">
-          <input matEndDate [(ngModel)]="checkOutDate" [placeholder]="checkOutDate ? checkOutDate.toDateString() : 'End date'">
+          <input matStartDate [(ngModel)]="checkInDate"
+            [placeholder]="checkInDate ? checkInDate.toDateString() : 'Start date'">
+          <input matEndDate [(ngModel)]="checkOutDate"
+            [placeholder]="checkOutDate ? checkOutDate.toDateString() : 'End date'">
         </mat-date-range-input>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
@@ -28,7 +32,8 @@
       <button #guestsButton class="btn-searchBar mat-elevation-z0" (click)="toggleGuestsPopup()">
         <mat-icon>people</mat-icon>
         <label class="search-component-label">GUEST & ROOMS</label>
-        <input type="text" [(ngModel)]="guestsAndRoomsValue" [placeholder]="guestsAndRoomsValue ? guestsAndRoomsValue : 'GUEST & ROOMS'" readonly>
+        <input type="text" [(ngModel)]="guestsAndRoomsValue"
+          [placeholder]="guestsAndRoomsValue ? guestsAndRoomsValue : 'GUEST & ROOMS'" readonly>
       </button>
 
 
@@ -38,24 +43,24 @@
         <mat-icon matSuffix>search</mat-icon> Search
       </button>
 
- <!-- Floating Popup for Guests and rooms -->
-    <div class="floating-popup" *ngIf="showGuestsPopup" [style.top.px]="popupTop" [style.left.px]="popupLeft">
-      <div class="popup-content">
+      <!-- Floating Popup for Guests and rooms -->
+      <div class="floating-popup" *ngIf="showGuestsPopup" [style.top.px]="popupTop" [style.left.px]="popupLeft">
+        <div class="popup-content">
 
-        <div *ngFor="let item of guestsItems" class="popup-item">
-          <label>{{ item.label }}:</label>
-          <div class="popup-item-buttons">
-            <button class="w3-button w3-xlarge w3-circle w3-red w3-card-4" (click)="decrement(item)">-</button>
-            {{ item.count }}
-            <button class="w3-button w3-xlarge w3-circle w3-teal" (click)="increment(item)">+</button>
+          <div *ngFor="let item of guestsItems" class="popup-item">
+            <label>{{ item.label }}:</label>
+            <div class="popup-item-buttons">
+              <button class="w3-button w3-xlarge w3-circle w3-red w3-card-4" (click)="decrement(item)">-</button>
+              {{ item.count }}
+              <button class="w3-button w3-xlarge w3-circle w3-teal" (click)="increment(item)">+</button>
+            </div>
           </div>
+          <button class="apply-button" (click)="applyGuests()">Apply</button>
         </div>
-        <button class="apply-button" (click)="applyGuests()">Apply</button>
       </div>
     </div>
-    </div>
 
-   
+
   </mat-card-content>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 </mat-card>

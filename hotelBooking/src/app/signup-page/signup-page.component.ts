@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder,Validators } from '@angular/forms';
-import {  Router } from '@angular/router';
-import { AuthenticationService } from '../services/authentication.service';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '../user.interface';
 
 @Component({
@@ -10,16 +9,16 @@ import { User } from '../user.interface';
   styleUrls: ['./signup-page.component.scss']
 })
 export class SignupPageComponent {
-constructor(private builder:FormBuilder, private router:Router, private service:AuthenticationService){}
+  constructor(private builder: FormBuilder, private router: Router) { }
 
-registersForm = this.builder.group({
-  id:this.builder.control('',Validators.compose([Validators.required,Validators.minLength(5)])),
-  name:this.builder.control('',Validators.required),
-  password:this.builder.control('',Validators.compose([Validators.required])),
-  email:this.builder.control('',Validators.compose([Validators.required,Validators.email])),
-  gender:this.builder.control('male'),
-  role:this.builder.control(''),
-  isactive:this.builder.control('')
+  registersForm = this.builder.group({
+    id: this.builder.control('', Validators.compose([Validators.required, Validators.minLength(5)])),
+    name: this.builder.control('', Validators.required),
+    password: this.builder.control('', Validators.compose([Validators.required])),
+    email: this.builder.control('', Validators.compose([Validators.required, Validators.email])),
+    gender: this.builder.control('male'),
+    role: this.builder.control(''),
+    isactive: this.builder.control('')
   });
 
 

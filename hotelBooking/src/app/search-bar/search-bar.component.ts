@@ -2,21 +2,26 @@ import { Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewChil
 import { SearchService } from './search.service';
 import { SearchDetails } from './search-details.interface';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
   providers: [SearchService]
 })
+
 export class SearchBarComponent {
+
   @ViewChild('guestsButton') guestsButton!: ElementRef;
-  @Input() location: string = '';
-  @Input() checkInDate: Date = new Date();
-  @Input() checkOutDate: Date = new Date();
-  @Input() guestsAndRoomsValue: string = '';
+   location: string = '';
+   checkInDate: Date = new Date();
+   checkOutDate: Date = new Date();
+   guestsAndRoomsValue: string = '';
   @Output() searchTriggered: EventEmitter<SearchDetails> = new EventEmitter<SearchDetails>();
+
   showGuestsPopup = false;
   guestAndRooms: string = "";
+
   guestsItems = [
     { label: 'Adults', count: 1 },
     { label: 'Children', count: 0 },
@@ -29,8 +34,10 @@ export class SearchBarComponent {
     { icon: 'calendar_today', label: 'CHECKIN', input: 'Date' },
     { icon: 'calendar_today', label: 'CHECKOUT', input: 'Date' },
   ];
+
   constructor(private router: Router, private renderer: Renderer2, private searchService: SearchService) {
   }
+
   searchHotels() {
     const details: SearchDetails = {
       location: this.location,
@@ -84,7 +91,7 @@ export class SearchBarComponent {
   calculatePopupPosition() {
     if (this.guestsButton) {
       const buttonRect = this.guestsButton.nativeElement.getBoundingClientRect();
-      const offset = 1; 
+      const offset = 1;
       this.popupTop = buttonRect.bottom + window.scrollY + offset;
       this.popupLeft = buttonRect.left + window.scrollX;
     }

@@ -15,12 +15,12 @@ export class SearchService {
 
   setSearchDetails(details: SearchDetails) {
     this.searchDetails = details;
-    localStorage.setItem('searchDetails',JSON.stringify(this.searchDetails));
+    localStorage.setItem('searchDetails', JSON.stringify(this.searchDetails));
   }
 
   getSearchDetails(): SearchDetails {
-    this.searchDetails =JSON.parse(localStorage.getItem('searchDetails') ||"[]");
+    this.searchDetails = JSON.parse(localStorage.getItem('searchDetails') || "[]");
     return this.searchDetails;
-  
+
   }
 }
