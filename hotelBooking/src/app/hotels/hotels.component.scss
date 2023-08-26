@@ -12,6 +12,8 @@
   gap: 10px;
   background-color: #fff;
   width: 100%;
+  min-height: 500px;
+  height: 100%;
 }
 
 .hotel-card {
@@ -225,21 +227,31 @@ mat-select {
 }
 
 .sortby {
-  width: 25%;
+  width: 15%;
   display: flex;
+  align-items: center;
   justify-content: flex-start;
 }
 
 .sortbylabel {
   color: black;
+  font-size: 14px;
+  margin-right: 8px;
 }
 
 .sortbyselect {
-  color: white;
+  color: #333;
+  background-color: transparent;
   border: none;
   cursor: pointer;
-  font-size: 10px;
-  transition: background-color 0.3s, color 0.3s;
+  font-size: 14px;
+  padding: 0;
+  transition: color 0.3s;
+  justify-content: flex-end;
+}
+
+.sortbyselect:focus {
+  outline: none;
 }
 
 .sortbyoption {
@@ -247,7 +259,7 @@ mat-select {
 }
 
 .sortbyoption:hover {
-  color: rgb(85, 84, 84);
+  color: #666; /* Darken text color on hover */
 }
 
 .sortbyButton {
