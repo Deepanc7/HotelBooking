@@ -7,6 +7,7 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { BookNowComponent } from './book-now/book-now.component';
 
 const routes: Routes = [
   {path:'', component:HomePageComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'signupPage', component:SignupPageComponent},
   {path:'signin', component:SignInPageComponent},
   {path:'about',component:AboutPageComponent},
-  {path:'login',component:LoginPageComponent}
+  {path:'login',component:LoginPageComponent},
+  {path:'booking',component:BookNowComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,52 @@
+<ng-container>
+<mat-sidenav-container class="container">
+    <mat-sidenav mode="side" opened class="sidenav">
+        <ng-container>
+      <mat-card class="sidenav-card">
+        <mat-card class="main-card">
+            <mat-card-title>Hotel Info</mat-card-title>
+            <mat-card-content>
+                <div class="hotel-image">
+                    <img src="{{ hotelDetails.HotelImage }}" alt="Hotel Image">
+                  </div>
+                  <div class="hotel-details-content">
+                    <h2 class="hotel-name">{{ hotelDetails.HotelName }}</h2>
+                    <div class="hotel-rating">
+                      <ng-container *ngFor="let star of getStars(hotelDetails.Rating)">
+                        <mat-icon class="star-icon">star</mat-icon>
+                      </ng-container>
+                    </div>
+                    <p class="hotel-description">{{ hotelDetails.Description }}</p>
+                    <div class="hotel-tags">
+                      <mat-chip *ngFor="let tag of hotelDetails.Tags">{{ tag }}</mat-chip>
+                    </div>
+                  </div>
+              <div class="booking-details">
+                <mat-card>
+                  <mat-card-title>Booking Details</mat-card-title>
+                  <!-- Add content for booking details card here -->
+                </mat-card>
+              </div>
+            </mat-card-content>
+          </mat-card>
+      </mat-card>
+          <mat-card>
+            <mat-card-title>Guest Details</mat-card-title>
+            <!-- Add input fields for title, first name, last name, email, phone number -->
+          </mat-card>
+        </ng-container>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+        <ng-container>
+        <mat-card class="main-card">
+        <mat-card-title>Price Summary</mat-card-title>
+        <!-- Add content for Price Summary card here -->
+      </mat-card>
+      <mat-card class="sidenav-card">
+        <mat-card-title>Coupon Code</mat-card-title>
+        <!-- Add input for coupon code and book now button here -->
+      </mat-card>
+    </ng-container>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>

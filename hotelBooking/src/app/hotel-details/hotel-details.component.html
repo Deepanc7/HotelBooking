@@ -70,4 +70,18 @@
       </div>
     </ng-container>
   </div>
+      <div class="rooms-list">
+        <mat-card class="room-card" *ngFor="let room of hotelDetails.Rooms">
+          <div class="hotel-image">
+            <img src="{{ room.RoomImage }}" alt="Hotel Image">
+          </div>
+          <div class="room-details">
+            <h3 class="room-type">{{ room.Type }}</h3>
+            <p class="room-description">{{ room.Description }}</p>
+            <div class="room-price">{{ room.BaseRate | currency }}</div>
+          </div>
+        </mat-card>
+      </div>
+    </ng-container>
+  </div>
 </div>

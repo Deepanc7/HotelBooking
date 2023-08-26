@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,7 +8,6 @@ import { DataService } from './data.service';
   providers: [DataService]
 })
 export class AppComponent {
-  [x: string]: any;
   jsonData: any;
   HotelData: any[] = [];
 

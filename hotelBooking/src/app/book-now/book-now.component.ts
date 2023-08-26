@@ -3,12 +3,12 @@ import { SearchService } from '../search-bar/search.service';
 import { SearchDetails } from '../search-bar/search-details.interface';
 
 @Component({
-  selector: 'app-hotel-details',
-  templateUrl: './hotel-details.component.html',
-  styleUrls: ['./hotel-details.component.scss'],
+  selector: 'app-book-now',
+  templateUrl: './book-now.component.html',
+  styleUrls: ['./book-now.component.scss'],
   providers: [SearchService]
 })
-export class HotelDetailsComponent implements OnInit{
+export class BookNowComponent implements OnInit{
   HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
   HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "");
 
@@ -39,17 +39,11 @@ export class HotelDetailsComponent implements OnInit{
 
     return foundHotel || "Hotel not found";
   }
-  hotelDetails = this.searchHotelByName(this.HotelDetails);
+  //hotelDetails = this.searchHotelByName(this.HotelDetails);
+  hotelDetails = this.HotelData[0]
 
   getStars(rating: number): number[] {
     const roundedRating = Math.round(rating);
     return Array.from({ length: roundedRating }, (_, index) => index);
-  }
-
-  scrollToRooms() {
-    const roomsSection = document.querySelector('.rooms-list');
-    if (roomsSection) {
-      roomsSection.scrollIntoView({ behavior: 'smooth' });
-    }
   }
 }
