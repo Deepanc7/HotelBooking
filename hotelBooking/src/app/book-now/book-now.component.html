@@ -2,7 +2,7 @@
 <mat-sidenav-container class="container">
     <mat-sidenav mode="side" opened class="sidenav">
         <ng-container>
-      <mat-card class="sidenav-card">
+      <mat-card class="sidenav">
         <mat-card class="main-card">
             <mat-card-title>Hotel Info</mat-card-title>
             <mat-card-content>
@@ -16,17 +16,34 @@
                         <mat-icon class="star-icon">star</mat-icon>
                       </ng-container>
                     </div>
-                    <p class="hotel-description">{{ hotelDetails.Description }}</p>
                     <div class="hotel-tags">
                       <mat-chip *ngFor="let tag of hotelDetails.Tags">{{ tag }}</mat-chip>
                     </div>
                   </div>
-              <div class="booking-details">
-                <mat-card>
-                  <mat-card-title>Booking Details</mat-card-title>
-                  <!-- Add content for booking details card here -->
-                </mat-card>
-              </div>
+                  <div class="booking-details">
+                    <mat-card>
+                      <mat-card-title>Booking Details</mat-card-title>
+                      <mat-card-content>
+                        <div class="booking-item">
+                          <div class="booking-label">Check-in:</div>
+                          <div class="booking-value">{{ hotelDetails.CheckInDate | date: 'medium' }}</div>
+                        </div>
+                        <div class="booking-item">
+                          <div class="booking-label">Check-out:</div>
+                          <div class="booking-value">{{ hotelDetails.CheckOutDate | date: 'medium' }}</div>
+                        </div>
+                        <div class="booking-item">
+                          <div class="booking-label">Rooms:</div>
+                          <div class="booking-value">{{ hotelDetails.Rooms }}</div>
+                        </div>
+                        <div class="booking-item">
+                          <div class="booking-label">Guests:</div>
+                          <div class="booking-value">{{ hotelDetails.Guests }}</div>
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                  
             </mat-card-content>
           </mat-card>
       </mat-card>

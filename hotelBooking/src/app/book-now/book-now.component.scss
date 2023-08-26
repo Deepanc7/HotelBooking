@@ -8,6 +8,8 @@
     background-color: #f2f2f2;
     box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    width: 70%;
+    height: 100%;
   }
   
   .content {
@@ -126,6 +128,22 @@
     padding: 20px;
     margin-top: auto;
   }
+  
+  .booking-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .booking-label {
+    flex: 0 0 120px;
+    font-weight: bold;
+  }
+  
+  .booking-value {
+    flex: 1;
+  }
+  
   
   @media (max-width: 768px) {
     .container {
