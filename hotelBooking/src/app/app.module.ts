@@ -15,6 +15,7 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { BookNowComponent } from './book-now/book-now.component';
 
 
 @NgModule({
@@ -27,8 +28,9 @@ import { LoginPageComponent } from './login-page/login-page.component';
     SignupPageComponent,
     SignInPageComponent,
     AboutPageComponent,
-    LoginPageComponent
-
+    LoginPageComponent,
+    BookNowComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
     FormsModule,
     MaterialModelModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

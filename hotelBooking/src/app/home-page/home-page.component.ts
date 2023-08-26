@@ -28,9 +28,13 @@ export class HomePageComponent implements OnInit {
     "https://th.bing.com/th/id/OIP.SvHZ9DpWpFmHtT8i3aIePgHaE7?pid=ImgDet&rs=1",
     "https://th.bing.com/th/id/OIP.79_nFK2iuT5gMAraz0rBxgHaFj?pid=ImgDet&rs=1",
     "https://th.bing.com/th/id/OIP.UnwY9GUGrATHzyvcSgc8fQHaFj?pid=ImgDet&rs=1",
+    "https://th.bing.com/th/id/OIP.A91QXUu8Q8EChUbaXfUa5AHaJb?pid=ImgDet&rs=1",
+    "https://th.bing.com/th/id/OIP.v_MuDE6WPlSc1TLI6lcsHwHaE7?pid=ImgDet&rs=1",
+    "https://th.bing.com/th/id/OIP.Wli-o_WP8tqJvP7pNcqKlQHaDF?w=299&h=145&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+    "https://th.bing.com/th/id/OIP.GJJnw5cRxg-cVGjBi-vHPAHaLH?pid=ImgDet&rs=1",
   ];
 
-  place:string[]=[
+  place: string[] = [
     "Mountain View",
     "Atlanta",
     "Chicago",
@@ -41,7 +45,11 @@ export class HomePageComponent implements OnInit {
     "Detroit",
     "Seattle",
     "Austin",
-    "Mysore"
+    "Mysore",
+    "Bellevue",
+    "Redmond",
+    "Metairie",
+    "San Francisco",
   ]
 
 
@@ -51,23 +59,23 @@ export class HomePageComponent implements OnInit {
   startIndex = 0;
   itemsPerPage = 4;
   LowestRoomPrice: number[] = [];
-  details:string='';
+  details: string = '';
 
-  constructor(private router: Router,private searchService: SearchService) {
-    this.HotelData.sort((a:any, b:any) => b.Rating - a.Rating);
+  constructor(private router: Router, private searchService: SearchService) {
+    this.HotelData.sort((a: any, b: any) => b.Rating - a.Rating);
     this.maxIndex = this.popularHotels.length - 1;
   }
 
   ngOnInit() {
     this.lowestRoomPrice();
     this.updateDisplayedHotels();
-    
-    for(let i=0;i<this.HotelData.length;i++){
-    console.log(this.HotelData[i].Address.City);
+
+    for (let i = 0; i < this.HotelData.length; i++) {
+      console.log(this.HotelData[i].Address.City);
     }
   }
 
-  goToHotels(index:any) {
+  goToHotels(index: any) {
     const details: SearchDetails = {
       location: String(this.place[index]),
       checkIn: this.checkInDate,
@@ -91,7 +99,7 @@ export class HomePageComponent implements OnInit {
     }
     this.updateDisplayedHotels();
   }
-  
+
   updateDisplayedHotels(): void {
     this.displayedHotels = this.popularHotels.slice(this.startIndex, this.startIndex + this.itemsPerPage);
   }

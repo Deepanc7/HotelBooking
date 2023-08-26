@@ -11,6 +11,8 @@
   gap: 10px;
   background-color: #fff;
   width: 100%;
+  min-height: 500px;
+  height: 100%;
 }
 .hotel-card {
   flex: 0 0 auto;
@@ -25,7 +27,6 @@
   padding: 8%;
   color: black;
   position: relative;
-  
 }
 .hotel-card:hover {
   transform: scale(1.03);
@@ -79,23 +80,6 @@
 .toolbar {
   width: 100%;
   height: 20%;
-}
-
-mat-toolbar {
-  height: 20%;
-  background-color: rgba(0, 0, 0, 0);
-}
-
-mat-sidenav-container{
-  background-color: rgba(0, 0, 0, 0);
-}
-mat-sidenav{
-  background-color: whitesmoke;
-
-}
-
-mat-card{
-  background-color: whitesmoke;
 }
 .sidenavDiv{
   padding: 10%;
@@ -208,21 +192,31 @@ mat-select {
 }
 
 .sortby {
-  width: 25%;
+  width: 15%;
   display: flex;
+  align-items: center;
   justify-content: flex-start;
 }
 
 .sortbylabel {
   color: black;
+  font-size: 14px;
+  margin-right: 8px;
 }
 
 .sortbyselect {
-  color: white;
+  color: #333;
+  background-color: transparent;
   border: none;
   cursor: pointer;
-  font-size: 10px;
-  transition: background-color 0.3s, color 0.3s;
+  font-size: 14px;
+  padding: 0;
+  transition: color 0.3s;
+  justify-content: flex-end;
+}
+
+.sortbyselect:focus {
+  outline: none;
 }
 
 .sortbyoption {
@@ -230,10 +224,5 @@ mat-select {
 }
 
 .sortbyoption:hover {
-  color: rgb(85, 84, 84);
-}
-
-.sortbyButton{
-  display: flex;
-  justify-content: flex-start;
+  color: #666; /* Darken text color on hover */
 }

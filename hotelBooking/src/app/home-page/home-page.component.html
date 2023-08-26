@@ -1,49 +1,49 @@
 <div class="background">
   <app-search-bar></app-search-bar>
-<br>
-<ng-container>
-  <mat-card class="popular-hotels-card">
-    <mat-card-title class="title">Popular Hotels</mat-card-title>
-    <div class="carousel-container">
-      <button mat-icon-button class="carousel-button left" (click)="moveCarousel(-1)">
+  <br>
+  <ng-container>
+    <mat-card class="popular-hotels-card">
+      <mat-card-title class="title">Popular Hotels</mat-card-title>
+      <div class="carousel-container">
+        <button mat-icon-button class="carousel-button left" (click)="moveCarousel(-1)">
           <mat-icon>keyboard_arrow_left</mat-icon>
         </button>
-      <div class="carousel">
-        <ng-container *ngFor="let hotel of displayedHotels">
-          <div class="hotel-card" (click)="sendDataToHotelDetails(hotel)">
-            <img [src]="hotel.HotelImage" alt="{{ hotel.HotelName }} Image" class="hotel-image">
-            <div class="hotel-details">
-              <h4 class="hotel-name">{{ hotel.HotelName }}</h4>
-              <div class="hotel-ratings">
-                <ng-container *ngFor="let star of getStars(hotel.Rating)">
-                  <mat-icon class="star-icon">star</mat-icon>
-                </ng-container>
-              </div>
-              <div class="hotel-price">
-                Starts From: ${{ hotel.lowestPrice }}
+        <div class="carousel">
+          <ng-container *ngFor="let hotel of displayedHotels">
+            <div class="hotel-card" (click)="sendDataToHotelDetails(hotel)">
+              <img [src]="hotel.HotelImage" alt="{{ hotel.HotelName }} Image" class="hotel-image">
+              <div class="hotel-details">
+                <h4 class="hotel-name">{{ hotel.HotelName }}</h4>
+                <div class="hotel-ratings">
+                  <ng-container *ngFor="let star of getStars(hotel.Rating)">
+                    <mat-icon class="star-icon">star</mat-icon>
+                  </ng-container>
+                </div>
+                <div class="hotel-price">
+                  Starts From: ${{ hotel.lowestPrice }}
+                </div>
               </div>
             </div>
-          </div>
-        </ng-container>
-      </div>
-      <button mat-icon-button class="carousel-button right" (click)="moveCarousel(1)">
-        <mat-icon>keyboard_arrow_right</mat-icon>
-      </button>
-    </div>
-  </mat-card> 
-  
-  <mat-card class="section-content">
-    <mat-card-title class="section-title">Popular Destinations</mat-card-title>
-  <div class="image-container">
-    <mat-card class="image-card" *ngFor="let imageUrl of imageUrls; let i = index" (click)="goToHotels(i)">
-      <div class="card-image">
-        <img [src]="imageUrl" alt="Image">
-        <div class="card-content">
-          <h3>{{ place[i] }}</h3>
+          </ng-container>
         </div>
+        <button mat-icon-button class="carousel-button right" (click)="moveCarousel(1)">
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
       </div>
     </mat-card>
-  </div>
-  </mat-card>
-</ng-container>
+
+    <mat-card class="section-content">
+      <mat-card-title class="section-title">Popular Destinations</mat-card-title>
+      <div class="image-container">
+        <mat-card class="image-card" *ngFor="let imageUrl of imageUrls; let i = index" (click)="goToHotels(i)">
+          <div class="card-image">
+            <img [src]="imageUrl" alt="Image">
+            <div class="card-content">
+              <h3>{{ place[i] }}</h3>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </mat-card>
+  </ng-container>
 </div>
