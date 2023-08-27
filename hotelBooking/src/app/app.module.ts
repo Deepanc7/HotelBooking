@@ -17,6 +17,8 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { BookNowComponent } from './book-now/book-now.component';
 
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { BookNowComponent } from './book-now/book-now.component';
     MaterialModelModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

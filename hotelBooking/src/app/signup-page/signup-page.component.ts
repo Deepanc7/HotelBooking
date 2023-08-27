@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../user.interface';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup-page',
@@ -9,7 +10,7 @@ import { User } from '../user.interface';
   styleUrls: ['./signup-page.component.scss']
 })
 export class SignupPageComponent {
-  constructor(private builder: FormBuilder, private router: Router) { }
+  constructor(private builder: FormBuilder, private router: Router, private toastr: ToastrService) { }
 
   registersForm = this.builder.group({
     id: this.builder.control('', Validators.compose([Validators.required, Validators.minLength(5)])),
@@ -35,10 +36,10 @@ export class SignupPageComponent {
       };
 
       localStorage.setItem(user.id, JSON.stringify(user));
-      alert('Registration successful');
+      this.toastr.success('Prepare for adventure – your registration victory just unlocked the door.', 'Registration successful');
       this.router.navigate(['/signin']);
     } else {
-      alert('Enter valid details');
+      this.toastr.error('Enter valid details', 'Error');
     }
   }
 

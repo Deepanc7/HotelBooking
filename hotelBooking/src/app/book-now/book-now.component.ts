@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../search-bar/search.service';
 import { SearchDetails } from '../search-bar/search-details.interface';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-book-now',
@@ -24,13 +25,18 @@ export class BookNowComponent implements OnInit{
     guestsAndRooms: ''
   };
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService, private toastr: ToastrService) { }
 
   ngOnInit() {
     let search: SearchDetails = this.searchService.getSearchDetails();
     let x = search.guestsAndRooms.split(" ");
     this.GuestCount = Number(x[0]) + Number(x[2]);
     this.RoomCount = Number(x[4]);
+    
+  }
+
+  success(){
+    this.toastr.success('Congratulations! Your adventure headquarters is confirmed.', 'Booked');
   }
 
   searchHotelByName(hotelName: string) {

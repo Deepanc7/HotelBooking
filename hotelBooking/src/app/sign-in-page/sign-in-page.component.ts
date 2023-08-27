@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-in-page.component.scss']
 })
 export class SignInPageComponent {
-  constructor(private builder: FormBuilder, private router: Router) {
+  constructor(private builder: FormBuilder, private router: Router, private toastr: ToastrService) {
   }
 
   result: any;
@@ -30,15 +30,15 @@ export class SignInPageComponent {
             sessionStorage.setItem('id', storedUser.id);
             sessionStorage.setItem('role', storedUser.role);
             this.router.navigate(['/homePage']);
-            alert("Login Successful");
+            this.toastr.success('You\'ve successfully cracked the code to your account. Hello there!', 'Login Successful');
           } else {
-            alert("Login Successful");
+            this.toastr.success('You\'ve successfully cracked the code to your account. Hello there!', 'Login Successful');
           }
         } else {
-          alert("Invalid credentials");
+          this.toastr.error('Error 404: Password genius not found. Please retry.', 'Invalid credentials');
         }
       } else {
-        alert("Enter valid details");
+        this.toastr.error('Looks like our virtual dictionary doesn\'t have that entry. Fancy another try?', 'Enter valid details');
       }
     }
   }
