@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../search-bar/search.service';
 import { SearchDetails } from '../search-bar/search-details.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hotel-details',
@@ -24,7 +25,7 @@ export class HotelDetailsComponent implements OnInit{
     guestsAndRooms: ''
   };
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService, private router: Router) { }
 
   ngOnInit() {
     let search: SearchDetails = this.searchService.getSearchDetails();
@@ -51,5 +52,10 @@ export class HotelDetailsComponent implements OnInit{
     if (roomsSection) {
       roomsSection.scrollIntoView({ behavior: 'smooth' });
     }
+  }
+
+  selectRoom(room:any) {
+    localStorage.setItem('room-details', JSON.stringify(String(room.type)));
+    this.router.navigateByUrl('/booking');
   }
 }
