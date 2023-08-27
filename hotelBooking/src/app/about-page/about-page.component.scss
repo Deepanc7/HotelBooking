@@ -2,6 +2,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    position: relative; 
   }
   
   .about-section h1 {
@@ -47,7 +48,7 @@
   .stay-connected {
     margin-top: 40px;
     padding: 20px;
-    background-color: #f5f5f5;
+    background-color: #b4aaaa;
     text-align: center;
   }
   
@@ -71,6 +72,8 @@
     font-weight: bold;
     font-size: 24px;
   }
+
+  
 
   @media screen and (max-width: 768px) {
     .about-section h1 {

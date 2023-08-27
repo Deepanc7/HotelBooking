@@ -31,17 +31,24 @@
   box-shadow: 0px 2px 5px rgb(201, 134, 9);
   border-radius: 10px;
   overflow: hidden;
+  overflow-x: auto;
   color: #000000;
+  flex-direction: row;
   background-color: rgb(186, 127, 127);
 }
 
 .hotel-image img {
-  width: 380px;
-  height: 180px;
+  width: auto;
+  height: auto;
   object-fit: cover;
   border-radius: 10px;
   margin: 10px;
-  float: right;
+  float: left;
+}
+
+.hotel-image {
+  display: flex;
+  align-items: center;
 }
 
 .hotel-details-content {
@@ -77,6 +84,7 @@
 .rooms-list {
   display: flex;
   flex-wrap: wrap;
+  overflow-x: auto;
 }
 
 .room-card {
@@ -87,6 +95,7 @@
   background-color: #ffffff;
   box-shadow: 0px 2px 5px wheat;
   border-radius: 10px;
+  width: fit-content;
 }
 
 .room-image {
@@ -114,25 +123,23 @@
   font-weight: bold;
 }
 
-.hotel-price-card {
+#hotel-price-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
   padding: 20px;
   background-color: white;
-  box-shadow: 0px 2px 5px wheat;
+  box-shadow: 0px 2px 5px rgb(43, 43, 42);
   border-radius: 10px;
-  overflow: hidden;
-  background-color: white;
-  width: 300px;
+  width: min-content;
 }
 
 .hotel-price-details {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 190px;
   margin-bottom: 10px;
 }
 
@@ -162,22 +169,20 @@
 }
 
 
-.date-time-card {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  padding: 20px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 2px 5px wheat;
+#date-time-card {
+  background-color: rgb(246, 246, 246);
+  box-shadow: 0px 2px 5px rgb(54, 54, 54);
   border-radius: 10px;
   overflow-x: auto;
-  width: 300px;
+  width: fit-content;
   color: black;
 }
 
 .check-in-out {
   display: flex;
   align-items: center;
+  justify-content: space-around;
+  width: fit-content;
 }
 
 .check-in,
@@ -196,53 +201,46 @@
   font-size: 14px;
   color: #888;
 }
+
 mat-label {
   font-size: 30px;
   color: black;
   font: bold;
 }
+
 .hotel-content {
   flex: 1;
   display: flex;
-  flex-direction: column;
-}
-.side-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.hotel-details-card {
-  display: flex;
-  margin-bottom: 20px;
-  box-shadow: 0px 2px 5px wheat;
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: rgb(255, 255, 255);
-}
-
-.hotel-image img {
-  width: 380px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin: 10px;
-}
-
-.hotel-content {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 20px;
+  flex-direction: row;
 }
 
 .side-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: fit-content;
 }
 
-.hotelIamagenddetils{
+.hotelIamagenddetils {
   display: flex;
   justify-content: center;
+}
+
+.content-hotel {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width:900px) {
+  .content-hotel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hotel-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
 }
