@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewChil
 import { SearchService } from './search.service';
 import { SearchDetails } from './search-details.interface';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-search-bar',
@@ -21,6 +22,7 @@ export class SearchBarComponent {
 
   showGuestsPopup = false;
   guestAndRooms: string = "";
+  HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
 
   guestsItems = [
     { label: 'Adults', count: 1 },
@@ -35,7 +37,7 @@ export class SearchBarComponent {
     { icon: 'calendar_today', label: 'CHECKOUT', input: 'Date' },
   ];
 
-  constructor(private router: Router, private renderer: Renderer2, private searchService: SearchService) {
+  constructor(private router: Router, private renderer: Renderer2, private searchService: SearchService, private toastr: ToastrService) {
   }
 
   searchHotels() {
@@ -45,11 +47,32 @@ export class SearchBarComponent {
       checkOut: this.checkOutDate,
       guestsAndRooms: this.guestsAndRoomsValue
     };
-    this.searchService.setSearchDetails(details);
+    if (this.searchHotelByLocation(this.location)) {
+      this.searchService.setSearchDetails(details);
     this.router.navigateByUrl('/hotels');
     console.log(details.guestsAndRooms);
     this.searchTriggered.emit(details);
+    }
+    else {
+      this.toastr.error('Location does not exist', 'Error');
+    }
 
+  }
+
+  searchHotelByLocation(location: string) {
+    for (let hotel of this.HotelData){
+      let loc = location;
+      let country = hotel.Address.Country.toLowerCase();
+      let street = hotel.Address.StreetAddress.toLowerCase();
+      let city = hotel.Address.City.toLowerCase();
+      let state = hotel.Address.StateProvince;
+      let postalcode = hotel.Address.PostalCode;
+      let name = hotel.HotelName;
+      if (country === loc || city == loc || street === loc || state === loc || postalcode === loc || name === loc) {
+        return true;
+      }
+    }
+    return false;
   }
   toggleGuestsPopup() {
     this.showGuestsPopup = !this.showGuestsPopup;

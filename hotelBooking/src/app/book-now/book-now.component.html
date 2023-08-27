@@ -2,8 +2,9 @@
 <ng-container>
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav mode="side" opened class="sidenav">
+      <div class="sidenav-content">
       <ng-container>
-        <mat-card class="sidenav">
+        <mat-card class="hotel-info">
             <mat-card-title>Hotel Info</mat-card-title>
             <mat-card-content>
               <div class="hotel-image">
@@ -21,7 +22,7 @@
                 </div>
               </div>
               <div class="booking-details">
-                <mat-card>
+                <mat-card class="booking-card">
                   <mat-card-title>Booking Details</mat-card-title>
                   <mat-card-content>
                     <div class="booking-item">
@@ -43,6 +44,7 @@
                   </mat-card-content>
                 </mat-card>
               </div>
+              
 
             </mat-card-content>
         </mat-card>
@@ -75,8 +77,10 @@
         </mat-card>
 
       </ng-container>
+    </div>
     </mat-sidenav>
     <mat-sidenav-content class="main-content">
+      <div class="main-content-inner">
       <ng-container>
         <mat-card class="price-card">
           <mat-card-title>Price Summary</mat-card-title>
@@ -112,10 +116,12 @@
             <mat-form-field>
               <input matInput placeholder="Enter coupon code">
             </mat-form-field>
-            <button mat-raised-button color="primary" class="book-now-button">Book Now</button>
+            <br>
+            <button mat-raised-button color="primary" class="book-now-button" (click)="success()">Book Now</button>
           </mat-card-content>
         </mat-card>
       </ng-container>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </ng-container>

@@ -109,7 +109,8 @@ export class HotelsComponent implements OnInit {
       let city = hotel.Address.City.toLowerCase();
       let state = hotel.Address.StateProvince;
       let postalcode = hotel.Address.PostalCode;
-      if (country === loc || city == loc || street === loc || state === loc || postalcode === loc) {
+      let name = hotel.HotelName;
+      if (country === loc || city == loc || street === loc || state === loc || postalcode === loc || name === loc) {
         return true;
       }
       else { return false; }

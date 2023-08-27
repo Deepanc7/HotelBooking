@@ -1,66 +1,70 @@
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
 .content-container {
   display: flex;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
 .sidenav-container {
   flex: 1;
   display: flex;
-  background-color: #f5f5f5;
-  padding: 20px;
-  position: relative;
-  overflow: hidden;
-}
-
-.main-content {
-  flex: 1;
-  padding: 20px;
-  z-index: 0;
-  overflow: auto;
 }
 
 .sidenav {
-  flex: 1;
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  width: 60%; /* Adjust as needed */
+  min-width: 300px; /* Set a minimum width */
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  left: 0;
 }
 
-.mat-card {
-  margin-bottom: 20px;
-  background-color: #fff;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+.sidenav-content {
+  flex: 1;
+}
+
+.hotel-image {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .hotel-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
+  max-width: 100%;
+  max-height: 100%;
 }
 
-.hotel-name {
-  font-size: 18px;
-  margin: 10px 0;
+.hotel-details-content {
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.star-icon {
-  color: gold;
-  font-size: small;
+.main-content {
+  flex: 2; /* Adjust the flex value */
+  padding: 16px;
+  right: 0;
 }
 
-.Address {
-  color: black;
-  font-size: 12px;
+.main-content-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.price-card,
+.guest-card {
+  width: 100%; /* Expand to full width */
+  margin-bottom: 16px; /* Add space between cards */
 }
 
 .booking-details {
-  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.booking-card {
+  width: 400px;
 }
 
 .booking-item {
@@ -69,51 +73,42 @@
   margin-bottom: 10px;
 }
 
-.divider {
-  margin: 10px 0;
-  width: 100%;
+.booking-label {
+  font-weight: bold;
 }
 
-.total-label {
-  font-size: 18px;
+.booking-value {
+  text-align: right;
 }
 
-.book-now-button {
-  margin-top: 15px;
-}
 
-/* Maintain old styling for input-group */
-.input-group {
-  display: flex;
-}
+/* Add media queries for responsiveness */
 
-.input-field-title,
-.input-field-name {
-  width: 200px;
-  padding: 10px;
-}
-
-.input-field-email,
-.input-field-phone {
-  flex: 1;
-  padding: 10px;
-}
-
-/* Responsive styles */
-@media screen and (max-width: 768px) {
-  .sidenav {
-    max-width: 100%;
-  }
-  
-  .input-group {
+@media (max-width: 768px) {
+  .content-container {
     flex-direction: column;
   }
-  
-  .input-field-title,
-  .input-field-name,
-  .input-field-email,
-  .input-field-phone {
+
+  .sidenav-container {
+    flex: initial;
+  }
+
+  .sidenav {
     width: 100%;
-    margin-bottom: 10px;
+    padding: 16px;
+  }
+
+  .hotel-image {
+    justify-content: center;
+  }
+
+  .hotel-details-content {
+    padding: 16px 0;
+    align-items: center;
+  }
+
+  .main-content {
+    flex: 2; /* Adjust the flex value */
+    padding: 16px;
   }
 }
