@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class BookNowComponent implements OnInit{
   HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
   HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "");
+  RoomDetails = JSON.parse(localStorage.getItem('room-details') || "");
 
   GuestCount: number = 0;
   RoomCount: number = 0;
@@ -45,8 +46,7 @@ export class BookNowComponent implements OnInit{
 
     return foundHotel || "Hotel not found";
   }
-  //hotelDetails = this.searchHotelByName(this.HotelDetails);
-  hotelDetails = this.HotelData[0]
+  hotelDetails = this.searchHotelByName(this.HotelDetails);
 
   getStars(rating: number): number[] {
     const roundedRating = Math.round(rating);

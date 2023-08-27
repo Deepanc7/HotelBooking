@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { SearchService } from '../search-bar/search.service';
 import { SearchDetails } from '../search-bar/search-details.interface';
 
@@ -17,7 +17,7 @@ export class HotelsComponent implements OnInit {
     guestsAndRooms: ''
   };
   HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
-  HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "[]");
+  HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "");
   details: string = '';
   LowestRoomPrice: number[] = [];
   PriceRange: string = '';
@@ -45,7 +45,7 @@ export class HotelsComponent implements OnInit {
     { label: 'Coffee in lobby', selected: false },
     { label: 'Continental breakfast', selected: false },
   ];
-  constructor(private router: Router, private searchService: SearchService, private route: ActivatedRoute) {
+  constructor(private router: Router, private searchService: SearchService) {
   }
   ngOnInit() {
     let search: SearchDetails = this.searchService.getSearchDetails();
