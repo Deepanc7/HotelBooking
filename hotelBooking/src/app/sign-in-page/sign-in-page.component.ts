@@ -11,13 +11,14 @@ import { ToastrService } from 'ngx-toastr';
 export class SignInPageComponent {
   constructor(private builder: FormBuilder, private router: Router, private toastr: ToastrService) {
   }
-
+loginSuccess:Boolean=false;
   result: any;
 
   loginForm = this.builder.group({
     id: this.builder.control('', Validators.required),
     password: this.builder.control('', Validators.required)
   });
+
 
   loginNow() {
     if (this.loginForm.valid) {
@@ -30,8 +31,13 @@ export class SignInPageComponent {
             sessionStorage.setItem('id', storedUser.id);
             sessionStorage.setItem('role', storedUser.role);
             this.router.navigate(['/homePage']);
+            this.loginSuccess = true;
+
+            localStorage.setItem('loginSuccess',JSON.stringify(this.loginSuccess));
+
             this.toastr.success('You\'ve successfully cracked the code to your account. Hello there!', 'Login Successful');
           } else {
+            this.loginSuccess = true;
             this.toastr.success('You\'ve successfully cracked the code to your account. Hello there!', 'Login Successful');
           }
         } else {

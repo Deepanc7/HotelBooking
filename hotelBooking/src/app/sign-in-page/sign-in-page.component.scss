@@ -1,22 +1,25 @@
 .loginForm {
-    max-width: 500px;
+    width: fit-content;
 }
 
 .full-width {
-    max-width: 800px;
-    margin: auto;
-    width: 500px;
+    width: fit-content;
 }
 
 mat-card {
     color: black;
-    max-width: 100%;
+    max-width: 300px;
     background-color: rgb(255, 255, 255);
 
+}
+
+mat-card-content{
+    width: fit-content;
 }
 
 div {
     display: flex;
     column-gap: 20px;
-    width: 500px;
+    width: fit-content;
+    flex-direction: row;
 }

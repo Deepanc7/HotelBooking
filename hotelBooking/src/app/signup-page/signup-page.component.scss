@@ -1,16 +1,17 @@
 .RegisterForm {
-    max-width: 500px;
+    max-width: max-content;
 }
 
 .full-width {
     max-width: 800px;
     margin: auto;
-    width: 500px;
+    width: 100%;
 }
 
 mat-card {
     color: black;
-    max-width: 100%;
+    max-width: 350px;
+    width: 100%;
     background-color: rgb(255, 255, 255);
 
 }
@@ -18,7 +19,7 @@ mat-card {
 div {
     display: flex;
     column-gap: 20px;
-    width: 500px;
+    width: fit-content;
 }
 
 mat-label {

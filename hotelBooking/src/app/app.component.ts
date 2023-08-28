@@ -10,10 +10,16 @@ import { DataService } from './data.service';
 export class AppComponent {
   jsonData: any;
   HotelData: any[] = [];
+  loginSuccessful:Boolean = false;
+ 
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService) {
+    this.loginSuccessful= JSON.parse(localStorage.getItem('loginSuccess') || "") ;
+   }
 
   ngOnInit(): void {
+  
+    console.log(this.loginSuccessful);
     this.jsonData = this.dataService.getJsonData().value;
     for (let i = 0; i < this.jsonData.length; i++) {
       this.HotelData.push(this.jsonData[i]);
