@@ -25,6 +25,7 @@ export class HotelsComponent implements OnInit {
   selectedTags: string[] = [];
   selectedRating: number = 0;
   selectedSortOption: string = '';
+  Ratings=[1,2,3,4,5];
   tags: string[] = [
     'View', 'Air conditioning', 'Concierge', '24-hour front desk service',
     'Laundry service', 'Free wifi', 'Free parking', 'Restaurant', 'Bar',

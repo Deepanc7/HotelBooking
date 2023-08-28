@@ -69,10 +69,6 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
     this.lowestRoomPrice();
     this.updateDisplayedHotels();
-
-    for (let i = 0; i < this.HotelData.length; i++) {
-      console.log(this.HotelData[i].Address.City);
-    }
   }
 
   goToHotels(index: any) {
