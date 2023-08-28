@@ -46,16 +46,19 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <mat-card>
-        <ng-container>
-          <mat-form-field class="sortby">
-            <mat-label class="sortbylabel">Sort By</mat-label>
+
+        <div class="sortByButton" id="sortByButton">
+
+          <mat-form-field id="sortby" class="sortby">
+            <mat-label id="sortbylabel" class="sortbylabel">Sort By</mat-label>
             <mat-select [(ngModel)]="selectedSortOption" (selectionChange)="applySort()" class="sortbyselect">
               <mat-option value="lowToHigh" class="sortbyoption">Low to High</mat-option>
               <mat-option value="highToLow" class="sortbyoption">High to Low</mat-option>
               <mat-option value="popularity" class="sortbyoption">Popularity</mat-option>
             </mat-select>
           </mat-form-field>
-        </ng-container>
+        </div>
+        <br>
         <div class="hotel-list">
           <ng-container *ngFor="let hotel of HotelData">
             <div class="hotel-card" (click)="sendDataToHotelDetails(hotel)">

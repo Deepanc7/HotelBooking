@@ -1,15 +1,18 @@
-<div class="content-container">
-<ng-container>
+<mat-card>
   <mat-sidenav-container class="sidenav-container">
+
     <mat-sidenav mode="side" opened class="sidenav">
       <div class="sidenav-content">
-      <ng-container>
-        <mat-card class="hotel-info">
-            <mat-card-title>Hotel Info</mat-card-title>
+        <mat-card id="hotel-info" class="hotel-info">
+            <mat-card-header class="header" id="header"> <h1> HOTEL INFO</h1></mat-card-header>
+            <br>
             <mat-card-content>
+             <div class="hotel-details">
+              <div class="hotel-imgContainer" >
               <div class="hotel-image">
                 <img src="{{ hotelDetails.HotelImage }}" alt="Hotel Image">
               </div>
+            </div>
               <div class="hotel-details-content">
                 <h2 class="hotel-name">{{ hotelDetails.HotelName }}</h2>
                 <div class="hotel-rating">
@@ -21,6 +24,7 @@
                   <p>{{hotelDetails.Address.City}}</p>
                 </div>
               </div>
+            </div>
               <div class="booking-details">
                 <mat-card class="booking-card">
                   <mat-card-title>Booking Details</mat-card-title>
@@ -75,8 +79,6 @@
             </mat-form-field>
           </mat-card-content>
         </mat-card>
-
-      </ng-container>
     </div>
     </mat-sidenav>
     <mat-sidenav-content class="main-content">
@@ -124,5 +126,5 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</ng-container>
-</div>
+
+</mat-card>

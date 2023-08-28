@@ -227,10 +227,7 @@ mat-select {
 }
 
 .sortby {
-  width: 15%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  width: 200px;
 }
 
 .sortbylabel {
@@ -259,12 +256,15 @@ mat-select {
 }
 
 .sortbyoption:hover {
-  color: #666; /* Darken text color on hover */
+  color: #666;
 }
 
-.sortbyButton {
+.sortByButton {
   display: flex;
-  justify-content: flex-start;
+  width: 100%;
+  height: 70px;
+  padding: 2%;
+  justify-content: flex-end;
 }
 
 
