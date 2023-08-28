@@ -43,8 +43,8 @@ export class SearchBarComponent {
   searchHotels() {
     const details: SearchDetails = {
       location: this.location,
-      checkIn: this.checkInDate,
-      checkOut: this.checkOutDate,
+      checkIn: new Date(this.checkInDate),
+      checkOut: new Date(this.checkOutDate),
       guestsAndRooms: this.guestsAndRoomsValue
     };
     if (this.searchHotelByLocation(this.location)) {
@@ -61,7 +61,7 @@ export class SearchBarComponent {
 
   searchHotelByLocation(location: string) {
     for (let hotel of this.HotelData){
-      let loc = location;
+      let loc = location.toLocaleLowerCase();
       let country = hotel.Address.Country.toLowerCase();
       let street = hotel.Address.StreetAddress.toLowerCase();
       let city = hotel.Address.City.toLowerCase();

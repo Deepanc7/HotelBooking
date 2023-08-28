@@ -81,9 +81,9 @@ mat-card {
 }
 
 .searchButton {
-  background-color: #616161;
+  background-color: #46bb4d;
   ;
-  color: rgb(177, 170, 170);
+  color: black;
   border: none;
   padding: 20px 35px;
   border-radius: 50px;
@@ -100,18 +100,18 @@ mat-card {
 }
 
 .searchButton.enabled {
-  background-color: #1e1f24;
+  background-color: #4be264;
   color: white;
 }
 
 .searchButton.disabled {
   background-color: #f2f2f2;
-  color: #999999;
+  color: #0a5317;
   cursor: not-allowed;
 }
 
 .searchButton:hover {
-  background-color: #2cb500;
+  background-color: #93e976;
 }
 
 
@@ -123,14 +123,14 @@ mat-card {
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999;
-
+  border: 10px;
 }
 
 .popup-content {
-  background-color: rgb(189, 232, 235);
+  background-color: whitesmoke;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 10px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
   width: 300px;
   z-index: 1000;
   position: absolute;
@@ -206,7 +206,7 @@ mat-date-range-input {
   }
 
   .searchButton:hover {
-    background-color: #7c7c7c;
+    background-color: #66ec73;
   }
 
   .btn-searchBar {

@@ -128,7 +128,6 @@ mat-card {
 
 .mat-mdc-list-base {
   display: flow;
-  padding: 5%;
 }
 
 .mat-mdc-raised-button.mat-unthemed {
@@ -226,6 +225,17 @@ mat-select {
   transform: rotate(45deg);
 }
 
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
 .sortby {
   width: 15%;
   display: flex;
@@ -244,7 +254,7 @@ mat-select {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 10px;
   padding: 0;
   transition: color 0.3s;
   justify-content: flex-end;
