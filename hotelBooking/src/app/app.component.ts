@@ -18,8 +18,6 @@ export class AppComponent {
    }
 
   ngOnInit(): void {
-  
-    console.log(this.loginSuccessful);
     this.jsonData = this.dataService.getJsonData().value;
     for (let i = 0; i < this.jsonData.length; i++) {
       this.HotelData.push(this.jsonData[i]);
