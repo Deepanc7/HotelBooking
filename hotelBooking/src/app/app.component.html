@@ -6,6 +6,11 @@
   </a>
   <div class="spacer"></div>
 
+  <button mat-button *ngIf="!loginSuccessful"  routerLink="/login" ><mat-icon>account_circle</mat-icon></button>
+  <button mat-button *ngIf="loginSuccessful"  routerLink="/" ><mat-icon>account_circle</mat-icon></button>
+  <a routerLink="/"><span>Home</span></a>
+  <a routerLink="/about"><span>About</span></a>
+
 </mat-toolbar>
 
 <div class="background">
