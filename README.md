@@ -15,3 +15,10 @@ sign up and login
 
 Third party library:
 ngx toastr
+
+Steps to run:
+npm init
+npm i
+npm install --save ngx-toastr
+npm install @angular/animations --save
+ng serve
