@@ -36,7 +36,6 @@ export class HotelDetailsComponent implements OnInit{
 
   searchHotelByName(hotelName: string) {
     const foundHotel = this.HotelData.find((hotel: { HotelName: string; }) => String(hotel.HotelName) === hotelName);
-    console.log(this.HotelDetails);
 
     return foundHotel || "Hotel not found";
   }
@@ -55,7 +54,7 @@ export class HotelDetailsComponent implements OnInit{
   }
 
   selectRoom(room:any) {
-    localStorage.setItem('room-details', JSON.stringify(String(room.type)));
+    localStorage.setItem('room-details', JSON.stringify(String(room.Type)));
     this.router.navigateByUrl('/booking');
   }
 }

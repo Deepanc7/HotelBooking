@@ -43,14 +43,13 @@ export class SearchBarComponent {
   searchHotels() {
     const details: SearchDetails = {
       location: this.location,
-      checkIn: new Date(this.checkInDate),
-      checkOut: new Date(this.checkOutDate),
+      checkIn: this.checkInDate,
+      checkOut: this.checkOutDate,
       guestsAndRooms: this.guestsAndRoomsValue
     };
     if (this.searchHotelByLocation(this.location)) {
       this.searchService.setSearchDetails(details);
     this.router.navigateByUrl('/hotels');
-    console.log(details.guestsAndRooms);
     this.searchTriggered.emit(details);
     }
     else {
