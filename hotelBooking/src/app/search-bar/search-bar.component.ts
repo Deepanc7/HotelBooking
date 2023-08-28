@@ -74,12 +74,14 @@ export class SearchBarComponent {
     }
     return false;
   }
+  
   toggleGuestsPopup() {
     this.showGuestsPopup = !this.showGuestsPopup;
     if (this.showGuestsPopup) {
       this.calculatePopupPosition();
     }
   }
+
   increment(item: any) {
     if (item.label !== 'Rooms') {
       item.count++;
