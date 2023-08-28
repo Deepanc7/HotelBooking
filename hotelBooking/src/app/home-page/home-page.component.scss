@@ -5,20 +5,39 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end; /* Align at the bottom */
-  height: 100vh; /* Set a height for the container */
+  height: 80vh; /* Set a height for the container */
   background-image: url('/assets/home.jpg');
   background-size: cover;
   padding: 30px;
+  margin: 30px;
+  border-radius: 20px;
 }
 
-.centered-div {
-  margin-bottom: 20px; /* Adjust the margin as needed */
-  width: 300px; /* Set the width of the div */
-  background-color: rgba(0, 0, 0, 0); /* Just for visualization */
-  padding: 10px; /* Optional padding */
+.imageTitle {
+  font-size: 50px;
+  justify-content: left;
+  margin-left: 200px;
+  margin-bottom: 40px;
 }
 
+.imageTitle2 {
+  font-size: 50px;
+  justify-content: left;
+  margin-left: 390px;
+  margin-bottom: 30px;
+}
 
+.search {
+  font-size: 30px;
+  margin-left: 390px;
+  margin-bottom: 150px;
+  width: 20%;
+  height: 10%;
+  font-style: sans-serif;
+  background-color: white;
+  border: white;
+  border-radius: 10px;
+}
 
 .background {
   position: relative;
@@ -35,7 +54,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/assets/background.jpg');
+  //background-color: black;
+  //background-image: url('/assets/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

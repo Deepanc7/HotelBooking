@@ -1,5 +1,7 @@
 <!-- <mat-card class="container">
-  <div class="centered-div"></div>
+  <div class="imageTitle">Checking in to endless possibilities</div>
+  <div class="imageTitle2">Start your journey with us!</div>
+  <button class="search">Search</button>
 </mat-card> -->
 <div class="background">
   <app-search-bar></app-search-bar>
@@ -12,8 +14,8 @@
           <mat-icon>keyboard_arrow_left</mat-icon>
         </button>
         <div class="carousel">
-          <ng-container *ngFor="let hotel of displayedHotels">
-            <div class="hotel-card" (click)="sendDataToHotelDetails(hotel)">
+          <ng-container *ngFor="let hotel of displayedHotels;let i=index">
+            <div class="hotel-card" (click)="sendDataToHotelDetails(i)">
               <img [src]="hotel.HotelImage" alt="{{ hotel.HotelName }} Image" class="hotel-image">
               <div class="hotel-details">
                 <h4 class="hotel-name">{{ hotel.HotelName }}</h4>

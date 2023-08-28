@@ -118,9 +118,10 @@ export class HomePageComponent implements OnInit {
     }
   }
 
-  sendDataToHotelDetails(Object: any) {
-    for (let i = 0; i < this.displayedHotels.length; i++) {
-      if (this.displayedHotels[i] === Object) {
+  sendDataToHotelDetails(index: number) {
+    console.log(index);
+    for (let i = 0; i < this.HotelData.length; i++) {
+      if (this.HotelData[i] === this.displayedHotels[index]) {
         this.details = String(this.HotelData[i].HotelName);
       }
     }
