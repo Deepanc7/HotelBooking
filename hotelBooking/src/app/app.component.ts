@@ -14,7 +14,7 @@ export class AppComponent {
  
 
   constructor(private dataService: DataService) {
-    this.loginSuccessful= JSON.parse(localStorage.getItem('loginSuccess') || "") ;
+
    }
 
   ngOnInit(): void {
