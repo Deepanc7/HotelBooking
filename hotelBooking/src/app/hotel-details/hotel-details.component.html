@@ -37,7 +37,7 @@
                       <p>{{ RoomCount }} x Room</p>
                     </div>
                   </div>
-                  <button mat-raised-button color="primary" class="go-to-rooms-button" (click)="scrollToRooms()">Go to
+                  <button  class="go-to-rooms-button" (click)="scrollToRooms()">Go to
                     Rooms</button>
                 </mat-card>
 
@@ -66,13 +66,13 @@
       <div id="rooms-list" class="rooms-list">
         <mat-card id="room-card" class="room-card" *ngFor="let room of hotelDetails.Rooms">
           <div class="room-image">
-            <img src="{{ room.RoomImage }}">
+            <img src="{{ room.RoomImage }}" alt="Hotel Image">
           </div>
           <div class="room-details">
             <h3 class="room-type">{{ room.Type }}</h3>
             <p class="room-description">{{ room.Description }}</p>
             <div class="room-price">{{ room.BaseRate | currency }}</div>
-            <button mat-raised-button color="primary" class="go-to-rooms-button" (click)="selectRoom(room)">Select Room</button>
+            <button class="go-to-rooms-button" (click)="selectRoom(room)">Select Room</button>
           </div>
         </mat-card>
       </div>
