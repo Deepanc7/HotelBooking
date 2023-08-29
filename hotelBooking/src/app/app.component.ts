@@ -9,9 +9,7 @@ import { DataService } from './data.service';
 })
 export class AppComponent {
   jsonData: any;
-  HotelData: any[] = [];
-  loginSuccessful:Boolean = false;
- 
+  HotelData: any[] = []; 
 
   constructor(private dataService: DataService) {
 
