@@ -13,6 +13,23 @@ mat-card {
 
 }
 
+.loginButton {
+    color: white;
+    background-color: green;
+    padding: 15px;
+    border-radius: 10px;
+    border: 0px;
+}
+
+.NewUser {
+    color: white;
+    background-color: green;
+    padding: 15px;
+    border-radius: 10px;
+    border: 0px;
+    justify-content: right;
+}
+
 mat-card-content{
     width: fit-content;
 }
