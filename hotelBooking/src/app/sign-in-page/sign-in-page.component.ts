@@ -33,8 +33,6 @@ loginSuccess:Boolean=false;
             this.router.navigate(['/homePage']);
             this.loginSuccess = true;
 
-            localStorage.setItem('loginSuccess',JSON.stringify(this.loginSuccess));
-
             this.toastr.success('You\'ve successfully cracked the code to your account. Hello there!', 'Login Successful');
           } else {
             this.loginSuccess = true;
