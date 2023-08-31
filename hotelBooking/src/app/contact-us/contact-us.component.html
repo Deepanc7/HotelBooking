@@ -1,0 +1,36 @@
+<ng-container>
+<mat-card class="contact-card" id="contact-card">
+    <mat-card-header>
+      <mat-card-title>Contact Us</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>If you have any questions or inquiries, feel free to get in touch with us.</p>
+      <p>Our dedicated team is here to assist you.</p>
+      <div class="contact-details">
+        <p><strong>Address:</strong> 15/6, Primrose Road, 2nd Floor, Behind Prestige Meridian, Richmond Town, Bengaluru, Karnataka 560025</p>
+        <p><strong>Phone:</strong> Main: 080 4250 1300 | Reservations: 080 4250 1300</p>
+        <p><strong>Email:</strong> General Inquiries: Innsight@gmail.com</p>
+      </div>
+      <div class="social-media">
+        <p>Connect with us on:</p>
+        <a href="Facebook Page URL">Facebook</a>
+        <a href="Twitter Handle">Twitter</a>
+        <a href="Instagram Handle">Instagram</a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<ng-container>
+  <mat-card class="faq-card">
+    <mat-card-header>
+      <mat-card-title>Frequently Asked Questions</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="faq-item" *ngFor="let faq of faqs">
+        <div class="faq-question">{{ faq.question }}</div>
+        <div class="faq-answer">{{ faq.answer }}</div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</ng-container>

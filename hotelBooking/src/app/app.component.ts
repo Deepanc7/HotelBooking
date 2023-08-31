@@ -23,19 +23,4 @@ export class AppComponent {
     localStorage.setItem('hotel_data', JSON.stringify(this.HotelData));
     localStorage.setItem('hotel_details', JSON.stringify(null));
   }
-
-  place: string[] = [
-    "Mountain View",
-    "Atlanta",
-    "Chicago",
-    "Bangalore",
-    "San Antonio",
-    "New York",
-    "Washington D.C.",
-    "Detroit",
-    "Seattle",
-    "Austin",
-    "Mysore"
-  ]
-
 }

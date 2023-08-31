@@ -18,6 +18,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { BookNowComponent } from './book-now/book-now.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { ToastrModule } from 'ngx-toastr';
     AboutPageComponent,
     LoginPageComponent,
     BookNowComponent,
+    TermsAndConditionsComponent,
+    ContactUsComponent,
     
   ],
   imports: [

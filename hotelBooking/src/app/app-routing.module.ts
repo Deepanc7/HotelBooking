@@ -8,6 +8,8 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { BookNowComponent } from './book-now/book-now.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 
 const routes: Routes = [
   {path:'', component:HomePageComponent},
@@ -18,7 +20,9 @@ const routes: Routes = [
   {path:'signin', component:SignInPageComponent},
   {path:'about',component:AboutPageComponent},
   {path:'login',component:LoginPageComponent},
-  {path:'booking',component:BookNowComponent}
+  {path:'booking',component:BookNowComponent},
+  {path:'contactUs',component:ContactUsComponent},
+  {path:'termsAndConditions',component:TermsAndConditionsComponent},
 ];
 
 @NgModule({

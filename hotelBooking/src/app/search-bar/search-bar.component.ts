@@ -60,13 +60,13 @@ export class SearchBarComponent {
 
   searchHotelByLocation(location: string) {
     for (let hotel of this.HotelData){
-      let loc = location.toLocaleLowerCase();
+      let loc = location.toLowerCase();
       let country = hotel.Address.Country.toLowerCase();
       let street = hotel.Address.StreetAddress.toLowerCase();
       let city = hotel.Address.City.toLowerCase();
       let state = hotel.Address.StateProvince;
       let postalcode = hotel.Address.PostalCode;
-      let name = hotel.HotelName;
+      let name = hotel.HotelName.toLowerCase();
       if (country === loc || city == loc || street === loc || state === loc || postalcode === loc || name === loc) {
         return true;
       }
