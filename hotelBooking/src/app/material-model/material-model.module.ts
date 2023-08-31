@@ -20,6 +20,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [],
@@ -63,6 +65,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
   MatCheckboxModule,
    MatSlideToggleModule,
+   MatDialogModule,
   ]
 })
 export class MaterialModelModule { }

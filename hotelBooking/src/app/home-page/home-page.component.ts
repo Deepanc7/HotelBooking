@@ -14,7 +14,7 @@ export class HomePageComponent implements OnInit {
   popularHotels = this.HotelData;
   checkInDate: Date = new Date();
   checkOutDate: Date = new Date();
-  guestsAndRoomsValue: string = '';
+  guestsAndRoomsValue: string = '1 Adults, 0 Childrens, 1 Rooms';
 
   imageUrls: string[] = [
     "https://th.bing.com/th/id/OIP.c0c9mDgaPoJzSwZXlmOhJwHaEo?w=315&h=197&c=7&r=0&o=5&dpr=1.3&pid=1.7",
@@ -115,6 +115,13 @@ export class HomePageComponent implements OnInit {
   }
 
   sendDataToHotelDetails(index: number) {
+    const details: SearchDetails = {
+      location: String(this.place[index]),
+      checkIn: this.checkInDate,
+      checkOut: this.checkOutDate,
+      guestsAndRooms: this.guestsAndRoomsValue
+    };
+    this.searchService.setSearchDetails(details);
     console.log(index);
     for (let i = 0; i < this.HotelData.length; i++) {
       if (this.HotelData[i] === this.displayedHotels[index]) {

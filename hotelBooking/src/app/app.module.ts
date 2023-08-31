@@ -20,6 +20,7 @@ import { BookNowComponent } from './book-now/book-now.component';
 import { ToastrModule } from 'ngx-toastr';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { EditPopUpComponent } from './edit-pop-up/edit-pop-up.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     BookNowComponent,
     TermsAndConditionsComponent,
     ContactUsComponent,
+    EditPopUpComponent,
     
   ],
   imports: [

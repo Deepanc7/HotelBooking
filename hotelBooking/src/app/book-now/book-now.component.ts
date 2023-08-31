@@ -3,6 +3,8 @@ import { SearchService } from '../search-bar/search.service';
 import { SearchDetails } from '../search-bar/search-details.interface';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
 
 @Component({
   selector: 'app-book-now',
@@ -34,7 +36,7 @@ export class BookNowComponent implements OnInit {
     guestsAndRooms: ''
   };
 
-  constructor(private searchService: SearchService, private toastr: ToastrService,private router: Router) { }
+  constructor(private searchService: SearchService, private toastr: ToastrService,private router: Router,private dialog: MatDialog) { }
 
   ngOnInit() {
     let search: SearchDetails = this.searchService.getSearchDetails();
@@ -76,5 +78,26 @@ export class BookNowComponent implements OnInit {
         return room;
       }
     }
+  }
+  openEditPopup(): void {
+    const dialogRef = this.dialog.open(EditPopUpComponent, {
+      width: '300px',
+      data: {
+        checkInDate: this.checkInDate,
+        checkOutDate: this.checkOutDate,
+        RoomDetails: this.RoomDetails,
+        GuestCount: this.GuestCount
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Update booking details with edited values
+        this.checkInDate = String(result.checkInDate).split('-').reverse().join('-');
+        this.checkOutDate = String(result.checkOutDate).split('-').reverse().join('-');
+        this.RoomDetails = result.RoomDetails;
+        this.GuestCount = result.GuestCount;
+      }
+    });
   }
 }
