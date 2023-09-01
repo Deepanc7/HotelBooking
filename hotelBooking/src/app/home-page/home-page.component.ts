@@ -67,7 +67,6 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.lowestRoomPrice();
     this.updateDisplayedHotels();
   }
 
@@ -98,20 +97,6 @@ export class HomePageComponent implements OnInit {
 
   updateDisplayedHotels(): void {
     this.displayedHotels = this.popularHotels.slice(this.startIndex, this.startIndex + this.itemsPerPage);
-  }
-
-  lowestRoomPrice() {
-    for (let i = 0; i < this.HotelData.length; i++) {
-      let lowestPrice = Number.MAX_SAFE_INTEGER;
-      for (const room of this.HotelData[i].Rooms) {
-        if (room.BaseRate < lowestPrice) {
-          lowestPrice = room.BaseRate;
-        }
-      }
-      this.LowestRoomPrice.push(lowestPrice);
-      this.HotelData[i].lowestPrice = lowestPrice;
-      localStorage.setItem('hotel_data', JSON.stringify(this.HotelData));
-    }
   }
 
   sendDataToHotelDetails(index: number) {

@@ -93,8 +93,8 @@ export class BookNowComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // Update booking details with edited values
-        this.checkInDate = String(result.checkInDate).split('-').reverse().join('-');
-        this.checkOutDate = String(result.checkOutDate).split('-').reverse().join('-');
+        this.checkInDate = String(result.checkInDate);
+        this.checkOutDate = String(result.checkOutDate);
         this.RoomDetails = result.RoomDetails;
         this.GuestCount = result.GuestCount;
       }

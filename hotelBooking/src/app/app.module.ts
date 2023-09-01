@@ -21,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { EditPopUpComponent } from './edit-pop-up/edit-pop-up.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import { EditPopUpComponent } from './edit-pop-up/edit-pop-up.component';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

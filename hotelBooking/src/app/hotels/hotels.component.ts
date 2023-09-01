@@ -97,7 +97,7 @@ export class HotelsComponent implements OnInit {
         this.HotelData.sort((a: { Rating: number; }, b: { Rating: number; }) => Number(b.Rating) - Number(a.Rating));
         break;
       default:
-        this.HotelData.sort((a: { lowestPrice: number; }, b: { lowestPrice: number; }) => a.lowestPrice - b.lowestPrice);
+        this.HotelData.sort((a: { Rating: number; }, b: { Rating: number; }) => Number(b.Rating) - Number(a.Rating));
         break;
     }
   }

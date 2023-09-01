@@ -1,0 +1,33 @@
+/* Custom Dialog Title */
+.custom-dialog-title {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Custom Dialog Content */
+  .custom-dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* Custom Dialog Actions */
+  .custom-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+  }
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 600px) {
+    .custom-dialog-content {
+      padding: 10px;
+    }
+    
+    .custom-dialog-actions {
+      justify-content: space-between;
+      padding: 10px;
+    }
+  }  

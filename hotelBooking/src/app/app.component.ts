@@ -10,9 +10,9 @@ import { DataService } from './data.service';
 export class AppComponent {
   jsonData: any;
   HotelData: any[] = []; 
+  LowestRoomPrice: number[] = [];
 
   constructor(private dataService: DataService) {
-
    }
 
   ngOnInit(): void {
@@ -20,7 +20,23 @@ export class AppComponent {
     for (let i = 0; i < this.jsonData.length; i++) {
       this.HotelData.push(this.jsonData[i]);
     }
+    this.lowestRoomPrice();
     localStorage.setItem('hotel_data', JSON.stringify(this.HotelData));
     localStorage.setItem('hotel_details', JSON.stringify(null));
   }
+
+  lowestRoomPrice() {
+    for (let i = 0; i < this.HotelData.length; i++) {
+      let lowestPrice = Number.MAX_SAFE_INTEGER;
+      for (const room of this.HotelData[i].Rooms) {
+        if (room.BaseRate < lowestPrice) {
+          lowestPrice = room.BaseRate;
+        }
+      }
+      this.LowestRoomPrice.push(lowestPrice);
+      this.HotelData[i].lowestPrice = lowestPrice;
+      localStorage.setItem('hotel_data', JSON.stringify(this.HotelData));
+    }
+  }
+
 }
