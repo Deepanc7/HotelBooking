@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SearchService } from '../search-bar/search.service';
 import { SearchDetails } from '../search-bar/search-details.interface';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-hotels',
   templateUrl: './hotels.component.html',
   styleUrls: ['./hotels.component.scss'],
-  providers: [SearchService]
+  providers: [SearchService, DataService]
 })
 export class HotelsComponent implements OnInit {
   searchDetails: SearchDetails = {
@@ -16,8 +17,7 @@ export class HotelsComponent implements OnInit {
     checkOut: new Date(),
     guestsAndRooms: ''
   };
-  HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
-  HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "");
+  HotelData: any;
   details: string = '';
   LowestRoomPrice: number[] = [];
   PriceRange: string = '';
@@ -25,7 +25,7 @@ export class HotelsComponent implements OnInit {
   selectedTags: string[] = [];
   selectedRating: number = 0;
   selectedSortOption: string = '';
-  Ratings=[1,2,3,4,5];
+  Ratings = [1, 2, 3, 4, 5];
   tags: string[] = [
     'View', 'Air conditioning', 'Concierge', '24-hour front desk service',
     'Laundry service', 'Free wifi', 'Free parking', 'Restaurant', 'Bar',
@@ -46,9 +46,10 @@ export class HotelsComponent implements OnInit {
     { label: 'Coffee in lobby', selected: false },
     { label: 'Continental breakfast', selected: false },
   ];
-  constructor(private router: Router, private searchService: SearchService) {
+  constructor(private router: Router, private searchService: SearchService, private dataService: DataService) {
   }
   ngOnInit() {
+    this.HotelData = this.dataService.getHotelData();
     let search: SearchDetails = this.searchService.getSearchDetails();
     this.filterHotelData(search);
     this.HotelData = this.HotelData.filter((hotel: any) => {
@@ -74,15 +75,19 @@ export class HotelsComponent implements OnInit {
     const stars = Math.round(rating);
     return Array(stars).fill('star');
   }
-  
+
   sendDataToHotelDetails(Object: any) {
     for (let i = 0; i < this.HotelData.length; i++) {
       if (this.HotelData[i] === Object) {
         this.details = String(this.HotelData[i].HotelName);
       }
     }
-    localStorage.setItem('hotel_details', JSON.stringify(this.details));
-    this.router.navigateByUrl('/hotel-details');
+    const navigationExtras = {
+      queryParams: {
+        details: JSON.stringify(this.details)
+      }
+    };
+    this.router.navigate(['/hotel-details'], navigationExtras);
   }
 
   applySort() {
@@ -102,7 +107,7 @@ export class HotelsComponent implements OnInit {
     }
   }
   applyFilters() {
-    this.HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
+    this.HotelData = this.dataService.getHotelData();
     let search: SearchDetails = this.searchService.getSearchDetails();
     this.HotelData = this.HotelData.filter((hotel: any) => {
       let loc = search.location.toLowerCase();
@@ -145,9 +150,9 @@ export class HotelsComponent implements OnInit {
 
     this.selectedTags = this.filterOptions.filter(option => option.selected).map(option => option.label);
     if (this.selectedTags.length != 0) {
-      console.log(this.selectedTags);
-      this.HotelData = this.HotelData.filter((hotel: any) =>
-        this.selectedTags.some(tag => hotel.Tags.includes(tag)));
+      this.HotelData = this.HotelData.filter((hotel: { Tags: any[]; }) =>
+        hotel.Tags.some((tag: string) => this.selectedTags.includes(tag))
+      );
     }
     if (this.selectedRating != null) {
       this.HotelData = this.HotelData.filter((hotel: any) => hotel.Rating >= this.selectedRating);
@@ -159,7 +164,7 @@ export class HotelsComponent implements OnInit {
   }
 
   private filterHotelData(searchDetails: SearchDetails) {
-    this.HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
+    this.HotelData = this.dataService.getHotelData();
     this.HotelData = this.HotelData.filter((hotel: any) => {
       let loc = searchDetails.location.toLowerCase();
       let country = hotel.Address.Country.toLowerCase();

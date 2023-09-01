@@ -49,5 +49,5 @@ export class ContactUsComponent {
       answer: 'Yes, we offer 24-hour room service with a variety of delicious menu options.'
     }
   ];
-  
+
 }

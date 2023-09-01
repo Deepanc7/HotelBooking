@@ -2,16 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchService } from '../search-bar/search.service';
 import { SearchDetails } from '../search-bar/search-details.interface';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
-  providers: [SearchService]
+  providers: [SearchService, DataService]
 })
 export class HomePageComponent implements OnInit {
-  HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
-  popularHotels = this.HotelData;
+  HotelData: any;
+  popularHotels: any;
   checkInDate: Date = new Date();
   checkOutDate: Date = new Date();
   guestsAndRoomsValue: string = '1 Adults, 0 Childrens, 1 Rooms';
@@ -52,21 +53,22 @@ export class HomePageComponent implements OnInit {
     "San Francisco",
   ]
 
-
   currentIndex = 0;
-  maxIndex: number;
+  maxIndex: number = 0;
   displayedHotels: any[] = [];
   startIndex = 0;
   itemsPerPage = 4;
   LowestRoomPrice: number[] = [];
   details: string = '';
 
-  constructor(private router: Router, private searchService: SearchService) {
-    this.HotelData.sort((a: any, b: any) => b.Rating - a.Rating);
-    this.maxIndex = this.popularHotels.length - 1;
+  constructor(private router: Router, private searchService: SearchService, private dataService: DataService) {
   }
 
   ngOnInit() {
+    this.HotelData = this.dataService.getHotelData();
+    this.popularHotels = this.HotelData;
+    this.HotelData.sort((a: any, b: any) => b.Rating - a.Rating);
+    this.maxIndex = this.popularHotels.length - 1;
     this.updateDisplayedHotels();
   }
 
@@ -107,13 +109,16 @@ export class HomePageComponent implements OnInit {
       guestsAndRooms: this.guestsAndRoomsValue
     };
     this.searchService.setSearchDetails(details);
-    console.log(index);
     for (let i = 0; i < this.HotelData.length; i++) {
       if (this.HotelData[i] === this.displayedHotels[index]) {
         this.details = String(this.HotelData[i].HotelName);
       }
     }
-    localStorage.setItem('hotel_details', JSON.stringify(this.details));
-    this.router.navigateByUrl('/hotel-details');
+    const navigationExtras = {
+      queryParams: {
+        details: JSON.stringify(this.details)
+      }
+    };
+    this.router.navigate(['/hotel-details'], navigationExtras);
   }
 }

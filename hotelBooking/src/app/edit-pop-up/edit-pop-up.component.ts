@@ -11,7 +11,7 @@ import { DatePipe } from '@angular/common';
 })
 export class EditPopUpComponent {
   editedData: any = {};
-  checkInDateIsInPast:boolean=false;
+  checkInDateIsInPast: boolean = false;
 
   constructor(
     private toastr: ToastrService,
@@ -28,7 +28,7 @@ export class EditPopUpComponent {
     const currentDate = new Date();
     const checkInDate = new Date(this.editedData.checkInDate);
 
-    if (this.editedData.checkInDate===this.editedData.checkOutDate) {
+    if (this.editedData.checkInDate === this.editedData.checkOutDate) {
       this.toastr.error("You cannot check in and check out on same date", "Error");
     }
     else if (checkInDate <= currentDate) {
@@ -36,26 +36,25 @@ export class EditPopUpComponent {
       this.toastr.error("Cannot select past date", "Error");
       return;
     }
-    else if (this.editedData.RoomDetails===null)
-    {
+    else if (this.editedData.RoomDetails === null) {
       this.toastr.error('Room details cannot be null', 'Error');
     }
-    else if (this.editedData.GuestCount===0) {
+    else if (this.editedData.GuestCount === 0) {
       this.toastr.error('Guests cannot be 0', 'Error');
     }
-    else if (this.editedData.checkInDate===newdate && this.editedData.checkOutDate===newdate) {
+    else if (this.editedData.checkInDate === newdate && this.editedData.checkOutDate === newdate) {
       this.toastr.error('CheckIn date is null', 'Error');
     }
-    else if (this.editedData.checkOutDate===newdate) {
+    else if (this.editedData.checkOutDate === newdate) {
       this.toastr.error('CheckOut date is null', 'Error');
     }
-    else if (this.editedData.checkInDate>this.editedData.checkOutDate){
+    else if (this.editedData.checkInDate > this.editedData.checkOutDate) {
       this.toastr.error('CheckOut date is older than checkin date', 'Error');
     }
     else {
-    this.editedData.checkInDate=String(this.editedData.checkInDate).split('-').reverse().join('-');
-    this.editedData.checkOutDate=String(this.editedData.checkOutDate).split('-').reverse().join('-')
-    this.dialogRef.close(this.editedData);
+      this.editedData.checkInDate = String(this.editedData.checkInDate).split('-').reverse().join('-');
+      this.editedData.checkOutDate = String(this.editedData.checkOutDate).split('-').reverse().join('-')
+      this.dialogRef.close(this.editedData);
     }
   }
 

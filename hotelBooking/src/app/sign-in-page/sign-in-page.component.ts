@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class SignInPageComponent {
   constructor(private builder: FormBuilder, private router: Router, private toastr: ToastrService) {
   }
-loginSuccess:Boolean=false;
+  loginSuccess: Boolean = false;
   result: any;
 
   loginForm = this.builder.group({

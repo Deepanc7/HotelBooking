@@ -5,29 +5,32 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
+import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../data.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-book-now',
   templateUrl: './book-now.component.html',
   styleUrls: ['./book-now.component.scss'],
-  providers: [SearchService]
+  providers: [SearchService, DataService, DatePipe]
 })
 export class BookNowComponent implements OnInit {
-  HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
-  HotelDetails = JSON.parse(localStorage.getItem('hotel_details') || "");
-  RoomDetails = JSON.parse(localStorage.getItem('room-details') || "");
+  HotelData: any;
+  HotelDetails: string = '';
+  RoomDetails: string = '';
 
   GuestCount: number = 0;
   RoomCount: number = 0;
-  checkInDate: string = "";
-  checkOutDate: string = "";
+  checkInDate: any;
+  checkOutDate: any;
 
-  hotelDetails = this.searchHotelByName(this.HotelDetails);
-  roomDetails = this.searchRoom(this.RoomDetails);
-  discount: number = Number((Math.round((this.roomDetails.BaseRate * 15) / 100)).toFixed(2));
-  priceAfterDiscount = this.roomDetails.BaseRate - this.discount;
-  tax: number = Number((Math.round((this.priceAfterDiscount * 10) / 100)).toFixed(2));
-  totalPrice = this.priceAfterDiscount + this.tax;
+  hotelDetails: any;
+  roomDetails: any;
+  discount: number = 0;
+  priceAfterDiscount: number = 0;
+  tax: number = 0;
+  totalPrice: number = 0;
 
   searchDetails: SearchDetails = {
     location: '',
@@ -36,23 +39,30 @@ export class BookNowComponent implements OnInit {
     guestsAndRooms: ''
   };
 
-  constructor(private searchService: SearchService, private toastr: ToastrService,private router: Router,private dialog: MatDialog) { }
+  constructor(private searchService: SearchService, private toastr: ToastrService, private router: Router, private dialog: MatDialog, private route: ActivatedRoute, private dataService: DataService, private datePipe: DatePipe) { }
 
   ngOnInit() {
+    this.HotelData = this.dataService.getHotelData();
+    this.route.queryParams.subscribe(params => {
+      this.HotelDetails = JSON.parse(params['details']);
+      this.RoomDetails = JSON.parse(params['room']);
+    });
+    this.hotelDetails = this.searchHotelByName(this.HotelDetails);
+    this.roomDetails = this.searchRoom(this.RoomDetails);
+    this.discount = Number((Math.round((this.roomDetails.BaseRate * 15) / 100)).toFixed(2));
+    this.priceAfterDiscount = this.roomDetails.BaseRate - this.discount;
+    this.tax = Number((Math.round((this.priceAfterDiscount * 10) / 100)).toFixed(2));
+    this.totalPrice = this.priceAfterDiscount + this.tax;
     let search: SearchDetails = this.searchService.getSearchDetails();
     let x = search.guestsAndRooms.split(" ");
     this.GuestCount = Number(x[0]) + Number(x[2]);
     this.RoomCount = Number(x[4]);
 
-    let splityear = String(search.checkIn).split("-");
-    let splitdate = splityear[2].split("T");
-    console.log(splitdate[0]);
-    this.checkInDate = String(splitdate[0]) + "-" + String(splityear[1]) + "-" + String(splityear[0]);
+    let newdate: Date = search.checkIn;
+    this.checkInDate = this.datePipe.transform(newdate, 'dd-MM-yyyy');
 
-    splityear = String(search.checkIn).split("-");
-    splitdate = splityear[2].split("T");
-    console.log(splitdate[0]);
-    this.checkOutDate = String(splitdate[0]) + "-" + String(splityear[1]) + "-" + String(splityear[0]);
+    let newdate1: Date = search.checkOut;
+    this.checkOutDate = this.datePipe.transform(newdate1, 'dd-MM-yyyy');
   }
 
   success() {
@@ -62,7 +72,6 @@ export class BookNowComponent implements OnInit {
 
   searchHotelByName(hotelName: string) {
     const foundHotel = this.HotelData.find((hotel: { HotelName: string; }) => String(hotel.HotelName) === hotelName);
-    console.log(this.HotelDetails);
 
     return foundHotel || "Hotel not found";
   }
@@ -93,8 +102,8 @@ export class BookNowComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // Update booking details with edited values
-        this.checkInDate = String(result.checkInDate);
-        this.checkOutDate = String(result.checkOutDate);
+        this.checkInDate = result.checkInDate;
+        this.checkOutDate = result.checkOutDate;
         this.RoomDetails = result.RoomDetails;
         this.GuestCount = result.GuestCount;
       }

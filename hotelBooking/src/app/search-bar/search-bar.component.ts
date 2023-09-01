@@ -1,28 +1,29 @@
-import { Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewChild, OnInit } from '@angular/core';
 import { SearchService } from './search.service';
 import { SearchDetails } from './search-details.interface';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
-  providers: [SearchService]
+  providers: [SearchService, DataService]
 })
 
-export class SearchBarComponent {
+export class SearchBarComponent implements OnInit {
 
   @ViewChild('guestsButton') guestsButton!: ElementRef;
-   location: string = '';
-   checkInDate: Date = new Date();
-   checkOutDate: Date = new Date();
-   guestsAndRoomsValue: string = '';
+  location: string = '';
+  checkInDate: Date = new Date();
+  checkOutDate: Date = new Date();
+  guestsAndRoomsValue: string = '';
   @Output() searchTriggered: EventEmitter<SearchDetails> = new EventEmitter<SearchDetails>();
 
   showGuestsPopup = false;
   guestAndRooms: string = "";
-  HotelData = JSON.parse(localStorage.getItem('hotel_data') || '[]');
+  HotelData: any;
 
   guestsItems = [
     { label: 'Adults', count: 1 },
@@ -37,7 +38,11 @@ export class SearchBarComponent {
     { icon: 'calendar_today', label: 'CHECKOUT', input: 'Date' },
   ];
 
-  constructor(private router: Router, private renderer: Renderer2, private searchService: SearchService, private toastr: ToastrService) {
+  constructor(private router: Router, private renderer: Renderer2, private searchService: SearchService, private toastr: ToastrService, private dataService: DataService) {
+  }
+
+  ngOnInit() {
+    this.HotelData = this.dataService.getHotelData();
   }
 
   searchHotels() {
@@ -49,8 +54,8 @@ export class SearchBarComponent {
     };
     if (this.searchHotelByLocation(this.location)) {
       this.searchService.setSearchDetails(details);
-    this.router.navigateByUrl('/hotels');
-    this.searchTriggered.emit(details);
+      this.router.navigateByUrl('/hotels');
+      this.searchTriggered.emit(details);
     }
     else {
       this.toastr.error('Location does not exist', 'Error');
@@ -59,7 +64,7 @@ export class SearchBarComponent {
   }
 
   searchHotelByLocation(location: string) {
-    for (let hotel of this.HotelData){
+    for (let hotel of this.HotelData) {
       let loc = location.toLowerCase();
       let country = hotel.Address.Country.toLowerCase();
       let street = hotel.Address.StreetAddress.toLowerCase();
@@ -73,7 +78,7 @@ export class SearchBarComponent {
     }
     return false;
   }
-  
+
   toggleGuestsPopup() {
     this.showGuestsPopup = !this.showGuestsPopup;
     if (this.showGuestsPopup) {
