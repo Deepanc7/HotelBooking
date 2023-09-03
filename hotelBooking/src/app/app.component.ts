@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
+import { MatDialog } from '@angular/material/dialog';
+import { LogoutComponent } from './logout/logout.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,7 @@ export class AppComponent {
   HotelData: any[] = [];
   LowestRoomPrice: number[] = [];
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService,private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -35,6 +37,27 @@ export class AppComponent {
       this.LowestRoomPrice.push(lowestPrice);
       this.HotelData[i].lowestPrice = lowestPrice;
     }
+  }
+
+
+  isUserLoggedIn(): boolean {
+    return sessionStorage.getItem('userName') !== null;
+  }
+
+  getUserName(): string | null {
+    return sessionStorage.getItem('userName');
+  }
+
+ 
+
+  openLogoutPopup(): void {
+    const dialogRef = this.dialog.open(LogoutComponent);
+  
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        sessionStorage.removeItem('userName');
+      }
+    });
   }
 
 }

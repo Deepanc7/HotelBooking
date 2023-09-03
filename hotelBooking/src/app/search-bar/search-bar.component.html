@@ -17,7 +17,7 @@
       <button class="btn-searchBar mat-elevation-z0">
         <label class="search-component-label">CHECKIN/CHECKOUT</label>
 
-        <div style="display: flex; flex-direction: row; align-items:first baseline;">
+        <div style="display: flex; flex-direction: row; align-items:first center;">
           <mat-date-range-input [rangePicker]="picker"  [dateFilter]="filterPastDates">
             <input matStartDate [(ngModel)]="checkInDate"  
               [placeholder]="checkInDate ? checkInDate.toDateString() : 'Start date'">
