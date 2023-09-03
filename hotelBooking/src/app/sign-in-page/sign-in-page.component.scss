@@ -3,13 +3,16 @@
 }
 
 .full-width {
-    width: fit-content;
+    width: max-content;
 }
 
-mat-card {
+#signin {
     color: black;
     max-width: 300px;
-    background-color: rgb(255, 255, 255);
+    width: 500px;
+    height: 500px;
+    border-width: 1px;
+    box-shadow: none;
 
 }
 
@@ -38,5 +41,4 @@ div {
     display: flex;
     column-gap: 20px;
     width: fit-content;
-    flex-direction: row;
 }

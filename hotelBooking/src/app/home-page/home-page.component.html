@@ -32,7 +32,7 @@
       </div>
     </mat-card>
 
-    <mat-card class="section-content">
+    <mat-card id="section-content" class="section-content">
       <mat-card-title class="section-title">Popular Destinations</mat-card-title>
       <div class="image-container">
         <mat-card class="image-card" *ngFor="let imageUrl of imageUrls; let i = index" (click)="goToHotels(i)">

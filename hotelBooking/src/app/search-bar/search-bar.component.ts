@@ -21,6 +21,7 @@ export class SearchBarComponent implements OnInit {
   guestsAndRoomsValue: string = '';
   @Output() searchTriggered: EventEmitter<SearchDetails> = new EventEmitter<SearchDetails>();
 
+
   showGuestsPopup = false;
   guestAndRooms: string = "";
   HotelData: any;
@@ -63,6 +64,14 @@ export class SearchBarComponent implements OnInit {
 
   }
 
+  filterPastDates = (d: Date | null): boolean => {
+    if (!d) {
+      return false;
+    }
+    const currentDate = new Date();
+    return d >= currentDate;
+  };
+
   searchHotelByLocation(location: string) {
     for (let hotel of this.HotelData) {
       let loc = location.toLowerCase();
@@ -95,18 +104,20 @@ export class SearchBarComponent implements OnInit {
     }
   }
   decrement(item: any) {
-    if (item.label !== 'Rooms' && item.count > 1) {
+    if (item.label !== 'Rooms' && item.count > 0) {
       item.count--;
       const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);
       const roomsRequired = Math.ceil(totalGuests / 4);
       this.guestsItems[2].count = roomsRequired;
     }
   }
+
   generateGuestsAndRoomsValue() {
     return this.guestsItems
       .map(item => `${item.count} ${item.label}${item.count !== 1 ? 's' : ''}`)
       .join(', ');
   }
+
   applyGuests() {
     const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);
     const roomsRequired = Math.ceil(totalGuests / 4);
@@ -117,6 +128,7 @@ export class SearchBarComponent implements OnInit {
     this.guestsAndRoomsValue = this.generateGuestsAndRoomsValue();
     this.toggleGuestsPopup();
   }
+
   calculatePopupPosition() {
     if (this.guestsButton) {
       const buttonRect = this.guestsButton.nativeElement.getBoundingClientRect();
@@ -125,18 +137,8 @@ export class SearchBarComponent implements OnInit {
       this.popupLeft = buttonRect.left + window.scrollX;
     }
   }
+
   isSearchButtonDisabled() {
-    return !this.location || !this.checkInDate || !this.checkOutDate || !this.guestsAndRoomsValue;
+    return !this.location || !this.checkInDate || !this.checkOutDate || !this.guestsAndRoomsValue || this.guestsItems[2].count === 0;
   }
 }
-
-
-
-
-
-
-
-
-
-
-

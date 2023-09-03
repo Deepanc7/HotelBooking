@@ -14,17 +14,22 @@
       <div class="divider"></div>
 
 
-      <mat-form-field appearance="fill">
-        <mat-label>CHECKIN/CHECKOUT</mat-label>
-        <mat-date-range-input [rangePicker]="picker">
-          <input matStartDate [(ngModel)]="checkInDate"
-            [placeholder]="checkInDate ? checkInDate.toDateString() : 'Start date'">
-          <input matEndDate [(ngModel)]="checkOutDate"
-            [placeholder]="checkOutDate ? checkOutDate.toDateString() : 'End date'">
-        </mat-date-range-input>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-date-range-picker #picker></mat-date-range-picker>
-      </mat-form-field>
+      <button class="btn-searchBar mat-elevation-z0">
+        <label class="search-component-label">CHECKIN/CHECKOUT</label>
+
+        <div style="display: flex; flex-direction: row; align-items:first baseline;">
+          <mat-date-range-input [rangePicker]="picker"  [dateFilter]="filterPastDates">
+            <input matStartDate [(ngModel)]="checkInDate"  
+              [placeholder]="checkInDate ? checkInDate.toDateString() : 'Start date'">
+            <input matEndDate [(ngModel)]="checkOutDate"
+              [placeholder]="checkOutDate ? checkOutDate.toDateString() : 'End date'">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker ></mat-date-range-picker>
+        </div>
+
+      </button>
+
 
 
       <div class="divider"></div>
@@ -46,7 +51,6 @@
       <!-- Floating Popup for Guests and rooms -->
       <div class="floating-popup" *ngIf="showGuestsPopup" [style.top.px]="popupTop" [style.left.px]="popupLeft">
         <div class="popup-content">
-
           <div *ngFor="let item of guestsItems" class="popup-item">
             <label>{{ item.label }}:</label>
             <div class="popup-item-buttons">

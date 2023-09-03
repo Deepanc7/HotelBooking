@@ -1,34 +1,3 @@
-:host {
-  ::ng-deep .mat-mdc-form-field {
-    background-color: white;
-    border-radius: 10px;
-
-  }
-
-  ::ng-deep .mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
-    background-color: rgb(253, 253, 253);
-    border-radius: 10px;
-
-  }
-
-  ::ng-deep .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
-    color: rgb(0, 0, 0);
-  }
-
-
-}
-
-
-mat-datepicker-toggle {
-  color: rgb(8, 0, 0) !important;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.mat-date-range-input-inner {
-  color: rgb(8, 0, 0) !important;
-}
-
 
 mat-card {
   display: flex;
@@ -54,6 +23,7 @@ mat-card {
   background-color: white;
   padding: 20px;
   display: flex;
+  width: 100%;
   align-items: center;
   border-radius: 10px;
   flex-direction: column;
@@ -63,6 +33,19 @@ mat-card {
 
 
 .btn-searchBar {
+  background-color: whitesmoke;
+  color: rgb(177, 170, 170);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: flex;
+  width: 37vh;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btn-checkincheckout{
   background-color: rgb(255, 255, 255);
   color: rgb(177, 170, 170);
   border: none;
@@ -71,10 +54,8 @@ mat-card {
   display: flex;
   width: 35vh;
   flex-direction: column;
-  align-items: center;
   cursor: pointer;
 }
-
 .search-component-label {
   font-weight: bold;
   margin-bottom: 5px;
@@ -169,10 +150,6 @@ mat-card {
 mat-form-field {
   height: 12vh;
   width: 35vh;
-}
-
-mat-date-range-input {
-  background-color: white;
 }
 
 .center {
