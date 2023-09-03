@@ -53,7 +53,7 @@ export class HotelsComponent implements OnInit {
     let search: SearchDetails = this.searchService.getSearchDetails();
     this.filterHotelData(search);
     this.HotelData = this.HotelData.filter((hotel: any) => {
-      let loc = search.location.toLowerCase();
+      let loc = search.location.toLowerCase().trim();
       let country = hotel.Address.Country.toLowerCase();
       let street = hotel.Address.StreetAddress.toLowerCase();
       let city = hotel.Address.City.toLowerCase();
@@ -102,7 +102,7 @@ export class HotelsComponent implements OnInit {
         this.HotelData.sort((a: { Rating: number; }, b: { Rating: number; }) => Number(b.Rating) - Number(a.Rating));
         break;
       default:
-        this.HotelData.sort((a: { Rating: number; }, b: { Rating: number; }) => Number(b.Rating) - Number(a.Rating));
+        this.HotelData.sort((a: { lowestPrice: number; }, b: { lowestPrice: number; }) => a.lowestPrice - b.lowestPrice);
         break;
     }
   }
@@ -110,7 +110,7 @@ export class HotelsComponent implements OnInit {
     this.HotelData = this.dataService.getHotelData();
     let search: SearchDetails = this.searchService.getSearchDetails();
     this.HotelData = this.HotelData.filter((hotel: any) => {
-      let loc = search.location.toLowerCase();
+      let loc = search.location.toLowerCase().trim();
       let country = hotel.Address.Country.toLowerCase();
       let street = hotel.Address.StreetAddress.toLowerCase();
       let city = hotel.Address.City.toLowerCase();
@@ -149,9 +149,12 @@ export class HotelsComponent implements OnInit {
     }
 
     this.selectedTags = this.filterOptions.filter(option => option.selected).map(option => option.label);
+    for (let i=0;i<this.selectedTags.length;i++) {
+      this.selectedTags[i]=this.selectedTags[i].trim().toLowerCase();
+    }
     if (this.selectedTags.length != 0) {
       this.HotelData = this.HotelData.filter((hotel: { Tags: any[]; }) =>
-        hotel.Tags.some((tag: string) => this.selectedTags.includes(tag))
+        hotel.Tags.some((tag: string) => this.selectedTags.includes(tag.trim().toLowerCase()))
       );
     }
     if (this.selectedRating != null) {

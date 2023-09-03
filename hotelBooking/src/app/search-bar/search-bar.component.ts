@@ -74,7 +74,7 @@ export class SearchBarComponent implements OnInit {
 
   searchHotelByLocation(location: string) {
     for (let hotel of this.HotelData) {
-      let loc = location.toLowerCase();
+      let loc = location.toLowerCase().trim();
       let country = hotel.Address.Country.toLowerCase();
       let street = hotel.Address.StreetAddress.toLowerCase();
       let city = hotel.Address.City.toLowerCase();
