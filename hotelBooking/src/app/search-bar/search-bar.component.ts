@@ -14,11 +14,12 @@ import { ToastrService } from 'ngx-toastr';
 export class SearchBarComponent {
 
   @ViewChild('guestsButton') guestsButton!: ElementRef;
-   location: string = '';
-   checkInDate: Date = new Date();
-   checkOutDate: Date = new Date();
-   guestsAndRoomsValue: string = '';
+  location: string = '';
+  checkInDate: Date = new Date();
+  checkOutDate: Date = new Date();
+  guestsAndRoomsValue: string = '';
   @Output() searchTriggered: EventEmitter<SearchDetails> = new EventEmitter<SearchDetails>();
+
 
   showGuestsPopup = false;
   guestAndRooms: string = "";
@@ -49,8 +50,8 @@ export class SearchBarComponent {
     };
     if (this.searchHotelByLocation(this.location)) {
       this.searchService.setSearchDetails(details);
-    this.router.navigateByUrl('/hotels');
-    this.searchTriggered.emit(details);
+      this.router.navigateByUrl('/hotels');
+      this.searchTriggered.emit(details);
     }
     else {
       this.toastr.error('Location does not exist', 'Error');
@@ -58,8 +59,16 @@ export class SearchBarComponent {
 
   }
 
+  filterPastDates = (d: Date | null): boolean => {
+    if (!d) {
+      return false;
+    }
+    const currentDate = new Date();
+    return d >= currentDate;
+  };
+
   searchHotelByLocation(location: string) {
-    for (let hotel of this.HotelData){
+    for (let hotel of this.HotelData) {
       let loc = location.toLowerCase();
       let country = hotel.Address.Country.toLowerCase();
       let street = hotel.Address.StreetAddress.toLowerCase();
@@ -73,7 +82,7 @@ export class SearchBarComponent {
     }
     return false;
   }
-  
+
   toggleGuestsPopup() {
     this.showGuestsPopup = !this.showGuestsPopup;
     if (this.showGuestsPopup) {
@@ -90,18 +99,20 @@ export class SearchBarComponent {
     }
   }
   decrement(item: any) {
-    if (item.label !== 'Rooms' && item.count > 1) {
+    if (item.label !== 'Rooms' && item.count > 0) {
       item.count--;
       const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);
       const roomsRequired = Math.ceil(totalGuests / 4);
       this.guestsItems[2].count = roomsRequired;
     }
   }
+
   generateGuestsAndRoomsValue() {
     return this.guestsItems
       .map(item => `${item.count} ${item.label}${item.count !== 1 ? 's' : ''}`)
       .join(', ');
   }
+
   applyGuests() {
     const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);
     const roomsRequired = Math.ceil(totalGuests / 4);
@@ -112,6 +123,7 @@ export class SearchBarComponent {
     this.guestsAndRoomsValue = this.generateGuestsAndRoomsValue();
     this.toggleGuestsPopup();
   }
+
   calculatePopupPosition() {
     if (this.guestsButton) {
       const buttonRect = this.guestsButton.nativeElement.getBoundingClientRect();
@@ -120,18 +132,8 @@ export class SearchBarComponent {
       this.popupLeft = buttonRect.left + window.scrollX;
     }
   }
+
   isSearchButtonDisabled() {
-    return !this.location || !this.checkInDate || !this.checkOutDate || !this.guestsAndRoomsValue;
+    return !this.location || !this.checkInDate || !this.checkOutDate || !this.guestsAndRoomsValue || this.guestsItems[2].count === 0;
   }
 }
-
-
-
-
-
-
-
-
-
-
-

@@ -1,18 +1,23 @@
-<mat-card id="signin" class="signin">
+<br>
+<mat-card id="signin" >
     <mat-card-header>
         <h1>Login</h1>
     </mat-card-header>
-
+<br>
     <mat-card-content>
         <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="loginNow()">
             <mat-form-field id="full-width" class="full-width" appearance="outline">
-                <mat-label>Username</mat-label>
-                <input matInput formControlName="id">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" type="email">
+                <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
+                <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Enter a valid email address</mat-error>
             </mat-form-field>
 
             <mat-form-field class="full-width" appearance="outline">
-                <mat-label>PassWord</mat-label>
+                <mat-label>Password</mat-label>
                 <input matInput formControlName="password" type="password">
+                <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+                <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">Password must be at least 8</mat-error>
             </mat-form-field>
 
 

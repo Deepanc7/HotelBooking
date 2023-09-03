@@ -1,25 +1,29 @@
-<mat-card id="signupMatCard" class="signupMatCard">
+
+<br>
+<mat-card id="signupMatCard" >
     <mat-card-header>
         <h1>Sign-up</h1>
     </mat-card-header>
 
     <mat-card-content>
         <form class="RegisterForm" [formGroup]="registersForm" (ngSubmit)="register()">
-            <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Username</mat-label>
-                <input matInput formControlName="id">
-            </mat-form-field>
+
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Name</mat-label>
                 <input matInput formControlName="name">
             </mat-form-field>
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Email</mat-label>
-                <input matInput formControlName="email">
+                <input matInput formControlName="email" type="email">
+                <mat-error *ngIf="registersForm.get('email')?.hasError('required')">Email is required</mat-error>
+                <mat-error *ngIf="registersForm.get('email')?.hasError('email')">Enter a valid email address</mat-error>
             </mat-form-field>
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>PassWord</mat-label>
                 <input matInput formControlName="password" type="password">
+                <mat-error *ngIf="registersForm.get('password')?.hasError('required')">Password is required</mat-error>
+                <mat-error *ngIf="registersForm.get('password')?.hasError('minlength')">Password must be at least 8
+                    characters long</mat-error>
             </mat-form-field>
 
             <mat-radio-group formControlName="gender" appearance="outline" aria-label="select your option">

@@ -12,17 +12,16 @@ export class SignInPageComponent {
   constructor(private builder: FormBuilder, private router: Router, private toastr: ToastrService) {
   }
 loginSuccess:Boolean=false;
-  result: any;
 
   loginForm = this.builder.group({
-    id: this.builder.control('', Validators.required),
+    email: this.builder.control('', [Validators.required, Validators.email]),
     password: this.builder.control('', Validators.required)
   });
 
 
   loginNow() {
     if (this.loginForm.valid) {
-      const storedUserStr = localStorage.getItem(this.loginForm.value.id || '')
+      const storedUserStr = localStorage.getItem(this.loginForm.value.email || '')
       if (storedUserStr !== null) {
         const storedUser = JSON.parse(storedUserStr);
 
