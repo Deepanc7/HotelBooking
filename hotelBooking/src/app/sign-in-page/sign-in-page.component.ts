@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LoginServiceService } from '../login-page/login-service.service';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -9,9 +10,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./sign-in-page.component.scss']
 })
 export class SignInPageComponent {
-  constructor(private builder: FormBuilder, private router: Router, private toastr: ToastrService) {
+  constructor(private builder: FormBuilder, private router: Router, private toastr: ToastrService, private userService: LoginServiceService) {
   }
-loginSuccess:Boolean=false;
+
+  loginSuccess: Boolean = false;
 
   loginForm = this.builder.group({
     email: this.builder.control('', [Validators.required, Validators.email]),
@@ -20,29 +22,34 @@ loginSuccess:Boolean=false;
 
 
   loginNow() {
-    if (this.loginForm.valid) {
-      const storedUserStr = localStorage.getItem(this.loginForm.value.email || '')
-      if (storedUserStr !== null) {
-        const storedUser = JSON.parse(storedUserStr);
 
-        if (storedUser && storedUser.password === this.loginForm.value.password) {
-          if (storedUser.isactive) {
-            sessionStorage.setItem('id', storedUser.id);
-            sessionStorage.setItem('role', storedUser.role);
+    if (this.loginForm.valid) {
+      const email = this.loginForm.value.email;
+      const password = this.loginForm.value.password;
+      if (email !== null && email !== undefined) {
+        const user = this.userService.getUserByEmail(email);
+
+        if (user !== undefined && user.password === password) {
+          if (user.isactive) {
+            sessionStorage.setItem('email', user.email);
+            sessionStorage.setItem('role', user.role);
             this.router.navigate(['/homePage']);
             this.loginSuccess = true;
 
             this.toastr.success('You\'ve successfully cracked the code to your account. Hello there!', 'Login Successful');
+            sessionStorage.setItem('userName', user.name);
           } else {
             this.loginSuccess = true;
             this.toastr.success('You\'ve successfully cracked the code to your account. Hello there!', 'Login Successful');
+            sessionStorage.setItem('userName', user.name);
           }
         } else {
           this.toastr.error('Error 404: Password genius not found. Please retry.', 'Invalid credentials');
         }
       } else {
-        this.toastr.error('Looks like our virtual dictionary doesn\'t have that entry. Fancy another try?', 'Enter valid details');
+        this.toastr.error('Email is required', 'Invalid Email');
       }
     }
   }
+
 }

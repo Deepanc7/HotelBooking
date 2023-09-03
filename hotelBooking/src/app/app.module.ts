@@ -22,6 +22,7 @@ import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-co
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { EditPopUpComponent } from './edit-pop-up/edit-pop-up.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     TermsAndConditionsComponent,
     ContactUsComponent,
     EditPopUpComponent,
+    LogoutComponent,
     
   ],
   imports: [

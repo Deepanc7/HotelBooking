@@ -5,8 +5,13 @@
     <span>InnSight</span>
   </a>
   <div class="spacer"></div>
+ <button mat-button class="userButton" (click)="openLogoutPopup()" *ngIf="isUserLoggedIn()">
+  {{ getUserName() }} <mat-icon></mat-icon>
+</button>
 
-  <button mat-button   routerLink="/login" ><mat-icon>account_circle</mat-icon></button>
+<ng-container *ngIf="!isUserLoggedIn()">
+  <button mat-button color="primary" routerLink="/login">Login/Signup</button>
+</ng-container>
   <a routerLink="/"><span>Home</span></a>
   <a routerLink="/about"><span>About</span></a>
 
