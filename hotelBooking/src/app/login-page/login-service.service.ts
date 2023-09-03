@@ -8,7 +8,6 @@ export class LoginServiceService {
 
   constructor() { }
 
-
   private users: User[] = [];
 
   addUser(user: User) {
