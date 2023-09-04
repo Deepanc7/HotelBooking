@@ -16,5 +16,7 @@
 ```
 npm init
 npm install
+npm install --save ngx-toastr
+npm install @angular/animations --save
 ng serve
 ```
