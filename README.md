@@ -14,6 +14,7 @@
 
 ## Steps to run:
 ```
+cd hotelBooking
 npm init
 npm install
 npm install --save ngx-toastr
