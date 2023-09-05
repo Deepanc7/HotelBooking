@@ -16,6 +16,6 @@
 ```
 cd HotelBooking/hotelBooking
 npm init
-npm install
+npm install and npm install -g @angular/cli`
 ng serve or npx ng serve to run the project
 ```
