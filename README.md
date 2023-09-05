@@ -14,10 +14,8 @@
 
 ## Steps to run:
 ```
-cd hotelBooking
+cd HotelBooking/hotelBooking
 npm init
 npm install
-npm install --save ngx-toastr
-npm install @angular/animations --save
-ng serve
+ng serve or npx ng serve to run the project
 ```
