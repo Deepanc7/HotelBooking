@@ -19,7 +19,7 @@
                 <mat-error *ngIf="registersForm.get('email')?.hasError('email')">Enter a valid email address</mat-error>
             </mat-form-field>
             <mat-form-field class="full-width" appearance="outline">
-                <mat-label>PassWord</mat-label>
+                <mat-label>Password</mat-label>
                 <input matInput formControlName="password" type="password">
                 <mat-error *ngIf="registersForm.get('password')?.hasError('required')">Password is required</mat-error>
                 <mat-error *ngIf="registersForm.get('password')?.hasError('minlength')">Password must be at least 8

@@ -50,9 +50,9 @@ export class BookNowComponent implements OnInit {
     this.hotelDetails = this.searchHotelByName(this.HotelDetails);
     this.roomDetails = this.searchRoom(this.RoomDetails);
     this.discount = Number((Math.round((this.roomDetails.BaseRate * 15) / 100)).toFixed(2));
-    this.priceAfterDiscount = this.roomDetails.BaseRate - this.discount;
+    this.priceAfterDiscount = Number((Math.round(this.roomDetails.BaseRate - this.discount).toFixed(2)));
     this.tax = Number((Math.round((this.priceAfterDiscount * 10) / 100)).toFixed(2));
-    this.totalPrice = this.priceAfterDiscount + this.tax;
+    this.totalPrice = Number(Math.round(this.priceAfterDiscount + this.tax).toFixed(2));
     let search: SearchDetails = this.searchService.getSearchDetails();
     let x = search.guestsAndRooms.split(" ");
     this.GuestCount = Number(x[0]) + Number(x[2]);
