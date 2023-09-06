@@ -78,6 +78,8 @@
 .app-container {
   height: 90%;
   margin: 0;
+  display: flex;
+  flex-direction: row;
 }
 
 .app-sidenav {
@@ -299,4 +301,42 @@ background-color: #007d0a;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(310px, 2fr));
   }
+}
+
+/* Adjust layout for screens 768px and smaller (e.g., mobile) */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column-reverse; /* Reverse the order for mobile */
+  }
+
+  .app-sidenav {
+    width: 100%; /* Full width for sidenav on mobile */
+  }
+
+  .mat-sidenav-content {
+    order: -1; /* Move content to the top in the column */
+  }
+}
+
+
+/* Adjust sidenav and content for screens between 768px and 1200px (e.g., tablets) */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .app-sidenav {
+    width: 250px; /* Adjust the width as needed */
+  }
+
+  /* You may need to further customize styles for tablets if necessary */
+}
+
+/* Default styles for screens larger than 1200px (e.g., desktop) */
+.app-sidenav {
+  width: 230px; /* Default width for sidenav */
+}
+
+.app-container {
+  height: 90%; /* Default height for sidenav container */
+}
+
+.hotel-list {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Default grid layout */
 }

@@ -1,17 +1,31 @@
 <h2 mat-dialog-title class="custom-dialog-title">Edit Booking Details</h2>
 <div mat-dialog-content class="custom-dialog-content">
   <mat-form-field>
-    <input matInput [(ngModel)]="editedData.checkInDate" placeholder="Check-in Date" type="date">
+    <mat-select [(ngModel)]="editedData.RoomDetails" placeholder="{{editedData.RoomDetails}}">
+      <mat-option value="{{editedData.hotel.Rooms[0].Description}}">{{editedData.hotel.Rooms[0].Description}}</mat-option>
+      <mat-option value="{{editedData.hotel.Rooms[1].Description}}">{{editedData.hotel.Rooms[1].Description}}</mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <input matInput [(ngModel)]="editedData.checkOutDate" placeholder="Check-out Date" type="date">
+    <input
+      matInput
+      [(ngModel)]="editedData.GuestCount"
+      placeholder="Guest Count"
+      type="number"
+    />
   </mat-form-field>
   <mat-form-field>
-    <input matInput [(ngModel)]="editedData.RoomDetails" placeholder="Room Details">
+    <mat-date-range-input [rangePicker]="picker" [dateFilter]="filterPastDates">
+      <input matStartDate [(ngModel)]="editedData.checkInDate" 
+        [placeholder]="editedData.checkInDate || 'Date'" [readonly]="false">
+      <input matEndDate [(ngModel)]="editedData.checkOutDate"
+        [placeholder]="editedData.checkOutDate || 'Date'" [readonly]="false">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
-  <mat-form-field>
-    <input matInput [(ngModel)]="editedData.GuestCount" placeholder="Guest Count" type="number">
-  </mat-form-field>
+  
+  
 </div>
 <div mat-dialog-actions class="custom-dialog-actions">
   <button mat-button (click)="closeDialog()">Cancel</button>

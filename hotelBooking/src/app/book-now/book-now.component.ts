@@ -83,7 +83,7 @@ export class BookNowComponent implements OnInit {
 
   searchRoom(roomType: string) {
     for (let room of this.hotelDetails.Rooms) {
-      if (room.Type === roomType) {
+      if (room.Description === roomType) {
         return room;
       }
     }
@@ -92,6 +92,7 @@ export class BookNowComponent implements OnInit {
     const dialogRef = this.dialog.open(EditPopUpComponent, {
       width: '300px',
       data: {
+        hotel:this.hotelDetails,
         checkInDate: this.checkInDate,
         checkOutDate: this.checkOutDate,
         RoomDetails: this.RoomDetails,
@@ -101,9 +102,8 @@ export class BookNowComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Update booking details with edited values
-        this.checkInDate = result.checkInDate;
-        this.checkOutDate = result.checkOutDate;
+        this.checkInDate = this.datePipe.transform(result.checkInDate, 'dd-MM-yyyy');
+        this.checkOutDate = this.datePipe.transform(result.checkOutDate, 'dd-MM-yyyy');;
         this.RoomDetails = result.RoomDetails;
         this.GuestCount = result.GuestCount;
       }

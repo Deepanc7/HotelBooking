@@ -64,7 +64,7 @@ export class HotelDetailsComponent implements OnInit {
     const navigationExtras = {
       queryParams: {
         details: JSON.stringify(this.HotelDetails),
-        room: JSON.stringify(String(room.Type))
+        room: JSON.stringify(String(room.Description))
       }
     };
     this.router.navigate(['/booking'], navigationExtras);

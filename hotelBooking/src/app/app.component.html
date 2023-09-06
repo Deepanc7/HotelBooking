@@ -6,14 +6,13 @@
   </a>
   <div class="spacer"></div>
  <button mat-button class="userButton" (click)="openLogoutPopup()" *ngIf="isUserLoggedIn()">
-  {{ getUserName() }} <mat-icon></mat-icon>
+  {{ getUserName() }} <i class="fa fa-user"></i>
+
 </button>
 
 <ng-container *ngIf="!isUserLoggedIn()">
-  <button mat-button color="primary" routerLink="/login">Login/Signup</button>
+  <button mat-button color="primary" routerLink="/login">Login/Signup</button><i class="fa fa-user"></i>
 </ng-container>
-  <a routerLink="/"><span>Home</span></a>
-  <a routerLink="/about"><span>About</span></a>
 
 </mat-toolbar>
 

@@ -16,8 +16,8 @@ export class SignupPageComponent {
 
   registersForm = this.builder.group({
     name: this.builder.control('', Validators.required),
-    password: this.builder.control('', Validators.compose([Validators.required, Validators.minLength(8)])),
-    email: this.builder.control('', Validators.compose([Validators.required, Validators.email])),
+    password: this.builder.control('',[Validators.required, Validators.minLength(8)]),
+    email: this.builder.control('',[Validators.required, Validators.email]),
     gender: this.builder.control('male'),
     role: this.builder.control(''),
     isactive: this.builder.control('')
@@ -35,10 +35,17 @@ export class SignupPageComponent {
         isactive: true
       };
 
-      this.userService.addUser(user);
-
-      this.toastr.success('Prepare for adventure – your registration victory just unlocked the door.', 'Registration successful');
-      this.router.navigate(['/signin']);
+      if(this.userService.checkUser(user)=="proceed") {
+        this.userService.addUser(user);
+        this.toastr.success('Prepare for adventure – your registration victory just unlocked the door.', 'Registration successful');
+        this.router.navigate(['/signin']);
+      }
+      else if(this.userService.checkUser(user)=="name") {
+        this.toastr.error('Username already exists', 'Registration unsuccessful');
+      }
+      else if(this.userService.checkUser(user)=="email") {
+        this.toastr.error('Email already exists', 'Registration unsuccessful');
+      }
     } else {
       this.toastr.error('Enter valid details', 'Error');
     }

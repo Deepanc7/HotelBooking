@@ -30,4 +30,17 @@
       justify-content: space-between;
       padding: 10px;
     }
-  }  
+  } 
+
+  mat-date-range-input {
+    color: black;
+    font-size: 25px;
+  }
+
+  mat-option {
+    background-color: rgba(0,0,0,0);
+  }
+
+  input {
+    color: black;
+  }
