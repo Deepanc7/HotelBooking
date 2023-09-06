@@ -15,7 +15,6 @@
 ## Steps to run:
 ```
 cd HotelBooking/hotelBooking
-npm init
 npm install --force  
 ng serve or npx ng serve to run the project
 ```
