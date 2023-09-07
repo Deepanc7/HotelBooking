@@ -72,6 +72,7 @@
             <h3 class="room-type">{{ room.Type }}</h3>
             <p class="room-description">{{ room.Description }}</p>
             <div class="room-price">{{ room.BaseRate | currency }}</div>
+            <br>
             <button class="go-to-rooms-button" (click)="selectRoom(room)">Select Room</button>
           </div>
         </mat-card>
