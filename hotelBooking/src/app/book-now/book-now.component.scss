@@ -1,3 +1,8 @@
+mat-card-content {
+  color: black;
+  width: 100%;
+}
+
 .content-container {
   display: flex;
   min-height: 100vh;
@@ -11,11 +16,6 @@
   flex-direction: row;
 }
 
-.star-icon {
-  color: #FFD700;
-  font-size: 16px;
-}
-
 #header {
   width: 100%;
   border-radius: 10px;
@@ -23,6 +23,7 @@
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 2px 6px rgba(95, 93, 93, 0.711);
   font-size: 24px;
+  color: black;
 }
 
 .sidenav-container {
@@ -39,6 +40,7 @@
 
 .sidenav-content {
   flex: 1;
+  background-color: white;
 }
 
 .hotel-imgContainer {
@@ -56,6 +58,14 @@
   padding-left: 16px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  align-items: center;
+  font-size: larger;
+}
+
+.hotel-name {
+  font-size: x-large;
   justify-content: center;
 }
 
@@ -84,6 +94,12 @@ mat-card-title {
   font-weight: bold;
   margin-bottom: 10px;
   color: #333;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card-header {
+  justify-content: center;
 }
 
 .price-item {
@@ -118,14 +134,13 @@ mat-card-title {
 
 .booking-details {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   background-color: rgba(0, 0, 0, 0);
   width: 100%;
 }
 
 .booking-card {
-  // padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
@@ -144,7 +159,6 @@ mat-card-title {
 .booking-item {
   display: flex;
   align-items: center;
-  // margin-bottom: 12px;
 }
 
 .booking-label {
@@ -174,23 +188,109 @@ mat-card-title {
   font-size: 15px;
 }
 
-.book-now-button{
-  background-color: green;
-  color:white ;
-  border-radius: 10px;
-  padding:15px;
+.book-card {
+  align-items: center;
+  justify-content: center;
 }
 
-@media (min-width: 968px) {
-  .hotel-image {
-    justify-content: center;
+.book-card-details {
+  align-items: center;
+  justify-content: center;
+}
+
+.book-now-button {
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  padding: 15px;
+  width: 100px;
+  justify-content: center;
+}
+
+.hotel-info {
+  border: white;
+  box-shadow: white 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .content-container {
+    flex-direction: row;
   }
-  .hotel-details-content {
-    padding: 16px 0;
-    align-items: center;
+
+  .hotel-info,
+  .price-card,
+  .book-card,
+  .booking-card {
+    width: 100%; 
+    margin-bottom: 16px;
   }
-  .main-content {
-    flex: 2;
+
+  .booking-card {
     padding: 16px;
+  }
+
+  .hotel-image img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 500px;
+    height: 290px;
+  }
+
+  .hotel-info {
+    width: 800px;
+  }
+
+  .main-content-inner {
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main-content {
+    width: 100%;
+    padding: 0; 
+  }
+
+  .hotel-info,
+  .price-card,
+  .book-card,
+  .booking-card {
+    width: 100%; 
+    margin-bottom: 16px;
+  }
+
+  .booking-card {
+    padding: 16px;
+  }
+
+  .hotel-image img {
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .content-container {
+    flex-direction: row;
+  }
+
+  .main-content {
+    flex: 2; 
+    padding: 16px;
+    width: auto; 
+  }
+
+  .price-card,
+  .book-card,
+  .booking-card {
+    width: 100%; 
+    margin-bottom: 16px; 
+  }
+
+  .booking-card {
+    padding: 16px;
+  }
+
+  .hotel-image img {
+    max-width: 100%; 
   }
 }

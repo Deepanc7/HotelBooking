@@ -23,6 +23,8 @@
   float: left;
   max-width: 360px;
   max-height: 190px;
+  justify-content: center;
+  align-items: center;
 }
 
 .hotel-image {
@@ -35,7 +37,7 @@
   align-items: center;
   border-radius: 30px;
   padding: 20px;
-  max-width: 360px;
+  width: 360px;
   height: 290px;
 }
 
@@ -44,6 +46,8 @@
   flex: 1;
   padding: 20px;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .hotel-name {
@@ -201,30 +205,63 @@ mat-label {
 .side-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: fit-content;
-}
-
-.hotelIamagenddetils {
-  display: flex;
   justify-content: center;
+  width: fit-content;
+  align-items: center;
 }
 
 .content-hotel {
   display: flex;
   flex-direction: row;
 }
+@media (max-width: 768px) {
+  .hotel-details-card {
+    width: 350px;
+  }
+}
 
 @media (max-width:900px) {
+  .hotel-details-card {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    align-items: center;
+  }
   .content-hotel {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hotel-image {
+    justify-content: center;
   }
 
   .hotel-content {
     flex: 1;
     display: flex;
     flex-direction: column;
+  }
+
+  mat-card {
+    justify-content: center;
+  }
+
+  .hotel-price-card,.date-time-card {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .hotel-details-card{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  .content-hotel {
+    padding: 10px;
+    align-items: center;
   }
 
 }

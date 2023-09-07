@@ -60,7 +60,12 @@ export class HotelDetailsComponent implements OnInit {
     }
   }
 
+  isUserLoggedIn(): boolean {
+    return sessionStorage.getItem('userName') !== null;
+  }
+
   selectRoom(room: any) {
+    if (this.isUserLoggedIn()){
     const navigationExtras = {
       queryParams: {
         details: JSON.stringify(this.HotelDetails),
@@ -68,5 +73,10 @@ export class HotelDetailsComponent implements OnInit {
       }
     };
     this.router.navigate(['/booking'], navigationExtras);
+  }
+
+else {
+  this.router.navigate(['/login']);
+}
   }
 }

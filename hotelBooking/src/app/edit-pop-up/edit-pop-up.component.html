@@ -1,11 +1,13 @@
 <h2 mat-dialog-title class="custom-dialog-title">Edit Booking Details</h2>
 <div mat-dialog-content class="custom-dialog-content">
+  <mat-label>Room type</mat-label>
   <mat-form-field>
     <mat-select [(ngModel)]="editedData.RoomDetails" placeholder="{{editedData.RoomDetails}}">
       <mat-option value="{{editedData.hotel.Rooms[0].Description}}">{{editedData.hotel.Rooms[0].Description}}</mat-option>
       <mat-option value="{{editedData.hotel.Rooms[1].Description}}">{{editedData.hotel.Rooms[1].Description}}</mat-option>
     </mat-select>
   </mat-form-field>
+  <mat-label>Guest count</mat-label>
   <mat-form-field>
     <input
       matInput
@@ -14,12 +16,13 @@
       type="number"
     />
   </mat-form-field>
+  <mat-label>Check-in/Check-out</mat-label>
   <mat-form-field>
     <mat-date-range-input [rangePicker]="picker" [dateFilter]="filterPastDates">
       <input matStartDate [(ngModel)]="editedData.checkInDate" 
-        [placeholder]="editedData.checkInDate || 'Date'" [readonly]="false">
+        [placeholder]="editedData.checkInDate || 'DateString'" [readonly]="false">
       <input matEndDate [(ngModel)]="editedData.checkOutDate"
-        [placeholder]="editedData.checkOutDate || 'Date'" [readonly]="false">
+        [placeholder]="editedData.checkOutDate || 'DateString'" [readonly]="false">
     </mat-date-range-input>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>

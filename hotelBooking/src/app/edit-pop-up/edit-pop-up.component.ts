@@ -12,7 +12,6 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 })
 export class EditPopUpComponent {
 
-  newdate=new Date();
   editedData: any = {
     hotel:null,
     checkInDate: null,

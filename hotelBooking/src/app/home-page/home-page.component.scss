@@ -8,6 +8,8 @@
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   background-color: rgba(0, 0, 0, 0);
+  justify-content: center;
+  width: 100%;
 }
 
 .title {
@@ -143,7 +145,7 @@
     border-radius: 15px;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-    width: 500px;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0);
   }
 
@@ -199,6 +201,9 @@
   .section-content {
     padding: 0 20px;
     background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   }
 }
 .image-container {
@@ -212,6 +217,10 @@ mat-card {
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
   padding: 0px;
+  font-family: "Lato", sans-serif;
+}
+mat-card-title {
+  font-family: "Lato", sans-serif;
 }
 .image-card:hover {
   transform: translateY(-5px);

@@ -1,11 +1,9 @@
 <br>
 <mat-card>
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav mode="side" opened class="sidenav">
       <div class="sidenav-content">
         <mat-card id="hotel-info" class="hotel-info">
           <mat-card-header class="header" id="header">
-            <mat-card-title>Hotel Info</mat-card-title>
+            <mat-card-title><h2 class="hotel-name">{{ hotelDetails.HotelName }}</h2></mat-card-title>
           </mat-card-header>
           <br>
           <mat-card-content>
@@ -14,18 +12,12 @@
                 <div class="hotel-image">
                   <img src="{{ hotelDetails.HotelImage }}" alt="Hotel Image">
                 </div>
-              </div>
-              <div class="hotel-details-content">
-                <h2 class="hotel-name">{{ hotelDetails.HotelName }}</h2>
-                <div class="hotel-rating">
-                  <ng-container *ngFor="let star of getStars(hotelDetails.Rating)">
-                    <mat-icon class="star-icon">star</mat-icon>
-                  </ng-container>
-                </div>
-                <div class="Address">
-                  <p>{{hotelDetails.Address.City}}</p>
+                <pre>   </pre>
+                <div class="hotel-image">
+                  <img src="{{ roomDetails.RoomImage }}" alt="Hotel Image">
                 </div>
               </div>
+              
             </div>
             <div class="booking-details">
               <mat-card class="booking-card" id="booking-card">
@@ -66,11 +58,10 @@
           </mat-card-content>
         </mat-card>
       </div>
-    </mat-sidenav>
-    <mat-sidenav-content class="main-content">
+
       <div class="main-content-inner">
         <ng-container>
-          <mat-card class="price-card">
+          <mat-card class="price-card" id="price-card">
             <mat-card-title>Price Summary</mat-card-title>
             <mat-card-content>
               <div class="price-item">
@@ -98,18 +89,18 @@
             </mat-card-content>
           </mat-card>
           <br>
-          <mat-card class="book-card">
+          <mat-card class="book-card" id="book-card">
             <mat-card-title>Coupon Code</mat-card-title>
-            <mat-card-content>
+            <div class="book-card-details">
+            <mat-card-content class="book-card-details" id="book-card-details">
               <mat-form-field>
                 <input matInput placeholder="Enter coupon code">
               </mat-form-field>
               <br>
-              <button class="book-now-button" (click)="success()">Book Now</button>
             </mat-card-content>
+          </div>
+          <button class="book-now-button" (click)="success()" >Book Now</button>
           </mat-card>
         </ng-container>
       </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
 </mat-card>

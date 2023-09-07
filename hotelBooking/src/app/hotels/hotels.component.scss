@@ -1,8 +1,9 @@
-.mat-sidenav-content {
+mat-sidenav-content {
   display: flex;
   flex-direction: column;
   flex: 1;
   overflow: auto;
+  background-color: white;
 }
 
 .hotel-list {
@@ -113,8 +114,12 @@ mat-sidenav {
 
 }
 
+mat-card[_ngcontent-ng-c3571401772] {
+  background-color: white;
+}
+
 mat-card {
-  background-color: whitesmoke;
+  background-color: white;
 }
 
 .sidenavDiv {
@@ -275,9 +280,10 @@ mat-select {
 .sortByButton {
   display: flex;
   width: 100%;
-  height: 70px;
+  height: 50px;
   padding: 2%;
   justify-content: flex-end;
+  margin-top: 0px;
 }
 .ng-contr{
 background-color: #007d0a;
@@ -290,9 +296,18 @@ background-color: #007d0a;
   padding: 10px;
 }
 
+.mobile-filters {
+  visibility: hidden;
+  height: 0px;
+}
+
 @media (max-width: 768px) {
-  .sidenav {
+
+  app-search-bar {
     width: 100%;
+  }
+  .sidenav {
+    max-width: 100%;
     height: 100vh;
     overflow-y: scroll;
   }
@@ -301,42 +316,28 @@ background-color: #007d0a;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(310px, 2fr));
   }
-}
 
-/* Adjust layout for screens 768px and smaller (e.g., mobile) */
-@media (max-width: 768px) {
-  .app-container {
-    flex-direction: column-reverse; /* Reverse the order for mobile */
+  .mobile-filters {
+    visibility: visible;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
   }
 
   .app-sidenav {
-    width: 100%; /* Full width for sidenav on mobile */
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
   }
 
-  .mat-sidenav-content {
-    order: -1; /* Move content to the top in the column */
+  mat-sidenav-content {
+    width: 100%;
+    justify-content: center;
+  }
+  .hotel-card {
+    width: 100%;
+    margin-top: 10px;
   }
 }
 
 
-/* Adjust sidenav and content for screens between 768px and 1200px (e.g., tablets) */
-@media (min-width: 769px) and (max-width: 1200px) {
-  .app-sidenav {
-    width: 250px; /* Adjust the width as needed */
-  }
-
-  /* You may need to further customize styles for tablets if necessary */
-}
-
-/* Default styles for screens larger than 1200px (e.g., desktop) */
-.app-sidenav {
-  width: 230px; /* Default width for sidenav */
-}
-
-.app-container {
-  height: 90%; /* Default height for sidenav container */
-}
-
-.hotel-list {
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Default grid layout */
-}
