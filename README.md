@@ -14,7 +14,7 @@
 
 ## Steps to run:
 ```
-cd HotelBooking/hotelBooking
+cd HotelBooking
 npm install
 ng serve or npx ng serve to run the project
 ```
