@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SearchDetails } from './search-details.interface';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class SearchService {
   };
 
   setSearchDetails(details: SearchDetails) {
-    this.searchDetails = details;
+    this.searchDetails=details;
     localStorage.setItem('searchDetails', JSON.stringify(this.searchDetails));
   }
 

@@ -65,6 +65,14 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
+    const details: SearchDetails = {
+      location: '',
+      checkIn: new Date(),
+      checkOut: new Date(),
+      guestsAndRooms: ''
+    };
+    this.searchService.setSearchDetails(details);
+
     this.HotelData = this.dataService.getHotelData();
     this.popularHotels = this.HotelData;
     this.HotelData.sort((a: any, b: any) => b.Rating - a.Rating);

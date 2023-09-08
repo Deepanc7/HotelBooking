@@ -38,7 +38,7 @@
         <mat-icon>people</mat-icon>
         <label class="search-component-label">GUEST & ROOMS</label>
         <input type="text" [(ngModel)]="guestsAndRoomsValue"
-          [placeholder]="guestsAndRoomsValue ? guestsAndRoomsValue : 'GUEST & ROOMS'" readonly>
+          [placeholder]="guestsAndRoomsValue ? guestsAndRoomsValue : 'GUEST & ROOMS'">
       </button>
 
 
@@ -48,7 +48,7 @@
         <mat-icon matSuffix>search</mat-icon> Search
       </button>
 
-      <!-- Floating Popup for Guests and rooms -->
+      
       <div class="floating-popup" *ngIf="showGuestsPopup" [style.top.px]="popupTop" [style.left.px]="popupLeft">
         <div class="popup-content">
           <div *ngFor="let item of guestsItems" class="popup-item">

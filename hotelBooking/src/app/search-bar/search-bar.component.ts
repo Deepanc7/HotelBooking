@@ -4,6 +4,7 @@ import { SearchDetails } from './search-details.interface';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from '../data.service';
+import { count } from 'rxjs';
 
 @Component({
   selector: 'app-search-bar',
@@ -15,6 +16,7 @@ import { DataService } from '../data.service';
 export class SearchBarComponent implements OnInit {
 
   @ViewChild('guestsButton') guestsButton!: ElementRef;
+  sharedData: any;
   location: string = '';
   checkInDate: Date = new Date();
   checkOutDate: Date = new Date();
@@ -43,6 +45,10 @@ export class SearchBarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sharedData=this.searchService.getSearchDetails();
+    this.location=this.sharedData.location;
+    this.checkInDate=new Date(this.sharedData.checkIn);
+    this.checkOutDate=new Date(this.sharedData.checkOut);
     this.HotelData = this.dataService.getHotelData();
   }
 
@@ -104,17 +110,19 @@ export class SearchBarComponent implements OnInit {
     }
   }
   decrement(item: any) {
-    if (item.label !== 'Rooms' && item.count > 0) {
+    if (item.label === 'Adults' && item.count > 1) {
+    if (item.label !== 'Rooms' && item.count > 1) {
       item.count--;
       const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);
       const roomsRequired = Math.ceil(totalGuests / 4);
       this.guestsItems[2].count = roomsRequired;
     }
   }
+  }
 
   generateGuestsAndRoomsValue() {
     return this.guestsItems
-      .map(item => `${item.count} ${item.label}${item.count !== 1 ? 's' : ''}`)
+      .map(item => `${item.count} ${item.label}${item.count !== 1 ? '' : ''}`)
       .join(', ');
   }
 
