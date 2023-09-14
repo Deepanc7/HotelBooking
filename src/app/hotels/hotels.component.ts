@@ -93,16 +93,16 @@ export class HotelsComponent implements OnInit {
   applySort() {
     switch (this.selectedSortOption) {
       case 'lowToHigh':
-        this.HotelData.sort((a: { lowestPrice: number; }, b: { lowestPrice: number; }) => a.lowestPrice - b.lowestPrice);
+        this.HotelData.sort((a: { LowestPrice: number; }, b: { LowestPrice: number; }) => a.LowestPrice - b.LowestPrice);
         break;
       case 'highToLow':
-        this.HotelData.sort((a: { lowestPrice: number; }, b: { lowestPrice: number; }) => b.lowestPrice - a.lowestPrice);
+        this.HotelData.sort((a: { LowestPrice: number; }, b: { LowestPrice: number; }) => b.LowestPrice - a.LowestPrice);
         break;
       case 'popularity':
         this.HotelData.sort((a: { Rating: number; }, b: { Rating: number; }) => Number(b.Rating) - Number(a.Rating));
         break;
       default:
-        this.HotelData.sort((a: { lowestPrice: number; }, b: { lowestPrice: number; }) => a.lowestPrice - b.lowestPrice);
+        this.HotelData.sort((a: { LowestPrice: number; }, b: { LowestPrice: number; }) => a.LowestPrice - b.LowestPrice);
         break;
     }
   }
@@ -124,28 +124,28 @@ export class HotelsComponent implements OnInit {
     }
     );
     if (this.PriceRange === "Range1") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 0 && hotel.lowestPrice <= 50);
+      this.HotelData = this.HotelData.filter((hotel: { LowestPrice: number; }) => hotel.LowestPrice >= 0 && hotel.LowestPrice <= 50);
     }
     if (this.PriceRange === "Range2") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 50 && hotel.lowestPrice <= 100);
+      this.HotelData = this.HotelData.filter((hotel: { LowestPrice: number; }) => hotel.LowestPrice >= 50 && hotel.LowestPrice <= 100);
     }
     if (this.PriceRange === "Range3") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 100 && hotel.lowestPrice <= 150);
+      this.HotelData = this.HotelData.filter((hotel: { LowestPrice: number; }) => hotel.LowestPrice >= 100 && hotel.LowestPrice <= 150);
     }
     if (this.PriceRange === "Range4") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 150 && hotel.lowestPrice <= 200);
+      this.HotelData = this.HotelData.filter((hotel: { LowestPrice: number; }) => hotel.LowestPrice >= 150 && hotel.LowestPrice <= 200);
     }
     if (this.PriceRange === "Range5") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 200 && hotel.lowestPrice <= 250);
+      this.HotelData = this.HotelData.filter((hotel: { LowestPrice: number; }) => hotel.LowestPrice >= 200 && hotel.LowestPrice <= 250);
     }
     if (this.PriceRange === "Range6") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 250 && hotel.lowestPrice <= 300);
+      this.HotelData = this.HotelData.filter((hotel: { LowestPrice: number; }) => hotel.LowestPrice >= 250 && hotel.LowestPrice <= 300);
     }
     if (this.Parking === true) {
-      this.HotelData = this.HotelData.filter((hotel: { ParkingIncluded: number; }) => hotel.ParkingIncluded == 1);
+      this.HotelData = this.HotelData.filter((hotel: any) => hotel.ParkingIncluded == true);
     }
     if (this.Parking === false) {
-      this.HotelData = this.HotelData.filter((hotel: { ParkingIncluded: number; }) => hotel.ParkingIncluded == 0);
+      this.HotelData = this.HotelData.filter((hotel: any) => hotel.ParkingIncluded == false);
     }
 
     this.selectedTags = this.filterOptions.filter(option => option.selected).map(option => option.label);

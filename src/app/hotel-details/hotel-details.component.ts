@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 
+
 @Component({
   selector: 'app-hotel-details',
   templateUrl: './hotel-details.component.html',
@@ -12,7 +13,7 @@ import { DataService } from '../data.service';
   providers: [SearchService, DataService]
 })
 export class HotelDetailsComponent implements OnInit {
-  HotelData: any;
+  HotelData: any[]=[];
   HotelDetails: string = '';
   hotelDetails: any;
 
@@ -31,20 +32,22 @@ export class HotelDetailsComponent implements OnInit {
   constructor(private searchService: SearchService, private router: Router, private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit() {
-    this.HotelData = this.dataService.getHotelData();
     this.route.queryParams.subscribe(params => {
       this.HotelDetails = JSON.parse(params['details']);
     });
-    this.hotelDetails = this.searchHotelByName(this.HotelDetails);
+    console.log(this.HotelDetails)
+    this.dataService.getHotelData().subscribe((data: any[]) => {
+      this.HotelData=data;
+      this.hotelDetails = this.searchHotelByName(this.HotelDetails);
+      });
     let search: SearchDetails = this.searchService.getSearchDetails();
     let x = search.guestsAndRooms.split(" ");
     this.GuestCount = Number(x[0]) + Number(x[2]);
     this.RoomCount = Number(x[4]);
   }
 
-  searchHotelByName(hotelName: string) {
-    const foundHotel = this.HotelData.find((hotel: { HotelName: string; }) => String(hotel.HotelName) === hotelName);
-
+  searchHotelByName(Name: string) {
+    const foundHotel = this.HotelData.find((hotel: { hotelName: string; }) => String(hotel.hotelName) === Name);
     return foundHotel || "Hotel not found";
   }
 
@@ -69,7 +72,7 @@ export class HotelDetailsComponent implements OnInit {
     const navigationExtras = {
       queryParams: {
         details: JSON.stringify(this.HotelDetails),
-        room: JSON.stringify(String(room.Description))
+        room: JSON.stringify(String(room.description))
       }
     };
     this.router.navigate(['/booking'], navigationExtras);

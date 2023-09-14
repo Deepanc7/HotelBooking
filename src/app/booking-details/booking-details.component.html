@@ -1,0 +1,34 @@
+<ng-container>
+<mat-card class="bookings-card">
+    <mat-card-header>
+        <mat-card-title>Booking Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <ng-container>
+            <div class="booking-list">
+                <mat-card *ngFor="let booking of bookingDetailsList" class="booking-item">
+                  <div class="hotel-image">
+                    <img src="{{ booking.hotelImage }}" alt="{{ booking.hotelName }} Image">
+                  </div>
+                  <mat-card-title class="hotel-name">
+                    <mat-icon class="icon">hotel</mat-icon> {{ booking.hotelName }}
+                  </mat-card-title>
+                  <mat-card-content>
+                    <div class="booking-info">
+                      <p><mat-icon class="icon">event</mat-icon> <strong>Check-in Date:</strong> {{ booking.checkIn }} &nbsp; <mat-icon class="icon">event</mat-icon> <strong>Check-out Date:</strong> {{ booking.checkOut }}</p>
+                      <p><mat-icon class="icon">people</mat-icon> <strong>Guests:</strong> {{ booking.guests }} &nbsp; <mat-icon class="icon">meeting_room</mat-icon> <strong>Rooms:</strong> {{ booking.room }}</p>
+                    </div>
+                    <button class="delete-button" (click)="delete(booking.id)" >Delete</button>
+                    <div class="total-price">
+                      <p><strong>Total Price:</strong> ${{ booking.totalPrice }}</p>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              
+
+        </ng-container>
+
+    </mat-card-content>
+</mat-card>
+</ng-container>

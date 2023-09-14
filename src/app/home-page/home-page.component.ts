@@ -11,8 +11,8 @@ import { DataService } from '../data.service';
   providers: [SearchService, DataService]
 })
 export class HomePageComponent implements OnInit {
-  HotelData: any;
-  popularHotels: any;
+  HotelData: any[]=[];
+  popularHotels: any[]=[];
   checkInDate: Date = new Date();
   checkOutDate: Date = new Date();
   guestsAndRoomsValue: string = '1 Adults, 0 Childrens, 1 Rooms';
@@ -55,10 +55,9 @@ export class HomePageComponent implements OnInit {
 
   currentIndex = 0;
   maxIndex: number = 0;
-  displayedHotels: any[] = [];
+  displayedHotels: any[]=[];
   startIndex = 0;
   itemsPerPage = 4;
-  LowestRoomPrice: number[] = [];
   details: string = '';
 
   constructor(private router: Router, private searchService: SearchService, private dataService: DataService) {
@@ -72,12 +71,13 @@ export class HomePageComponent implements OnInit {
       guestsAndRooms: ''
     };
     this.searchService.setSearchDetails(details);
-
-    this.HotelData = this.dataService.getHotelData();
-    this.popularHotels = this.HotelData;
-    this.HotelData.sort((a: any, b: any) => b.Rating - a.Rating);
+    this.dataService.getHotelData().subscribe((data: any[]) => {
+       this.HotelData=data;
+       this.popularHotels = this.HotelData;
+       this.HotelData.sort((a: any, b: any) => b.rating - a.rating);
     this.maxIndex = this.popularHotels.length - 1;
     this.updateDisplayedHotels();
+       });
   }
 
   goToHotels(index: any) {
@@ -119,7 +119,7 @@ export class HomePageComponent implements OnInit {
     this.searchService.setSearchDetails(details);
     for (let i = 0; i < this.HotelData.length; i++) {
       if (this.HotelData[i] === this.displayedHotels[index]) {
-        this.details = String(this.HotelData[i].HotelName);
+        this.details = String(this.HotelData[i].hotelName);
       }
     }
     const navigationExtras = {

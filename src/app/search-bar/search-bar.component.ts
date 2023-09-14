@@ -26,7 +26,7 @@ export class SearchBarComponent implements OnInit {
 
   showGuestsPopup = false;
   guestAndRooms: string = "";
-  HotelData: any;
+  HotelData: any[]=[];
 
   guestsItems = [
     { label: 'Adults', count: 1 },
@@ -49,7 +49,9 @@ export class SearchBarComponent implements OnInit {
     this.location=this.sharedData.location;
     this.checkInDate=new Date(this.sharedData.checkIn);
     this.checkOutDate=new Date(this.sharedData.checkOut);
-    this.HotelData = this.dataService.getHotelData();
+    this.dataService.getHotelData().subscribe((data: any[]) => {
+      this.HotelData=data;
+      });
   }
 
   searchHotels() {
@@ -81,12 +83,12 @@ export class SearchBarComponent implements OnInit {
   searchHotelByLocation(location: string) {
     for (let hotel of this.HotelData) {
       let loc = location.toLowerCase().trim();
-      let country = hotel.Address.Country.toLowerCase();
-      let street = hotel.Address.StreetAddress.toLowerCase();
-      let city = hotel.Address.City.toLowerCase();
-      let state = hotel.Address.StateProvince;
-      let postalcode = hotel.Address.PostalCode;
-      let name = hotel.HotelName.toLowerCase();
+      let country = hotel.address.country.toLowerCase();
+      let street = hotel.address.streetAddress.toLowerCase();
+      let city = hotel.address.city.toLowerCase();
+      let state = hotel.address.atateProvince;
+      let postalcode = hotel.address.postalCode;
+      let name = hotel.hotelName.toLowerCase();
       if (country === loc || city == loc || street === loc || state === loc || postalcode === loc || name === loc) {
         return true;
       }

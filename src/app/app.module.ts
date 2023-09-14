@@ -23,6 +23,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { EditPopUpComponent } from './edit-pop-up/edit-pop-up.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { LogoutComponent } from './logout/logout.component';
+import { BookingDetailsComponent } from './booking-details/booking-details.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { LogoutComponent } from './logout/logout.component';
     ContactUsComponent,
     EditPopUpComponent,
     LogoutComponent,
+    BookingDetailsComponent,
     
   ],
   imports: [

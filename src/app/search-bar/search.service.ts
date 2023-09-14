@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { SearchDetails } from './search-details.interface';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable({
   providedIn: 'root'

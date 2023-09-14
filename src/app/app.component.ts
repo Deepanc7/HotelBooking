@@ -11,14 +11,14 @@ import { LogoutComponent } from './logout/logout.component';
 })
 export class AppComponent {
   jsonData: any;
-  HotelData: any[] = [];
+  HotelData: any[]=[];
   LowestRoomPrice: number[] = [];
 
   constructor(private dataService: DataService,private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    this.jsonData = this.dataService.getJsonData().value;
+    this.jsonData = this.dataService.getJsonData();
     for (let i = 0; i < this.jsonData.length; i++) {
       this.HotelData.push(this.jsonData[i]);
     }
@@ -35,7 +35,7 @@ export class AppComponent {
         }
       }
       this.LowestRoomPrice.push(lowestPrice);
-      this.HotelData[i].lowestPrice = lowestPrice;
+      this.HotelData[i].LowestPrice = lowestPrice;
     }
   }
 
