@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from '../data.service';
 import { count } from 'rxjs';
+import { Hotel } from '../hotel.model';
 
 @Component({
   selector: 'app-search-bar',
@@ -22,6 +23,10 @@ export class SearchBarComponent implements OnInit {
   checkOutDate: Date = new Date();
   guestsAndRoomsValue: string = '';
   @Output() searchTriggered: EventEmitter<SearchDetails> = new EventEmitter<SearchDetails>();
+  // location: string = '';
+  // hotelName: string = '';
+  query: string = '';
+  hotels: Hotel[] = [];
 
 
   showGuestsPopup = false;
@@ -46,28 +51,18 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit() {
     this.sharedData=this.searchService.getSearchDetails();
-    this.location=this.sharedData.location;
+    this.location=this.sharedData.loc;
     this.checkInDate=new Date(this.sharedData.checkIn);
     this.checkOutDate=new Date(this.sharedData.checkOut);
     this.HotelData = this.dataService.getHotelData();
   }
 
   searchHotels() {
-    const details: SearchDetails = {
-      location: this.location,
-      checkIn: this.checkInDate,
-      checkOut: this.checkOutDate,
-      guestsAndRooms: this.guestsAndRoomsValue
-    };
-    if (this.searchHotelByLocation(this.location)) {
-      this.searchService.setSearchDetails(details);
-      this.router.navigateByUrl('/hotels');
-      this.searchTriggered.emit(details);
+    if (this.query) {
+      this.searchService.searchHotels(this.query).subscribe((response) => {
+        this.hotels = response;
+      });
     }
-    else {
-      this.toastr.error('Location does not exist', 'Error');
-    }
-
   }
 
   filterPastDates = (d: Date | null): boolean => {
@@ -77,22 +72,6 @@ export class SearchBarComponent implements OnInit {
     const currentDate = new Date();
     return d >= currentDate;
   };
-
-  searchHotelByLocation(location: string) {
-    for (let hotel of this.HotelData) {
-      let loc = location.toLowerCase().trim();
-      let country = hotel.Address.Country.toLowerCase();
-      let street = hotel.Address.StreetAddress.toLowerCase();
-      let city = hotel.Address.City.toLowerCase();
-      let state = hotel.Address.StateProvince;
-      let postalcode = hotel.Address.PostalCode;
-      let name = hotel.HotelName.toLowerCase();
-      if (country === loc || city == loc || street === loc || state === loc || postalcode === loc || name === loc) {
-        return true;
-      }
-    }
-    return false;
-  }
 
   toggleGuestsPopup() {
     this.showGuestsPopup = !this.showGuestsPopup;

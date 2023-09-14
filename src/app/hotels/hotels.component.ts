@@ -52,20 +52,6 @@ export class HotelsComponent implements OnInit {
     this.HotelData = this.dataService.getHotelData();
     let search: SearchDetails = this.searchService.getSearchDetails();
     this.filterHotelData(search);
-    this.HotelData = this.HotelData.filter((hotel: any) => {
-      let loc = search.location.toLowerCase().trim();
-      let country = hotel.Address.Country.toLowerCase();
-      let street = hotel.Address.StreetAddress.toLowerCase();
-      let city = hotel.Address.City.toLowerCase();
-      let state = hotel.Address.StateProvince;
-      let postalcode = hotel.Address.PostalCode;
-      let name = hotel.HotelName.toLowerCase();
-      if (country === loc || city == loc || street === loc || state === loc || postalcode === loc || name === loc) {
-        return true;
-      }
-      else { return false; }
-    }
-    );
   }
   getSelectedOptions(): string[] {
     return this.filterOptions.filter(option => option.selected).map(option => option.label);
