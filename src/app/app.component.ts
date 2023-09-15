@@ -2,19 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LogoutComponent } from './logout/logout.component';
+import { LoginServiceService } from './login-page/login-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [DataService]
+  providers: [DataService, LoginServiceService]
 })
 export class AppComponent {
   jsonData: any;
   HotelData: any[]=[];
   LowestRoomPrice: number[] = [];
 
-  constructor(private dataService: DataService,private dialog: MatDialog) {
+  constructor(private dataService: DataService,private dialog: MatDialog, private userService: LoginServiceService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -40,22 +42,28 @@ export class AppComponent {
   }
 
 
+  goToBookings() {
+    if(this.isUserLoggedIn()) {
+      this.router.navigate(['/bookingDetails']);
+    }
+    else {
+      this.router.navigate(['/login']);
+    }
+  }
   isUserLoggedIn(): boolean {
-    return sessionStorage.getItem('userName') !== null;
+    return this.userService.isAuthenticated();
   }
 
   getUserName(): string | null {
-    return sessionStorage.getItem('userName');
+    return this.userService.getAuthToken();
   }
-
- 
 
   openLogoutPopup(): void {
     const dialogRef = this.dialog.open(LogoutComponent);
   
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        sessionStorage.removeItem('userName');
+        this.userService.clearEmailToken();
       }
     });
   }

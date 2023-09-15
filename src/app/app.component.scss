@@ -113,10 +113,15 @@ a {
   display: flex;
 }
 
-.userButton{
-background-color: white;
-font-family: "Lato", sans-serif;
+.userButton {
+  display: flex;
+  align-items: center;
 }
+
+.icon {
+  margin-left: 5px; /* Adjust the spacing between text and icon */
+}
+
 
 
 @media (max-width: 768px) {

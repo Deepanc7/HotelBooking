@@ -5,6 +5,11 @@
     <span>InnSight</span>
   </a>
   <div class="spacer"></div>
+  <button mat-button class="userButton" (click)="goToBookings()" *ngIf="isUserLoggedIn()">
+    <span>Booking Details</span>
+    <mat-icon class="icon">date_range</mat-icon>
+  </button>
+  
  <button mat-button class="userButton" (click)="openLogoutPopup()" *ngIf="isUserLoggedIn()">
   {{ getUserName() }} <i class="fa fa-user"></i>
 

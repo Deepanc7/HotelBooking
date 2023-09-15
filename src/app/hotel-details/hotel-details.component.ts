@@ -4,13 +4,14 @@ import { SearchDetails } from '../search-bar/search-details.interface';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
+import { LoginServiceService } from '../login-page/login-service.service';
 
 
 @Component({
   selector: 'app-hotel-details',
   templateUrl: './hotel-details.component.html',
   styleUrls: ['./hotel-details.component.scss'],
-  providers: [SearchService, DataService]
+  providers: [SearchService, DataService, LoginServiceService]
 })
 export class HotelDetailsComponent implements OnInit {
   HotelData: any[]=[];
@@ -29,14 +30,15 @@ export class HotelDetailsComponent implements OnInit {
     guestsAndRooms: ''
   };
 
-  constructor(private searchService: SearchService, private router: Router, private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(private searchService: SearchService,private userService: LoginServiceService, private router: Router, private route: ActivatedRoute, private dataService: DataService) { }
+
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.HotelDetails = JSON.parse(params['details']);
     });
     console.log(this.HotelDetails)
-    this.dataService.getHotelData().subscribe((data: any[]) => {
+    this.dataService.getHotelData().subscribe((data: any) => {
       this.HotelData=data;
       this.hotelDetails = this.searchHotelByName(this.HotelDetails);
       });
@@ -47,8 +49,8 @@ export class HotelDetailsComponent implements OnInit {
   }
 
   searchHotelByName(Name: string) {
-    const foundHotel = this.HotelData.find((hotel: { hotelName: string; }) => String(hotel.hotelName) === Name);
-    return foundHotel || "Hotel not found";
+    const foundHotel = this.HotelData.find((hotel: any) => String(hotel.hotelName) === Name);
+    return foundHotel;
   }
 
   getStars(rating: number): number[] {
@@ -63,16 +65,13 @@ export class HotelDetailsComponent implements OnInit {
     }
   }
 
-  isUserLoggedIn(): boolean {
-    return sessionStorage.getItem('userName') !== null;
-  }
-
   selectRoom(room: any) {
-    if (this.isUserLoggedIn()){
+    console.log("after")
+    if (this.userService.isAuthenticated()){
     const navigationExtras = {
       queryParams: {
-        details: JSON.stringify(this.HotelDetails),
-        room: JSON.stringify(String(room.description))
+        details: this.HotelDetails,
+        room: String(room.description)
       }
     };
     this.router.navigate(['/booking'], navigationExtras);

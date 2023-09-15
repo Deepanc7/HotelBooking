@@ -10,12 +10,13 @@ import { DataService } from '../data.service';
 import { DatePipe } from '@angular/common';
 import { BookingsService } from '../bookings.service';
 import { Booking } from '../booking.interface';
+import { LoginServiceService } from '../login-page/login-service.service';
 
 @Component({
   selector: 'app-book-now',
   templateUrl: './book-now.component.html',
   styleUrls: ['./book-now.component.scss'],
-  providers: [SearchService, DataService, DatePipe, BookingsService]
+  providers: [SearchService, DataService, DatePipe, BookingsService, LoginServiceService]
 })
 export class BookNowComponent implements OnInit {
   HotelData: any[]=[];
@@ -42,20 +43,20 @@ export class BookNowComponent implements OnInit {
     guestsAndRooms: ''
   };
 
-  constructor(private searchService: SearchService, private bookingsService: BookingsService, private toastr: ToastrService, private router: Router, private dialog: MatDialog, private route: ActivatedRoute, private dataService: DataService, private datePipe: DatePipe) { }
+  constructor(private searchService: SearchService,private userService:LoginServiceService, private bookingsService: BookingsService, private toastr: ToastrService, private router: Router, private dialog: MatDialog, private route: ActivatedRoute, private dataService: DataService, private datePipe: DatePipe) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.HotelDetails = JSON.parse(params['details']);
-      this.RoomDetails = JSON.parse(params['room']);
+      this.HotelDetails = params['details'];
+      this.RoomDetails = params['room'];
     });
     this.dataService.getHotelData().subscribe((data: any[]) => {
       this.HotelData=data;
       this.hotelDetails = this.searchHotelByName(this.HotelDetails);
     this.roomDetails = this.searchRoom(this.RoomDetails);
       });
-    this.discount = Number((Math.round((this.roomDetails.baseRate * 15) / 100)).toFixed(2));
-    this.priceAfterDiscount = Number((Math.round(this.roomDetails.baseRate - this.discount).toFixed(2)));
+    this.discount = Number((Math.round((this.roomDetails?.baseRate * 15) / 100)).toFixed(2));
+    this.priceAfterDiscount = Number((Math.round(this.roomDetails?.baseRate - this.discount).toFixed(2)));
     this.tax = Number((Math.round((this.priceAfterDiscount * 10) / 100)).toFixed(2));
     this.totalPrice = Number(Math.round(this.priceAfterDiscount + this.tax).toFixed(2));
     let search: SearchDetails = this.searchService.getSearchDetails();
@@ -72,7 +73,7 @@ export class BookNowComponent implements OnInit {
 
   success() {
     this.toastr.success('Congratulations! Your adventure headquarters is confirmed.', 'Booked');
-    let email:String=sessionStorage.getItem('email')||"";
+    let email=this.userService.getEmailToken();
     if(this.checkInDate===undefined)
     {
       this.checkInDate=new Date();
@@ -85,8 +86,8 @@ export class BookNowComponent implements OnInit {
       id: this.id,
       hotelName: this.hotelDetails.hotelName,
       hotelImage: this.hotelDetails.hotelImage,
-      checkIn: this.checkInDate,
-      checkOut: this.checkOutDate,
+      checkIn: new Date(),
+      checkOut: new Date(),
       room: this.RoomCount,
       guests: this.GuestCount,
       totalPrice: this.totalPrice,

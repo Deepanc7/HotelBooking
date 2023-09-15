@@ -27,29 +27,28 @@ export class SignInPageComponent {
       const email = this.loginForm.value.email;
       const password = this.loginForm.value.password;
       if (email !== null && email !== undefined) {
-        const user = this.userService.getUserByEmail(email);
-
-        if (user !== undefined && user.password === password) {
-          if (user.isactive) {
-            sessionStorage.setItem('email', user.email);
-            sessionStorage.setItem('role', user.role);
-            this.router.navigate(['/homePage']);
-            this.loginSuccess = true;
-
-            this.toastr.success('You\'ve successfully cracked the code to your account. Hello there!', 'Login Successful');
-            sessionStorage.setItem('userName', user.name);
-          } else {
-            this.loginSuccess = true;
-            this.toastr.success('You\'ve successfully cracked the code to your account. Hello there!', 'Login Successful');
-            sessionStorage.setItem('userName', user.name);
+        this.userService.login(email, String(password)).subscribe(
+          (response) => {
+            if (response.message==="Authentication successful") {
+              let user = this.userService.getUserByEmail(email).subscribe(
+                (user) => {
+                  console.log(user)
+                  this.userService.setAuthToken(user.name);
+                  this.userService.setEmailToken(email);
+                }
+              );
+              this.toastr.success('You\'ve successfully cracked the code to your account. Hello there!', 'Login Successful');
+              this.router.navigate(['/']);
+            } else {
+              this.toastr.error('Error 404: Password genius not found. Please retry.', response.message);
+            }
+          },
+          (error) => {
+            this.toastr.error('Error', 'Login Unsuccessful');
           }
-        } else {
-          this.toastr.error('Error 404: Password genius not found. Please retry.', 'Invalid credentials');
-        }
-      } else {
-        this.toastr.error('Email is required', 'Invalid Email');
-      }
-    }
-  }
+        );
 
+        }
+    }
+}
 }

@@ -1,35 +1,69 @@
 import { Injectable } from '@angular/core';
 import { User } from '../user.interface';
+import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginServiceService {
 
-  constructor() { }
+  private apiUrl = 'http://localhost:8080';
 
-  private users: User[] = [];
+  constructor(
+    private http: HttpClient,
+    private cookieService: CookieService
+  ) {}
 
-  checkUser(user: User) {
-    let users:User[]=JSON.parse(localStorage.getItem('user_data') || '[]');
-    for(let u of users){
-    if (user.name===u.name) {
-      return "name";
-    }
-    if (user.email===u.email) {
-      return "email";
-    }
-  }
-  return "proceed";
+
+  getUserByEmail(email: string): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/by-email/${email}`);
   }
 
-  addUser(user: User) {
-    this.users.push(user);
-    localStorage.setItem('user_data', JSON.stringify(this.users));
+  addUser(user: User): Observable<any> {
+    return this.http.post<User>(`${this.apiUrl}/signup`, user);
   }
 
-  getUserByEmail(email: string): User | undefined {
-    let users:User[]=JSON.parse(localStorage.getItem('user_data') || '[]');
-    return users.find(user => user.email === email);
+  login(email: string, password: string): Observable<any> {
+    const loginData = {
+      email: email,
+      password: password,
+    };
+
+    return this.http.post(`${this.apiUrl}/login`, loginData, { withCredentials: true });
+
   }
+
+  
+  logout(): Observable<any> {
+    return this.http.post(`${this.apiUrl}/logout`, {});
+  }
+
+  isAuthenticated(): boolean {
+    return this.cookieService.check('session_id');
+  }
+
+  setAuthToken(token: string) {
+    this.cookieService.set('session_id', token);
+  }
+
+  getAuthToken(): string {
+    return this.cookieService.get('session_id');
+  }
+
+  
+  setEmailToken(email:string){
+    this.cookieService.set('email', email);
+  }
+
+  getEmailToken(): string {
+    return this.cookieService.get('email');
+  }
+  
+  clearEmailToken() {
+    this.cookieService.delete('email');
+  }
+  
+
 }

@@ -8,19 +8,19 @@
           <div class="hotel-content">
 
             <div class="hotel-image">
-              <img src="{{ hotelDetails.hotelImage }}" alt="{{ hotelDetails.hotelName }} Image" class="hotel-image">
+              <img src="{{ hotelDetails?.hotelImage }}" alt="{{ hotelDetails?.hotelName }} Image" class="hotel-image">
             </div>
             <div class="content-hotel">
               <div class="hotel-details-content">
-                <h2 class="hotel-name">{{ hotelDetails.hotelName }}</h2>
+                <h2 class="hotel-name">{{ hotelDetails?.hotelName }}</h2>
                 <div class="hotel-rating">
-                  <ng-container *ngFor="let star of getStars(hotelDetails.Rating)">
+                  <ng-container *ngFor="let star of getStars(hotelDetails?.rating)">
                     <mat-icon class="star-icon">star</mat-icon>
                   </ng-container>
                 </div>
-                <p class="hotel-description">{{ hotelDetails.description }}</p>
+                <p class="hotel-description">{{ hotelDetails?.description }}</p>
                 <div class="hotel-tags">
-                  <mat-chip *ngFor="let tag of hotelDetails.tags">{{ tag }}</mat-chip>
+                  <mat-chip *ngFor="let tag of hotelDetails?.tags">{{ tag }}</mat-chip>
                 </div>
               </div>
 
@@ -30,7 +30,7 @@
                   <div class="hotel-price-details">
                     <div class="hotel-price">
                       <p class="price-info">Starting Price</p>
-                      <p class="starting-price">{{ hotelDetails.lowestPrice | currency }}</p>
+                      <p class="starting-price">{{ hotelDetails?.lowestPrice | currency }}</p>
                     </div>
                     <div class="room-guest-details">
                       <p>{{ GuestCount }} x Guests</p>
@@ -63,15 +63,15 @@
     <ng-container>
       <mat-label>Rooms</mat-label>
 
-      <div id="rooms-list" class="rooms-list">
-        <mat-card id="room-card" class="room-card" *ngFor="let room of hotelDetails.rooms">
+      <div id="rooms-list" class="rooms-list" *ngIf="hotelDetails?.rooms">
+        <mat-card id="room-card" class="room-card" *ngFor="let room of hotelDetails?.rooms">
           <div class="room-image">
-            <img src="{{ room.roomImage }}" alt="Hotel Image">
+            <img src="{{ room?.roomImage }}" alt="Hotel Image">
           </div>
           <div class="room-details">
-            <h3 class="room-type">{{ room.type }}</h3>
-            <p class="room-description">{{ room.description }}</p>
-            <div class="room-price">{{ room.baseRate | currency }}</div>
+            <h3 class="room-type">{{ room?.type }}</h3>
+            <p class="room-description">{{ room?.description }}</p>
+            <div class="room-price">{{ room?.baseRate | currency }}</div>
             <br>
             <button class="go-to-rooms-button" (click)="selectRoom(room)">Select Room</button>
           </div>

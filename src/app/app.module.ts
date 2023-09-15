@@ -16,6 +16,7 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { BookNowComponent } from './book-now/book-now.component';
+import { CookieService } from 'ngx-cookie-service';
 
 import { ToastrModule } from 'ngx-toastr';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
@@ -55,7 +56,7 @@ import { BookingDetailsComponent } from './booking-details/booking-details.compo
     ReactiveFormsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'},CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
