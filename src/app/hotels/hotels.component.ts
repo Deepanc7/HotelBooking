@@ -41,7 +41,7 @@ export class HotelsComponent implements OnInit {
     private router: Router,
     private searchService: SearchService,
     private dataService: DataService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.HotelData = this.dataService.getHotelData();

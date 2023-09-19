@@ -18,14 +18,14 @@
         <label class="search-component-label">CHECKIN/CHECKOUT</label>
 
         <div style="display: flex; flex-direction: row; align-items:first center;">
-          <mat-date-range-input [rangePicker]="picker"  [dateFilter]="filterPastDates">
-            <input matStartDate [(ngModel)]="checkInDate"  
+          <mat-date-range-input [rangePicker]="picker" [dateFilter]="filterPastDates">
+            <input matStartDate [(ngModel)]="checkInDate"
               [placeholder]="checkInDate ? checkInDate.toDateString() : 'Start date'">
             <input matEndDate [(ngModel)]="checkOutDate"
               [placeholder]="checkOutDate ? checkOutDate.toDateString() : 'End date'">
           </mat-date-range-input>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-date-range-picker #picker ></mat-date-range-picker>
+          <mat-date-range-picker #picker></mat-date-range-picker>
         </div>
 
       </button>
@@ -48,7 +48,7 @@
         <mat-icon matSuffix>search</mat-icon> Search
       </button>
 
-      
+
       <div class="floating-popup" *ngIf="showGuestsPopup" [style.top.px]="popupTop" [style.left.px]="popupLeft">
         <div class="popup-content">
           <div *ngFor="let item of guestsItems" class="popup-item">

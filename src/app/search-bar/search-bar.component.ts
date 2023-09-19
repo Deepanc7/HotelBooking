@@ -23,8 +23,6 @@ export class SearchBarComponent implements OnInit {
   checkOutDate: Date = new Date();
   guestsAndRoomsValue: string = '';
   @Output() searchTriggered: EventEmitter<SearchDetails> = new EventEmitter<SearchDetails>();
-  // location: string = '';
-  // hotelName: string = '';
   query: string = '';
   hotels: Hotel[] = [];
 
@@ -50,37 +48,32 @@ export class SearchBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sharedData=this.searchService.getSearchDetails();
-    this.location=this.sharedData.loc;
-    this.checkInDate=new Date(this.sharedData.checkIn);
-    this.checkOutDate=new Date(this.sharedData.checkOut);
+    this.sharedData = this.searchService.getSearchDetails();
+    this.location = this.sharedData.loc;
+    this.checkInDate = new Date(this.sharedData.checkIn);
+    this.checkOutDate = new Date(this.sharedData.checkOut);
     this.HotelData = this.dataService.getHotelData();
   }
 
   searchHotels() {
     if (this.location) {
-      // Create a SearchDetails object with the location
       const searchDetails: SearchDetails = {
         location: this.location,
         checkIn: this.checkInDate,
         checkOut: this.checkOutDate,
         guestsAndRooms: this.guestsAndRoomsValue
       };
-  
-      // Store the rest of the search details in local storage
+
       this.searchService.setSearchDetails(searchDetails);
-  
-      // Send only the location to the backend for search
+
       this.searchService.searchHotels(this.location).subscribe((response) => {
         this.hotels = response;
       });
     } else {
-      // Handle the case where the location is not provided
-      // You can show an error message or take appropriate action
       console.error('Location is required for the search.');
     }
   }
-  
+
 
   filterPastDates = (d: Date | null): boolean => {
     if (!d) {
@@ -107,13 +100,13 @@ export class SearchBarComponent implements OnInit {
   }
   decrement(item: any) {
     if (item.label === 'Adults' && item.count > 1) {
-    if (item.label !== 'Rooms' && item.count > 1) {
-      item.count--;
-      const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);
-      const roomsRequired = Math.ceil(totalGuests / 4);
-      this.guestsItems[2].count = roomsRequired;
+      if (item.label !== 'Rooms' && item.count > 1) {
+        item.count--;
+        const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);
+        const roomsRequired = Math.ceil(totalGuests / 4);
+        this.guestsItems[2].count = roomsRequired;
+      }
     }
-  }
   }
 
   generateGuestsAndRoomsValue() {
