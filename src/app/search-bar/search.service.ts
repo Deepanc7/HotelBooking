@@ -25,6 +25,7 @@ export class SearchService {
       guestsAndRooms: ''
     };
   }
+  
 
   searchHotels(query: string): Observable<Hotel[]> {
     const params = new HttpParams().set('query', query);

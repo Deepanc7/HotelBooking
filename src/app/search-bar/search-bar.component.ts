@@ -58,12 +58,29 @@ export class SearchBarComponent implements OnInit {
   }
 
   searchHotels() {
-    if (this.query) {
-      this.searchService.searchHotels(this.query).subscribe((response) => {
+    if (this.location) {
+      // Create a SearchDetails object with the location
+      const searchDetails: SearchDetails = {
+        location: this.location,
+        checkIn: this.checkInDate,
+        checkOut: this.checkOutDate,
+        guestsAndRooms: this.guestsAndRoomsValue
+      };
+  
+      // Store the rest of the search details in local storage
+      this.searchService.setSearchDetails(searchDetails);
+  
+      // Send only the location to the backend for search
+      this.searchService.searchHotels(this.location).subscribe((response) => {
         this.hotels = response;
       });
+    } else {
+      // Handle the case where the location is not provided
+      // You can show an error message or take appropriate action
+      console.error('Location is required for the search.');
     }
   }
+  
 
   filterPastDates = (d: Date | null): boolean => {
     if (!d) {

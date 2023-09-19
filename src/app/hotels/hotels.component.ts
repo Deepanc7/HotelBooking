@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { SearchService } from '../search-bar/search.service';
 import { SearchDetails } from '../search-bar/search-details.interface';
 import { DataService } from '../data.service';
@@ -19,19 +19,9 @@ export class HotelsComponent implements OnInit {
   };
   HotelData: any;
   details: string = '';
-  LowestRoomPrice: number[] = [];
-  PriceRange: string = '';
-  Parking: boolean | undefined;
   selectedTags: string[] = [];
   selectedRating: number = 0;
   selectedSortOption: string = '';
-  Ratings = [1, 2, 3, 4, 5];
-  tags: string[] = [
-    'View', 'Air conditioning', 'Concierge', '24-hour front desk service',
-    'Laundry service', 'Free wifi', 'Free parking', 'Restaurant', 'Bar',
-    'Pool', 'Coffee in lobby', 'Continental breakfast'
-  ];
-
   filterOptions = [
     { label: 'View', selected: false },
     { label: 'Air conditioning', selected: false },
@@ -46,106 +36,83 @@ export class HotelsComponent implements OnInit {
     { label: 'Coffee in lobby', selected: false },
     { label: 'Continental breakfast', selected: false },
   ];
-  constructor(private router: Router, private searchService: SearchService, private dataService: DataService) {
-  }
+
+  constructor(
+    private router: Router,
+    private searchService: SearchService,
+    private dataService: DataService
+  ) {}
+
   ngOnInit() {
     this.HotelData = this.dataService.getHotelData();
-    let search: SearchDetails = this.searchService.getSearchDetails();
+    const search: SearchDetails = this.searchService.getSearchDetails();
     this.filterHotelData(search);
   }
+
   getSelectedOptions(): string[] {
-    return this.filterOptions.filter(option => option.selected).map(option => option.label);
+    return this.filterOptions
+      .filter(option => option.selected)
+      .map(option => option.label);
   }
 
-  getStars(rating: number): string[] {
-    const stars = Math.round(rating);
-    return Array(stars).fill('star');
-  }
-
-  sendDataToHotelDetails(Object: any) {
-    for (let i = 0; i < this.HotelData.length; i++) {
-      if (this.HotelData[i] === Object) {
-        this.details = String(this.HotelData[i].HotelName);
-      }
-    }
-    const navigationExtras = {
-      queryParams: {
-        details: JSON.stringify(this.details)
-      }
-    };
-    this.router.navigate(['/hotel-details'], navigationExtras);
+  sendDataToHotelDetails(hotel: any) {
+    this.router.navigate(['/hotel-details'], {
+      queryParams: { details: JSON.stringify(hotel.HotelName) }
+    });
   }
 
   applySort() {
     switch (this.selectedSortOption) {
       case 'lowToHigh':
-        this.HotelData.sort((a: { lowestPrice: number; }, b: { lowestPrice: number; }) => a.lowestPrice - b.lowestPrice);
+        this.sortByLowestPrice();
         break;
       case 'highToLow':
-        this.HotelData.sort((a: { lowestPrice: number; }, b: { lowestPrice: number; }) => b.lowestPrice - a.lowestPrice);
+        this.sortByHighestPrice();
         break;
       case 'popularity':
-        this.HotelData.sort((a: { Rating: number; }, b: { Rating: number; }) => Number(b.Rating) - Number(a.Rating));
+        this.sortByPopularity();
         break;
       default:
-        this.HotelData.sort((a: { lowestPrice: number; }, b: { lowestPrice: number; }) => a.lowestPrice - b.lowestPrice);
+        this.sortByLowestPrice();
         break;
     }
   }
-  applyFilters() {
-    this.HotelData = this.dataService.getHotelData();
-    let search: SearchDetails = this.searchService.getSearchDetails();
-    this.HotelData = this.HotelData.filter((hotel: any) => {
-      let loc = search.location.toLowerCase().trim();
-      let country = hotel.Address.Country.toLowerCase();
-      let street = hotel.Address.StreetAddress.toLowerCase();
-      let city = hotel.Address.City.toLowerCase();
-      let state = hotel.Address.StateProvince;
-      let postalcode = hotel.Address.PostalCode;
-      let name = hotel.HotelName.toLowerCase();
-      if (country === loc || city == loc || street === loc || state === loc || postalcode === loc || name === loc) {
-        return true;
-      }
-      else { return false; }
-    }
-    );
-    if (this.PriceRange === "Range1") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 0 && hotel.lowestPrice <= 50);
-    }
-    if (this.PriceRange === "Range2") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 50 && hotel.lowestPrice <= 100);
-    }
-    if (this.PriceRange === "Range3") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 100 && hotel.lowestPrice <= 150);
-    }
-    if (this.PriceRange === "Range4") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 150 && hotel.lowestPrice <= 200);
-    }
-    if (this.PriceRange === "Range5") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 200 && hotel.lowestPrice <= 250);
-    }
-    if (this.PriceRange === "Range6") {
-      this.HotelData = this.HotelData.filter((hotel: { lowestPrice: number; }) => hotel.lowestPrice >= 250 && hotel.lowestPrice <= 300);
-    }
-    if (this.Parking === true) {
-      this.HotelData = this.HotelData.filter((hotel: { ParkingIncluded: number; }) => hotel.ParkingIncluded == 1);
-    }
-    if (this.Parking === false) {
-      this.HotelData = this.HotelData.filter((hotel: { ParkingIncluded: number; }) => hotel.ParkingIncluded == 0);
-    }
 
-    this.selectedTags = this.filterOptions.filter(option => option.selected).map(option => option.label);
-    for (let i=0;i<this.selectedTags.length;i++) {
-      this.selectedTags[i]=this.selectedTags[i].trim().toLowerCase();
-    }
-    if (this.selectedTags.length != 0) {
-      this.HotelData = this.HotelData.filter((hotel: { Tags: any[]; }) =>
-        hotel.Tags.some((tag: string) => this.selectedTags.includes(tag.trim().toLowerCase()))
+  sortByLowestPrice() {
+    this.HotelData.sort((a: any, b: any) => a.lowestPrice - b.lowestPrice);
+  }
+
+  sortByHighestPrice() {
+    this.HotelData.sort((a: any, b: any) => b.lowestPrice - a.lowestPrice);
+  }
+
+  sortByPopularity() {
+    this.HotelData.sort((a: any, b: any) => b.Rating - a.Rating);
+  }
+
+  applyFilters() {
+    const search: SearchDetails = this.searchService.getSearchDetails();
+    const location = search.location.toLowerCase().trim();
+
+    this.HotelData = this.HotelData.filter((hotel: any) => {
+      const country = hotel.Address.Country.toLowerCase();
+      const street = hotel.Address.StreetAddress.toLowerCase();
+      const city = hotel.Address.City.toLowerCase();
+      const state = hotel.Address.StateProvince.toLowerCase();
+      const postalcode = hotel.Address.PostalCode.toLowerCase();
+      const name = hotel.HotelName.toLowerCase();
+
+      return (
+        country === location ||
+        city === location ||
+        street === location ||
+        state === location ||
+        postalcode === location ||
+        name === location
       );
-    }
-    if (this.selectedRating != null) {
-      this.HotelData = this.HotelData.filter((hotel: any) => hotel.Rating >= this.selectedRating);
-    }
+    });
+
+    this.applySort();
   }
 
   searchHotels(details: SearchDetails) {
@@ -154,21 +121,6 @@ export class HotelsComponent implements OnInit {
 
   private filterHotelData(searchDetails: SearchDetails) {
     this.HotelData = this.dataService.getHotelData();
-    this.HotelData = this.HotelData.filter((hotel: any) => {
-      let loc = searchDetails.location.toLowerCase();
-      let country = hotel.Address.Country.toLowerCase();
-      let street = hotel.Address.StreetAddress.toLowerCase();
-      let city = hotel.Address.City.toLowerCase();
-      let state = hotel.Address.StateProvince;
-      let postalcode = hotel.Address.PostalCode;
-      if (country === loc || city == loc || street === loc || state === loc || postalcode === loc) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-
     this.applyFilters();
   }
-
 }
