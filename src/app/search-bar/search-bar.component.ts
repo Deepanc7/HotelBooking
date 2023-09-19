@@ -63,12 +63,21 @@ export class SearchBarComponent implements OnInit {
         checkOut: this.checkOutDate,
         guestsAndRooms: this.guestsAndRoomsValue
       };
-
+  
       this.searchService.setSearchDetails(searchDetails);
-
-      this.searchService.searchHotels(this.location).subscribe((response) => {
-        this.hotels = response;
-      });
+  
+      this.searchService.searchHotels(this.location).subscribe(
+        (response) => {
+          if (response.length > 0) {
+            this.hotels = response;
+          } else {
+            this.toastr.warning('Location doesn\'t exist.', 'No Results Found');
+          }
+        },
+        (error) => {
+          console.error('Error while searching for hotels:', error);
+        }
+      );
     } else {
       console.error('Location is required for the search.');
     }
