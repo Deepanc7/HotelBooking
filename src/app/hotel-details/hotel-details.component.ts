@@ -65,18 +65,18 @@ export class HotelDetailsComponent implements OnInit {
   }
 
   selectRoom(room: any) {
-    if (this.isUserLoggedIn()){
-    const navigationExtras = {
-      queryParams: {
-        details: JSON.stringify(this.HotelDetails),
-        room: JSON.stringify(String(room.Description))
-      }
-    };
-    this.router.navigate(['/booking'], navigationExtras);
-  }
+    if (this.isUserLoggedIn()) {
+      const navigationExtras = {
+        queryParams: {
+          details: JSON.stringify(this.HotelDetails),
+          room: JSON.stringify(String(room.Description))
+        }
+      };
+      this.router.navigate(['/booking'], navigationExtras);
+    }
 
-else {
-  this.router.navigate(['/login']);
-}
+    else {
+      this.router.navigate(['/login']);
+    }
   }
 }
