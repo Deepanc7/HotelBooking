@@ -22,6 +22,12 @@ export class HotelsComponent implements OnInit {
   selectedTags: string[] = [];
   selectedRating: number = 0;
   selectedSortOption: string = '';
+  LowestRoomPrice: number[] = [];
+  PriceRange: string = '';
+  Parking: boolean = false;
+  Ratings = [1, 2, 3, 4, 5];
+
+
   filterOptions = [
     { label: 'View', selected: false },
     { label: 'Air conditioning', selected: false },
@@ -55,6 +61,10 @@ export class HotelsComponent implements OnInit {
       .map(option => option.label);
   }
 
+  getStars(rating: number): string[] {
+    const stars = Math.round(rating);
+    return Array(stars).fill('star');
+  }
   sendDataToHotelDetails(hotel: any) {
     this.router.navigate(['/hotel-details'], {
       queryParams: { details: JSON.stringify(hotel.HotelName) }

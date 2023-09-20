@@ -70,6 +70,8 @@ export class SearchBarComponent implements OnInit {
         (response) => {
           if (response.length > 0) {
             this.hotels = response;
+            console.log(this.hotels);
+            this.router.navigateByUrl('/hotels');
           } else {
             this.toastr.warning('Location doesn\'t exist.', 'No Results Found');
           }
