@@ -1,5 +1,6 @@
 .loginForm {
     width: fit-content;
+    align-items: center;
 }
 
 .full-width {
@@ -13,6 +14,12 @@
     border-width: 1px;
     box-shadow: none;
 
+}
+
+mat-label {
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
 }
 
 .loginButton {
@@ -34,6 +41,7 @@
 
 mat-card-content{
     width: fit-content;
+    padding: 0px 0px 0px 35px;
 }
 
 div {

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User } from '../user.interface';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,12 @@ export class LoginServiceService {
 
   constructor(
     private http: HttpClient,
-    private cookieService: CookieService
-  ) {}
+    private cookieService: CookieService,
+    private router: Router
+  ) { }
 
 
-  getUserByEmail(email: string): Observable<User> {
+  getUserByEmail(email: String): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/by-email/${email}`);
   }
 
@@ -35,35 +37,45 @@ export class LoginServiceService {
 
   }
 
-  
   logout(): Observable<any> {
-    return this.http.post(`${this.apiUrl}/logout`, {});
+    const jwtToken = this.getJwtToken();
+    if (!jwtToken) {
+      throw new Error('JWT token is missing.');
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwtToken}`
+      })
+    };
+    this.router.navigate(['/login']);
+    return this.http.post<any>(`${this.apiUrl}/logout`, {}, httpOptions);
   }
 
   isAuthenticated(): boolean {
-    return this.cookieService.check('session_id');
+    return this.cookieService.check('session');
   }
 
-  setAuthToken(token: string) {
-    this.cookieService.set('session_id', token);
+  getJwtToken(): string {
+    return this.cookieService.get('session');
+  }
+  getUser(): Observable<User> {
+    const jwtToken = this.getJwtToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwtToken}`
+      })
+    };
+    return this.http.get<User>(`${this.apiUrl}/getUserEmail`, httpOptions);
   }
 
-  getAuthToken(): string {
-    return this.cookieService.get('session_id');
+  setCookie(jwt: string) {
+    this.cookieService.set("session", jwt);
   }
 
-  
-  setEmailToken(email:string){
-    this.cookieService.set('email', email);
+  clearCookie() {
+    this.cookieService.deleteAll("session");
   }
-
-  getEmailToken(): string {
-    return this.cookieService.get('email');
-  }
-  
-  clearEmailToken() {
-    this.cookieService.delete('email');
-  }
-  
 
 }

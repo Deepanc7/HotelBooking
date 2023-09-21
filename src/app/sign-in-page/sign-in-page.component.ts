@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoginServiceService } from '../login-page/login-service.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -29,18 +30,16 @@ export class SignInPageComponent {
       if (email !== null && email !== undefined) {
         this.userService.login(email, String(password)).subscribe(
           (response) => {
-            if (response.message==="Authentication successful") {
+            if (response.message === "Set cookie") {
               let user = this.userService.getUserByEmail(email).subscribe(
                 (user) => {
-                  console.log(user)
-                  this.userService.setAuthToken(user.name);
-                  this.userService.setEmailToken(email);
+                  this.userService.setCookie(response.jwt);
                 }
               );
               this.toastr.success('You\'ve successfully cracked the code to your account. Hello there!', 'Login Successful');
               this.router.navigate(['/']);
             } else {
-              this.toastr.error('Error 404: Password genius not found. Please retry.', response.message);
+              this.toastr.error('Error 404: Password genius not found. Please retry.', 'Login Unsuccessful');
             }
           },
           (error) => {
@@ -48,7 +47,7 @@ export class SignInPageComponent {
           }
         );
 
-        }
+      }
     }
-}
+  }
 }

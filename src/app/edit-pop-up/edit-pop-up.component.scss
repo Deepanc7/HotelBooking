@@ -31,7 +31,12 @@ mat-option {
     padding: 10px;
     gap: 10px;
   }
-
+  
+  span {
+    color: #000;
+    font-size: 15px;
+    font-family: Lato,sans-serif;
+}
   .custom-dialog-actions {
     justify-content: space-between; 
     padding: 10px;

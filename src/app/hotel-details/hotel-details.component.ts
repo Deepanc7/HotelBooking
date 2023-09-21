@@ -4,17 +4,19 @@ import { SearchDetails } from '../search-bar/search-details.interface';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
+import { DatePipe } from '@angular/common';
 import { LoginServiceService } from '../login-page/login-service.service';
+import { Hotel } from '../hotel.model';
 
 
 @Component({
   selector: 'app-hotel-details',
   templateUrl: './hotel-details.component.html',
   styleUrls: ['./hotel-details.component.scss'],
-  providers: [SearchService, DataService, LoginServiceService]
+  providers: [SearchService, DataService, LoginServiceService, DatePipe]
 })
 export class HotelDetailsComponent implements OnInit {
-  HotelData: any[]=[];
+  HotelData: Hotel[] = [];
   HotelDetails: string = '';
   hotelDetails: any;
 
@@ -30,19 +32,20 @@ export class HotelDetailsComponent implements OnInit {
     guestsAndRooms: ''
   };
 
-  constructor(private searchService: SearchService,private userService: LoginServiceService, private router: Router, private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(private searchService: SearchService, private userService: LoginServiceService, private router: Router, private route: ActivatedRoute, private dataService: DataService, private datePipe: DatePipe) { }
 
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.HotelDetails = JSON.parse(params['details']);
     });
-    console.log(this.HotelDetails)
     this.dataService.getHotelData().subscribe((data: any) => {
-      this.HotelData=data;
+      this.HotelData = data;
       this.hotelDetails = this.searchHotelByName(this.HotelDetails);
-      });
+    });
     let search: SearchDetails = this.searchService.getSearchDetails();
+    this.checkInDate = this.datePipe.transform(search.checkIn, 'dd-MM-yyyy') || '';
+    this.checkOutDate = this.datePipe.transform(search.checkOut, 'dd-MM-yyyy') || '';
     let x = search.guestsAndRooms.split(" ");
     this.GuestCount = Number(x[0]) + Number(x[2]);
     this.RoomCount = Number(x[4]);
@@ -66,19 +69,18 @@ export class HotelDetailsComponent implements OnInit {
   }
 
   selectRoom(room: any) {
-    console.log("after")
-    if (this.userService.isAuthenticated()){
-    const navigationExtras = {
-      queryParams: {
-        details: this.HotelDetails,
-        room: String(room.description)
-      }
-    };
-    this.router.navigate(['/booking'], navigationExtras);
-  }
+    if (this.userService.isAuthenticated()) {
+      const navigationExtras = {
+        queryParams: {
+          details: this.HotelDetails,
+          room: String(room.description)
+        }
+      };
+      this.router.navigate(['/booking'], navigationExtras);
+    }
 
-else {
-  this.router.navigate(['/login']);
-}
+    else {
+      this.router.navigate(['/login']);
+    }
   }
 }

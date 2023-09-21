@@ -1,34 +1,39 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+
 <ng-container>
-<mat-card class="bookings-card">
+  <mat-card class="bookings-card">
     <mat-card-header>
-        <mat-card-title>Booking Details</mat-card-title>
+      <mat-card-title class="booking-title">Booking Details</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <ng-container>
-            <div class="booking-list">
-                <mat-card *ngFor="let booking of bookingDetailsList" class="booking-item">
-                  <div class="hotel-image">
-                    <img src="{{ booking.hotelImage }}" alt="{{ booking.hotelName }} Image">
-                  </div>
-                  <mat-card-title class="hotel-name">
-                    <mat-icon class="icon">hotel</mat-icon> {{ booking.hotelName }}
-                  </mat-card-title>
-                  <mat-card-content>
-                    <div class="booking-info">
-                      <p><mat-icon class="icon">event</mat-icon> <strong>Check-in Date:</strong> {{ booking.checkIn }} &nbsp; <mat-icon class="icon">event</mat-icon> <strong>Check-out Date:</strong> {{ booking.checkOut }}</p>
-                      <p><mat-icon class="icon">people</mat-icon> <strong>Guests:</strong> {{ booking.guests }} &nbsp; <mat-icon class="icon">meeting_room</mat-icon> <strong>Rooms:</strong> {{ booking.room }}</p>
-                    </div>
-                    <button class="delete-button" (click)="delete(booking.id)" >Delete</button>
-                    <div class="total-price">
-                      <p><strong>Total Price:</strong> ${{ booking.totalPrice }}</p>
-                    </div>
-                  </mat-card-content>
-                </mat-card>
+      <ng-container>
+        <div class="booking-list">
+          <mat-card *ngFor="let booking of bookingDetailsList;let i=index" class="booking-item">
+            <div class="hotel-image">
+              <img src="{{ booking.hotelImage }}" alt="{{ booking.hotelName }} Image">
+            </div>
+            <div class="booking-details">
+              <mat-card-title class="hotel-name">
+                <mat-icon class="icon">hotel</mat-icon> {{ booking.hotelName }}
+              </mat-card-title>
+              <div class="booking-info">
+                <p><mat-icon class="icon">event</mat-icon> <strong>Check-in Date:</strong> {{ checkins[i] }} &nbsp; </p>
+                <p><mat-icon class="icon">event</mat-icon> <strong>Check-out Date:</strong> {{ checkouts[i] }}
+                </p>
+                <p><mat-icon class="icon">people</mat-icon> <strong>Guests:</strong> {{ booking.guests }} &nbsp; </p>
+                <p><mat-icon class="icon">meeting_room</mat-icon> <strong>Rooms:</strong> {{ booking.room }}
+                </p>
               </div>
-              
-
-        </ng-container>
-
+            </div>
+            <div class="side-content">
+              <div class="total-price">
+                <p><strong>Total Price:</strong> ${{ booking.totalPrice }}</p>
+              </div>
+              <button class="delete-button" (click)="delete(booking.id)">Delete</button>
+            </div>
+          </mat-card>
+        </div>
+      </ng-container>
     </mat-card-content>
-</mat-card>
+  </mat-card>
 </ng-container>

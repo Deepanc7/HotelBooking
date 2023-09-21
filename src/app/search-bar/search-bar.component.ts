@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from '../data.service';
 import { count } from 'rxjs';
+import { Hotel } from '../hotel.model';
 
 @Component({
   selector: 'app-search-bar',
@@ -22,11 +23,13 @@ export class SearchBarComponent implements OnInit {
   checkOutDate: Date = new Date();
   guestsAndRoomsValue: string = '';
   @Output() searchTriggered: EventEmitter<SearchDetails> = new EventEmitter<SearchDetails>();
+  query: string = '';
+  hotels: Hotel[] = [];
 
 
   showGuestsPopup = false;
   guestAndRooms: string = "";
-  HotelData: any[]=[];
+  HotelData: any;
 
   guestsItems = [
     { label: 'Adults', count: 1 },
@@ -45,32 +48,42 @@ export class SearchBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sharedData=this.searchService.getSearchDetails();
-    this.location=this.sharedData.location;
-    this.checkInDate=new Date(this.sharedData.checkIn);
-    this.checkOutDate=new Date(this.sharedData.checkOut);
-    this.dataService.getHotelData().subscribe((data: any[]) => {
-      this.HotelData=data;
-      });
+    this.sharedData = this.searchService.getSearchDetails();
+    this.location = this.sharedData.location;
+    this.checkInDate = new Date(this.sharedData.checkIn);
+    this.checkOutDate = new Date(this.sharedData.checkOut);
+    this.guestsAndRoomsValue= this.sharedData.guestAndRooms;
   }
 
   searchHotels() {
-    const details: SearchDetails = {
-      location: this.location,
-      checkIn: this.checkInDate,
-      checkOut: this.checkOutDate,
-      guestsAndRooms: this.guestsAndRoomsValue
-    };
-    if (this.searchHotelByLocation(this.location)) {
-      this.searchService.setSearchDetails(details);
-      this.router.navigateByUrl('/hotels');
-      this.searchTriggered.emit(details);
+    if (this.location) {
+      const searchDetails: SearchDetails = {
+        location: this.location,
+        checkIn: this.checkInDate,
+        checkOut: this.checkOutDate,
+        guestsAndRooms: this.guestsAndRoomsValue
+      };
+  
+      this.searchService.setSearchDetails(searchDetails);
+  
+      this.searchService.searchHotels(this.location).subscribe(
+        (response) => {
+          if (response.length > 0) {
+            this.hotels = response;
+            this.router.navigateByUrl('/hotels');
+          } else {
+            this.toastr.warning('Location doesn\'t exist.', 'No Results Found');
+          }
+        },
+        (error) => {
+          console.error('Error while searching for hotels:', error);
+        }
+      );
+    } else {
+      console.error('Location is required for the search.');
     }
-    else {
-      this.toastr.error('Location does not exist', 'Error');
-    }
-
   }
+
 
   filterPastDates = (d: Date | null): boolean => {
     if (!d) {
@@ -79,22 +92,6 @@ export class SearchBarComponent implements OnInit {
     const currentDate = new Date();
     return d >= currentDate;
   };
-
-  searchHotelByLocation(location: string) {
-    for (let hotel of this.HotelData) {
-      let loc = location.toLowerCase().trim();
-      let country = hotel.address.country.toLowerCase();
-      let street = hotel.address.streetAddress.toLowerCase();
-      let city = hotel.address.city.toLowerCase();
-      let state = hotel.address.atateProvince;
-      let postalcode = hotel.address.postalCode;
-      let name = hotel.hotelName.toLowerCase();
-      if (country === loc || city == loc || street === loc || state === loc || postalcode === loc || name === loc) {
-        return true;
-      }
-    }
-    return false;
-  }
 
   toggleGuestsPopup() {
     this.showGuestsPopup = !this.showGuestsPopup;
@@ -113,13 +110,13 @@ export class SearchBarComponent implements OnInit {
   }
   decrement(item: any) {
     if (item.label === 'Adults' && item.count > 1) {
-    if (item.label !== 'Rooms' && item.count > 1) {
-      item.count--;
-      const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);
-      const roomsRequired = Math.ceil(totalGuests / 4);
-      this.guestsItems[2].count = roomsRequired;
+      if (item.label !== 'Rooms' && item.count > 1) {
+        item.count--;
+        const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);
+        const roomsRequired = Math.ceil(totalGuests / 4);
+        this.guestsItems[2].count = roomsRequired;
+      }
     }
-  }
   }
 
   generateGuestsAndRoomsValue() {

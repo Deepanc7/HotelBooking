@@ -46,7 +46,7 @@
 span {
   color: rgb(0, 0, 0);
   color: rgb(0, 0, 0);
-  font-size: 20px;
+  font-size: 16px;
   font-family: "Lato", sans-serif;
 }
 
@@ -116,10 +116,11 @@ a {
 .userButton {
   display: flex;
   align-items: center;
+  font-size: 12px;
 }
 
 .icon {
-  margin-left: 5px; /* Adjust the spacing between text and icon */
+  margin-left: 5px;
 }
 
 
@@ -144,5 +145,11 @@ a {
 
   .background {
     width: 100%;
+  }
+
+  .userButton {
+    display: flex;
+    align-items: center;
+    font-size: 8px;
   }
 }

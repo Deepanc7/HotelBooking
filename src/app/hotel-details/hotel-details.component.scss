@@ -2,6 +2,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  align-items: center;
 }
 
 .hotel-details-card {
@@ -168,6 +169,7 @@ mat-chip {
   overflow-x: auto;
   width: fit-content;
   color: black;
+  max-width: 230px;
 }
 
 .check-in-out {
@@ -180,12 +182,12 @@ mat-chip {
 .check-in,
 .check-out {
   text-align: center;
-  margin: 0 20px;
+  margin: 0 0px;
   color: black;
 }
 
 .time {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
 }
 

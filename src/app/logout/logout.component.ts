@@ -8,17 +8,18 @@ import { LoginServiceService } from '../login-page/login-service.service';
   styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent {
-  constructor(public dialogRef: MatDialogRef<LogoutComponent>,private userService: LoginServiceService) {}
+  constructor(public dialogRef: MatDialogRef<LogoutComponent>, private userService: LoginServiceService) { }
 
   confirmLogout(): void {
     sessionStorage.removeItem('userName');
-      this.userService.logout().subscribe((response) => {
-        if (response.message === 'Logout successful') {
-          this.dialogRef.close(true);
-        } else {
-        }
-      });
-    
+    this.userService.logout().subscribe((response) => {
+      if (response.message === 'Logout successful') {
+        this.userService.clearCookie();
+        this.dialogRef.close(true);
+      } else {
+      }
+    });
+
   }
 
   closeDialog(): void {
