@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SearchService } from '../search-bar/search.service';
 import { SearchDetails } from '../search-bar/search-details.interface';
 import { DataService } from '../data.service';
+import { WeatherService } from '../weather-service.service';
 
 @Component({
   selector: 'app-hotels',
@@ -26,6 +27,8 @@ export class HotelsComponent implements OnInit {
   PriceRange: string = '';
   Parking: boolean = false;
   Ratings = [1, 2, 3, 4, 5];
+  locationValue = this.searchDetails.location;
+  weatherData: any;
 
 
   filterOptions = [
@@ -42,10 +45,12 @@ export class HotelsComponent implements OnInit {
     { label: 'Coffee in lobby', selected: false },
     { label: 'Continental breakfast', selected: false },
   ];
+  route: any;
 
   constructor(
     private router: Router,
     private searchService: SearchService,
+    private weatherService: WeatherService,
     private dataService: DataService
   ) { }
 
@@ -53,6 +58,28 @@ export class HotelsComponent implements OnInit {
     this.HotelData = this.dataService.getHotelData();
     const search: SearchDetails = this.searchService.getSearchDetails();
     this.filterHotelData(search);
+
+    const searchDetails = this.getSearchDetails();
+    const location = searchDetails.location;
+    console.log('Location fetched from local storage:', location);
+  
+    if (location) {
+      this.searchLocation(location);
+    } else {
+      console.error('Location not found in local storage.');
+    }
+  
+
+  }
+
+  getSearchDetails(): SearchDetails {
+    const storedDetails = localStorage.getItem('searchDetails');
+    return storedDetails ? JSON.parse(storedDetails) : {
+      location: '',
+      checkIn: new Date(),
+      checkOut: new Date(),
+      guestsAndRooms: ''
+    };
   }
 
   getSelectedOptions(): string[] {
@@ -133,4 +160,16 @@ export class HotelsComponent implements OnInit {
     this.HotelData = this.dataService.getHotelData();
     this.applyFilters();
   }
+  searchLocation(location: string) {
+    this.weatherService.getWeatherByCityName(location).subscribe(
+      (data) => {
+        this.weatherData = data;
+        console.log(this.weatherData);
+      },
+      (error) => {
+        console.error('Error fetching weather data:', error);
+      }
+    );
+  }
+
 }

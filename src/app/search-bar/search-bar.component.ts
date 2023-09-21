@@ -6,16 +6,13 @@ import { ToastrService } from 'ngx-toastr';
 import { DataService } from '../data.service';
 import { count } from 'rxjs';
 import { Hotel } from '../hotel.model';
-
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
   providers: [SearchService, DataService]
 })
-
 export class SearchBarComponent implements OnInit {
-
   @ViewChild('guestsButton') guestsButton!: ElementRef;
   sharedData: any;
   location: string = '';
@@ -25,12 +22,9 @@ export class SearchBarComponent implements OnInit {
   @Output() searchTriggered: EventEmitter<SearchDetails> = new EventEmitter<SearchDetails>();
   query: string = '';
   hotels: Hotel[] = [];
-
-
   showGuestsPopup = false;
   guestAndRooms: string = "";
   HotelData: any;
-
   guestsItems = [
     { label: 'Adults', count: 1 },
     { label: 'Children', count: 0 },
@@ -43,18 +37,15 @@ export class SearchBarComponent implements OnInit {
     { icon: 'calendar_today', label: 'CHECKIN', input: 'Date' },
     { icon: 'calendar_today', label: 'CHECKOUT', input: 'Date' },
   ];
-
   constructor(private router: Router, private renderer: Renderer2, private searchService: SearchService, private toastr: ToastrService, private dataService: DataService) {
   }
-
   ngOnInit() {
     this.sharedData = this.searchService.getSearchDetails();
-    this.location = this.sharedData.loc;
+    this.location = this.sharedData.location;
     this.checkInDate = new Date(this.sharedData.checkIn);
     this.checkOutDate = new Date(this.sharedData.checkOut);
-    this.HotelData = this.dataService.getHotelData();
+    this.guestsAndRoomsValue= this.sharedData.guestAndRooms;
   }
-
   searchHotels() {
     if (this.location) {
       const searchDetails: SearchDetails = {
@@ -63,14 +54,11 @@ export class SearchBarComponent implements OnInit {
         checkOut: this.checkOutDate,
         guestsAndRooms: this.guestsAndRoomsValue
       };
-  
       this.searchService.setSearchDetails(searchDetails);
-  
       this.searchService.searchHotels(this.location).subscribe(
         (response) => {
           if (response.length > 0) {
             this.hotels = response;
-            console.log(this.hotels);
             this.router.navigateByUrl('/hotels');
           } else {
             this.toastr.warning('Location doesn\'t exist.', 'No Results Found');
@@ -84,8 +72,6 @@ export class SearchBarComponent implements OnInit {
       console.error('Location is required for the search.');
     }
   }
-
-
   filterPastDates = (d: Date | null): boolean => {
     if (!d) {
       return false;
@@ -93,14 +79,12 @@ export class SearchBarComponent implements OnInit {
     const currentDate = new Date();
     return d >= currentDate;
   };
-
   toggleGuestsPopup() {
     this.showGuestsPopup = !this.showGuestsPopup;
     if (this.showGuestsPopup) {
       this.calculatePopupPosition();
     }
   }
-
   increment(item: any) {
     if (item.label !== 'Rooms') {
       item.count++;
@@ -119,13 +103,11 @@ export class SearchBarComponent implements OnInit {
       }
     }
   }
-
   generateGuestsAndRoomsValue() {
     return this.guestsItems
       .map(item => `${item.count} ${item.label}${item.count !== 1 ? '' : ''}`)
       .join(', ');
   }
-
   applyGuests() {
     const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);
     const roomsRequired = Math.ceil(totalGuests / 4);
@@ -136,7 +118,6 @@ export class SearchBarComponent implements OnInit {
     this.guestsAndRoomsValue = this.generateGuestsAndRoomsValue();
     this.toggleGuestsPopup();
   }
-
   calculatePopupPosition() {
     if (this.guestsButton) {
       const buttonRect = this.guestsButton.nativeElement.getBoundingClientRect();
@@ -145,7 +126,6 @@ export class SearchBarComponent implements OnInit {
       this.popupLeft = buttonRect.left + window.scrollX;
     }
   }
-
   isSearchButtonDisabled() {
     return !this.location || !this.checkInDate || !this.checkOutDate || !this.guestsAndRoomsValue || this.guestsItems[2].count === 0;
   }

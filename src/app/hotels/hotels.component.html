@@ -1,6 +1,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <app-search-bar (searchTriggered)="searchHotels($event)">
 </app-search-bar>
+
+<div *ngIf="weatherData">
+  <h2>Weather in {{ weatherData.name }}, {{ weatherData.sys.country }}</h2>
+  <p>Temperature: {{ weatherData.main.temp }}°C</p>
+  <p>Humidity: {{ weatherData.main.humidity }}%</p>
+  <!-- Add more weather information as needed -->
+</div>
+
 <ng-container id="ng-contr" class="ng-contr">
   <div class="mobile-filters">
     <mat-card>
