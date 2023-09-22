@@ -76,14 +76,15 @@ export class BookNowComponent implements OnInit {
   success() {
     this.toastr.success('Congratulations! Your adventure headquarters is confirmed.', 'Booked');
     let email:string='';
+    let search:any=this.searchService.getSearchDetails();
     this.userService.getUser().subscribe(
       (user: User) => {
         let details: Booking = {
           id: this.id,
           hotelName: this.hotelDetails.hotelName,
           hotelImage: this.hotelDetails.hotelImage,
-          checkIn: new Date(),
-          checkOut: new Date(),
+          checkIn: search.checkIn,
+          checkOut: search.checkOut,
           room: this.RoomCount,
           guests: this.GuestCount,
           totalPrice: this.totalPrice,

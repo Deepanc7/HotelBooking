@@ -42,17 +42,12 @@
                 </mat-card>
 
                 <mat-card id="date-time-card" class="date-time-card">
-                  <div class="check-in-out">
-                    <div class="check-in">
-                      <p class="time">{{checkInDate}}</p>
-                      <p class="label">CheckIn</p>
-                    </div>
-                    <br>
-                    <pre>  </pre>
-                    <div class="check-out">
-                      <p class="time">{{checkOutDate}}</p>
-                      <p class="label">CheckOut</p>
-                    </div>
+                  <div *ngIf="weatherData" class="weather">
+                    <h3>Weather ({{ weatherData.name }}, {{ weatherData.sys.country }})</h3>
+                    <img class="weatherImage" src="assets/icon-clear.png">
+                    <p>Temperature: {{ weatherData.main.temp }}°C</p>
+                    <p>Humidity: {{ weatherData.main.humidity }}%</p>
+                    <!-- <img src="getWeatherIconUrl(weatherData.weather[0].description)" alt="Weather Icon" class="weatherImage" /> -->
                   </div>
                 </mat-card>
               </div>

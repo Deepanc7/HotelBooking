@@ -71,6 +71,7 @@ export class SearchBarComponent implements OnInit {
           if (response.length > 0) {
             this.hotels = response;
             this.router.navigateByUrl('/hotels');
+            this.searchTriggered.emit(searchDetails);
           } else {
             this.toastr.warning('Location doesn\'t exist.', 'No Results Found');
           }
@@ -109,7 +110,7 @@ export class SearchBarComponent implements OnInit {
     }
   }
   decrement(item: any) {
-    if (item.label === 'Adults' && item.count > 1) {
+    if ((item.label === 'Adults' && item.count > 1) || (item.label === 'Children' && item.count >= 1)) {
       if (item.label !== 'Rooms' && item.count > 1) {
         item.count--;
         const totalGuests = this.guestsItems.reduce((total, guestItem) => guestItem.label !== 'Rooms' ? total + guestItem.count : total, 0);

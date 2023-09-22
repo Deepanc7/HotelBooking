@@ -156,11 +156,16 @@ export class HotelsComponent implements OnInit {
   }
 
   searchHotels(details: SearchDetails) {
-    const search: SearchDetails = this.searchService.getSearchDetails();
-    this.searchService.searchHotels(search.location).subscribe(
+    this.filterHotelData(details);
+  }
+
+  private filterHotelData(searchDetails: SearchDetails) {
+    this.searchService.searchHotels(searchDetails.location).subscribe(
       (response) => {
         if (response.length > 0) {
           this.HotelData = response;
+          this.lowestRoomPrice();
+          this.HotelTemp=this.HotelData;
         } else {
           this.toastr.warning('Location doesn\'t exist.', 'No Results Found');
         }
@@ -169,8 +174,9 @@ export class HotelsComponent implements OnInit {
         console.error('Error while searching for hotels:', error);
       }
     );
-  }
 
+    this.applyFilters();
+  }
   lowestRoomPrice() {
     for (let i = 0; i < this.HotelData.length; i++) {
       let lowestPrice = Number.MAX_SAFE_INTEGER;

@@ -7,13 +7,14 @@ import { DataService } from '../data.service';
 import { DatePipe } from '@angular/common';
 import { LoginServiceService } from '../login-page/login-service.service';
 import { Hotel } from '../hotel.model';
+import { weatherService } from '../weather-service.service';
 
 
 @Component({
   selector: 'app-hotel-details',
   templateUrl: './hotel-details.component.html',
   styleUrls: ['./hotel-details.component.scss'],
-  providers: [SearchService, DataService, LoginServiceService, DatePipe]
+  providers: [SearchService, DataService, LoginServiceService, DatePipe, weatherService]
 })
 export class HotelDetailsComponent implements OnInit {
   HotelData: Hotel[] = [];
@@ -24,6 +25,7 @@ export class HotelDetailsComponent implements OnInit {
   RoomCount: number = 0;
   checkInDate: string = "12PM";
   checkOutDate: string = "12PM";
+  weatherData:any;
 
   searchDetails: SearchDetails = {
     location: '',
@@ -32,7 +34,7 @@ export class HotelDetailsComponent implements OnInit {
     guestsAndRooms: ''
   };
 
-  constructor(private searchService: SearchService, private userService: LoginServiceService, private router: Router, private route: ActivatedRoute, private dataService: DataService, private datePipe: DatePipe) { }
+  constructor(private searchService: SearchService, private userService: LoginServiceService, private weatherService: weatherService, private router: Router, private route: ActivatedRoute, private dataService: DataService, private datePipe: DatePipe) { }
 
 
   ngOnInit() {
@@ -42,6 +44,7 @@ export class HotelDetailsComponent implements OnInit {
     this.dataService.getHotelData().subscribe((data: any) => {
       this.HotelData = data;
       this.hotelDetails = this.searchHotelByName(this.HotelDetails);
+      this.searchLocation(this.hotelDetails.address.city);
     });
     let search: SearchDetails = this.searchService.getSearchDetails();
     this.checkInDate = this.datePipe.transform(search.checkIn, 'dd-MM-yyyy') || '';
@@ -66,6 +69,30 @@ export class HotelDetailsComponent implements OnInit {
     if (roomsSection) {
       roomsSection.scrollIntoView({ behavior: 'smooth' });
     }
+  }
+
+  searchLocation(location: string) {
+    this.weatherService.getWeatherByCityName(location).subscribe(
+      (data) => {
+        this.weatherData = data;
+        console.log(this.weatherData);
+      },
+      (error) => {
+        console.error('Error fetching weather data:', error);
+      }
+    );
+  }
+
+  getWeatherIconUrl(description: string): string {
+    const iconMapping: { [key: string]: string } = {
+      'light intensity drizzle': 'icon-drizzle.png',
+      'clear sky': 'icon-clear.png',
+      'few clouds': 'icon-cloudy.png',
+    };
+    const defaultIcon = 'icon-default.png'; 
+    const iconUrl = iconMapping[description.toLowerCase()] || defaultIcon;
+    console.log(iconUrl);
+    return `assets/${iconUrl}`;
   }
 
   selectRoom(room: any) {
