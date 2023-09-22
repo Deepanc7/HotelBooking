@@ -1,20 +1,15 @@
 import { Injectable } from '@angular/core';
-import jsonData from '../assets/hotel_data.json';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+  private apiUrl = "http://localhost:8080";
 
-  getJsonData(): any {
-    return JSON.parse(JSON.stringify(jsonData));
-  }
-
-  setHotelData(details: any): any {
-    localStorage.setItem('hotel_data', JSON.stringify(details));
-  }
+  constructor(private http: HttpClient) { }
 
   getHotelData(): any {
-    return JSON.parse(localStorage.getItem('hotel_data') || '[]');
+    return this.http.get(`${this.apiUrl}/hotels`);
   }
 }

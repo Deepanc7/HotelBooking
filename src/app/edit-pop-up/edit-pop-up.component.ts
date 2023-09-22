@@ -22,6 +22,7 @@ export class EditPopUpComponent {
 
   constructor(private toastr: ToastrService,private datePipe: DatePipe, private dialogRef: MatDialogRef<EditPopUpComponent>,@Inject(MAT_DIALOG_DATA) public data: any,) {
     this.editedData = { ...data };
+    console.log(this.editedData);
   }
 
   saveChanges() {

@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoginServiceService } from '../login-page/login-service.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -27,29 +28,26 @@ export class SignInPageComponent {
       const email = this.loginForm.value.email;
       const password = this.loginForm.value.password;
       if (email !== null && email !== undefined) {
-        const user = this.userService.getUserByEmail(email);
-
-        if (user !== undefined && user.password === password) {
-          if (user.isactive) {
-            sessionStorage.setItem('email', user.email);
-            sessionStorage.setItem('role', user.role);
-            this.router.navigate(['/homePage']);
-            this.loginSuccess = true;
-
-            this.toastr.success('You\'ve successfully cracked the code to your account. Hello there!', 'Login Successful');
-            sessionStorage.setItem('userName', user.name);
-          } else {
-            this.loginSuccess = true;
-            this.toastr.success('You\'ve successfully cracked the code to your account. Hello there!', 'Login Successful');
-            sessionStorage.setItem('userName', user.name);
+        this.userService.login(email, String(password)).subscribe(
+          (response) => {
+            if (response.message === "Set cookie") {
+              let user = this.userService.getUserByEmail(email).subscribe(
+                (user) => {
+                  this.userService.setCookie(response.jwt);
+                }
+              );
+              this.toastr.success('You\'ve successfully cracked the code to your account. Hello there!', 'Login Successful');
+              this.router.navigate(['/']);
+            } else {
+              this.toastr.error('Error 404: Password genius not found. Please retry.', 'Login Unsuccessful');
+            }
+          },
+          (error) => {
+            this.toastr.error('Error', 'Login Unsuccessful');
           }
-        } else {
-          this.toastr.error('Error 404: Password genius not found. Please retry.', 'Invalid credentials');
-        }
-      } else {
-        this.toastr.error('Email is required', 'Invalid Email');
+        );
+
       }
     }
   }
-
 }

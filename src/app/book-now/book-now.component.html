@@ -3,18 +3,18 @@
       <div class="sidenav-content">
         <mat-card id="hotel-info" class="hotel-info">
           <mat-card-header class="header" id="header">
-            <mat-card-title><h2 class="hotel-name">{{ hotelDetails.HotelName }}</h2></mat-card-title>
+            <mat-card-title><h2 class="hotel-name">{{ hotelDetails?.hotelName }}</h2></mat-card-title>
           </mat-card-header>
           <br>
           <mat-card-content>
             <div class="hotel-details">
               <div class="hotel-imgContainer">
                 <div class="hotel-image">
-                  <img src="{{ hotelDetails.HotelImage }}" alt="Hotel Image">
+                  <img src="{{ hotelDetails?.hotelImage }}" alt="Hotel Image">
                 </div>
                 <pre>   </pre>
                 <div class="hotel-image">
-                  <img src="{{ roomDetails.RoomImage }}" alt="Hotel Image">
+                  <img src="{{ roomDetails?.roomImage }}" alt="Hotel Image">
                 </div>
               </div>
               
@@ -67,7 +67,7 @@
             <mat-card-content>
               <div class="price-item">
                 <div class="price-label">Room Charges</div>
-                <div class="price-value">${{roomDetails.BaseRate}}</div>
+                <div class="price-value">${{roomDetails?.baseRate}}</div>
               </div>
               <div class="price-item">
                 <div class="price-label">Total Discount</div>
@@ -85,7 +85,7 @@
               <mat-divider class="divider"></mat-divider>
               <div class="price-item">
                 <div class="price-label total-label">Total Price</div>
-                <div class="price-value total-value"><pre> <span class="amount">${{roomDetails.BaseRate}}</span>  ${{totalPrice}}</pre></div>
+                <div class="price-value total-value"><pre> <span class="amount">${{roomDetails?.baseRate}}</span>  ${{totalPrice}}</pre></div>
               </div>
             </mat-card-content>
           </mat-card>

@@ -18,34 +18,29 @@ export class SignupPageComponent {
     name: this.builder.control('', Validators.required),
     password: this.builder.control('',[Validators.required, Validators.minLength(8)]),
     email: this.builder.control('',[Validators.required, Validators.email]),
-    gender: this.builder.control('male'),
-    role: this.builder.control(''),
-    isactive: this.builder.control('')
   });
-
-
+ 
   register() {
     if (this.registersForm.valid) {
       const user: User = {
-        password: this.registersForm.value.password || '',
-        name: this.registersForm.value.name || '',
-        email: this.registersForm.value.email || '',
-        gender: this.registersForm.value.gender || '',
-        role: this.registersForm.value.role || '',
-        isactive: true
-      };
+               password: this.registersForm.value.password || '',
+               name: this.registersForm.value.name || '',
+               email: this.registersForm.value.email || '',
+             };
 
-      if(this.userService.checkUser(user)=="proceed") {
-        this.userService.addUser(user);
-        this.toastr.success('Prepare for adventure – your registration victory just unlocked the door.', 'Registration successful');
-        this.router.navigate(['/signin']);
-      }
-      else if(this.userService.checkUser(user)=="name") {
-        this.toastr.error('Username already exists', 'Registration unsuccessful');
-      }
-      else if(this.userService.checkUser(user)=="email") {
-        this.toastr.error('Email already exists', 'Registration unsuccessful');
-      }
+      this.userService.addUser(user).subscribe(
+        (response: any) => {
+          this.toastr.success('Prepare for adventure – your registration victory just unlocked the door.', 'Registration successful');
+          this.router.navigate(['/signin']);
+        },
+        (error: any) => {
+          if (error.status === 400 && error.error.message === 'Email already registered') {
+            this.toastr.error('Email already exists', 'Registration unsuccessful');
+          } else {
+            this.toastr.error('An error occurred during registration', 'Registration unsuccessful');
+          }
+        }
+      );
     } else {
       this.toastr.error('Enter valid details', 'Error');
     }

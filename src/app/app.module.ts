@@ -16,6 +16,7 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { BookNowComponent } from './book-now/book-now.component';
+import { CookieService } from 'ngx-cookie-service';
 
 import { ToastrModule } from 'ngx-toastr';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
@@ -23,6 +24,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { EditPopUpComponent } from './edit-pop-up/edit-pop-up.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { LogoutComponent } from './logout/logout.component';
+import { BookingDetailsComponent } from './booking-details/booking-details.component';
 
 
 @NgModule({
@@ -41,6 +43,7 @@ import { LogoutComponent } from './logout/logout.component';
     ContactUsComponent,
     EditPopUpComponent,
     LogoutComponent,
+    BookingDetailsComponent,
     
   ],
   imports: [
@@ -53,7 +56,7 @@ import { LogoutComponent } from './logout/logout.component';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'},CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

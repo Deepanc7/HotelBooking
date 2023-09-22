@@ -105,14 +105,14 @@
         <div class="hotel-list">
           <ng-container *ngFor="let hotel of HotelData">
             <div class="hotel-card" (click)="sendDataToHotelDetails(hotel)">
-              <img [src]="hotel.HotelImage" alt="{{ hotel.HotelName }} Image" class="hotel-image">
+              <img [src]="hotel.hotelImage" alt="{{ hotel.hotelName }} Image" class="hotel-image">
               <div class="hotel-details">
-                <h4 class="hotel-name">{{ hotel.HotelName }}</h4>
+                <h4 class="hotel-name">{{ hotel.hotelName }}</h4>
                 <div class="hotel-ratings">
-                  <ng-container *ngFor="let star of getStars(hotel.Rating)">
+                  <ng-container *ngFor="let star of getStars(hotel.rating)">
                     <mat-icon class="star-icon">star</mat-icon>
                   </ng-container>
-                  <div>{{hotel.Rating}}</div>
+                  <div>{{hotel.rating}}</div>
                 </div>
                 <div class="hotel-price">
                   Starts From: ${{ hotel.lowestPrice }}
@@ -121,6 +121,7 @@
             </div>
           </ng-container>
         </div>
+
       </mat-card>
     </mat-sidenav-content>
   </mat-sidenav-container>

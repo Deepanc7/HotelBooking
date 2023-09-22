@@ -8,15 +8,20 @@ import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 import { DatePipe } from '@angular/common';
+import { BookingsService } from '../bookings.service';
+import { Booking } from '../booking.interface';
+import { LoginServiceService } from '../login-page/login-service.service';
+import { Hotel } from '../hotel.model';
+import { User } from '../user.interface';
 
 @Component({
   selector: 'app-book-now',
   templateUrl: './book-now.component.html',
   styleUrls: ['./book-now.component.scss'],
-  providers: [SearchService, DataService, DatePipe]
+  providers: [SearchService, DataService, DatePipe, BookingsService, LoginServiceService]
 })
 export class BookNowComponent implements OnInit {
-  HotelData: any;
+  HotelData: Hotel[] = [];
   HotelDetails: string = '';
   RoomDetails: string = '';
 
@@ -31,6 +36,7 @@ export class BookNowComponent implements OnInit {
   priceAfterDiscount: number = 0;
   tax: number = 0;
   totalPrice: number = 0;
+  id?: string;
 
   searchDetails: SearchDetails = {
     location: '',
@@ -39,20 +45,22 @@ export class BookNowComponent implements OnInit {
     guestsAndRooms: ''
   };
 
-  constructor(private searchService: SearchService, private toastr: ToastrService, private router: Router, private dialog: MatDialog, private route: ActivatedRoute, private dataService: DataService, private datePipe: DatePipe) { }
+  constructor(private searchService: SearchService, private userService: LoginServiceService, private bookingsService: BookingsService, private toastr: ToastrService, private router: Router, private dialog: MatDialog, private route: ActivatedRoute, private dataService: DataService, private datePipe: DatePipe) { }
 
   ngOnInit() {
-    this.HotelData = this.dataService.getHotelData();
     this.route.queryParams.subscribe(params => {
-      this.HotelDetails = JSON.parse(params['details']);
-      this.RoomDetails = JSON.parse(params['room']);
+      this.HotelDetails = params['details'];
+      this.RoomDetails = params['room'];
     });
-    this.hotelDetails = this.searchHotelByName(this.HotelDetails);
-    this.roomDetails = this.searchRoom(this.RoomDetails);
-    this.discount = Number((Math.round((this.roomDetails.BaseRate * 15) / 100)).toFixed(2));
-    this.priceAfterDiscount = Number((Math.round(this.roomDetails.BaseRate - this.discount).toFixed(2)));
-    this.tax = Number((Math.round((this.priceAfterDiscount * 10) / 100)).toFixed(2));
-    this.totalPrice = Number(Math.round(this.priceAfterDiscount + this.tax).toFixed(2));
+    this.dataService.getHotelData().subscribe((data: any[]) => {
+      this.HotelData = data;
+      this.hotelDetails = this.searchHotelByName(this.HotelDetails);
+      this.roomDetails = this.searchRoom(this.RoomDetails);
+      this.discount = Number((Math.round(Number(this.roomDetails?.baseRate) * 15) / 100).toFixed(2));
+      this.priceAfterDiscount = Number((Math.round(this.roomDetails?.baseRate) - this.discount).toFixed(2));
+      this.tax = Number((Math.round((this.priceAfterDiscount * 10) / 100)).toFixed(2));
+      this.totalPrice = Number(Math.round(this.priceAfterDiscount + this.tax).toFixed(2));
+    });
     let search: SearchDetails = this.searchService.getSearchDetails();
     let x = search.guestsAndRooms.split(" ");
     this.GuestCount = Number(x[0]) + Number(x[2]);
@@ -67,13 +75,40 @@ export class BookNowComponent implements OnInit {
 
   success() {
     this.toastr.success('Congratulations! Your adventure headquarters is confirmed.', 'Booked');
-    this.router.navigateByUrl('/');
+    let email:string='';
+    let search:any=this.searchService.getSearchDetails();
+    this.userService.getUser().subscribe(
+      (user: User) => {
+        let details: Booking = {
+          id: this.id,
+          hotelName: this.hotelDetails.hotelName,
+          hotelImage: this.hotelDetails.hotelImage,
+          checkIn: search.checkIn,
+          checkOut: search.checkOut,
+          room: this.RoomCount,
+          guests: this.GuestCount,
+          totalPrice: this.totalPrice,
+          userEmail: user.email,
+        }
+        this.bookingsService.addBookingDetails(details).subscribe(
+          (response) => {
+          },
+          (error) => {
+            console.error('Error creating booking:', error);
+          }
+        );
+        this.router.navigateByUrl('/bookingDetails');
+      },
+      error => {
+        console.error('Error fetching email:', error);
+      });
+
   }
 
-  searchHotelByName(hotelName: string) {
-    const foundHotel = this.HotelData.find((hotel: { HotelName: string; }) => String(hotel.HotelName) === hotelName);
+  searchHotelByName(Name: string) {
+    const foundHotel = this.HotelData.find((hotel: { hotelName: string; }) => String(hotel.hotelName) === Name);
 
-    return foundHotel || "Hotel not found";
+    return foundHotel;
   }
 
   getStars(rating: number): number[] {
@@ -82,8 +117,8 @@ export class BookNowComponent implements OnInit {
   }
 
   searchRoom(roomType: string) {
-    for (let room of this.hotelDetails.Rooms) {
-      if (room.Description === roomType) {
+    for (let room of this.hotelDetails.rooms) {
+      if (room.description === roomType) {
         return room;
       }
     }
@@ -92,7 +127,7 @@ export class BookNowComponent implements OnInit {
     const dialogRef = this.dialog.open(EditPopUpComponent, {
       width: '300px',
       data: {
-        hotel:this.hotelDetails,
+        hotel: this.hotelDetails,
         checkInDate: this.checkInDate,
         checkOutDate: this.checkOutDate,
         RoomDetails: this.RoomDetails,

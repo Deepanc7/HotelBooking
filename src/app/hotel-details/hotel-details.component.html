@@ -8,19 +8,19 @@
           <div class="hotel-content">
 
             <div class="hotel-image">
-              <img src="{{ hotelDetails.HotelImage }}" alt="Hotel Image">
+              <img src="{{ hotelDetails?.hotelImage }}" alt="{{ hotelDetails?.hotelName }} Image" class="hotel-image">
             </div>
             <div class="content-hotel">
               <div class="hotel-details-content">
-                <h2 class="hotel-name">{{ hotelDetails.HotelName }}</h2>
+                <h2 class="hotel-name">{{ hotelDetails?.hotelName }}</h2>
                 <div class="hotel-rating">
-                  <ng-container *ngFor="let star of getStars(hotelDetails.Rating)">
+                  <ng-container *ngFor="let star of getStars(hotelDetails?.rating)">
                     <mat-icon class="star-icon">star</mat-icon>
                   </ng-container>
                 </div>
-                <p class="hotel-description">{{ hotelDetails.Description }}</p>
+                <p class="hotel-description">{{ hotelDetails?.description }}</p>
                 <div class="hotel-tags">
-                  <mat-chip *ngFor="let tag of hotelDetails.Tags">{{ tag }}</mat-chip>
+                  <mat-chip *ngFor="let tag of hotelDetails?.tags">{{ tag }}</mat-chip>
                 </div>
               </div>
 
@@ -30,7 +30,7 @@
                   <div class="hotel-price-details">
                     <div class="hotel-price">
                       <p class="price-info">Starting Price</p>
-                      <p class="starting-price">{{ hotelDetails.lowestPrice | currency }}</p>
+                      <p class="starting-price">{{ hotelDetails?.lowestPrice | currency }}</p>
                     </div>
                     <div class="room-guest-details">
                       <p>{{ GuestCount }} x Guests</p>
@@ -42,15 +42,12 @@
                 </mat-card>
 
                 <mat-card id="date-time-card" class="date-time-card">
-                  <div class="check-in-out">
-                    <div class="check-in">
-                      <p class="time">{{checkInDate}}</p>
-                      <p class="label">CheckIn</p>
-                    </div>
-                    <div class="check-out">
-                      <p class="time">{{checkOutDate}}</p>
-                      <p class="label">CheckOut</p>
-                    </div>
+                  <div *ngIf="weatherData" class="weather">
+                    <h3>Weather ({{ weatherData.name }}, {{ weatherData.sys.country }})</h3>
+                    <img class="weatherImage" src="assets/icon-clear.png">
+                    <p>Temperature: {{ weatherData.main.temp }}°C</p>
+                    <p>Humidity: {{ weatherData.main.humidity }}%</p>
+                    <!-- <img src="getWeatherIconUrl(weatherData.weather[0].description)" alt="Weather Icon" class="weatherImage" /> -->
                   </div>
                 </mat-card>
               </div>
@@ -63,15 +60,15 @@
     <ng-container>
       <mat-label>Rooms</mat-label>
 
-      <div id="rooms-list" class="rooms-list">
-        <mat-card id="room-card" class="room-card" *ngFor="let room of hotelDetails.Rooms">
+      <div id="rooms-list" class="rooms-list" *ngIf="hotelDetails?.rooms">
+        <mat-card id="room-card" class="room-card" *ngFor="let room of hotelDetails?.rooms">
           <div class="room-image">
-            <img src="{{ room.RoomImage }}" alt="Hotel Image">
+            <img src="{{ room?.roomImage }}" alt="Hotel Image">
           </div>
           <div class="room-details">
-            <h3 class="room-type">{{ room.Type }}</h3>
-            <p class="room-description">{{ room.Description }}</p>
-            <div class="room-price">{{ room.BaseRate | currency }}</div>
+            <h3 class="room-type">{{ room?.type }}</h3>
+            <p class="room-description">{{ room?.description }}</p>
+            <div class="room-price">{{ room?.baseRate | currency }}</div>
             <br>
             <button class="go-to-rooms-button" (click)="selectRoom(room)">Select Room</button>
           </div>
