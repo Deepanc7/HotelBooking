@@ -23,6 +23,7 @@ export class SignupPageComponent {
   register() {
     if (this.registersForm.valid) {
       const user: User = {
+               id: '',
                password: this.registersForm.value.password || '',
                name: this.registersForm.value.name || '',
                email: this.registersForm.value.email || '',

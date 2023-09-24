@@ -10,11 +10,11 @@
         <div class="booking-list">
           <mat-card *ngFor="let booking of bookingDetailsList;let i=index" class="booking-item">
             <div class="hotel-image">
-              <img src="{{ booking.hotelImage }}" alt="{{ booking.hotelName }} Image">
+              <img src="{{ HotelImages[i] }}" alt="{{ HotelImages[i] }} Image">
             </div>
             <div class="booking-details">
               <mat-card-title class="hotel-name">
-                <mat-icon class="icon">hotel</mat-icon> {{ booking.hotelName }}
+                <mat-icon class="icon">hotel</mat-icon> {{ HotelNames[i] }}
               </mat-card-title>
               <div class="booking-info">
                 <p><mat-icon class="icon">event</mat-icon> <strong>Check-in Date:</strong> {{ checkins[i] }} &nbsp; </p>

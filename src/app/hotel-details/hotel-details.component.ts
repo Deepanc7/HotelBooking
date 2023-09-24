@@ -75,7 +75,6 @@ export class HotelDetailsComponent implements OnInit {
     this.weatherService.getWeatherByCityName(location).subscribe(
       (data) => {
         this.weatherData = data;
-        console.log(this.weatherData);
       },
       (error) => {
         console.error('Error fetching weather data:', error);
@@ -91,7 +90,6 @@ export class HotelDetailsComponent implements OnInit {
     };
     const defaultIcon = 'icon-default.png'; 
     const iconUrl = iconMapping[description.toLowerCase()] || defaultIcon;
-    console.log(iconUrl);
     return `assets/${iconUrl}`;
   }
 

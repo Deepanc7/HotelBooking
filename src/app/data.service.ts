@@ -12,4 +12,8 @@ export class DataService {
   getHotelData(): any {
     return this.http.get(`${this.apiUrl}/hotels`);
   }
+
+  getHotelById(hotel_id: String): any {
+    return this.http.get(`${this.apiUrl}/hotelById/${hotel_id}`);
+  }
 }

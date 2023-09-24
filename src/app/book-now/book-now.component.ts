@@ -81,14 +81,13 @@ export class BookNowComponent implements OnInit {
       (user: User) => {
         let details: Booking = {
           id: this.id,
-          hotelName: this.hotelDetails.hotelName,
-          hotelImage: this.hotelDetails.hotelImage,
+          hotelId: this.hotelDetails.id,
           checkIn: search.checkIn,
           checkOut: search.checkOut,
           room: this.RoomCount,
           guests: this.GuestCount,
           totalPrice: this.totalPrice,
-          userEmail: user.email,
+          userId: user.id,
         }
         this.bookingsService.addBookingDetails(details).subscribe(
           (response) => {
