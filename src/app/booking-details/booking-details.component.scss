@@ -31,6 +31,18 @@ body {
   width: 100%;
 }
 
+.address {
+  box-shadow: 0px 0px 2px rgb(0, 0, 0);
+  border-radius: 10px;
+  overflow: hidden;
+  overflow-x: auto;
+  color: #000000;
+  flex-direction: row;
+  width: 100%;
+  max-width: 150px;
+  margin-right: 20px;
+}
+
 .booking-details {
   display: flex;
   flex: 1;
@@ -111,7 +123,8 @@ mat-card-content {
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
-  align-self: flex-start;
+  align-self: center;
+  margin-right: 20px;
 }
 
 .delete-button:hover {
@@ -121,7 +134,8 @@ mat-card-content {
 .total-price {
   font-weight: bold;
   margin-top: 10px;
-  align-self: flex-start;
+  align-self: center;
+  margin-right: 30px;
 }
 
 .icon {

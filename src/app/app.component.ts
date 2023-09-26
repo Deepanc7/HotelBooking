@@ -3,8 +3,9 @@ import { DataService } from './data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LogoutComponent } from './logout/logout.component';
 import { LoginServiceService } from './login-page/login-service.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { User } from './user.interface';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -21,12 +22,21 @@ export class AppComponent {
   constructor(private dataService: DataService, private dialog: MatDialog, private userService: LoginServiceService, private router: Router) {
   }
 
-  ngOnInit(): void {
-    this.userService.getUser().subscribe(
-      (user: User) => {
-        this.name=user.name;
-      });
+  ngOnInit() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.getCurrentPage();
+    });
   }
+
+  getCurrentPage() {
+    let currentPage = this.router.url; 
+    if (currentPage!=='/login'){
+      localStorage.setItem('currentPage', encodeURIComponent(currentPage));
+    }
+  }
+  
 
   lowestRoomPrice() {
     for (let i = 0; i < this.HotelData.length; i++) {
@@ -55,7 +65,7 @@ export class AppComponent {
   }
 
   getUserName(): string {
-    return this.name;
+    return this.userService.getUserName();
   }
 
   openLogoutPopup(): void {

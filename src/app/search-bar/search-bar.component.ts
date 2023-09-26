@@ -66,9 +66,11 @@ export class SearchBarComponent implements OnInit {
   
       this.searchService.setSearchDetails(searchDetails);
   
-      this.searchService.searchHotels(this.location).subscribe(
+      this.searchService.searchHotels(this.location.trim().toLowerCase()).subscribe(
         (response) => {
+          console.log(response);
           if (response.length > 0) {
+            console.log(response);
             this.hotels = response;
             this.router.navigateByUrl('/hotels');
             this.searchTriggered.emit(searchDetails);

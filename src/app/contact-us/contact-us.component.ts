@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent {
-
+  
   faqs = [
     {
       question: 'How can I make a reservation?',

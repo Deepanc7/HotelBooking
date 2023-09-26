@@ -17,6 +17,7 @@ export class LoginServiceService {
     private cookieService: CookieService,
     private router: Router
   ) { }
+  
 
 
   getUserByEmail(email: String): Observable<User> {
@@ -33,7 +34,7 @@ export class LoginServiceService {
       password: password,
     };
 
-    return this.http.post(`${this.apiUrl}/login`, loginData, { withCredentials: true });
+    return this.http.post(`${this.apiUrl}/login`, loginData);
 
   }
 
@@ -59,6 +60,7 @@ export class LoginServiceService {
   getJwtToken(): string {
     return this.cookieService.get('session');
   }
+
   getUser(): Observable<User> {
     const jwtToken = this.getJwtToken();
     const httpOptions = {
@@ -67,7 +69,15 @@ export class LoginServiceService {
         'Authorization': `Bearer ${jwtToken}`
       })
     };
-    return this.http.get<User>(`${this.apiUrl}/getUserEmail`, httpOptions);
+    return this.http.get<User>(`${this.apiUrl}/getUser`, httpOptions);
+  }
+
+  getUserName() {
+    return localStorage.getItem("UserName")||'';
+  }
+
+  setUserName(userName: string) {
+    localStorage.setItem("UserName",userName);
   }
 
   setCookie(jwt: string) {
@@ -75,7 +85,7 @@ export class LoginServiceService {
   }
 
   clearCookie() {
-    this.cookieService.deleteAll("session");
+    this.cookieService.deleteAll();
   }
 
 }

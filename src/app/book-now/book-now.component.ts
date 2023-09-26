@@ -71,7 +71,9 @@ export class BookNowComponent implements OnInit {
 
     let newdate1: Date = search.checkOut;
     this.checkOutDate = this.datePipe.transform(newdate1, 'dd-MM-yyyy');
+
   }
+  
 
   success() {
     this.toastr.success('Congratulations! Your adventure headquarters is confirmed.', 'Booked');

@@ -67,7 +67,9 @@ export class HotelsComponent implements OnInit {
         console.error('Error while searching for hotels:', error);
       }
     );
+
   }
+  
 
   getSelectedOptions(): string[] {
     return this.filterOptions

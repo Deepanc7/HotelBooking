@@ -19,6 +19,8 @@ export class BookingDetailsComponent {
   checkouts: string[] = [];
   HotelNames: string[] = [];
   HotelImages: string[] = [];
+  HotelAddresses: any[] = [];
+  router: any;
 
   constructor(private bookingsService: BookingsService, private userService: LoginServiceService, private dataService: DataService, private datePipe: DatePipe) {
   }
@@ -37,6 +39,7 @@ export class BookingDetailsComponent {
               this.dataService.getHotelById(booking.hotelId).subscribe((data: any) => {
                 this.HotelNames.push(data.hotelName);
                 this.HotelImages.push(data.hotelImage);
+                this.HotelAddresses.push(data.address);
               });
             }
           }
@@ -45,7 +48,9 @@ export class BookingDetailsComponent {
       error => {
         console.error('Error fetching email:', error);
       });
-  }
+
+    }
+  
 
   delete(bookingId: string | undefined): void {
     this.bookingsService.deleteBooking(bookingId).subscribe(

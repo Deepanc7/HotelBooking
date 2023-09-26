@@ -11,8 +11,8 @@ import { DataService } from '../data.service';
   providers: [SearchService, DataService]
 })
 export class HomePageComponent implements OnInit {
-  HotelData: any[]=[];
-  popularHotels: any[]=[];
+  HotelData: any[] = [];
+  popularHotels: any[] = [];
   checkInDate: Date = new Date();
   checkOutDate: Date = new Date();
   guestsAndRoomsValue: string = '1 Adults, 0 Childrens, 1 Rooms';
@@ -55,7 +55,7 @@ export class HomePageComponent implements OnInit {
 
   currentIndex = 0;
   maxIndex: number = 0;
-  displayedHotels: any[]=[];
+  displayedHotels: any[] = [];
   startIndex = 0;
   itemsPerPage = 4;
   details: string = '';
@@ -72,12 +72,13 @@ export class HomePageComponent implements OnInit {
     };
     this.searchService.setSearchDetails(details);
     this.dataService.getHotelData().subscribe((data: any[]) => {
-       this.HotelData=data;
-       this.popularHotels = this.HotelData;
-       this.HotelData.sort((a: any, b: any) => b.rating - a.rating);
-    this.maxIndex = this.popularHotels.length - 1;
-    this.updateDisplayedHotels();
-       });
+      this.HotelData = data;
+      this.popularHotels = this.HotelData;
+      this.HotelData.sort((a: any, b: any) => b.rating - a.rating);
+      this.maxIndex = this.popularHotels.length - 1;
+      this.updateDisplayedHotels();
+    });
+
   }
 
   goToHotels(index: any) {

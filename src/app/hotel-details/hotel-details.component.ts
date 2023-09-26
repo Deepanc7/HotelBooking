@@ -52,7 +52,9 @@ export class HotelDetailsComponent implements OnInit {
     let x = search.guestsAndRooms.split(" ");
     this.GuestCount = Number(x[0]) + Number(x[2]);
     this.RoomCount = Number(x[4]);
+
   }
+
 
   searchHotelByName(Name: string) {
     const foundHotel = this.HotelData.find((hotel: any) => String(hotel.hotelName) === Name);
@@ -70,6 +72,11 @@ export class HotelDetailsComponent implements OnInit {
       roomsSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+  isObjectType(obj: any): boolean {
+    return typeof obj === 'object';
+  }
+  
 
   searchLocation(location: string) {
     this.weatherService.getWeatherByCityName(location).subscribe(

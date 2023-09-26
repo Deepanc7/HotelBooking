@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { LoginServiceService } from '../login-page/login-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logout',
@@ -8,7 +9,7 @@ import { LoginServiceService } from '../login-page/login-service.service';
   styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent {
-  constructor(public dialogRef: MatDialogRef<LogoutComponent>, private userService: LoginServiceService) { }
+  constructor(public dialogRef: MatDialogRef<LogoutComponent>, private userService: LoginServiceService, private router: Router) { }
 
   confirmLogout(): void {
     sessionStorage.removeItem('userName');
@@ -16,6 +17,7 @@ export class LogoutComponent {
       if (response.message === 'Logout successful') {
         this.userService.clearCookie();
         this.dialogRef.close(true);
+        this.router.navigate(['/']);
       } else {
       }
     });

@@ -21,7 +21,6 @@ export class BookingsService {
   };
 
   addBookingDetails(bookingDetails: Booking): Observable<Booking> {
-    console.log(bookingDetails);
     return this.http.post<Booking>(`${this.apiUrl}/api/bookings`, bookingDetails);
   }
 

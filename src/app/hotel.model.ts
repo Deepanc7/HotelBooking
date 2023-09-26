@@ -6,7 +6,7 @@ export interface Hotel {
   hotelName: string;
   description: string;
   hotelImage: string;
-  tags: string[];
+  tags: any[];
   parkingIncluded: boolean;
   rating: number;
   address: Address;

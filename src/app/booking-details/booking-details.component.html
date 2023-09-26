@@ -20,12 +20,17 @@
                 <p><mat-icon class="icon">event</mat-icon> <strong>Check-in Date:</strong> {{ checkins[i] }} &nbsp; </p>
                 <p><mat-icon class="icon">event</mat-icon> <strong>Check-out Date:</strong> {{ checkouts[i] }}
                 </p>
-                <p><mat-icon class="icon">people</mat-icon> <strong>Guests:</strong> {{ booking.guests }} &nbsp; </p>
-                <p><mat-icon class="icon">meeting_room</mat-icon> <strong>Rooms:</strong> {{ booking.room }}
+                <p><mat-icon class="icon">people</mat-icon>
+                  <strong>Guests:</strong> {{ booking.guests }} &nbsp;
+                  <span class="room-guest-separator">|</span>
+                  <strong>Rooms:</strong> {{ booking.room }}
                 </p>
               </div>
             </div>
             <div class="side-content">
+              <mat-card class="address">
+                <p><strong>Address:</strong> {{ HotelAddresses[i]?.streetAddress }}, {{ HotelAddresses[i]?.city }}, {{ HotelAddresses[i]?.stateProvince }}, {{ HotelAddresses[i]?.country }} - {{ HotelAddresses[i]?.postalCode }}</p>
+              </mat-card>
               <div class="total-price">
                 <p><strong>Total Price:</strong> ${{ booking.totalPrice }}</p>
               </div>

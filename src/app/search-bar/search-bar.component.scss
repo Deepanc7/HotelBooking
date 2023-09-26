@@ -146,7 +146,11 @@ mat-card {
   cursor: pointer;
 }
 
-
+.mat-date-range-input-container {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
 
 mat-form-field {
   height: 12vh;
