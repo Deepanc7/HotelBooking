@@ -89,17 +89,6 @@ export class HotelDetailsComponent implements OnInit {
     );
   }
 
-  getWeatherIconUrl(description: string): string {
-    const iconMapping: { [key: string]: string } = {
-      'light intensity drizzle': 'icon-drizzle.png',
-      'clear sky': 'icon-clear.png',
-      'few clouds': 'icon-cloudy.png',
-    };
-    const defaultIcon = 'icon-default.png'; 
-    const iconUrl = iconMapping[description.toLowerCase()] || defaultIcon;
-    return `assets/${iconUrl}`;
-  }
-
   selectRoom(room: any) {
     if (this.userService.isAuthenticated()) {
       const navigationExtras = {
