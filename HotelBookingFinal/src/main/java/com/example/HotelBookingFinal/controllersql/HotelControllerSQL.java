@@ -1,4 +1,4 @@
-package com.innsight.hotelbookingappSQL.controller;
+package com.example.HotelBookingFinal.controllersql;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,37 +13,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.innsight.hotelbookingappSQL.model.Hotel;
-import com.innsight.hotelbookingappSQL.service.HotelService;
+import com.example.HotelBookingFinal.modelsql.HotelSQL;
+import com.example.HotelBookingFinal.servicesql.HotelServiceSQL;
 
 import ch.qos.logback.core.model.Model;
 
 @RestController
-public class HotelController {
-    private final HotelService hotelService;
+public class HotelControllerSQL {
+    private final HotelServiceSQL hotelService;
 
     @Autowired
-    public HotelController(HotelService hotelService) {
+    public HotelControllerSQL(HotelServiceSQL hotelService) {
         this.hotelService = hotelService;
     }
     
     @GetMapping("/hotels")
-    public List<Hotel> getAllHotels(Model model) {
+    public List<HotelSQL> getAllHotels(Model model) {
         return hotelService.getAllHotels();
     }
     
     @PostMapping("/addHotels") 
-    public List<Hotel> addhotels(@RequestBody List<Hotel> hotels) {
+    public List<HotelSQL> addhotels(@RequestBody List<HotelSQL> hotels) {
         return hotelService.createHotels(hotels);
     }
     
     @GetMapping("/hotelById/{hotel_id}")
-    public Optional<Hotel> getBookingsByUserId(@PathVariable Long hotel_id) {
+    public Optional<HotelSQL> getBookingsByUserId(@PathVariable Long hotel_id) {
     	return hotelService.getHotelByUserId(hotel_id);
     }
     
     @GetMapping("/api/hotels/search")
-    public List<Hotel> searchHotels(
+    public List<HotelSQL> searchHotels(
             @RequestParam("query") String query,
             Pageable pageable
     ) {

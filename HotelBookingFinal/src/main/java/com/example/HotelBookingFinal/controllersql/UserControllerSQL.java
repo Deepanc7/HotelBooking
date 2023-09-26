@@ -1,4 +1,4 @@
-package com.innsight.hotelbookingappSQL.controller;
+package com.example.HotelBookingFinal.controllersql;
 
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -12,8 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.innsight.hotelbookingappSQL.model.User;
-import com.innsight.hotelbookingappSQL.service.UserService;
+import com.example.HotelBookingFinal.modelsql.UserSQL;
+import com.example.HotelBookingFinal.servicesql.UserServiceSQL;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -26,10 +26,10 @@ import java.util.Optional;
 import javax.crypto.SecretKey;
 
 @RestController
-public class UserController {
+public class UserControllerSQL {
 
 	@Autowired
-	private UserService userService;
+	private UserServiceSQL userService;
 
 	private static final String SECRET_KEY_STRING = "Hotel-Booking-Website-Innsight-SecretKey";
     private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor(SECRET_KEY_STRING.getBytes());
@@ -37,7 +37,7 @@ public class UserController {
     
 	
 	@PostMapping("/signup")
-    public ResponseEntity<Map<String, String>> signUp(@RequestBody User user) {
+    public ResponseEntity<Map<String, String>> signUp(@RequestBody UserSQL user) {
         if (userService.doesEmailExist(user.getEmail())) {
             Map<String, String> response = new HashMap<>();
             response.put("message", "Email already registered");
@@ -48,7 +48,7 @@ public class UserController {
         user.setPassword(BCrypt.hashpw(user.getPassword(), salt));
 
 
-        User newUser = userService.createUser(user);
+        UserSQL newUser = userService.createUser(user);
 
         Map<String, String> response = new HashMap<>();
         response.put("message", "User registered successfully");
@@ -77,7 +77,7 @@ public class UserController {
 	}
 
 	private boolean authenticateUser(String email, String password) {
-		List<User> users = userService.getAllUsers();
+		List<UserSQL> users = userService.getAllUsers();
 		for (int i = 0; i < users.size(); i++) {
 			if (users.get(i).getEmail().equals(email)) {
 				boolean passwordMatch = BCrypt.checkpw(password, users.get(i).getPassword());
@@ -119,19 +119,19 @@ public class UserController {
     }
 	
 	@GetMapping("/by-email/{email}")
-	public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
-		Optional<User> userOptional = userService.getUserByEmail(email);
+	public ResponseEntity<UserSQL> getUserByEmail(@PathVariable String email) {
+		Optional<UserSQL> userOptional = userService.getUserByEmail(email);
 		return userOptional.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 	}
 
     @GetMapping("/getUser")
-    public ResponseEntity<User> getUserEmail(HttpServletRequest request, HttpServletResponse response) {
+    public ResponseEntity<UserSQL> getUserEmail(HttpServletRequest request, HttpServletResponse response) {
     	String jwtToken = extractJwtTokenFromHeader(request);
     	if(jwtToken==null) {
     		jwtToken="";
     	}
         String email = decodeJwtAndGetEmail(jwtToken);
-        Optional<User> user=userService.getUserByEmail(email);
+        Optional<UserSQL> user=userService.getUserByEmail(email);
         return user.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
     

@@ -1,4 +1,4 @@
-package com.innsight.hotelbookingappSQL.model;
+package com.example.HotelBookingFinal.modelsql;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.CollectionTable;
@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "hotel")
-public class Hotel {
+public class HotelSQL {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,7 +48,7 @@ public class Hotel {
     private Float rating;
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<Room> rooms;
+    private List<RoomSQL> rooms;
     
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(
@@ -56,11 +56,11 @@ public class Hotel {
             joinColumns = @JoinColumn(name = "hotel_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
-    private List<Tag> tag;
+    private List<TagSQL> tag;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
-    private Address address;
+    private AddressSQL address;
 
     @Column(name = "lowestPrice")
     private double lowestPrice;
@@ -121,15 +121,15 @@ public class Hotel {
         this.rating = rating;
     }
 
-    public List<Room> getRooms() {
+    public List<RoomSQL> getRooms() {
         return rooms;
     }
 
-    public void setRooms(List<Room> rooms) {
+    public void setRooms(List<RoomSQL> rooms) {
         this.rooms = rooms;
     }
 
-    public void addRoom(Room room) {
+    public void addRoom(RoomSQL room) {
         if (rooms == null) {
             rooms = new ArrayList<>();
         }
@@ -137,19 +137,19 @@ public class Hotel {
         room.setHotel(this);
     }
 
-    public List<Tag> getTags() {
+    public List<TagSQL> getTags() {
         return tag;
     }
 
-    public void setTags(List<Tag> tag) {
+    public void setTags(List<TagSQL> tag) {
         this.tag = tag;
     }
 
-    public Address getAddress() {
+    public AddressSQL getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(AddressSQL address) {
         this.address = address;
     }
 

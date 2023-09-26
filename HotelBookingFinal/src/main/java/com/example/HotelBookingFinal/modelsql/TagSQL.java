@@ -1,4 +1,4 @@
-package com.innsight.hotelbookingappSQL.model;
+package com.example.HotelBookingFinal.modelsql;
 
 import java.util.List;
 
@@ -12,9 +12,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
-public class Tag {
+@Table(name = "tag")
+public class TagSQL {
 
 	@Id
 	@JsonIgnore
@@ -23,16 +25,16 @@ public class Tag {
 
 	@JsonIgnore
 	@ManyToMany(mappedBy = "tag")
-    private List<Hotel> hotel;
+    private List<HotelSQL> hotel;
 
     @Column(name = "name")
     private String name;
     
-    public Tag() {
+    public TagSQL() {
     }
 
     // Constructor with fields
-    public Tag(String name) {
+    public TagSQL(String name) {
         this.name = name;
     }
 
@@ -46,11 +48,11 @@ public class Tag {
     }
     
     @JsonIgnore
-    public List<Hotel> getHotels() {
+    public List<HotelSQL> getHotels() {
         return hotel;
     }
 
-    public void setHotels(List<Hotel> hotel) {
+    public void setHotels(List<HotelSQL> hotel) {
         this.hotel = hotel;
     }
 

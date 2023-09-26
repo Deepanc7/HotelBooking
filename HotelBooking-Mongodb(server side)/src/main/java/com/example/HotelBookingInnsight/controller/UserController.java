@@ -1,4 +1,4 @@
-package com.innsight.hotelbookingappSQL.controller;
+package com.example.HotelBookingInnsight.controller;
 
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -12,8 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.innsight.hotelbookingappSQL.model.User;
-import com.innsight.hotelbookingappSQL.service.UserService;
+import com.example.HotelBookingInnsight.model.User;
+import com.example.HotelBookingInnsight.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -33,7 +33,7 @@ public class UserController {
 
 	private static final String SECRET_KEY_STRING = "Hotel-Booking-Website-Innsight-SecretKey";
     private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor(SECRET_KEY_STRING.getBytes());
-    
+   
     
 	
 	@PostMapping("/signup")

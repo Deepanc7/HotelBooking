@@ -33,6 +33,7 @@ export class AppComponent {
   getCurrentPage() {
     let currentPage = this.router.url; 
     if (currentPage!=='/login'){
+      console.log(currentPage)
       localStorage.setItem('currentPage', encodeURIComponent(currentPage));
     }
   }

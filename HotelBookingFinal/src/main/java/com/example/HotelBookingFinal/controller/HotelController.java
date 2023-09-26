@@ -1,23 +1,22 @@
-package com.innsight.hotelbookingappSQL.controller;
+package com.example.HotelBookingFinal.controller;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.innsight.hotelbookingappSQL.model.Hotel;
-import com.innsight.hotelbookingappSQL.service.HotelService;
+import com.example.HotelBookingFinal.model.Hotel;
+import com.example.HotelBookingFinal.service.HotelService;
 
 import ch.qos.logback.core.model.Model;
 
+//@CrossOrigin(origins = "*")
 @RestController
 public class HotelController {
     private final HotelService hotelService;
@@ -29,26 +28,21 @@ public class HotelController {
     
     @GetMapping("/hotels")
     public List<Hotel> getAllHotels(Model model) {
-        return hotelService.getAllHotels();
-    }
-    
-    @PostMapping("/addHotels") 
-    public List<Hotel> addhotels(@RequestBody List<Hotel> hotels) {
-        return hotelService.createHotels(hotels);
+        List<Hotel> hotels = hotelService.getAllHotels();
+        return hotels;
     }
     
     @GetMapping("/hotelById/{hotel_id}")
-    public Optional<Hotel> getBookingsByUserId(@PathVariable Long hotel_id) {
+    public Optional<Hotel> getBookingsByUserId(@PathVariable String hotel_id) {
     	return hotelService.getHotelByUserId(hotel_id);
     }
-    
+
     @GetMapping("/api/hotels/search")
     public List<Hotel> searchHotels(
-            @RequestParam("query") String query,
-            Pageable pageable
+        @RequestParam("query") String query,
+        @RequestParam(value = "page", defaultValue = "0") int page,
+        @RequestParam(value = "pageSize", defaultValue = "50") int pageSize
     ) {
-        return hotelService.searchHotels(query.trim(), pageable);
+        return hotelService.searchHotels(query, page, pageSize);
     }
-    
-    
 }

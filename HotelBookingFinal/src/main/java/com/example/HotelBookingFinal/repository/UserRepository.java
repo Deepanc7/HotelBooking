@@ -1,0 +1,13 @@
+package com.example.HotelBookingFinal.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.example.HotelBookingFinal.model.User;
+
+public interface UserRepository extends MongoRepository<User, String> {
+    User findByEmail(String email);
+    Optional<User> findUserByEmail(String email);
+    String findUserNameByEmail(String email);
+}
