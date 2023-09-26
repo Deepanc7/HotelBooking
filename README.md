@@ -6,7 +6,7 @@
 - Popular hotels in home page
 - Popular destinations
 - Sign up, login and logout ( JWT and cookies)
-- View Hotel details weather in that city and select hotel rooms
+- View Hotel details and weather in that city and select hotel rooms
 - View price and total estimation based on choices
 - Book hotel, view booking details, and cancel booking
 
