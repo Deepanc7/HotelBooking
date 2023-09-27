@@ -6,5 +6,5 @@ export interface Booking {
     room: Number,
     guests: Number,
     totalPrice: Number,
-    userId: String
+    userId: String | undefined;
 }

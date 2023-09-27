@@ -25,6 +25,7 @@ import java.util.Optional;
 
 import javax.crypto.SecretKey;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class UserController {
 

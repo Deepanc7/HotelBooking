@@ -12,6 +12,7 @@ import { LoginServiceService } from '../login-page/login-service.service';
 })
 export class SignupPageComponent {
 
+  id?:string;
   constructor(private builder: FormBuilder, private router: Router, private toastr: ToastrService, private userService: LoginServiceService) { }
 
   registersForm = this.builder.group({
@@ -23,7 +24,7 @@ export class SignupPageComponent {
   register() {
     if (this.registersForm.valid) {
       const user: User = {
-               id: '',
+               id: this.id,
                password: this.registersForm.value.password || '',
                name: this.registersForm.value.name || '',
                email: this.registersForm.value.email || '',

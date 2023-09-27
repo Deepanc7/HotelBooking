@@ -24,7 +24,7 @@ export class BookingsService {
     return this.http.post<Booking>(`${this.apiUrl}/api/bookings`, bookingDetails);
   }
 
-  getBookingsByEmail(email: String): Observable<Booking[]> {
+  getBookingsByEmail(email: String|undefined): Observable<Booking[]> {
     const url = `${this.apiUrl}/getBookings/${email}`;
     return this.http.get<Booking[]>(url, this.httpOptions);
   }

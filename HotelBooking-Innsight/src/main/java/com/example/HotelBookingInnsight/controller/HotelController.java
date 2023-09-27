@@ -17,7 +17,7 @@ import com.example.HotelBookingInnsight.service.HotelService;
 
 import ch.qos.logback.core.model.Model;
 
-//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*")
 @RestController
 public class HotelController {
     private final HotelService hotelService;
