@@ -33,8 +33,6 @@ public class UserController {
 
 	private static final String SECRET_KEY_STRING = "Hotel-Booking-Website-Innsight-SecretKey";
     private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor(SECRET_KEY_STRING.getBytes());
-   
-    
 	
 	@PostMapping("/signup")
     public ResponseEntity<Map<String, String>> signUp(@RequestBody User user) {

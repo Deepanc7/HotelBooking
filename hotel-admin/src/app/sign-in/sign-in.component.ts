@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup,Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpService } from '../service/http.service';
+import { CookieInteractionService } from '../service/cookieinteraction.service';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
-export class SignInComponent {
-  constructor(private router: Router, private formBuilder: FormBuilder) { }
 
+export class SignInComponent {
+  constructor(private router: Router, private formBuilder: FormBuilder, private httpService: HttpService, private cookieInteractionService: CookieInteractionService) { }
   loginForm: any;
   loginValidation: string | null = null;
   ngOnInit() {
@@ -26,40 +28,32 @@ export class SignInComponent {
   get password() {
     return this.loginForm.get('password');
   }
-
-  login(): void {
+  async login() {
     if (this.loginForm.get('email').valid && this.loginForm.get('password').valid) {
-      this.loginValidation = null;
-      // if (this.userAlready(this.loginForm.get('username').value)) {
-      //   const item = JSON.parse(this.localStorageService.getLocalStorageItem(this.loginForm.get('username').value) as string);
-      //   if (item.password === this.loginForm.get('password').value) {
-      //     this.localStorageService.setLocalStorageItem('notificationCount', '0');
-      //     this.localStorageService.setLocalStorageItem('currentUser', this.loginForm.get('username').value);
-      //     if (this.localStorageService.getLocalStorageItem('previousState')) {
-      //       this.router.navigate(['/clothes/search', this.localStorageService.getLocalStorageItem('previousState')])
-      //       this.localStorageService.removeLocalStorageItem('previousState');
-      //     }
-      //     else {
-      //       this.router.navigate(['/'])
-      //     }
-      //   }
-      //   else {
-      //     this.loginValidation = 'Incorrect password'
-      //   }
-      // } else {
-      //   this.loginValidation = "User doesn't exist";
-      // }
+      const email = this.loginForm.get('email')?.value ?? '';
+      const password = this.loginForm.get('password')?.value ?? '';
+      const admin = {
+        'email': email,
+        'password': password
+      };
+
+      try {
+        const response = await this.httpService.postData('/admin/logIn', admin).toPromise();
+        const adminDetail = response;
+        if (adminDetail != "Credentials Invalid !!") {
+          this.loginValidation = null;
+          this.cookieInteractionService.setCookieItem('currentUser', JSON.stringify(JSON.parse(adminDetail).jwttoken));
+        } else {
+          this.loginValidation = 'Invalid credentials..!'
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
+
     this.loginForm.reset();
   }
 
-  // userAlready(username: string): boolean {
-  //   if (this.localStorageService.getLocalStorageItem(username)) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
   inputCheck() {
     this.loginValidation = null;
   }

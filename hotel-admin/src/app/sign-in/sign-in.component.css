@@ -5,8 +5,8 @@
   
   @media (min-width:481px) and (max-width: 768px) {
     .example-card {
-      margin-top: 30%;
-      margin-left: 10%;
+      margin-top: 10rem;
+      margin-left: 11rem;
       padding: 20px;
       z-index: 800;
       border: 1px solid black;
@@ -15,7 +15,7 @@
   
   @media (max-width: 480px) {
     .example-card {
-      margin-top: 50%;
+      margin-top: 5rem;
       padding: 20px;
       z-index: 800;
       border: 1px solid black;
@@ -24,8 +24,8 @@
   
   @media (min-width: 769px) and (max-width: 1024px) {
     .example-card {
-      margin-top: 10%;
-      margin-left: 30%;
+      margin-top: 10rem;
+      margin-left: 13rem;
       padding: 20px;
       z-index: 800;
       border: 1px solid black;
@@ -38,7 +38,7 @@
   
   @media (min-width: 1025px) {
     .example-card {
-      margin-top: 10%;
+      margin-top: 5rem;
       margin-left: 35%;
       padding: 20px;
       z-index: 800;
