@@ -1,0 +1,132 @@
+.example-card {
+    max-width: 400px;
+  
+  }
+  
+  @media (min-width:481px) and (max-width: 768px) {
+    .example-card {
+      margin-top: 30%;
+      margin-left: 10%;
+      padding: 20px;
+      z-index: 800;
+      border: 1px solid black;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .example-card {
+      margin-top: 50%;
+      padding: 20px;
+      z-index: 800;
+      border: 1px solid black;
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .example-card {
+      margin-top: 10%;
+      margin-left: 30%;
+      padding: 20px;
+      z-index: 800;
+      border: 1px solid black;
+    }
+  
+    mat-card-header {
+      margin-left: 0.5rem;
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    .example-card {
+      margin-top: 10%;
+      margin-left: 35%;
+      padding: 20px;
+      z-index: 800;
+      border: 1px solid black;
+    }
+  
+    mat-card-header {
+      margin-left: 0.5rem;
+    }
+  
+  }
+  
+  .example-form {
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  mat-card-header {
+    /* background-color: black; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color : black;
+    padding: 10px;
+    padding-top: 15px;
+    /* text-align: center */
+  }
+  
+  mat-card-title {
+    font-size: 24px;
+    font-weight: 800;
+  
+  }
+  
+  mat-card-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 0px;
+    padding: 0;
+  }
+  
+  
+  .mat-card-content {
+    display: flex;
+    justify-content: center;
+  }
+  
+  mat-form-field {
+    margin: 10px 0;
+  }
+  
+  .mat-card-actions {
+    text-align: center;
+  }
+  
+  h3 {
+    text-align: center;
+    margin-top: 17px;
+    padding: 0;
+  }
+  
+  .mat-raised-button {
+    color: black;
+    margin-top: 5rem;
+    background-color: black;
+    box-shadow: none;
+    border: none;
+    font-size: medium;
+  }
+  #button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  button{
+    color: white;
+    padding : 0.8rem;
+    background-color: black;
+    box-shadow: none;
+    border: 1px solid black;
+    border-radius: 0.3rem;
+    font-size: medium;
+    width : 7rem;
+  }
+  div {
+    color: red;
+    padding: 0.5%
+  }

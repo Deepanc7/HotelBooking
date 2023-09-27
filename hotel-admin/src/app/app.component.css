@@ -1,8 +1,8 @@
-.background {
+/* .background {
     position: relative;
     overflow: auto;
-    background-color: white;
-    color: white;
+    /* background-color: white;
+    color: white; 
   }
   
   .background::before {
@@ -102,4 +102,4 @@
       align-items: center;
       font-size: 8px;
     }
-  }
+  } */
