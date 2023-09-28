@@ -1,9 +1,7 @@
 package com.innsight.hotelbookingappSQL.model;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -12,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -20,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "hotel")
 public class Hotel {
@@ -46,6 +44,10 @@ public class Hotel {
     
     @Column(name = "rating")
     private Float rating;
+    
+    @ManyToOne
+	@JoinColumn(name = "admin_id")
+	private Admin admin;
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Room> rooms;
@@ -160,4 +162,12 @@ public class Hotel {
     public void setLowestPrice(double lowestPrice) {
         this.lowestPrice = lowestPrice;
     }
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
 }

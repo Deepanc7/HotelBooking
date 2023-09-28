@@ -31,7 +31,12 @@
                 "baseRate": 80.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.s63xxHeW6QsCvQV5NXuVXgHaFj?w=164&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
             }
-        ]
+        ],
+        "admin": {
+    "id": 1,
+    "email": "palguni@gmail.com",
+    "password": "Paac@123"
+}
     },
     {
         "hotelId": "2",
@@ -65,7 +70,12 @@
                 "baseRate": 76.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.Vja0SDbD-Y-CiIaDV9knGQHaFk?w=235&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
             }
-        ]
+        ],
+        "admin": {
+    "id": 1,
+    "email": "palguni@gmail.com",
+    "password": "Paac@123"
+}
     },
     {
         "hotelId": "3",
@@ -99,7 +109,12 @@
                 "baseRate": 248.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.qdugQ2wyMkS_8PchdCDvgwHaE8?w=293&h=195&c=7&r=0&o=5&dpr=1.3&pid=1.7"
             }
-        ]
+        ],
+        "admin": {
+    "id": 1,
+    "email": "palguni@gmail.com",
+    "password": "Paac@123"
+}
     },
     {
         "hotelId": "4",
@@ -133,7 +148,12 @@
                 "baseRate": 168.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.CiUB4LIy4-v4iC6-cfWoxQHaE8?w=273&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7"
             }
-        ]
+        ],
+        "admin": {
+    "id": 1,
+    "email": "palguni@gmail.com",
+    "password": "Paac@123"
+}
     },
     {
         "hotelId": "5",
@@ -167,7 +187,12 @@
                 "baseRate": 145.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.ECJjpgPNaqEkHU0AW8hXEgHaFj?w=219&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
             }
-        ]
+        ],
+        "admin": {
+    "id": 1,
+    "email": "palguni@gmail.com",
+    "password": "Paac@123"
+}
     },
     {
         "hotelId": "6",
@@ -201,7 +226,12 @@
                 "baseRate": 107.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.i7pyzKJng5EFdB_m0-UNxQHaDt?w=349&h=175&c=7&r=0&o=5&dpr=1.3&pid=1.7"
             }
-        ]
+        ],
+        "admin": {
+    "id": 1,
+    "email": "palguni@gmail.com",
+    "password": "Paac@123"
+}
     },
     {
         "hotelId": "21",
@@ -235,7 +265,12 @@
                 "baseRate": 104.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.BRs1tVeVU9SpsBSuemrozgHaEj?w=278&h=189&c=7&r=0&o=5&dpr=1.3&pid=1.7"
             }
-        ]
+        ],
+        "admin": {
+    "id": 1,
+    "email": "palguni@gmail.com",
+    "password": "Paac@123"
+}
     },
     {
         "hotelId": "23",
@@ -269,7 +304,12 @@
                 "baseRate": 106.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.wKUqaoeMzSXR3ew0zfEseAHaE8?w=276&h=184&c=7&r=0&o=5&dpr=1.3&pid=1.7"
             }
-        ]
+        ],
+        "admin": {
+    "id": 1,
+    "email": "palguni@gmail.com",
+    "password": "Paac@123"
+}
     },
     {
         "hotelId": "32",
@@ -303,7 +343,12 @@
                 "baseRate": 69.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.A5qPEW2MpHAtrtGUGXNAigHaE7?pid=ImgDet&rs=1"
             }
-        ]
+        ],
+        "admin": {
+    "id": 1,
+    "email": "palguni@gmail.com",
+    "password": "Paac@123"
+}
     },
     {
         "hotelId": "45",
@@ -337,7 +382,12 @@
                 "baseRate": 99.99,
                 "roomImage": "https://i2.wp.com/c1.staticflickr.com/1/384/31438739793_68216b86db_c.jpg?resize=800%2C530&ssl=1"
             }
-        ]
+        ],
+        "admin": {
+    "id": 1,
+    "email": "palguni@gmail.com",
+    "password": "Paac@123"
+}
     },
     {
         "hotelId": "34",
@@ -371,7 +421,12 @@
                 "baseRate": 123.99,
                 "roomImage": "https://www.cliffhotel.com/wp-content/uploads/2019/11/Premium-1.jpg"
             }
-        ]
+        ],
+        "admin": {
+    "id": 2,
+    "email": "prashasthi@gmail.com",
+    "password": "Prash@123"
+}
     },
     {
         "hotelId": "43",
@@ -404,7 +459,12 @@
                 "baseRate": 120.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.2MxjuZoz7Wme0lmgvLq7ZQHaE7?pid=ImgDet&rs=1"
             }
-        ]
+        ],
+       "admin": {
+    "id": 2,
+    "email": "prashasthi@gmail.com",
+    "password": "Prash@123"
+}
     },
     {
         "hotelId": "27",
@@ -438,7 +498,12 @@
                 "baseRate": 84.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.vjRNij49sB4xm3ekg97m1gHaEK?w=328&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
             }
-        ]
+        ],
+       "admin": {
+    "id": 2,
+    "email": "prashasthi@gmail.com",
+    "password": "Prash@123"
+}
     },
     {
         "hotelId": "40",
@@ -472,7 +537,12 @@
                 "baseRate": 158.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.BYkvmOqH4gKk3QxvfTvNVwHaEJ?pid=ImgDet&rs=1"
             }
-        ]
+        ],
+       "admin": {
+    "id": 2,
+    "email": "prashasthi@gmail.com",
+    "password": "Prash@123"
+}
     },
     {
         "hotelId": "24",
@@ -506,7 +576,12 @@
                 "baseRate": 117.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.VAR2AJJl4INwWQMB8qF-ZwHaE8?w=274&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7"
             }
-        ]
+        ],
+       "admin": {
+    "id": 2,
+    "email": "prashasthi@gmail.com",
+    "password": "Prash@123"
+}
     },
     {
         "hotelId": "49",
@@ -540,7 +615,12 @@
                 "baseRate": 248.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.WhUTPjUjcyX6jDmboEmvzAHaE7?pid=ImgDet&rs=1"
             }
-        ]
+        ],
+       "admin": {
+    "id": 2,
+    "email": "prashasthi@gmail.com",
+    "password": "Prash@123"
+}
     },
     {
         "hotelId": "29",
@@ -574,7 +654,12 @@
                 "baseRate": 70.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.S2eE-0Ycf93q3KaYyXYstgHaHa?pid=ImgDet&w=600&h=600&rs=1"
             }
-        ]
+        ],
+       "admin": {
+    "id": 2,
+    "email": "prashasthi@gmail.com",
+    "password": "Prash@123"
+}
     },
     {
         "hotelId": "11",
@@ -608,7 +693,12 @@
                 "baseRate": 249.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.qWRhpTxPBB2bdJD51iJqCQHaEK?w=333&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7"
             }
-        ]
+        ],
+       "admin": {
+    "id": 2,
+    "email": "prashasthi@gmail.com",
+    "password": "Prash@123"
+}
     },
     {
         "hotelId": "18",
@@ -642,7 +732,11 @@
                 "baseRate": 85.99,
                 "roomImage": "https://th.bing.com/th/id/OIP.rL7rWw4AbdiAruMBEj3SKAEgDY?w=263&h=197&c=7&r=0&o=5&dpr=1.3&pid=1.7"
             }
-        ]
+        ],                      "admin": {
+    "id": 2,
+    "email": "prashasthi@gmail.com",
+    "password": "Prash@123"
+}
     },
     {
         "hotelId": "47",
@@ -676,6 +770,12 @@
                 "baseRate": 126.99,
                 "roomImage": "https://i.pinimg.com/originals/2e/c9/d3/2ec9d3e4a6d3517cb91c72f6ae5161df.jpg"
             }
-        ]
+        ],
+                              "admin": {
+    "id": 2,
+    "email": "prashasthi@gmail.com",
+    "password": "Prash@123"
+}
+
     }
 ]

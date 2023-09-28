@@ -1,4 +1,4 @@
-package com.example.HotelBookingInnsight.controller;
+package com.innsight.hotelbookingappSQL.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.example.HotelBookingInnsight.security.JwtHelperCls;
-import com.example.HotelBookingInnsight.entity.JwtRequest;
-import com.example.HotelBookingInnsight.entity.JwtResponse;
+
+import com.innsight.hotelbookingappSQL.entity.JwtRequest;
+import com.innsight.hotelbookingappSQL.entity.JwtResponse;
+import com.innsight.hotelbookingappSQL.repository.AdminRepository;
+import com.innsight.hotelbookingappSQL.security.JwtHelperCls;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -29,9 +31,7 @@ public class AdminController {
 
 	@Autowired
 	private JwtHelperCls helper;
-	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+
 	
 	@PostMapping("/admin/logIn")
 	public ResponseEntity<JwtResponse> adminLogin(@RequestBody JwtRequest request) {
@@ -43,7 +43,6 @@ public class AdminController {
 		response.setEmail(userDetails.getUsername());
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
-
 	private void doAuthenticate(String email, String password) {
 
 		UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(email, password);
