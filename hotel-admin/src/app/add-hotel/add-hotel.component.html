@@ -1,0 +1,113 @@
+<div class="container">
+    <div class="adddata">
+        <mat-card>
+            <mat-card-header>
+                <h1>Add hotel</h1>
+            </mat-card-header>
+            <mat-card-content>
+                <form [formGroup]="hotelForm">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Hotel name</mat-label>
+                        <input matInput placeholder="Hotel name" formControlName="hotelName">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput placeholder="Description" formControlName="description"></textarea>
+                    </mat-form-field>
+                    <div class="combineField">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Street</mat-label>
+                            <input matInput placeholder="Street" formControlName="street">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>City</mat-label>
+                            <input matInput placeholder="City" formControlName="city">
+                        </mat-form-field>
+                    </div>
+                    <div class="combineField">
+                        <mat-form-field appearance="outline">
+                            <mat-label>State Province</mat-label>
+                            <input matInput placeholder="State Province" formControlName="stateProvince">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Country</mat-label>
+                            <input matInput placeholder="Country" formControlName="country">
+                        </mat-form-field>
+                    </div>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Rating</mat-label>
+                        <input matInput placeholder="Rating" formControlName="rating">
+                    </mat-form-field>
+                    <mat-slide-toggle formControlName="parkingAvailable">Parking Available</mat-slide-toggle>
+                    <h4>Amenities:</h4>
+                    <section class="example-section">
+                        <p><mat-checkbox formControlName="View">View</mat-checkbox></p>
+                        <p><mat-checkbox formControlName="Air Conditioning">Air Conditioning</mat-checkbox></p>
+                        <p><mat-checkbox formControlName="Pool">Pool</mat-checkbox></p>
+                        <p><mat-checkbox formControlName="Bar">Bar</mat-checkbox></p>
+                        <p><mat-checkbox formControlName="Free wifi">Free wifi</mat-checkbox></p>
+                        <p><mat-checkbox formControlName="Free Parking">Free Parking</mat-checkbox></p>
+                        <p><mat-checkbox formControlName="Restaurant">Restaurant</mat-checkbox></p>
+                        <p><mat-checkbox formControlName="Laundry Service">Laundry Service</mat-checkbox></p>
+                        <p><mat-checkbox formControlName="Coffee in lobby">Coffee in lobby</mat-checkbox></p>
+                        <p><mat-checkbox formControlName="24 hour Front desk service">24 hour Front desk
+                                service</mat-checkbox></p>
+                        <p><mat-checkbox formControlName="Continental Breakfast">Continental Breakfast</mat-checkbox>
+                        </p>
+                        <p><mat-checkbox formControlName="Concierge">Concierge</mat-checkbox></p>
+                    </section>
+                    <mat-label>Upload Hotel Images</mat-label><br>
+                    <!-- <input type="file" id="roomImageInput" name="roomImageInput" accept="image/*" multiple
+                        (change)="selectHotelImages($event)"> -->
+                    <input style="display: none" type="file" accept="image/*" (change)="onFileChanged($event)" #fileInput formControlName="selectedImage">
+                    <button (click)="fileInput.click()">Select File</button>
+                    <!-- <button (click)="onUpload()">Upload!</button> -->
+                </form>
+            </mat-card-content>
+        </mat-card>
+        <mat-card>
+            <mat-card-header>
+                <h1>Add Room</h1>
+            </mat-card-header>
+            <mat-card-content>
+                <form [formGroup]="roomForm">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput formControlName="roomDescription"></textarea>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Type</mat-label>
+                        <input matInput placeholder="Type" formControlName="type">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Base Rate</mat-label>
+                        <input matInput placeholder="City" formControlName="baseRate">
+                    </mat-form-field>
+                    <div class="image-upload">
+                        <mat-label>Upload Room Images</mat-label><br>
+                        <input type="file" id="roomImageInput" name="roomImageInput" accept="image/*" multiple
+                            (change)="selectRoomImages($event)">
+                    </div>
+                </form>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="onRoomSubmit()">Add Room</button>
+            </mat-card-actions>
+        </mat-card>
+
+    </div>
+    <div class="summary">
+        <mat-card id="summary">
+            <mat-card-header>
+                <h1>Summary</h1>
+            </mat-card-header>
+            <mat-card-content>
+                <h3>Images</h3>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" (click)="onHotelSubmit()">Submit Hotel</button>
+                </mat-card-actions>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

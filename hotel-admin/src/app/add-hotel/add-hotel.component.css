@@ -1,0 +1,65 @@
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    height: 90%; 
+}
+
+.adddata{
+    width:70%;
+    margin: 10px;
+}
+.summary{
+    width: 30%;
+    margin: 10px;
+}
+
+#summary{
+    height: 95%;
+}
+
+mat-card {
+    background-color: #ffffff;
+    border: 1px solid #333;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+mat-card mat-card-header h1 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+    margin-left: -20px;
+}
+
+mat-card mat-form-field {
+    width: 100%;
+    margin-bottom: 5px;
+    margin-left: 5px;
+   
+}
+
+
+mat-card mat-slide-toggle {
+    margin-bottom: 15px;
+}
+
+mat-card .example-section {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+mat-card mat-checkbox {
+    flex: 25%;
+    margin-right: 10px;
+    color: #333;
+}
+
+.combineField{
+    display: flex;
+}
+
+

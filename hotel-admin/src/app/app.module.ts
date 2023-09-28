@@ -10,11 +10,19 @@ import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule } from '@angular/common/http';
+import { AddHotelComponent } from './add-hotel/add-hotel.component';
+import { ListHotelComponent } from './list-hotel/list-hotel.component';
+import { EditHotelComponent } from './edit-hotel/edit-hotel.component';
+import { ViewHotelComponent } from './view-hotel/view-hotel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignInComponent
+    SignInComponent,
+    AddHotelComponent,
+    ListHotelComponent,
+    EditHotelComponent,
+    ViewHotelComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,87 @@
+
+.main {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+button {
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    margin-top: 2px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.table thead {
+    background-color: black;
+    color: white;
+}
+
+.table th, .table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+
+.table tbody tr:nth-child(even) {
+    background-color: white;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+
+table button {
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+table button.edit:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+
+table .delete {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+table .delete:hover {
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+}
