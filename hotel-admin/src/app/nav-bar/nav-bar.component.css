@@ -1,0 +1,66 @@
+#background{
+    background-color: black ;
+    height: 100%;
+  }
+  .spacer {
+    flex-grow: 1;
+  }
+  #button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-right: 1.5rem;
+    float: right;
+  }
+  button{
+    color: white;
+    padding : 0.8rem;
+    background-color: black;
+    box-shadow: none;
+    border: 1px solid black;
+    border-radius: 0.3rem;
+    font-size: medium;
+    width : 6rem;
+  }
+  
+  #toolbar {
+    background-color: white;
+    color: rgb(21, 2, 2);
+    padding: 1px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+  }
+  
+  span {
+    color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-family: "Lato", sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+    padding: 1%;
+    color: rgb(255, 253, 253);
+    display: flex;
+  }
+  
+  @media (max-width: 768px) {
+    
+    .toolbar-content {
+      padding: 10px;
+      width: min-content;
+    }
+  
+  
+    .background {
+      width: 100%;
+    }
+  
+    .userButton {
+      display: flex;
+      align-items: center;
+      font-size: 8px;
+    }
+  } 

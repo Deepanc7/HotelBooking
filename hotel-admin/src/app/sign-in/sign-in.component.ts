@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from '../service/http.service';
 import { CookieInteractionService } from '../service/cookieinteraction.service';
+import { SessionServiceService } from '../service/session.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,7 +12,7 @@ import { CookieInteractionService } from '../service/cookieinteraction.service';
 })
 
 export class SignInComponent {
-  constructor(private router: Router, private formBuilder: FormBuilder, private httpService: HttpService, private cookieInteractionService: CookieInteractionService) { }
+  constructor(private router: Router, private sessionService: SessionServiceService, private formBuilder: FormBuilder, private httpService: HttpService, private cookieInteractionService: CookieInteractionService) { }
   loginForm: any;
   loginValidation: string | null = null;
   ngOnInit() {
@@ -40,9 +41,10 @@ export class SignInComponent {
       try {
         const response = await this.httpService.postData('/admin/logIn', admin).toPromise();
         const adminDetail = response;
+        console.log(adminDetail);
         if (adminDetail != "Credentials Invalid !!") {
           this.loginValidation = null;
-          this.cookieInteractionService.setCookieItem('currentUser', JSON.stringify(JSON.parse(adminDetail).jwttoken));
+          this.sessionService.startSession(adminDetail);
         } else {
           this.loginValidation = 'Invalid credentials..!'
         }
@@ -57,9 +59,4 @@ export class SignInComponent {
   inputCheck() {
     this.loginValidation = null;
   }
-  // signOut() {
-  //   this.localStorageService.removeLocalStorageItem('currentUser');
-  //   this.userPresent = this.localStorageService.getLocalStorageItem('currentUser') ? true : false;
-  //   this.reqFromAccIcon = this.localStorageService.getLocalStorageItem('accountIcon') === 'true' ? true : false;
-  // }
 }

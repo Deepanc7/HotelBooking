@@ -14,7 +14,7 @@ import { AddHotelComponent } from './add-hotel/add-hotel.component';
 import { ListHotelComponent } from './list-hotel/list-hotel.component';
 import { EditHotelComponent } from './edit-hotel/edit-hotel.component';
 import { ViewHotelComponent } from './view-hotel/view-hotel.component';
-
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +22,8 @@ import { ViewHotelComponent } from './view-hotel/view-hotel.component';
     AddHotelComponent,
     ListHotelComponent,
     EditHotelComponent,
-    ViewHotelComponent
+    ViewHotelComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
