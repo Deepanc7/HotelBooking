@@ -7,7 +7,8 @@ import { ViewHotelComponent } from './view-hotel/view-hotel.component';
 import { EditHotelComponent } from './edit-hotel/edit-hotel.component';
 
 const routes: Routes = [
-  {path : '',component : SignInComponent},{component: ListHotelComponent, path: 'allHotels' },
+  {path : '',component : SignInComponent},
+  {component: ListHotelComponent, path: 'allHotels' },
   { component: AddHotelComponent, path: 'addHotel' },
   { component: ViewHotelComponent, path: 'viewHotel/:index' },
   { component: EditHotelComponent, path: 'editHotel/:index'}
