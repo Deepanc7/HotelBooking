@@ -1,4 +1,4 @@
-package com.example.HotelBookingInnsight.service;
+package com.innsight.hotelbookingappSQL.service;
 
 import java.util.Map;
 

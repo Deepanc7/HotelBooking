@@ -16,6 +16,9 @@ export class SignInComponent {
   loginForm: any;
   loginValidation: string | null = null;
   ngOnInit() {
+    if(this.cookieInteractionService.getCookieItem('currentUser')){
+      this.router.navigate(['/allHotels']);
+    }
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)]],
       password: ['', [Validators.required]],
