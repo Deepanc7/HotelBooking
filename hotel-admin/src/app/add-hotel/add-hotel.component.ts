@@ -1,27 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-
+import { HotelService } from '../service/hotel.service';
 @Component({
   selector: 'app-add-hotel',
   templateUrl: './add-hotel.component.html',
   styleUrls: ['./add-hotel.component.css']
 })
 export class AddHotelComponent implements OnInit {
-
   hotelFormData: any = {};
   roomFormData: any = {};
-  selectedHotelImages: File[] = [];
+  selectedHotelImage: any;
   selectedRoomImages: File[] = [];
+  selectedImageUrls : String[] = [];
   hotelForm: FormGroup;
   roomForm: FormGroup;
   isParkingAvailable: boolean = false;
   selectedAmenities: string[] = [];
-
-  selectedFile: File|any;
+  selectedFile: File | any;
   roomDescription: string = '';
   roomType: string = '';
   roomBaseRate: number = 0;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private hotelService: HotelService) {
     this.hotelForm = this.fb.group({
       hotelName: [''],
       description: [''],
@@ -50,28 +49,42 @@ export class AddHotelComponent implements OnInit {
       type: [''],
       baseRate: [''],
     });
-   }
+  }
 
   ngOnInit(): void {
   }
 
-  
 
-  onFileChanged(event:any) {
-    this.selectedFile = event.target.files[0]
-  }
-  onUpload(){
-  const uploadData = new FormData();
-  console.log("71",this.selectedFile)
-  uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
-  console.log("qwqwqwq",uploadData.append('myFile', this.selectedFile, this.selectedFile.name))
-  if (this.selectedFile) {
+
+  // onFileChanged(event:any) {
+  //   this.selectedFile = event.target.files[0]
+  // }
+  onUpload() {
     const uploadData = new FormData();
+    console.log("71", this.selectedFile)
     uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
-    console.log("uploadData:", uploadData);
-  } else {
-    console.log("No file selected.");
+    console.log("qwqwqwq", uploadData.append('myFile', this.selectedFile, this.selectedFile.name))
+    if (this.selectedFile) {
+      const uploadData = new FormData();
+      uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
+      console.log("uploadData:", uploadData);
+    } else {
+      console.log("No file selected.");
+    }
   }
+  onFileChange(event: any) {
+    const files: File[] = event.target.files;
+    if (files && files.length > 0) {
+      this.selectedHotelImage = files[0];
+      this.fileToImageUrl(this.selectedHotelImage);
+    }
+  }
+  private fileToImageUrl(file: File) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.selectedImageUrls.push(reader.result as string);
+    };
   }
 
   // onFileChanged(event: any) {
@@ -86,20 +99,6 @@ export class AddHotelComponent implements OnInit {
   // }
 
 
-  // onHotelImageUpload(event: any) {
-  //   const file = event.target.files[0];
-  //   if (file) {
-  //     console.log('Uploaded hotel image:', file);
-  //   }
-  // }
-  onHotelImageUpload(event: any) {
-    this.selectedHotelImages = event.target.files;
-    //if (this.selectedHotelImages.length > 0) {
-      console.log('Uploaded hotel image:', this.selectedHotelImages[0].name);
-   // }
-   
-  }
-
   onRoomImageUpload(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -113,32 +112,30 @@ export class AddHotelComponent implements OnInit {
   //     console.log('Uploaded room image:', this.selectedRoomImages[0].name);
   //   }
   // }
-
+  // }
   onHotelSubmit() {
     const hotelData = this.hotelForm.value;
     console.log('Hotel Form Data:', hotelData);
     const selectedImage = hotelData.selectedImage;
-  console.log('Hotel Form Data:', hotelData);
-  console.log('Selected Image:', selectedImage);
+    console.log('Hotel Form Data:', hotelData);
+    console.log('Selected Image:', selectedImage);
+    this.hotelService.addHotel(this.selectedHotelImage);
   }
 
 
   onRoomSubmit() {
     const roomData = this.hotelForm.value;
-
     console.log('Room Form Data:', roomData);
   }
 
-  selectHotelImages(event: any): void {
-    this.selectedHotelImages = event.target.files;
-    console.log("kkkk",this.selectHotelImages)
-}
-
-selectRoomImages(event: any): void {
-    this.selectedRoomImages = event.target.files;
-}
-
-
+  selectRoomImage(event: any): void {
+    const files: File[] = event.target.files;
+    if (files && files.length > 0) {
+      const selectedRoomImage = files[0];
+      this.selectedRoomImages.push(selectedRoomImage)
+      this.fileToImageUrl(selectedRoomImage);
+    }
+  }
 
 }
 

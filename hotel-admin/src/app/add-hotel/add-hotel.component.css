@@ -61,5 +61,12 @@ mat-card mat-checkbox {
 .combineField{
     display: flex;
 }
-
-
+.img-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img{
+    width: 14rem;
+    height : 12rem;
+}

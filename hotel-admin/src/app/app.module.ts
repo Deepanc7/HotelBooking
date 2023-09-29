@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +14,7 @@ import { ListHotelComponent } from './list-hotel/list-hotel.component';
 import { EditHotelComponent } from './edit-hotel/edit-hotel.component';
 import { ViewHotelComponent } from './view-hotel/view-hotel.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HotelService } from './service/hotel.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +34,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [CookieService],
+  providers: [CookieService,HotelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
