@@ -26,6 +26,7 @@ import java.util.Optional;
 import javax.crypto.SecretKey;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5000")
 public class UserController {
 
 	@Autowired

@@ -19,6 +19,7 @@ import com.innsight.hotelbookingappSQL.service.HotelService;
 import ch.qos.logback.core.model.Model;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5000")
 public class HotelController {
     private final HotelService hotelService;
 
