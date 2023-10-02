@@ -16,6 +16,7 @@ import com.example.HotelBookingInnsight.model.Booking;
 import com.example.HotelBookingInnsight.service.BookingService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5000")
 public class BookingController {
 
     private final BookingService bookingService;

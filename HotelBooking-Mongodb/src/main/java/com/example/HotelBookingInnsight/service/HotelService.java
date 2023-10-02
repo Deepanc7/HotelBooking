@@ -5,6 +5,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.HotelBookingInnsight.model.Booking;
@@ -30,10 +32,10 @@ public class HotelService {
     public List<Hotel> getAllHotels() {
         List<Hotel> hotels = hotelRepository.findAll();
 
-        for (Hotel hotel : hotels) {
-            double lowestPrice = calculateLowestRoomPrice(hotel);
-            hotel.setLowestPrice(lowestPrice);
-        }
+//        for (Hotel hotel : hotels) {
+//            double lowestPrice = calculateLowestRoomPrice(hotel);
+//            hotel.setLowestPrice(lowestPrice);
+//        }
 
         return hotels;
     }
@@ -69,6 +71,36 @@ public class HotelService {
 	public Optional<Hotel> getHotelByUserId(String hotel_id) {
 		return hotelRepository.findById(hotel_id);
 	}
+	
+	public void deleteHotelById(String hotelId) {
+        hotelRepository.deleteById(hotelId);
+    }
+	
+    public Hotel updateHotel(String hotelId, Hotel updatedHotel) {
+    	try {
+        Optional<Hotel> existingHotel = hotelRepository.findById(hotelId);
+        if (existingHotel.isPresent()) {
+            Hotel hotelToUpdate = existingHotel.get();
+
+            hotelToUpdate.setHotelName(updatedHotel.getHotelName());
+            hotelToUpdate.setDescription(updatedHotel.getDescription());
+            hotelToUpdate.setAddress(updatedHotel.getAddress());
+            hotelToUpdate.setRating(updatedHotel.getRating());
+            hotelToUpdate.setParkingIncluded(updatedHotel.getParkingIncluded());
+            hotelToUpdate.setTags(updatedHotel.getTags());
+            hotelToUpdate.setRooms(updatedHotel.getRooms());
+            hotelToUpdate.setHotelId(updatedHotel.getHotelId());
+
+            return hotelRepository.save(hotelToUpdate);
+        }
+    	}
+    	catch (Exception e) {
+            e.printStackTrace();
+            
+        }
+		return null;
+        
+    }
 }
 
 

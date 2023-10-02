@@ -42,18 +42,17 @@ public class Hotel {
 
     @Field(targetType = FieldType.STRING)
     private List<Room> Rooms;
-    // Getters and setters for each field
     
-    @Field(targetType = FieldType.STRING)
-    private double LowestPrice;
+//    @Field(targetType = FieldType.STRING)
+//    private double LowestPrice;
     
-    public void setLowestPrice(double LowestPrice) {
-    	this.LowestPrice=LowestPrice;
-    }
-    
-    public double getLowestPrice() {
-    	return this.LowestPrice;
-    }
+	//    public void setLowestPrice(double LowestPrice) {
+	//    	this.LowestPrice=LowestPrice;
+	//    }
+	//    
+	//    public double getLowestPrice() {
+	//    	return this.LowestPrice;
+	//    }
     public String getId() {
         return id;
     }
