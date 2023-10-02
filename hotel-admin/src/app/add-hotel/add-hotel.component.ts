@@ -1,82 +1,186 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HotelService } from '../service/hotel.service';
+
 @Component({
   selector: 'app-add-hotel',
   templateUrl: './add-hotel.component.html',
   styleUrls: ['./add-hotel.component.css']
 })
 export class AddHotelComponent implements OnInit {
+
   hotelFormData: any = {};
   roomFormData: any = {};
   selectedHotelImage: any;
   selectedRoomImages: File[] = [];
-  selectedImageUrls : String[] = [];
   hotelForm: FormGroup;
   roomForm: FormGroup;
-  isParkingAvailable: boolean = false;
-  selectedAmenities: string[] = [];
+  isparkingIncluded: boolean = false;
+  tags: string[] = [];
+  allRooms: any[] = [];
+  noOfRooms: number = 0;
+  selectedImageUrls: String[] = [];
+  address: any;
+  isEditRoom: boolean = false;
+  editRoomIndex: number = 0;
+  selectedImageUrl: any;
+  selectedRoomImageUrl: any;
+
+  fileInput: any;
   selectedFile: File | any;
   roomDescription: string = '';
   roomType: string = '';
   roomBaseRate: number = 0;
-  constructor(private fb: FormBuilder, private hotelService: HotelService) {
-    this.hotelForm = this.fb.group({
-      hotelName: [''],
-      description: [''],
-      street: [''],
-      city: [''],
-      stateProvince: [''],
-      country: [''],
-      rating: [''],
-      selectedImage: [null],
-      parkingAvailable: [false],
-      View: [false],
-      'Air Conditioning': [false],
-      Pool: [false],
-      Bar: [false],
-      'Free wifi': [false],
-      'Free Parking': [false],
-      Restaurant: [false],
-      'Laundry Service': [false],
-      'Coffee in lobby': [false],
-      '24 hour Front desk service': [false],
-      'Continental Breakfast': [false],
-      Concierge: [false],
-    });
-    this.roomForm = this.fb.group({
-      roomDescription: [''],
-      type: [''],
-      baseRate: [''],
-    });
+  initialRoomFormValues: any;
+  constructor(private fb: FormBuilder, private router: Router, private hotelService: HotelService) {
+    this.hotelForm = this.hotelService.createHotelForm();
+    this.roomForm = this.hotelService.createRoomForm();
+    this.initialRoomFormValues = this.roomForm.value;
   }
 
   ngOnInit(): void {
   }
 
+  onHotelSubmit() {
+    if (this.noOfRooms > 0) {
+      if (this.hotelForm.invalid) {
+        this.hotelForm.markAllAsTouched();
+      }
+      else {
+        const hotelData = this.hotelForm.value;
 
+        this.address = {
+          streetAddress: hotelData.streetAddress,
+          city: hotelData.city,
+          stateProvince: hotelData.stateProvince,
+          postalCode: hotelData.postalCode,
+          country: hotelData.country
+        };
 
-  // onFileChanged(event:any) {
-  //   this.selectedFile = event.target.files[0]
-  // }
-  onUpload() {
-    const uploadData = new FormData();
-    console.log("71", this.selectedFile)
-    uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
-    console.log("qwqwqwq", uploadData.append('myFile', this.selectedFile, this.selectedFile.name))
-    if (this.selectedFile) {
-      const uploadData = new FormData();
-      uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
-      console.log("uploadData:", uploadData);
-    } else {
-      console.log("No file selected.");
+        hotelData.hotelImage = this.selectedImageUrl;
+
+        hotelData.address = this.address;
+
+        delete hotelData.stateProvince;
+        delete hotelData.city;
+        delete hotelData.country;
+        delete hotelData.streetAddress;
+        delete hotelData.postalCode;
+
+        this.tags = [];
+        if (hotelData.View) this.tags.push('view');
+        if (hotelData['Air Conditioning']) this.tags.push('air conditioning');
+        if (hotelData.Pool) this.tags.push('pool');
+        if (hotelData.Bar) this.tags.push('bar');
+        if (hotelData['Free wifi']) this.tags.push('free wifi');
+        if (hotelData['Free Parking']) this.tags.push('free parking');
+        if (hotelData.Restaurant) this.tags.push('restaurant');
+        if (hotelData['Laundry Service']) this.tags.push('laundry service');
+        if (hotelData['Coffee in lobby']) this.tags.push('coffee in lobby');
+        if (hotelData['24 hour Front desk service']) this.tags.push('24 hour front desk service');
+        if (hotelData['Continental Breakfast']) this.tags.push('continental breakfast');
+        if (hotelData.Concierge) this.tags.push('concierge');
+
+        delete hotelData.View;
+        delete hotelData['Air Conditioning'];
+        delete hotelData.Pool;
+        delete hotelData.Bar;
+        delete hotelData['Free wifi'];
+        delete hotelData['Free Parking'];
+        delete hotelData.Restaurant;
+        delete hotelData['Laundry Service'];
+        delete hotelData['Coffee in lobby'];
+        delete hotelData['24 hour Front desk service'];
+        delete hotelData['Continental Breakfast'];
+        delete hotelData.Concierge;
+
+        hotelData.tags = this.tags;
+        hotelData.rooms = this.allRooms;
+        const randomHotelId = Math.floor(Math.random() * 1000) + 1;
+        hotelData.hotelId = randomHotelId;
+        console.log('Hotel Form Data:', hotelData);
+        this.hotelService.addHotel(hotelData)
+          .subscribe((response) => {
+            console.log('Hotel added successfully');
+          });
+          this.router.navigate(['']);
+      }
+    }
+    else {
+      alert("Add atleast one room");
+    }
+
+  }
+
+  async onRoomSubmit() {
+    if (!this.roomForm.value.roomImage) {
+      alert("Add Image")
+    }
+    else if (this.roomForm.invalid) {
+      this.roomForm.markAllAsTouched();
+    }
+    else {
+      if (this.isEditRoom) {
+        const roomData = this.roomForm.value;
+        roomData.roomImage = await this.selectedRoomImageUrl;
+        this.allRooms[this.editRoomIndex] = roomData;
+        this.isEditRoom = false;
+      }
+      else {
+        const roomData = this.roomForm.value;
+        roomData.roomImage = await this.selectedRoomImageUrl;
+        this.noOfRooms += 1;
+        this.allRooms.push(roomData);
+      }
+      this.resetHotelForm();
+    }
+
+  }
+
+  resetHotelForm() {
+    this.roomForm.reset(this.initialRoomFormValues);
+  }
+  editRoom(index: number) {
+    this.isEditRoom = true;
+    this.editRoomIndex = index;
+    this.roomForm.patchValue({
+      description: this.allRooms[index].description,
+      type: this.allRooms[index].type,
+      baseRate: this.allRooms[index].baseRate,
+      roomImage: this.allRooms[index].roomImage,
+    })
+
+  }
+
+  deleteRoom(index: number) {
+    if (index >= 0 && index < this.allRooms.length) {
+      this.allRooms.splice(index, 1);
+      this.noOfRooms -= 1;
+    }
+
+  }
+
+  async selectRoomImage(event: any) {
+    const files: File[] = event.target.files;
+    if (files && files.length > 0) {
+      const selectedRoomImage = files[0];
+      this.selectedRoomImages.push(selectedRoomImage)
+      this.fileToImageUrl(selectedRoomImage);
+      const response = await this.hotelService.uploadImage(selectedRoomImage);
+          console.log("235", response)
+          this.selectedRoomImageUrl = response;
     }
   }
-  onFileChange(event: any) {
+  async onFileChange(event: any) {
     const files: File[] = event.target.files;
     if (files && files.length > 0) {
       this.selectedHotelImage = files[0];
       this.fileToImageUrl(this.selectedHotelImage);
+      const response = await this.hotelService.uploadImage(this.selectedHotelImage);
+          console.log("235", response)
+          this.selectedImageUrl = response;
+       
     }
   }
   private fileToImageUrl(file: File) {
@@ -87,55 +191,8 @@ export class AddHotelComponent implements OnInit {
     };
   }
 
-  // onFileChanged(event: any) {
-  //   const fileInput = event.target;
-  // const file = fileInput.files[0];
-  //   if (file) {
-  //     this.hotelForm.patchValue({
-  //       selectedImage: file,
-  //     });
-  //     fileInput.value = '';
-  //   }
-  // }
-
-
-  onRoomImageUpload(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      console.log('Uploaded room image:', file);
-    }
-  }
-
-  // onRoomImageUpload(event: any) {
-  //   this.selectedRoomImages = event.target.files;
-  //   if (this.selectedRoomImages.length > 0) {
-  //     console.log('Uploaded room image:', this.selectedRoomImages[0].name);
-  //   }
-  // }
-  // }
-  onHotelSubmit() {
-    const hotelData = this.hotelForm.value;
-    console.log('Hotel Form Data:', hotelData);
-    const selectedImage = hotelData.selectedImage;
-    console.log('Hotel Form Data:', hotelData);
-    console.log('Selected Image:', selectedImage);
-    this.hotelService.addHotel(this.selectedHotelImage);
-  }
-
-
-  onRoomSubmit() {
-    const roomData = this.hotelForm.value;
-    console.log('Room Form Data:', roomData);
-  }
-
-  selectRoomImage(event: any): void {
-    const files: File[] = event.target.files;
-    if (files && files.length > 0) {
-      const selectedRoomImage = files[0];
-      this.selectedRoomImages.push(selectedRoomImage)
-      this.fileToImageUrl(selectedRoomImage);
-    }
+  viewAllHotel() {
+    this.router.navigate(['']);
   }
 
 }
-

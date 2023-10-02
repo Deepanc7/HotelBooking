@@ -1,22 +1,43 @@
-
 .container {
     display: flex;
     justify-content: space-between;
     background-color: black;
-    height: 90%; 
+    height: 90%;
 }
 
-.adddata{
-    width:70%;
-    margin: 10px;
+.header{
+    display: flex;
+    margin-left: 10px;
+    font-size: 30px;
 }
-.summary{
+
+.allHotel{
+    margin-left: 48rem;
+    width: 200px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    background-color: black;
+}
+
+.adddata {
+    width: 70%;
+    margin: 5px;
+}
+
+.summary {
     width: 30%;
-    margin: 10px;
+    margin: 5px;
 }
 
-#summary{
-    height: 95%;
+#summary {
+    height: 96%;
+}
+
+h4 {
+    margin-top: 3px;
+    margin-bottom: 2px;
+    margin-left: 10px;
 }
 
 mat-card {
@@ -24,7 +45,7 @@ mat-card {
     border: 1px solid #333;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 mat-card mat-card-header h1 {
@@ -32,41 +53,99 @@ mat-card mat-card-header h1 {
     margin: 0;
     color: #333;
     margin-left: -20px;
+
 }
 
 mat-card mat-form-field {
     width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 1px;
     margin-left: 5px;
-   
+    padding-bottom: 5px !important;
+
 }
 
+:host ::ng-deep .mat-form-field-wrapper {
+    margin: 0px !important;
+    padding: 10px;
+}
 
 mat-card mat-slide-toggle {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-left: 10px;
 }
 
 mat-card .example-section {
-    margin-top: 20px;
+    margin-top: 2px;
+    margin-left: 10px;
     display: flex;
     flex-wrap: wrap;
 }
 
 mat-card mat-checkbox {
-    flex: 25%;
+    flex: 20%;
     margin-right: 10px;
     color: #333;
+    margin-top: 0;
 }
 
-.combineField{
+.combineField {
     display: flex;
 }
-.img-container{
+
+#hotelSubmitButton {
+    width: 100%;
+    /* margin-bottom: 20px; */
+}
+
+.roomDetails {
+    display: flex;
+}
+
+:host ::ng-deep .mat-list-item-content {
+    padding: 0 !important;
+    width: 10px;
+}
+
+.roomType {
+    width: 150px !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 2px !important;
+    margin-left: 5px !important;
+}
+
+
+.roomDetails {
+    display: flex;
+}
+
+.roomItem {
+    width: 40px !important;
+    display: inline-block;
+    padding: 2px !important;
+    margin-left: 5px !important;
+}
+
+.roomId {
+    width: 10px !important;
+    display: inline-block;
+    padding: 2px !important;
+    margin-left: 5px !important;
+}
+
+mat-error {
+    margin-top: 5px;
+}
+
+.img-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-img{
+
+img {
     width: 14rem;
-    height : 12rem;
+    height: 12rem;
 }

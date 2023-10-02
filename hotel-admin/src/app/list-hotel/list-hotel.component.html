@@ -1,29 +1,29 @@
 <div class="main">
     <div class="header">
-        <h2>Hotels</h2>
+      <h2>Hotels</h2>
     </div>
     <button (click)="addHotel()">New Hotel +</button>
     <table class="table">
-        <thead>
-            <tr>
-                <td>No</td>
-                <td>Name</td>
-                <td>Location</td>
-                <td>Rating</td>
-                <td colspan="3">Action</td>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- <tr *ngFor="let contact of contacts,let i=index"> -->
-                <tr>
-                <td>1</td>
-                <td>contact.name</td>
-                <td>contact.email</td>
-                <td>contact.place</td>
-                <td><button (click)="editContact(1)">View</button></td>
-                <td><button (click)="editContact(1)">Edit</button></td>
-                <td><button class="delete" (click)="deleteContact(1)">Delete</button></td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <td>No</td>
+          <td>Name</td>
+          <td>Location</td>
+          <td>Rating</td>
+          <td colspan="3">Action</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hotel of hotels; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ hotel.hotelName }}</td>
+          <td>{{ hotel.address.city }}</td>
+          <td>{{ hotel.rating }}</td>
+          <td><button (click)="viewHotel(hotel)">View</button></td>
+          <td><button (click)="editHotel(hotel)">Edit</button></td>
+          <td><button class="delete" (click)="deleteHotel(hotel)">Delete</button></td>
+        </tr>
+      </tbody>
     </table>
-</div>
+  </div>
+  

@@ -1,45 +1,84 @@
+<div class="header">
+    <h1>Add Hotel</h1>
+    <button class="allHotel" (click)="viewAllHotel()">All Hotels</button>
+</div>
 <div class="container">
     <div class="adddata">
         <mat-card>
             <mat-card-header>
-                <h1>Add hotel</h1>
+                <h1>Hotel Details</h1>
             </mat-card-header>
             <mat-card-content>
-                <form [formGroup]="hotelForm" enctype="multipart/form-data">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Hotel name</mat-label>
-                        <input matInput placeholder="Hotel name" formControlName="hotelName">
-                    </mat-form-field>
+                <form [formGroup]="hotelForm">
+                    <div class="combineField">
+                        <mat-form-field appearance="outline" >
+                            <mat-label>Hotel name</mat-label>
+                            <input matInput placeholder="Hotel name" formControlName="hotelName">
+                            <mat-error *ngIf="hotelForm.get('hotelName')?.hasError('required')">
+                                Hotel name is required
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Rating</mat-label>
+                            <input matInput type="number" placeholder="Rating" formControlName="rating">
+                            <mat-error *ngIf="hotelForm.get('rating')?.hasError('required')">
+                                Rating is required
+                              </mat-error>
+                              <mat-error *ngIf="hotelForm.get('rating')?.hasError('min')">
+                                Rating must be at least 1
+                              </mat-error>
+                              <mat-error *ngIf="hotelForm.get('rating')?.hasError('max')">
+                                Rating must be at most 5
+                              </mat-error>
+                        </mat-form-field>
+                    </div>
                     <mat-form-field appearance="outline">
                         <mat-label>Description</mat-label>
                         <textarea matInput placeholder="Description" formControlName="description"></textarea>
+                        <mat-error *ngIf="hotelForm.get('description')?.hasError('required')">
+                            Description is required
+                        </mat-error>
                     </mat-form-field>
                     <div class="combineField">
                         <mat-form-field appearance="outline">
                             <mat-label>Street</mat-label>
-                            <input matInput placeholder="Street" formControlName="street">
+                            <input matInput placeholder="Street" formControlName="streetAddress">
+                            <mat-error *ngIf="hotelForm.get('streetAddress')?.hasError('required')">
+                                Street is required
+                           </mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="outline">
                             <mat-label>City</mat-label>
-                            <input matInput placeholder="City" formControlName="city">
+                            <input matInput type="text" placeholder="City" formControlName="city">
+                            <mat-error *ngIf="hotelForm.get('city')?.hasError('required')">
+                                City is required
+                           </mat-error>
                         </mat-form-field>
                     </div>
                     <div class="combineField">
                         <mat-form-field appearance="outline">
                             <mat-label>State Province</mat-label>
                             <input matInput placeholder="State Province" formControlName="stateProvince">
+                            <mat-error *ngIf="hotelForm.get('stateProvince')?.hasError('required')">
+                                State province is required
+                           </mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="outline">
                             <mat-label>Country</mat-label>
                             <input matInput placeholder="Country" formControlName="country">
+                            <mat-error *ngIf="hotelForm.get('country')?.hasError('required')">
+                                Country is required
+                           </mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Postal Code</mat-label>
+                            <input matInput type="number" placeholder="Postal Code" formControlName="postalCode">
+                            <mat-error *ngIf="hotelForm.get('postalCode')?.hasError('required')">
+                                postalCode is required
+                           </mat-error>
                         </mat-form-field>
                     </div>
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Rating</mat-label>
-                        <input matInput placeholder="Rating" formControlName="rating">
-                    </mat-form-field>
-                    <mat-slide-toggle formControlName="parkingAvailable">Parking Available</mat-slide-toggle>
+                    <mat-slide-toggle formControlName="parkingIncluded">Parking Available</mat-slide-toggle>
                     <h4>Amenities:</h4>
                     <section class="example-section">
                         <p><mat-checkbox formControlName="View">View</mat-checkbox></p>
@@ -58,9 +97,7 @@
                         <p><mat-checkbox formControlName="Concierge">Concierge</mat-checkbox></p>
                     </section>
                     <mat-label>Upload Hotel Images</mat-label><br>
-                    <input type="file" id="image" 
-                    class=""
-                    name="image" (change)="onFileChange($event)">
+                    <input type="file" id="image" accept="image/*" name="image" (change)="onFileChange($event)" required>
                 </form>
             </mat-card-content>
         </mat-card>
@@ -69,26 +106,36 @@
                 <h1>Add Room</h1>
             </mat-card-header>
             <mat-card-content>
-                <form [formGroup]="roomForm" enctype="multipart/form-data">
+                <form [formGroup]="roomForm">
                     <mat-form-field appearance="outline">
                         <mat-label>Description</mat-label>
-                        <textarea matInput formControlName="roomDescription"></textarea>
+                        <textarea matInput placeholder="Description"  formControlName="description"></textarea>
+                        <mat-error *ngIf="hotelForm.get('description')?.hasError('required')">
+                            Description is required
+                       </mat-error>
                     </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Type</mat-label>
-                        <input matInput placeholder="Type" formControlName="type">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Base Rate</mat-label>
-                        <input matInput placeholder="City" formControlName="baseRate">
-                    </mat-form-field>
+                    <div class="combineField">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Type</mat-label>
+                            <input matInput placeholder="Type" formControlName="type">
+                            <mat-error *ngIf="roomForm.get('type')?.hasError('required')">
+                               Type is required
+                           </mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Base Rate</mat-label>
+                            <input matInput type="number" placeholder="Base Rate" formControlName="baseRate">
+                            <mat-error *ngIf="roomForm.get('baseRate')?.hasError('required')">
+                                Base Rate is required
+                           </mat-error>
+                           <mat-error *ngIf="roomForm.get('baseRate')?.hasError('min')">
+                            Price must be greater than 0
+                       </mat-error>
+                        </mat-form-field>
+                    </div>
                     <div class="image-upload">
                         <mat-label>Upload Room Images</mat-label><br>
-                        <!-- <input type="file" id="roomImageInput" name="roomImageInput" accept="image/*" multiple
-                            (change)="selectRoomImages($event)"> -->
-                            <input type="file" id="roomImageInput" 
-                    class=""
-                    name="roomImageInput" (change)="selectRoomImage($event)">
+                            <input type="file" id="roomImageInput" accept="image/*" name="roomImageInput" formControlName="roomImage" (change)="selectRoomImage($event)" required>
                     </div>
                 </form>
             </mat-card-content>
@@ -103,15 +150,24 @@
             <mat-card-header>
                 <h1>Summary</h1>
             </mat-card-header>
-            <mat-card-content class>
-                <h3>Images</h3>
+            <mat-card-content>
+                <h2>Images</h2>
                 <div class="w-1/4 p-2" *ngFor="let imageUrl of selectedImageUrls">
                     <img [src]="imageUrl" alt="Selected Image" class="">
                 </div>
-                <mat-card-actions>
-                    <button mat-raised-button color="primary" (click)="onHotelSubmit()">Submit Hotel</button>
-                </mat-card-actions>
+                <h3>Number of Rooms: {{noOfRooms}}</h3>
+                <h5 *ngIf="noOfRooms>0">Rooms Added</h5>
+                <mat-list *ngFor="let room of allRooms, let i=index" class="roomDetails">
+                    <mat-list-item class="roomId">{{i+1}}</mat-list-item>
+                    <mat-list-item class="roomType">{{room.type}}</mat-list-item>
+                    <mat-list-item class="roomItem"><button (click)="editRoom(i)">Edit</button></mat-list-item>
+                    <mat-list-item class="roomItem"><button (click)="deleteRoom(i)">Delete</button></mat-list-item>
+                </mat-list>
             </mat-card-content>
+            <mat-card-actions >
+                <button mat-raised-button color="primary" (click)="onHotelSubmit()" id="hotelSubmitButton">Submit
+                    Hotel</button>
+            </mat-card-actions>
         </mat-card>
     </div>
 </div>

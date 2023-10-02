@@ -1,1 +1,67 @@
-<p>view-hotel works!</p>
+<div class="container" style="max-height: 600px; overflow-y: auto;">
+    <div class="adddata">
+        <mat-card>
+            <mat-card-header>
+                <h1><strong>Hotel Details</strong> </h1>
+            </mat-card-header>
+            <mat-card-content>
+                
+                <p><strong>Name:</strong>{{ hotelFormData.hotelName }}</p>
+                <p><strong>Rating:</strong> {{ hotelFormData.rating }}</p>
+                <p><strong>Description:</strong> {{ hotelFormData.description }}</p>
+            <div class="grouping">
+                <div >
+                <p><strong>Street:</strong> {{ hotelFormData.address?.streetAddress}}</p>
+                <p><strong>City:</strong> {{ hotelFormData.address?.city }}</p>
+                <p><strong>State Province:</strong> {{ hotelFormData.address?.stateProvince }}</p>
+                <p><strong>Country:</strong> {{ hotelFormData.address?.country }}</p>
+                <p><strong>Postal Code:</strong> {{ hotelFormData.address?.postalCode }}</p>
+                <p><strong>Parking Included:</strong> {{ hotelFormData.parkingIncluded ? 'Yes' : 'No' }}</p>
+            </div>
+            <div style="margin-left: 16rem;">
+                <h4><strong>Amenities:</strong></h4>
+                <mat-list *ngFor="let tag of hotelFormData.tags, let i=index">
+                    <p>{{i+1}}. {{capitalizeFirstLetter(tag)}}</p>
+                </mat-list>
+            </div>
+        </div>
+            </mat-card-content>
+        </mat-card>
+        <mat-card>
+            <mat-card-header>
+                <h1><strong>Room Details</strong></h1>
+                <h3><strong>Number of Rooms: {{ noOfRooms }}</strong></h3>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-list *ngFor="let room of allRooms, let i=index" class="roomDetails">
+                    <mat-list-item class="roomId">{{ i + 1 }}.</mat-list-item>
+                    <mat-list-item class="roomType">{{ room.type }}</mat-list-item>
+                    <mat-list-item class="roomDesc">{{ room.description }}</mat-list-item>
+                    <mat-list-item class="roomId">{{ room.baseRate }}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="summary">
+        <mat-card id="summary">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h1><strong>Summary</strong></h1>
+                <button mat-icon-button (click)="onClose()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+
+            <mat-card-content>
+                <p>Images</p>
+                <h4>Hotel Image</h4>
+                <div class="roomImage">
+                    <img [src]="hotelFormData.hotelImage" alt="Selected Image" class="">
+                </div>
+                <h4>Room Images</h4>
+                <div class="roomImage" *ngFor="let room of allRooms,let i=index">
+                    <img [src]="room.roomImage" alt="Selected Image" class="">
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
