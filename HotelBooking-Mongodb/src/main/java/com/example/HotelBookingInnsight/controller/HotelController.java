@@ -4,22 +4,31 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.HotelBookingInnsight.model.Booking;
 import com.example.HotelBookingInnsight.model.Hotel;
+import com.example.HotelBookingInnsight.repository.HotelRepository;
 import com.example.HotelBookingInnsight.service.HotelService;
 
 import ch.qos.logback.core.model.Model;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5000")
 public class HotelController {
     private final HotelService hotelService;
+    
+    @Autowired
+	private HotelRepository hotelRepository;
 
     @Autowired
     public HotelController(HotelService hotelService) {
@@ -45,4 +54,8 @@ public class HotelController {
     ) {
         return hotelService.searchHotels(query, page, pageSize);
     }
+    
+    
+    
+
 }

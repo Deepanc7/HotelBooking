@@ -9,9 +9,13 @@ import { EditHotelComponent } from './edit-hotel/edit-hotel.component';
 const routes: Routes = [
   {path : '',component : SignInComponent},
   {component: ListHotelComponent, path: 'allHotels' },
-  { component: AddHotelComponent, path: 'addHotel' },
-  { component: ViewHotelComponent, path: 'viewHotel/:index' },
-  { component: EditHotelComponent, path: 'editHotel/:index'}
+  // { component: AddHotelComponent, path: '' },
+  // { component: ViewHotelComponent, path: 'viewHotel/:index' },
+  // { component: EditHotelComponent, path: 'editHotel/:index'}
+  // { component: ListHotelComponent, path: '' },
+{ component: AddHotelComponent, path: 'addHotel' },
+{ component: ViewHotelComponent, path: 'viewHotel/:hotelId' },
+{ component: EditHotelComponent, path: 'editHotel/:hotelId' }
 ];
 
 @NgModule({

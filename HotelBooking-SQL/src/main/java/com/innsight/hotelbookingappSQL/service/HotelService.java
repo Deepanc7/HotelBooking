@@ -71,4 +71,35 @@ public class HotelService {
 
 	    return hotelList;
 	}
+	
+	
+	public void deleteHotelById(Long hotelId) {
+        hotelRepository.deleteById(hotelId);
+    }
+	
+    public Hotel updateHotel(Long hotelId, Hotel updatedHotel) {
+    	try {
+        Optional<Hotel> existingHotel = hotelRepository.findById(hotelId);
+        if (existingHotel.isPresent()) {
+            Hotel hotelToUpdate = existingHotel.get();
+
+            hotelToUpdate.setHotelName(updatedHotel.getHotelName());
+            hotelToUpdate.setDescription(updatedHotel.getDescription());
+            hotelToUpdate.setAddress(updatedHotel.getAddress());
+            hotelToUpdate.setRating(updatedHotel.getRating());
+            hotelToUpdate.setParkingIncluded(updatedHotel.getParkingIncluded());
+            hotelToUpdate.setTags(updatedHotel.getTags());
+            hotelToUpdate.setRooms(updatedHotel.getRooms());
+            hotelToUpdate.setHotelId(updatedHotel.getHotelId());
+
+            return hotelRepository.save(hotelToUpdate);
+        }
+    	}
+    	catch (Exception e) {
+            e.printStackTrace();
+            
+        }
+		return null;
+        
+    }
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HotelService } from '../service/hotel.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ViewHotelComponent } from '../view-hotel/view-hotel.component';
 
 @Component({
   selector: 'app-list-hotel',
@@ -7,35 +10,49 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-hotel.component.css']
 })
 export class ListHotelComponent implements OnInit {
+  hotels: any[] = [];
 
-  contacts:String[]=[];
-
-  constructor(private router: Router) { }
+  constructor(private router: Router, private hotelService: HotelService,private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getContacts();
+    this.hotelService.getAllHotels().subscribe((hotels) => {
+      this.hotels = hotels;
+      console.log("18",this.hotels);
+    });
   }
 
-  getContacts() {
-    // this.contactService.getAllContacts().subscribe(data => {
-    //   this.contacts = data;
-    // })
-  }
-
-  addHotel() {
+  addHotel():void {
     this.router.navigate(['/addHotel']);
   }
 
-  editContact(index: number) {
-    // const contact = this.contacts[index];
-    // this.router.navigate(['/edit-contact/', contact.id], {  state: { contact } });
+  viewHotel(hotel: any): void {
+    const dialogRef = this.dialog.open(ViewHotelComponent, {
+      width: '1300px',
+      data: hotel.id,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed with result:', result);
+    });
   }
 
-  deleteContact(index: number) {
-    // const contact = this.contacts[index];
-    // this.contactService.deleteContact(contact.id).subscribe(data => {
-    //   this.getContacts();
-    // });
+  editHotel(hotel: any): void {
+    this.router.navigate(['/editHotel', hotel.id]);
   }
+
+  deleteHotel(hotel: any): void {
+    const hotelId = hotel.id;
+    this.hotelService.deleteHotel(hotelId).subscribe({
+      next: () => { 
+        const index = this.hotels.findIndex((h) => h.id === hotelId);
+        if (index !== -1) {
+          this.hotels.splice(index, 1);
+        }
+      },
+      error: (error) => { 
+      }
+    });
+  }
+
 
 }
